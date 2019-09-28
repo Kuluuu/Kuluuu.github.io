@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-center-atom.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/1.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/1.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/1.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/1.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="数据结构,二叉树,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="二叉树的遍历方式主要有四种：先序遍历、中序遍历、后序遍历和层次遍历。这里我们用递归算法来讨论前三种遍历算法">
+<meta name="keywords" content="数据结构,二叉树">
+<meta property="og:type" content="article">
+<meta property="og:title" content="二叉树的遍历及其例题（数据结构学习笔记）">
+<meta property="og:url" content="http://Kuluuu.github.io/2019/09/06/binary-tree-traversal/index.html">
+<meta property="og:site_name" content="ChenYang&#39;s Blog">
+<meta property="og:description" content="二叉树的遍历方式主要有四种：先序遍历、中序遍历、后序遍历和层次遍历。这里我们用递归算法来讨论前三种遍历算法">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://kuluuu.github.io/assets/blogImg/binary-tree-traversal/bt-traversal1.PNG">
+<meta property="og:image" content="http://kuluuu.github.io/assets/blogImg/binary-tree-traversal/bt-traversal2.PNG">
+<meta property="og:updated_time" content="2019-09-28T05:02:18.024Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="二叉树的遍历及其例题（数据结构学习笔记）">
+<meta name="twitter:description" content="二叉树的遍历方式主要有四种：先序遍历、中序遍历、后序遍历和层次遍历。这里我们用递归算法来讨论前三种遍历算法">
+<meta name="twitter:image" content="http://kuluuu.github.io/assets/blogImg/binary-tree-traversal/bt-traversal1.PNG">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://Kuluuu.github.io/2019/09/06/binary-tree-traversal/">
+
+
+
+
+
+  <title>二叉树的遍历及其例题（数据结构学习笔记） | ChenYang's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+  
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">ChenYang's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">心中有码，自然伟大</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://Kuluuu.github.io/2019/09/06/binary-tree-traversal/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="陈洋">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/me.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ChenYang's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">二叉树的遍历及其例题（数据结构学习笔记）</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-06T21:18:17+08:00">
+                2019-09-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/树/" itemprop="url" rel="index">
+                    <span itemprop="name">树</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>二叉树的遍历方式主要有四种：先序遍历、中序遍历、后序遍历和层次遍历。<br>这里我们用<strong>递归算法来讨论前三种遍历算法</strong></p>
+<a id="more"></a>
+
+<h2 id="先序、中序、后序遍历递归算法"><a href="#先序、中序、后序遍历递归算法" class="headerlink" title="先序、中序、后序遍历递归算法"></a>先序、中序、后序遍历递归算法</h2><h3 id="1、先序遍历过程"><a href="#1、先序遍历过程" class="headerlink" title="1、先序遍历过程"></a>1、先序遍历过程</h3><ul>
+<li>访问根结点；</li>
+<li>先序遍历左子树；</li>
+<li>先序遍历右子树；</li>
+</ul>
+<h4 id="先序遍历算法代码"><a href="#先序遍历算法代码" class="headerlink" title="先序遍历算法代码"></a>先序遍历算法代码</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">PreOrder</span><span class="params">(BTNode *b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(b!=<span class="literal">NULL</span>)&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%c"</span>,b-&gt;data);</span><br><span class="line">        PreOrder(b-&gt;lchild);</span><br><span class="line">        PreOrder(b-&gt;rchild);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2、中序遍历过程"><a href="#2、中序遍历过程" class="headerlink" title="2、中序遍历过程"></a>2、中序遍历过程</h3><ul>
+<li>中序遍历左子树；  </li>
+<li>访问根结点；  </li>
+<li>中序遍历右子树； </li>
+</ul>
+<h4 id="中序遍历算法代码"><a href="#中序遍历算法代码" class="headerlink" title="中序遍历算法代码"></a>中序遍历算法代码</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">InOrder</span><span class="params">(BTNode *b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(b!=<span class="literal">NULL</span>)&#123;</span><br><span class="line">        PreOrder(b-&gt;lchild);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%c"</span>,b-&gt;data);</span><br><span class="line">        PreOrder(b-&gt;rchild);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3、后序遍历过程"><a href="#3、后序遍历过程" class="headerlink" title="3、后序遍历过程"></a>3、后序遍历过程</h3><ul>
+<li>中序遍历左子树；  </li>
+<li>中序遍历右子树；</li>
+<li>访问根结点；</li>
+</ul>
+<h4 id="后序遍历算法代码"><a href="#后序遍历算法代码" class="headerlink" title="后序遍历算法代码"></a>后序遍历算法代码</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">PostOrder</span><span class="params">(BTNode *b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(b!=<span class="literal">NULL</span>)&#123;</span><br><span class="line">        PreOrder(b-&gt;lchild);</span><br><span class="line">        PreOrder(b-&gt;rchild);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%c"</span>,b-&gt;data);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="层次遍历算法"><a href="#层次遍历算法" class="headerlink" title="层次遍历算法"></a>层次遍历算法</h2><p>对于一颗二叉树，从根结点开始，按从上到下、从左到右的顺序访问每一个结点。<br>每一个结点仅仅访问一次。</p>
+<h3 id="算法设计思路"><a href="#算法设计思路" class="headerlink" title="算法设计思路"></a>算法设计思路</h3><p><strong>使用环形队列思想</strong></p>
+<blockquote>
+<p>1、将根节点进队<br>2、队不空时循环：从队列中出列一个结点*p，访问它<br>① 当它有左孩子结点，将左孩子结点进队。<br>② 当它有有孩子结点，将右孩子结点进队。</p>
+</blockquote>
+<h3 id="算法代码"><a href="#算法代码" class="headerlink" title="算法代码"></a>算法代码</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span>                  //设计队列</span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    BTNode *data[MaxSize];      <span class="comment">//存放队中元素</span></span><br><span class="line">    <span class="keyword">int</span> front,rear              <span class="comment">//队头、队尾指针</span></span><br><span class="line">&#125;SqQueue;                       <span class="comment">//环形队列类型</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">LevelOrder</span><span class="params">(BTNode *b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    BTNode *p;</span><br><span class="line">    SqQueue *qu;</span><br><span class="line">    InitQueue(qu);                  <span class="comment">//初始化队列</span></span><br><span class="line">    enQueue(qu,b);                  <span class="comment">//1、将根结点进队</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span>(!QueueEmpty(qu))&#123;         <span class="comment">//队不空循环</span></span><br><span class="line">        deQueue(qu,p);              <span class="comment">//出队结点 p</span></span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%c"</span>,p-&gt;data);       <span class="comment">//2、访问结点p</span></span><br><span class="line">        <span class="keyword">if</span>(p-&gt;lchild!=<span class="literal">NULL</span>)         <span class="comment">//2.①当它有左孩子时，将左孩子进队</span></span><br><span class="line">            enQueue(qu,p-&gt;lchild);</span><br><span class="line">        <span class="keyword">if</span>(p-&gt;rchild!=<span class="literal">NULL</span>)         <span class="comment">//2.②当它有右孩子时，将右孩子进队</span></span><br><span class="line">            enQueue(qu,p-&gt;rchild);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 算法从根节点开始每一层都从左向右访问到，并且访问过程中也将下一层的顺序排列好了</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="算法世界复杂度为-O-n"><a href="#算法世界复杂度为-O-n" class="headerlink" title="算法世界复杂度为 O(n)"></a>算法世界复杂度为 O(n)</h3><h2 id="算法例题"><a href="#算法例题" class="headerlink" title="算法例题"></a>算法例题</h2><h3 id="例题7-11"><a href="#例题7-11" class="headerlink" title="例题7-11"></a>例题7-11</h3><p>假设二叉树采用二叉链存储结构存储，设计一个算法，计算一棵给定二叉树的所有结点个数。</p>
+<h4 id="算法思路"><a href="#算法思路" class="headerlink" title="算法思路"></a>算法思路</h4><p>用递归遍历树求树的高度的思想去求解二叉树的所有结点个数。</p>
+<ul>
+<li>当 b=NULL 时，f(b) = 0</li>
+<li>其他情况，f(b) = f(b-&gt;lchild) + f(b-&gt;rchild) + 1</li>
+</ul>
+<h4 id="解题标程"><a href="#解题标程" class="headerlink" title="解题标程"></a>解题标程</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Nodes</span><span class="params">(BTNode *b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(b==<span class="literal">NULL</span>)     <span class="comment">//二叉树为空时，结点个数为0</span></span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">else</span>            <span class="comment">//二叉树不为空时</span></span><br><span class="line">        <span class="keyword">return</span> Nodes(b-&gt;lchild)+Nodes(b-&gt;rchild)+<span class="number">1</span>  <span class="comment">//递归求解左右子树的结点树，再加上根节点数1</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="例题7-12"><a href="#例题7-12" class="headerlink" title="例题7-12"></a>例题7-12</h3><p>假设二叉树采用二叉链存储结构存储，设计一个算法，输出一棵给定二叉树的<strong>所有叶子结点</strong>。</p>
+<h4 id="算法思路-1"><a href="#算法思路-1" class="headerlink" title="算法思路"></a>算法思路</h4><p>叶子结点即该结点的左右孩子域都为空</p>
+<ul>
+<li>当 b=NULL 时，f(b) = 不做任何事情</li>
+<li>当 b 所指结点为叶子节点时，f(b) = 输出结点 b 的 data 域</li>
+<li>其他情况，f(b) = f(b-&gt;lchild) ; f(b-&gt;rchild)</li>
+</ul>
+<h4 id="解题标程-1"><a href="#解题标程-1" class="headerlink" title="解题标程"></a>解题标程</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">DispLeaf</span><span class="params">(BTNode *b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(b!=<span class="literal">NULL</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(b-&gt;lchild==<span class="literal">NULL</span>&amp;&amp;b-&gt;rchild==<span class="literal">NULL</span>)    <span class="comment">//找到结点 b 为叶子结点</span></span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"%c"</span>,b-&gt;data);</span><br><span class="line">        DispLeaf(b-&gt;lchild);    <span class="comment">//递归遍历左子树寻找</span></span><br><span class="line">        DispLeaf(b-&gt;rchild);    <span class="comment">//递归遍历右子树寻找</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="例题7-13"><a href="#例题7-13" class="headerlink" title="例题7-13"></a>例题7-13</h3><p>假设二叉树采用二叉链存储结构，设计一个算法 Level() 求二叉树 b 中值为 x 的结点的层次（假设所有结点值唯一）。</p>
+<h4 id="算法思路-2"><a href="#算法思路-2" class="headerlink" title="算法思路"></a>算法思路</h4><p>设 Level(b，x，h) 返回二叉树 b 中 data 值为 x 的结点的层次，其中<strong>h 表示 b 所指结点的层数</strong>。<br>当在二叉树 b 中找到 data 值为 x 的结点，返回其层次（一个大于0的整数）；若没有找到，返回0。<br>初始调用时，b为根结点指针，h为1，即调用方式是：<strong>Level(b，x，1)</strong>。</p>
+<p><img src="/assets/blogImg/binary-tree-traversal/bt-traversal1.PNG" alt="1">    </p>
+<ul>
+<li>当 b=NULL 时，Level(b,x,h) = 0</li>
+<li>当 b 指向值为 x 的结点时，Level(b,x,h) = h,</li>
+<li>其他情况：</li>
+<li>① 首先在左子树中寻找，找到了直接返回 l=Level(b-&gt;lchild,x,h+1)!=0 ，Level(b,x,h) = l</li>
+<li>② 否则返回在右子树中的查找结果，Level(b,x,h) = Level(b-&gt;rchild,x,h+1)</li>
+</ul>
+<h4 id="解题标程-2"><a href="#解题标程-2" class="headerlink" title="解题标程"></a>解题标程</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Level</span><span class="params">(BTNode *b,ElemType x,<span class="keyword">int</span> h)</span>  </span></span><br><span class="line"><span class="function"><span class="comment">//找到*p结点后h为其层次，否则为0</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> l;              <span class="comment">//记录左子树中找到的 x 的层次</span></span><br><span class="line">    <span class="keyword">if</span>(b==<span class="literal">NULL</span>)         <span class="comment">//空二叉树无结点</span></span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(b-&gt;data==x)  <span class="comment">//找到结点 b 的 data 值为 x </span></span><br><span class="line">            <span class="keyword">return</span> h;   <span class="comment">//返回结点 b 的层次</span></span><br><span class="line">        l=Level(b-&gt;lchild,x,h+<span class="number">1</span>);   </span><br><span class="line">        <span class="keyword">if</span>(l!=<span class="number">0</span>)        <span class="comment">//找到了 x</span></span><br><span class="line">            <span class="keyword">return</span> l;   <span class="comment">//返回层次l</span></span><br><span class="line">        <span class="keyword">else</span>            <span class="comment">//在右子树中找，直接返回查找的值</span></span><br><span class="line">            <span class="keyword">return</span> Level(b-&gt;rchild,x,h+<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//基于先序遍历算法思想</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="例题7-14"><a href="#例题7-14" class="headerlink" title="例题7-14"></a>例题7-14</h3><p>假设二叉树采用二叉链存储结构，设计一个算法求二叉树b中第k层的结点个数。</p>
+<h4 id="算法思路-3"><a href="#算法思路-3" class="headerlink" title="算法思路"></a>算法思路</h4><p>设计算法为Lnodenum(b，h，k，&amp;n)，h表示b所指的结点层次，n是引用型参数，用于保存第k层的结点个数。<br>初始调用时，b为根结点指针，h为1，n赋值为0，即调用方式是：<strong>n=0；Lnodenum(b，1，k，n)</strong>。</p>
+<h4 id="算法设计"><a href="#算法设计" class="headerlink" title="算法设计"></a>算法设计</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Lnodenum</span><span class="params">(BTNode *b,<span class="keyword">int</span> h,<span class="keyword">int</span> k,<span class="keyword">int</span> &amp;n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(b==<span class="literal">NULL</span>)         <span class="comment">//空树直接返回</span></span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">else</span>&#123;               <span class="comment">//非空树处理</span></span><br><span class="line">        <span class="keyword">if</span>(h==k) n++;   <span class="comment">//当前访问的结点在第 k 层时，n 增 1</span></span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(h&lt;k)&#123;   <span class="comment">//若当前结点层次小于 k，递归处理左、右子树</span></span><br><span class="line">            Lnodenum(b-&gt;lchild,h+<span class="number">1</span>,k,n);</span><br><span class="line">            Lnodenum(b-&gt;rchild,h+<span class="number">1</span>,k,n);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="例题7-15"><a href="#例题7-15" class="headerlink" title="例题7-15"></a>例题7-15</h3><p>假设二叉树采用二叉链存储结构，设计一个算法判断两棵二叉树是否相似，所谓二叉树b1和b2是相似的指的是b1和b2都是空的二叉树；或者b1和b2的根结点是相似的，以及b1的左子树和b2的左子树是相似的且b1的右子树与b2的右子树是相似的。</p>
+<h4 id="算法思路-4"><a href="#算法思路-4" class="headerlink" title="算法思路"></a>算法思路</h4><p>递归算法：</p>
+<ul>
+<li>当 b1 = b2 = NULL，f(b1,b2) = true</li>
+<li>当 b1=NULL||b2=NULL，f(b1,b2)=false</li>
+<li>其他情况，f(b1,b2)=f(b1-&gt;lchild,b2-&gt;lchild) &amp; f(b1-&gt;rchild,b2-&gt;rchild)</li>
+</ul>
+<h4 id="解题标程-3"><a href="#解题标程-3" class="headerlink" title="解题标程"></a>解题标程</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">Like</span><span class="params">(BTNode *b1，BTNode *b2)</span></span></span><br><span class="line"><span class="function"><span class="comment">//b1 和 b2 两棵二叉树相似时返回 true，否则返回 false</span></span></span><br><span class="line"><span class="function"></span>&#123;       <span class="keyword">bool</span> like1，like2;</span><br><span class="line">        <span class="keyword">if</span> (b1==<span class="literal">NULL</span> &amp;&amp; b2==<span class="literal">NULL</span>)           <span class="comment">//b1 和 b2 都是空的二叉树</span></span><br><span class="line">	        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (b1==<span class="literal">NULL</span> || b2==<span class="literal">NULL</span>)      <span class="comment">//b1 和 b2 其中一个是空的二叉树</span></span><br><span class="line">	        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">else</span>&#123;	                            <span class="comment">//b1 和 b2 都不为空的二叉树</span></span><br><span class="line">            like1=Like(b1-&gt;lchild，b2-&gt;lchild);     <span class="comment">//递归探寻 b1的左子树 和 b2的左子树是否相似</span></span><br><span class="line">	        like2=Like(b1-&gt;rchild，b2-&gt;rchild);     <span class="comment">//递归探寻 b1的右子树 和 b2的右子树是否相似</span></span><br><span class="line">	        <span class="keyword">return</span> (like1 &amp;&amp; like2);	    <span class="comment">//当左右子树都相似时，才为相似树</span></span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="例题7-16"><a href="#例题7-16" class="headerlink" title="例题7-16"></a>例题7-16</h3><p>假设二叉树采用二叉链存储结构，设计一个算法输出值为x的结点的所有祖先。</p>
+<h4 id="算法思路-5"><a href="#算法思路-5" class="headerlink" title="算法思路"></a>算法思路</h4><p>递归算法：</p>
+<ul>
+<li>当 b=NULL，f(b,x)=false       //没有祖先</li>
+<li>当结点 b 左孩子或右孩子 data 域为 x， f(b,x)=true，并输出b-&gt;data</li>
+<li>当 f(b-&gt;lchild,x) = true||f(b-&gt;rchild,x) = true，f(b,x)=true，并输出b-&gt;data</li>
+<li>其他情况，f(b,x)=false</li>
+</ul>
+<h4 id="解题标程-4"><a href="#解题标程-4" class="headerlink" title="解题标程"></a>解题标程</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">ancestor</span><span class="params">(BTNode *b,ElemType x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(b==<span class="literal">NULL</span>)             <span class="comment">//二叉树为空时</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>((b-&gt;lchild!=<span class="literal">NULL</span>&amp;&amp;b-&gt;lchild==x)||   <span class="comment">//当结点 b 左孩子或右孩子 data 域为 x</span></span><br><span class="line">            (b-&gt;rchild!=<span class="literal">NULL</span>&amp;&amp;b-&gt;rchild==x))&#123;  </span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%c"</span>,b-&gt;data);</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(ancestor(b-&gt;lchild,x)||ancestor(b-&gt;rchild,x))&#123;  <span class="comment">//当左、右子树的左孩子或右孩子 data 域为 x</span></span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%c"</span>,b-&gt;data);</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span>    <span class="comment">//其他情况</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="例题7-17"><a href="#例题7-17" class="headerlink" title="例题7-17"></a>例题7-17</h3><p>假设二叉树采用二叉链存储结构，设计一个算法输出从根结点到每个叶子结点的路径逆序列。<br><strong>要求采用层次遍历算法来实现</strong>。</p>
+<h4 id="算法思路-6"><a href="#算法思路-6" class="headerlink" title="算法思路"></a>算法思路</h4><p>采用类似用队列求解迷宫问题的方法。这里设计的队列为非环形队列。<br>当找到一个叶子结点时，在队列中通过双亲结点的位置输出根结点到该叶子结点的逆路径。</p>
+<h4 id="队列类型声明"><a href="#队列类型声明" class="headerlink" title="队列类型声明"></a>队列类型声明</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">snode</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    BTNode *pt;     <span class="comment">//存放当前结点指针</span></span><br><span class="line">    <span class="keyword">int</span> parent;     <span class="comment">//存放双亲结点在队列中的位置</span></span><br><span class="line">&#125;NodeType;          <span class="comment">//非环形队列元素类型</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    NodeType data[MaxSize];     <span class="comment">//存放队列元素</span></span><br><span class="line">    <span class="keyword">int</span> front,rear;             <span class="comment">//队头指针和队尾指针</span></span><br><span class="line">&#125;QuType;                        <span class="comment">//顺序队类型</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="解题标程-5"><a href="#解题标程-5" class="headerlink" title="解题标程"></a>解题标程</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">AllPath</span><span class="params">(BTNode *b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> k;</span><br><span class="line">    BTNode *p;</span><br><span class="line">    NodeType qelem;</span><br><span class="line">    QuType *qu;         <span class="comment">//定义非环形队列指针</span></span><br><span class="line">    </span><br><span class="line">    InitQueue(qu);                  <span class="comment">//初始化队列</span></span><br><span class="line">    qelem.pt=b; qelem.parent=<span class="number">-1</span>;    <span class="comment">//创建根节点对应的队列元素</span></span><br><span class="line">    enQueue(qu,qelem);              <span class="comment">//根节点入队</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span>(!QueueEmpty(qu))&#123;                     <span class="comment">//队不空循环</span></span><br><span class="line">        deQueue(qu,qelem);                      <span class="comment">//出队元素在队中下标为qu-&gt;front</span></span><br><span class="line">        p=qelem.pt;                             <span class="comment">//取出元素qelem对应的结点p</span></span><br><span class="line">        <span class="keyword">if</span>(p-&gt;lchild==<span class="literal">NULL</span>&amp;&amp;p-&gt;rchild==<span class="literal">NULL</span>)&#123;   <span class="comment">//到达叶子节点</span></span><br><span class="line">            k=qu-&gt;front;                        <span class="comment">//输出结点p到根结点的路径逆序列</span></span><br><span class="line">            <span class="keyword">while</span> (qu-&gt;data[k].parent!=<span class="number">-1</span>)&#123;	    <span class="comment">//反向输出结点直到根节点为止</span></span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">"%c-&gt;"</span>，qu-&gt;data[k].pt-&gt;data);</span><br><span class="line">		        k=qu-&gt;data[k].parent;</span><br><span class="line">	       &#125;</span><br><span class="line">           <span class="built_in">printf</span>(<span class="string">"%c\n"</span>，qu-&gt;data[k].pt-&gt;data);    <span class="comment">//补上最后一个根节点</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//层次遍历进队过程</span></span><br><span class="line">        <span class="keyword">if</span> (p-&gt;lchild!=<span class="literal">NULL</span>)&#123;		    <span class="comment">//结点p有左孩子</span></span><br><span class="line">            qelem.pt=p-&gt;lchild;		    <span class="comment">//创建左孩子对应的队列元素</span></span><br><span class="line">	        qelem.parent=qu-&gt;front; 	<span class="comment">//其双亲位置为qu-&gt;front</span></span><br><span class="line">	        enQueue(qu，qelem);		    <span class="comment">//结点p的左孩子进队</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (p-&gt;rchild!=<span class="literal">NULL</span>)&#123;		    <span class="comment">//结点p有右孩子  </span></span><br><span class="line">            qelem.pt=p-&gt;rchild;		    <span class="comment">//创建右孩子对应的队列元素</span></span><br><span class="line">	        qelem.parent=qu-&gt;front;	    <span class="comment">//其双亲位置为qu-&gt;front</span></span><br><span class="line">	        enQueue(qu，qelem);		    <span class="comment">//结点p的右孩子进队</span></span><br><span class="line">        &#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="结果图示"><a href="#结果图示" class="headerlink" title="结果图示"></a>结果图示</h4><p><img src="/assets/blogImg/binary-tree-traversal/bt-traversal2.PNG" alt="1">   </p>
+<ul>
+<li>学习数据结构教程（第五版）——李春葆教授主编</li>
+<li>图片来源于MOOC，数据结构——武汉大学——李春葆教授  </li>
+<li>（如若侵权可联系QQ删除）</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    <div>
+      
+        
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script type="text/javascript" src="http://jslibs.wuxubj.cn/sweetalert_mini/jquery-1.7.1.min.js"></script>
+  <script src="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.mini.css">
+  <p><span>本文标题:</span><a href="/2019/09/06/binary-tree-traversal/">二叉树的遍历及其例题（数据结构学习笔记）</a></p>
+  <p><span>文章作者:</span><a href="/" title="访问 陈洋 的个人博客">陈洋</a></p>
+  <p><span>发布时间:</span>2019年09月06日 - 21:09</p>
+  <p><span>最后更新:</span>2019年09月28日 - 13:09</p>
+  <p><span>原始链接:</span><a href="/2019/09/06/binary-tree-traversal/" title="二叉树的遍历及其例题（数据结构学习笔记）">http://Kuluuu.github.io/2019/09/06/binary-tree-traversal/</a>
+    <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://Kuluuu.github.io/2019/09/06/binary-tree-traversal/" aria-label="复制成功！"></i></span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+    clipboard.on('success', $(function(){
+      $(".fa-clipboard").click(function(){
+        swal({   
+          title: "",   
+          text: '复制成功',   
+          html: false,
+          timer: 500,   
+          showConfirmButton: false
+        });
+      });
+    }));  
+</script>
+
+      
+    </div>
+    
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/数据结构/" rel="tag"># 数据结构</a>
+          
+            <a href="/tags/二叉树/" rel="tag"># 二叉树</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/09/06/binary_tree_algorithms/" rel="next" title="二叉树的基本运算（数据结构学习笔记）">
+                <i class="fa fa-chevron-left"></i> 二叉树的基本运算（数据结构学习笔记）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/09/14/Binary-Search-Tree/" rel="prev" title="线索二叉树的构建">
+                线索二叉树的构建 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/me.jpg" alt="陈洋">
+            
+              <p class="site-author-name" itemprop="name">陈洋</p>
+              <p class="site-description motion-element" itemprop="description">18级软工学生</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#先序、中序、后序遍历递归算法"><span class="nav-number">1.</span> <span class="nav-text">先序、中序、后序遍历递归算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、先序遍历过程"><span class="nav-number">1.1.</span> <span class="nav-text">1、先序遍历过程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#先序遍历算法代码"><span class="nav-number">1.1.1.</span> <span class="nav-text">先序遍历算法代码</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、中序遍历过程"><span class="nav-number">1.2.</span> <span class="nav-text">2、中序遍历过程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#中序遍历算法代码"><span class="nav-number">1.2.1.</span> <span class="nav-text">中序遍历算法代码</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、后序遍历过程"><span class="nav-number">1.3.</span> <span class="nav-text">3、后序遍历过程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#后序遍历算法代码"><span class="nav-number">1.3.1.</span> <span class="nav-text">后序遍历算法代码</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#层次遍历算法"><span class="nav-number">2.</span> <span class="nav-text">层次遍历算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#算法设计思路"><span class="nav-number">2.1.</span> <span class="nav-text">算法设计思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#算法代码"><span class="nav-number">2.2.</span> <span class="nav-text">算法代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#算法世界复杂度为-O-n"><span class="nav-number">2.3.</span> <span class="nav-text">算法世界复杂度为 O(n)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#算法例题"><span class="nav-number">3.</span> <span class="nav-text">算法例题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#例题7-11"><span class="nav-number">3.1.</span> <span class="nav-text">例题7-11</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#算法思路"><span class="nav-number">3.1.1.</span> <span class="nav-text">算法思路</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#解题标程"><span class="nav-number">3.1.2.</span> <span class="nav-text">解题标程</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#例题7-12"><span class="nav-number">3.2.</span> <span class="nav-text">例题7-12</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#算法思路-1"><span class="nav-number">3.2.1.</span> <span class="nav-text">算法思路</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#解题标程-1"><span class="nav-number">3.2.2.</span> <span class="nav-text">解题标程</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#例题7-13"><span class="nav-number">3.3.</span> <span class="nav-text">例题7-13</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#算法思路-2"><span class="nav-number">3.3.1.</span> <span class="nav-text">算法思路</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#解题标程-2"><span class="nav-number">3.3.2.</span> <span class="nav-text">解题标程</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#例题7-14"><span class="nav-number">3.4.</span> <span class="nav-text">例题7-14</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#算法思路-3"><span class="nav-number">3.4.1.</span> <span class="nav-text">算法思路</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算法设计"><span class="nav-number">3.4.2.</span> <span class="nav-text">算法设计</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#例题7-15"><span class="nav-number">3.5.</span> <span class="nav-text">例题7-15</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#算法思路-4"><span class="nav-number">3.5.1.</span> <span class="nav-text">算法思路</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#解题标程-3"><span class="nav-number">3.5.2.</span> <span class="nav-text">解题标程</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#例题7-16"><span class="nav-number">3.6.</span> <span class="nav-text">例题7-16</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#算法思路-5"><span class="nav-number">3.6.1.</span> <span class="nav-text">算法思路</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#解题标程-4"><span class="nav-number">3.6.2.</span> <span class="nav-text">解题标程</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#例题7-17"><span class="nav-number">3.7.</span> <span class="nav-text">例题7-17</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#算法思路-6"><span class="nav-number">3.7.1.</span> <span class="nav-text">算法思路</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#队列类型声明"><span class="nav-number">3.7.2.</span> <span class="nav-text">队列类型声明</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#解题标程-5"><span class="nav-number">3.7.3.</span> <span class="nav-text">解题标程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#结果图示"><span class="nav-number">3.7.4.</span> <span class="nav-text">结果图示</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">陈洋</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+<!-- 新增访客统计代码 -->
+
+<div class="busuanzi-count">
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      访问用户： <span class="busuanzi-value" id="busuanzi_value_site_uv"></span> 人
+    </span>
+    <div class="powered-by"></div>
+    <span class="site-uv">
+      <i class="fa fa-eye"></i>
+      访问次数： <span class="busuanzi-value" id="busuanzi_value_site_pv"></span> 次
+    </span>
+    <!-- 博客字数统计 -->
+    <span class="site-pv">
+      <i class="fa fa-pencil"></i>
+      博客全站共： <span class="post-count">18.9k</span> 字
+    </span>
+</div>
+<!-- 新增访客统计代码 END-->
+
+<!-- 在网页底部添加网站运行时间 -->
+<span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+<script>
+    var now = new Date();
+    function createtime() {
+        var grt= new Date("07/21/2019 00:00:00");//此处修改你的建站时间或者网站上线时间
+        now.setTime(now.getTime()+250);
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;}
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;}
+        document.getElementById("timeDate").innerHTML = "Run for "+dnum+" Days ";
+        document.getElementById("times").innerHTML = hnum + " Hours " + mnum + " m " + snum + " s";
+    }
+setInterval("createtime()",250);
+</script>
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共18.9k字</span>
+</div>
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

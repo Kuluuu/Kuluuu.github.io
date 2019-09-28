@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-center-atom.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/1.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/1.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/1.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/1.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="数据结构,递归,迷宫问题,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="递归求解迷宫问题有些问题可以使用递归方法求解，将大问题分解成求解方法相同的小问题。递归调用必须有的两个因素：1、有递归出口，2、有递归体。并且递归调用的次数总是有限的。">
+<meta name="keywords" content="数据结构,递归,迷宫问题">
+<meta property="og:type" content="article">
+<meta property="og:title" content="递归求解迷宫中所有迷宫路径（数据结构学习笔记）">
+<meta property="og:url" content="http://Kuluuu.github.io/2019/08/06/digui-migong/index.html">
+<meta property="og:site_name" content="ChenYang&#39;s Blog">
+<meta property="og:description" content="递归求解迷宫问题有些问题可以使用递归方法求解，将大问题分解成求解方法相同的小问题。递归调用必须有的两个因素：1、有递归出口，2、有递归体。并且递归调用的次数总是有限的。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://kuluuu.github.io/assets/blogImg/digui-migong/diguim1.PNG">
+<meta property="og:image" content="http://kuluuu.github.io/assets/blogImg/digui-migong/diguim2.PNG">
+<meta property="og:image" content="http://kuluuu.github.io/assets/blogImg/digui-migong/diguim3.PNG">
+<meta property="og:updated_time" content="2019-09-28T05:02:24.438Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="递归求解迷宫中所有迷宫路径（数据结构学习笔记）">
+<meta name="twitter:description" content="递归求解迷宫问题有些问题可以使用递归方法求解，将大问题分解成求解方法相同的小问题。递归调用必须有的两个因素：1、有递归出口，2、有递归体。并且递归调用的次数总是有限的。">
+<meta name="twitter:image" content="http://kuluuu.github.io/assets/blogImg/digui-migong/diguim1.PNG">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://Kuluuu.github.io/2019/08/06/digui-migong/">
+
+
+
+
+
+  <title>递归求解迷宫中所有迷宫路径（数据结构学习笔记） | ChenYang's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+  
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">ChenYang's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">心中有码，自然伟大</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://Kuluuu.github.io/2019/08/06/digui-migong/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="陈洋">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/me.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ChenYang's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">递归求解迷宫中所有迷宫路径（数据结构学习笔记）</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-06T00:13:08+08:00">
+                2019-08-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/递归/" itemprop="url" rel="index">
+                    <span itemprop="name">递归</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="递归求解迷宫问题"><a href="#递归求解迷宫问题" class="headerlink" title="递归求解迷宫问题"></a>递归求解迷宫问题</h1><p>有些问题可以使用递归方法求解，<code>将大问题分解成求解方法相同的小问题</code>。递归调用必须有的两个因素：<strong>1、有递归出口，2、有递归体</strong>。并且递归<strong>调用的次数总是有限的</strong>。</p>
+<a id="more"></a>
+
+<h2 id="迷宫题目"><a href="#迷宫题目" class="headerlink" title="迷宫题目"></a>迷宫题目</h2><p>设计算法输出所有的迷宫路径，其中(1,1)为入口，(4,4)为出口。<strong>（规定以0为可走方块，1为不可走方块）</strong>  </p>
+<p><img src="/assets/blogImg/digui-migong/diguim1.PNG" alt="1">    </p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> mg[M+<span class="number">2</span>][N+<span class="number">2</span>]=        <span class="comment">//M=4，N=4 </span></span><br><span class="line">    &#123;   &#123;<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>&#125;, </span><br><span class="line">        &#123;<span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>&#125;, </span><br><span class="line">        &#123;<span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>&#125;, </span><br><span class="line">        &#123;<span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span> ,<span class="number">1</span>&#125;, </span><br><span class="line">        &#123;<span class="number">1</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>&#125;, </span><br><span class="line">        &#123;<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>&#125;  &#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="算法思路"><a href="#算法思路" class="headerlink" title="算法思路"></a>算法思路</h2><p>采用递归算法求解迷宫问题，我们可以将由入口走向出口的大问题，分解为由(xs,ys)走到相邻可走方块(i,j)，再由(i,j)走向终点(xe,ye)的过程。  </p>
+<p><img src="/assets/blogImg/digui-migong/diguim2.PNG" alt="2">  </p>
+<p>这里我们用path数组来存放迷宫路径  </p>
+<p>定义函数为</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mgpath(<span class="keyword">int</span> xi,<span class="keyword">int</span> yi,<span class="keyword">int</span> xe,<span class="keyword">int</span> ye,PathType path)  <span class="comment">//这里的PathType类型为自定义的path数组类型，后面做解释，这里看作path顺序表中存放每个方块的横纵坐标以及路径长度。</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>1、如果(xi,yi)==(xe,ye)</p>
+<ul>
+<li>将(xi,yi)存入path数组  </li>
+<li>输出Path数组中存放的迷宫路径</li>
+</ul>
+<p>2、如果(xi,yi)!=(xe,ye)并且mg[xi][yi]==0，对于(xi,yi)周围的每一个可走方块(i,j)   <code>（这时，除了第一次是用到了起点(xs,ys)去调用迷宫函数，其他时刻都是每个方块周围的方块去调用迷宫函数）</code>  </p>
+<ul>
+<li>将(xi,yi)存入path中</li>
+<li>置mg[xi][yi]=-1，避免来回走动</li>
+<li>调用mgpath(i,j,xe,ye,path)，去递归考虑方块(i,j)周围的可走方块</li>
+<li>path回退一步并且令mg[i][j]=0</li>
+</ul>
+</blockquote>
+<h2 id="算法代码"><a href="#算法代码" class="headerlink" title="算法代码"></a>算法代码</h2><h3 id="算法设计"><a href="#算法设计" class="headerlink" title="算法设计"></a>算法设计</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> count=<span class="number">0</span>;	<span class="comment">//记录当前为第几号迷宫路径 </span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">mgpath</span><span class="params">(<span class="keyword">int</span> xi,<span class="keyword">int</span> yi,<span class="keyword">int</span> xe,<span class="keyword">int</span> ye,PathType path)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i,j;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">if</span>(xi==xe&amp;&amp;yi==ye)&#123;</span><br><span class="line">		<span class="comment">//将终点坐标进入路径中 </span></span><br><span class="line">		path.data[path.length].i=xi; </span><br><span class="line">		path.data[path.length].j=yi;</span><br><span class="line">		path.length++;</span><br><span class="line">		</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"迷宫路径 %d 如下：\n"</span>,++count);</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> k=<span class="number">0</span>;k&lt;path.length;k++)&#123;</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"\t(%d,%d)"</span>,path.data[k].i,path.data[k].j);</span><br><span class="line">			<span class="keyword">if</span>((k+<span class="number">1</span>)%<span class="number">5</span>==<span class="number">0</span>)		<span class="comment">//每输出5个方块后换行 </span></span><br><span class="line">				<span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(mg[xi][yi]==<span class="number">0</span>)&#123;</span><br><span class="line">			<span class="keyword">int</span> di=<span class="number">0</span>;	<span class="comment">//用于四个方位移动的变量</span></span><br><span class="line">			<span class="keyword">while</span>(di&lt;<span class="number">4</span>)&#123;</span><br><span class="line">				<span class="comment">//第一步：将(xi,yi)进入path路径中 </span></span><br><span class="line">				path.data[path.length].i=xi; </span><br><span class="line">				path.data[path.length].j=yi;</span><br><span class="line">				path.length++;</span><br><span class="line">				</span><br><span class="line">				<span class="comment">//对四个方位寻找相邻方块 </span></span><br><span class="line">				<span class="keyword">switch</span>(di)&#123;</span><br><span class="line">					<span class="keyword">case</span> <span class="number">0</span>:&#123;i=xi<span class="number">-1</span>,j=yi;<span class="keyword">break</span>;&#125;</span><br><span class="line">					<span class="keyword">case</span> <span class="number">1</span>:&#123;i=xi,j=yi+<span class="number">1</span>;<span class="keyword">break</span>;&#125;</span><br><span class="line">					<span class="keyword">case</span> <span class="number">2</span>:&#123;i=xi+<span class="number">1</span>,j=yi;<span class="keyword">break</span>;&#125;</span><br><span class="line">					<span class="keyword">case</span> <span class="number">3</span>:&#123;i=xi,j=yi<span class="number">-1</span>;<span class="keyword">break</span>;&#125;</span><br><span class="line">				&#125; </span><br><span class="line">				</span><br><span class="line">				<span class="comment">//第二步：将mg[xi][yi]=-1，避免来回走动 </span></span><br><span class="line">				mg[xi][yi]=<span class="number">-1</span>;	</span><br><span class="line">				</span><br><span class="line">				<span class="comment">//第三步：递归调用迷宫函数求解小问题 </span></span><br><span class="line">				mgpath(i,j,xe,ye,path);</span><br><span class="line">				</span><br><span class="line">				<span class="comment">//第四步：回退path数组中的元素，并将回退元素mg[xi][yi]=0来寻找其他路径 </span></span><br><span class="line">				path.length--;</span><br><span class="line">				mg[xi][yi]=<span class="number">0</span>;	</span><br><span class="line">				</span><br><span class="line">				di++;</span><br><span class="line">			&#125; </span><br><span class="line">		&#125;</span><br><span class="line">	&#125;	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="完整代码"><a href="#完整代码" class="headerlink" title="完整代码"></a>完整代码</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> M 4</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 4</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> mg[M+<span class="number">2</span>][N+<span class="number">2</span>]=        <span class="comment">//M=4，N=4 </span></span><br><span class="line">    &#123;   &#123;<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>&#125;, </span><br><span class="line">        &#123;<span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>&#125;, </span><br><span class="line">        &#123;<span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>&#125;, </span><br><span class="line">        &#123;<span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span> ,<span class="number">1</span>&#125;, </span><br><span class="line">        &#123;<span class="number">1</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>&#125;, </span><br><span class="line">        &#123;<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>&#125;  &#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">//方块类型定义 </span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	<span class="keyword">int</span> i;</span><br><span class="line">	<span class="keyword">int</span> j;</span><br><span class="line">&#125;Box;</span><br><span class="line"></span><br><span class="line"><span class="comment">//路径类型定义 </span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	Box data[<span class="number">10000</span>];</span><br><span class="line">	<span class="keyword">int</span> length;		<span class="comment">//路径长度 </span></span><br><span class="line">&#125;PathType; </span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> count=<span class="number">0</span>;	<span class="comment">//记录当前为第几号迷宫路径 </span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">mgpath</span><span class="params">(<span class="keyword">int</span> xi,<span class="keyword">int</span> yi,<span class="keyword">int</span> xe,<span class="keyword">int</span> ye,PathType path)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i,j;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">if</span>(xi==xe&amp;&amp;yi==ye)&#123;</span><br><span class="line">		<span class="comment">//将终点坐标进入路径中 </span></span><br><span class="line">		path.data[path.length].i=xi; </span><br><span class="line">		path.data[path.length].j=yi;</span><br><span class="line">		path.length++;</span><br><span class="line">		</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"迷宫路径 %d 如下：\n"</span>,++count);</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> k=<span class="number">0</span>;k&lt;path.length;k++)&#123;</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"\t(%d,%d)"</span>,path.data[k].i,path.data[k].j);</span><br><span class="line">			<span class="keyword">if</span>((k+<span class="number">1</span>)%<span class="number">5</span>==<span class="number">0</span>)		<span class="comment">//每输出5个方块后换行 </span></span><br><span class="line">				<span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(mg[xi][yi]==<span class="number">0</span>)&#123;</span><br><span class="line">			<span class="keyword">int</span> di=<span class="number">0</span>;	<span class="comment">//用于四个方位移动的变量</span></span><br><span class="line">			<span class="keyword">while</span>(di&lt;<span class="number">4</span>)&#123;</span><br><span class="line">				<span class="comment">//第一步：将(xi,yi)进入path路径中 </span></span><br><span class="line">				path.data[path.length].i=xi; </span><br><span class="line">				path.data[path.length].j=yi;</span><br><span class="line">				path.length++;</span><br><span class="line">				</span><br><span class="line">				<span class="comment">//对四个方位寻找相邻方块 </span></span><br><span class="line">				<span class="keyword">switch</span>(di)&#123;</span><br><span class="line">					<span class="keyword">case</span> <span class="number">0</span>:&#123;i=xi<span class="number">-1</span>,j=yi;<span class="keyword">break</span>;&#125;</span><br><span class="line">					<span class="keyword">case</span> <span class="number">1</span>:&#123;i=xi,j=yi+<span class="number">1</span>;<span class="keyword">break</span>;&#125;</span><br><span class="line">					<span class="keyword">case</span> <span class="number">2</span>:&#123;i=xi+<span class="number">1</span>,j=yi;<span class="keyword">break</span>;&#125;</span><br><span class="line">					<span class="keyword">case</span> <span class="number">3</span>:&#123;i=xi,j=yi<span class="number">-1</span>;<span class="keyword">break</span>;&#125;</span><br><span class="line">				&#125; </span><br><span class="line">				</span><br><span class="line">				<span class="comment">//第二步：将mg[xi][yi]=-1，避免来回走动 </span></span><br><span class="line">				mg[xi][yi]=<span class="number">-1</span>;	</span><br><span class="line">				</span><br><span class="line">				<span class="comment">//第三步：递归调用迷宫函数求解小问题 </span></span><br><span class="line">				mgpath(i,j,xe,ye,path);</span><br><span class="line">				</span><br><span class="line">				<span class="comment">//第四步：回退path数组中的元素，并将回退元素mg[xi][yi]=0来寻找其他路径 </span></span><br><span class="line">				path.length--;</span><br><span class="line">				mg[xi][yi]=<span class="number">0</span>;	</span><br><span class="line">				</span><br><span class="line">				di++;</span><br><span class="line">			&#125; </span><br><span class="line">		&#125;</span><br><span class="line">	&#125;	</span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	PathType path;</span><br><span class="line">	path.length=<span class="number">0</span>;</span><br><span class="line">	mgpath(<span class="number">1</span>,<span class="number">1</span>,<span class="number">4</span>,<span class="number">4</span>,path);</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="最终迷宫路径"><a href="#最终迷宫路径" class="headerlink" title="最终迷宫路径"></a>最终迷宫路径</h2><p><img src="/assets/blogImg/digui-migong/diguim3.PNG" alt="3">  </p>
+<h2 id="算法总结"><a href="#算法总结" class="headerlink" title="算法总结"></a>算法总结</h2><p>用递归算法求解迷宫问题，可以更好的解决迷宫中所有路径解的问题，并且递归解法用巧妙的path数组回退来解决多路径解的问题，相比栈和队列解法更加精妙。并且因为已经求出了迷宫问题的全部路径，因此我们可以通过改进迷宫递归算法比较路径长度，与队列解法一样，得到最短迷宫路径解。<strong>最重要的可以解决多条最短迷宫路径问题</strong></p>
+<ul>
+<li>学习数据结构教程（第五版）——李春葆教授主编</li>
+<li>图片来源于MOOC，数据结构——武汉大学——李春葆教授  </li>
+<li>（如若侵权可联系QQ删除）</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    <div>
+      
+        
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script type="text/javascript" src="http://jslibs.wuxubj.cn/sweetalert_mini/jquery-1.7.1.min.js"></script>
+  <script src="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.mini.css">
+  <p><span>本文标题:</span><a href="/2019/08/06/digui-migong/">递归求解迷宫中所有迷宫路径（数据结构学习笔记）</a></p>
+  <p><span>文章作者:</span><a href="/" title="访问 陈洋 的个人博客">陈洋</a></p>
+  <p><span>发布时间:</span>2019年08月06日 - 00:08</p>
+  <p><span>最后更新:</span>2019年09月28日 - 13:09</p>
+  <p><span>原始链接:</span><a href="/2019/08/06/digui-migong/" title="递归求解迷宫中所有迷宫路径（数据结构学习笔记）">http://Kuluuu.github.io/2019/08/06/digui-migong/</a>
+    <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://Kuluuu.github.io/2019/08/06/digui-migong/" aria-label="复制成功！"></i></span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+    clipboard.on('success', $(function(){
+      $(".fa-clipboard").click(function(){
+        swal({   
+          title: "",   
+          text: '复制成功',   
+          html: false,
+          timer: 500,   
+          showConfirmButton: false
+        });
+      });
+    }));  
+</script>
+
+      
+    </div>
+    
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/数据结构/" rel="tag"># 数据结构</a>
+          
+            <a href="/tags/递归/" rel="tag"># 递归</a>
+          
+            <a href="/tags/迷宫问题/" rel="tag"># 迷宫问题</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/08/03/pipei-algorithm/" rel="next" title="串的模式匹配算法设计（数据结构学习笔记）">
+                <i class="fa fa-chevron-left"></i> 串的模式匹配算法设计（数据结构学习笔记）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/08/10/shuzu-guangyibiao/" rel="prev" title="数组的压缩存储（数据结构学习笔记）">
+                数组的压缩存储（数据结构学习笔记） <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/me.jpg" alt="陈洋">
+            
+              <p class="site-author-name" itemprop="name">陈洋</p>
+              <p class="site-description motion-element" itemprop="description">18级软工学生</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#递归求解迷宫问题"><span class="nav-number">1.</span> <span class="nav-text">递归求解迷宫问题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#迷宫题目"><span class="nav-number">1.1.</span> <span class="nav-text">迷宫题目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#算法思路"><span class="nav-number">1.2.</span> <span class="nav-text">算法思路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#算法代码"><span class="nav-number">1.3.</span> <span class="nav-text">算法代码</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#算法设计"><span class="nav-number">1.3.1.</span> <span class="nav-text">算法设计</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#完整代码"><span class="nav-number">1.3.2.</span> <span class="nav-text">完整代码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#最终迷宫路径"><span class="nav-number">1.4.</span> <span class="nav-text">最终迷宫路径</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#算法总结"><span class="nav-number">1.5.</span> <span class="nav-text">算法总结</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">陈洋</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+<!-- 新增访客统计代码 -->
+
+<div class="busuanzi-count">
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      访问用户： <span class="busuanzi-value" id="busuanzi_value_site_uv"></span> 人
+    </span>
+    <div class="powered-by"></div>
+    <span class="site-uv">
+      <i class="fa fa-eye"></i>
+      访问次数： <span class="busuanzi-value" id="busuanzi_value_site_pv"></span> 次
+    </span>
+    <!-- 博客字数统计 -->
+    <span class="site-pv">
+      <i class="fa fa-pencil"></i>
+      博客全站共： <span class="post-count">18.9k</span> 字
+    </span>
+</div>
+<!-- 新增访客统计代码 END-->
+
+<!-- 在网页底部添加网站运行时间 -->
+<span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+<script>
+    var now = new Date();
+    function createtime() {
+        var grt= new Date("07/21/2019 00:00:00");//此处修改你的建站时间或者网站上线时间
+        now.setTime(now.getTime()+250);
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;}
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;}
+        document.getElementById("timeDate").innerHTML = "Run for "+dnum+" Days ";
+        document.getElementById("times").innerHTML = hnum + " Hours " + mnum + " m " + snum + " s";
+    }
+setInterval("createtime()",250);
+</script>
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共18.9k字</span>
+</div>
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

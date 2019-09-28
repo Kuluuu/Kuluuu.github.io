@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-center-atom.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/1.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/1.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/1.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/1.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="数据结构,BF算法,KMP算法,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="BF算法、KMP算法串的模式匹配问题就是在串s中找到一个与串t相等的子串，通常将串s称为目标串，串t称为模式串，因此该问题被称为模式匹配问题。Brute-Force算法与Knuth-Morris-Pratt算法都是解决串的模式匹配问题的算法设计，但二者效率不同，使用场景也不尽相同。">
+<meta name="keywords" content="数据结构,BF算法,KMP算法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="串的模式匹配算法设计（数据结构学习笔记）">
+<meta property="og:url" content="http://Kuluuu.github.io/2019/08/03/pipei-algorithm/index.html">
+<meta property="og:site_name" content="ChenYang&#39;s Blog">
+<meta property="og:description" content="BF算法、KMP算法串的模式匹配问题就是在串s中找到一个与串t相等的子串，通常将串s称为目标串，串t称为模式串，因此该问题被称为模式匹配问题。Brute-Force算法与Knuth-Morris-Pratt算法都是解决串的模式匹配问题的算法设计，但二者效率不同，使用场景也不尽相同。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://kuluuu.github.io/assets/blogImg/pipeialgorithm/pipei1.PNG">
+<meta property="og:image" content="http://kuluuu.github.io/assets/blogImg/pipeialgorithm/pipei2.PNG">
+<meta property="og:image" content="http://kuluuu.github.io/assets/blogImg/pipeialgorithm/pipei3.PNG">
+<meta property="og:image" content="http://kuluuu.github.io/assets/blogImg/pipeialgorithm/pipei4.PNG">
+<meta property="og:image" content="http://kuluuu.github.io/assets/blogImg/pipeialgorithm/pipei5.PNG">
+<meta property="og:image" content="http://kuluuu.github.io/assets/blogImg/pipeialgorithm/pipei6.PNG">
+<meta property="og:image" content="http://kuluuu.github.io/assets/blogImg/pipeialgorithm/pipei7.PNG">
+<meta property="og:image" content="http://kuluuu.github.io/assets/blogImg/pipeialgorithm/pipei8.PNG">
+<meta property="og:image" content="http://kuluuu.github.io/assets/blogImg/pipeialgorithm/pipei9.PNG">
+<meta property="og:image" content="http://kuluuu.github.io/assets/blogImg/pipeialgorithm/pipei10.PNG">
+<meta property="og:image" content="http://kuluuu.github.io/assets/blogImg/pipeialgorithm/pipei11.PNG">
+<meta property="og:image" content="http://kuluuu.github.io/assets/blogImg/pipeialgorithm/pipei12.PNG">
+<meta property="og:image" content="http://kuluuu.github.io/assets/blogImg/pipeialgorithm/pipei13.PNG">
+<meta property="og:image" content="http://kuluuu.github.io/assets/blogImg/pipeialgorithm/pipei14.PNG">
+<meta property="og:image" content="http://kuluuu.github.io/assets/blogImg/pipeialgorithm/pipei21.PNG">
+<meta property="og:image" content="http://kuluuu.github.io/assets/blogImg/pipeialgorithm/pipei15.PNG">
+<meta property="og:image" content="http://kuluuu.github.io/assets/blogImg/pipeialgorithm/pipei15.PNG">
+<meta property="og:image" content="http://kuluuu.github.io/assets/blogImg/pipeialgorithm/pipei16.PNG">
+<meta property="og:image" content="http://kuluuu.github.io/assets/blogImg/pipeialgorithm/pipei17.PNG">
+<meta property="og:image" content="http://kuluuu.github.io/assets/blogImg/pipeialgorithm/pipei18.PNG">
+<meta property="og:image" content="http://kuluuu.github.io/assets/blogImg/pipeialgorithm/pipei19.PNG">
+<meta property="og:image" content="http://kuluuu.github.io/assets/blogImg/pipeialgorithm/pipei20.PNG">
+<meta property="og:image" content="http://kuluuu.github.io/assets/blogImg/pipeialgorithm/pipei21.PNG">
+<meta property="og:image" content="http://kuluuu.github.io/assets/blogImg/pipeialgorithm/pipei22.PNG">
+<meta property="og:updated_time" content="2019-09-28T05:03:34.060Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="串的模式匹配算法设计（数据结构学习笔记）">
+<meta name="twitter:description" content="BF算法、KMP算法串的模式匹配问题就是在串s中找到一个与串t相等的子串，通常将串s称为目标串，串t称为模式串，因此该问题被称为模式匹配问题。Brute-Force算法与Knuth-Morris-Pratt算法都是解决串的模式匹配问题的算法设计，但二者效率不同，使用场景也不尽相同。">
+<meta name="twitter:image" content="http://kuluuu.github.io/assets/blogImg/pipeialgorithm/pipei1.PNG">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://Kuluuu.github.io/2019/08/03/pipei-algorithm/">
+
+
+
+
+
+  <title>串的模式匹配算法设计（数据结构学习笔记） | ChenYang's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+  
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">ChenYang's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">心中有码，自然伟大</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://Kuluuu.github.io/2019/08/03/pipei-algorithm/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="陈洋">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/me.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ChenYang's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">串的模式匹配算法设计（数据结构学习笔记）</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-03T22:56:53+08:00">
+                2019-08-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/串/" itemprop="url" rel="index">
+                    <span itemprop="name">串</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="BF算法、KMP算法"><a href="#BF算法、KMP算法" class="headerlink" title="BF算法、KMP算法"></a>BF算法、KMP算法</h1><p>串的模式匹配问题就是在串s中找到一个与串t相等的子串，通常将串s称为<strong>目标串</strong>，串t称为<strong>模式串</strong>，因此该问题被称为<strong>模式匹配问题</strong>。<br>Brute-Force算法与Knuth-Morris-Pratt算法都是解决串的模式匹配问题的算法设计，但二者效率不同，使用场景也不尽相同。</p>
+<a id="more"></a>
+<h2 id="BF算法"><a href="#BF算法" class="headerlink" title="BF算法"></a>BF算法</h2><p>BF算法就是暴力的子串匹配算法，也称简单匹配算法，通过不断遍历目标串以及模式串来进行串的模式匹配，即使用穷举的思路。</p>
+<h3 id="算法过程"><a href="#算法过程" class="headerlink" title="算法过程"></a>算法过程</h3><blockquote>
+<p>运用两个变量i,j来分别遍历目标串s(“aaaaab”)和模式串t(“aaab”)。<br>1、i=0,j=0时，第一次遍历发现匹配失败，变量i回溯(i=i-j+1=1)，变量j从头开始(j=0)。  </p>
+</blockquote>
+<p><img src="/assets/blogImg/pipeialgorithm/pipei1.PNG" alt="1">  </p>
+<blockquote>
+<p>2、 i=1,j=0时，第二次遍历发现匹配失败，变量i回溯并向前移动一位(i=i-j+1=2)，变量j从头开始(j=0)。    </p>
+</blockquote>
+<p><img src="/assets/blogImg/pipeialgorithm/pipei2.PNG" alt="2">  </p>
+<blockquote>
+<p>3、 i=2,j=0时，第三次遍历发现匹配成功，此时j以及越界（或者认为j等于模式串的长度），返回i-t.length=2为串的匹配位置</p>
+</blockquote>
+<p><img src="/assets/blogImg/pipeialgorithm/pipei3.PNG" alt="3">  </p>
+<h3 id="算法代码"><a href="#算法代码" class="headerlink" title="算法代码"></a>算法代码</h3><h4 id="串的定义"><a href="#串的定义" class="headerlink" title="串的定义"></a>串的定义</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	<span class="keyword">char</span> data[<span class="number">10000</span>];</span><br><span class="line">	<span class="keyword">int</span> length;</span><br><span class="line">&#125;SqString;</span><br></pre></td></tr></table></figure>
+
+<h4 id="算法设计"><a href="#算法设计" class="headerlink" title="算法设计"></a>算法设计</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">BF</span><span class="params">(SqString s,SqString t)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i=<span class="number">0</span>,j=<span class="number">0</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">while</span>(i&lt;s.length&amp;&amp;j&lt;t.length)&#123;</span><br><span class="line">		<span class="keyword">if</span>(s.data[i]==t.data[j])</span><br><span class="line">			i++,j++;	<span class="comment">//当前两字符匹配，则i,j向后移动一位 </span></span><br><span class="line">		<span class="keyword">else</span>	<span class="comment">//当前两字符不匹配时，i回溯，j为0 </span></span><br><span class="line">			i=i-j+<span class="number">1</span>,j=<span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(j&gt;=t.length)	<span class="comment">//若j的值大于等于模式串的长度则证明匹配成功 </span></span><br><span class="line">		<span class="keyword">return</span> (i-t.length);	<span class="comment">//返回从何处串匹配成功 </span></span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">		<span class="keyword">return</span> <span class="number">-1</span>;	<span class="comment">//无法匹配返回-1 </span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="完整代码"><a href="#完整代码" class="headerlink" title="完整代码"></a>完整代码</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	<span class="keyword">char</span> data[<span class="number">10000</span>];</span><br><span class="line">	<span class="keyword">int</span> length;</span><br><span class="line">&#125;SqString;</span><br><span class="line"></span><br><span class="line"><span class="comment">//生成串函数 </span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">StrAssign</span><span class="params">(SqString &amp;k,<span class="keyword">char</span> a[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i;</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>;a[i]!=<span class="string">'\0'</span>;i++)</span><br><span class="line">		k.data[i]=a[i];</span><br><span class="line">	k.data[i]=<span class="string">'\0'</span>;</span><br><span class="line">	k.length=i;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//BF算法 </span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">BF</span><span class="params">(SqString s,SqString t)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i=<span class="number">0</span>,j=<span class="number">0</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">while</span>(i&lt;s.length&amp;&amp;j&lt;t.length)&#123;</span><br><span class="line">		<span class="keyword">if</span>(s.data[i]==t.data[j])</span><br><span class="line">			i++,j++;	<span class="comment">//当前两字符匹配，则i,j向后移动一位 </span></span><br><span class="line">		<span class="keyword">else</span>	<span class="comment">//当前两字符不匹配时，i回溯，j为0 </span></span><br><span class="line">			i=i-j+<span class="number">1</span>,j=<span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(j&gt;=t.length)	<span class="comment">//若j的值大于等于模式串的长度则证明匹配成功 </span></span><br><span class="line">		<span class="keyword">return</span> (i-t.length);	<span class="comment">//返回从何处串匹配成功 </span></span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">		<span class="keyword">return</span> <span class="number">-1</span>;	<span class="comment">//无法匹配返回-1 </span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">char</span> a[<span class="number">10000</span>],b[<span class="number">10000</span>];</span><br><span class="line">	SqString s,t;</span><br><span class="line">	</span><br><span class="line">	gets(a);</span><br><span class="line">	gets(b);</span><br><span class="line">	</span><br><span class="line">	StrAssign(s,a);</span><br><span class="line">	StrAssign(t,b);</span><br><span class="line">	</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d"</span>,BF(s,t));</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="算法总结"><a href="#算法总结" class="headerlink" title="算法总结"></a>算法总结</h3><ul>
+<li><code>不难发现BF算法在最好的情况下时间复杂度为O(m)，最坏的情况下算法复杂度为O(m*n)，BF算法的平均时间复杂度为O(m*n)</code>  </li>
+</ul>
+<h2 id="KMP算法"><a href="#KMP算法" class="headerlink" title="KMP算法"></a>KMP算法</h2><p>KMP算法利用部分匹配信息来避免BF算法中主串指针多余的回溯过程，从而使得算法效率得到了提高。</p>
+<h3 id="算法过程-1"><a href="#算法过程-1" class="headerlink" title="算法过程"></a>算法过程</h3><p>以目标串(“aaaaab”)与模式串(“aaab”)为例</p>
+<blockquote>
+<p>1、首先与BF算法一样，目标串和模式串进行遍历比较匹配，当匹配到s[3],t[3]时发现s[3]!=t[3]。</p>
+</blockquote>
+<p><img src="/assets/blogImg/pipeialgorithm/pipei4.PNG" alt="4">   </p>
+<blockquote>
+<p>2、但在此次匹配的过程中我们发现已经有了部分匹配信息可以利用，串s[0]s[1]s[2]=t[0]t[1]t[2]，那么就存在一个数k&lt; j 时s[0]…s[k]=t[0]…t[k]。</p>
+</blockquote>
+<p><img src="/assets/blogImg/pipeialgorithm/pipei5.PNG" alt="5">  </p>
+<blockquote>
+<p>3、我们在模式串t中发现在j=3,t[3]前存在最多长度为2的前缀串与后缀串相等，即t[0]t[1]=t[1]t[2]，而我们又知道s[1]s[2]=t[1]t[2]，因此可以得知<strong>t[0]t[1]=s[1]s[2]</strong>。</p>
+</blockquote>
+<p><img src="/assets/blogImg/pipeialgorithm/pipei6.PNG" alt="6">  </p>
+<blockquote>
+<p>4、通过这个信息我们就可以将模式串t向左滑动1个单位(j-next[j])，亦即i=3不变，j=2，用s[3]与t[2]进行比较。（next数组后面再解释）</p>
+</blockquote>
+<p><img src="/assets/blogImg/pipeialgorithm/pipei7.PNG" alt="7">  </p>
+<h3 id="next数组"><a href="#next数组" class="headerlink" title="next数组"></a>next数组</h3><p>next数组中存放的为模式串中t[j]前存在的前缀串与后缀串相等的最大长度。  </p>
+<h4 id="next数组的公式"><a href="#next数组的公式" class="headerlink" title="next数组的公式"></a>next数组的公式</h4><blockquote>
+<p>（一）默认t[0]的next数组的值为-1，当用到-1时就意味着无部分匹配信息可用，那么就需要像BF算法一样i++,j=0，而算法中为了统一使用i++,j++来达到这个目的，故将j=-1。<br>（二）实际上next数组的求解过程，就是模式串自身的匹配过程，例如模式串(“abababca”)</p>
+</blockquote>
+<p><img src="/assets/blogImg/pipeialgorithm/pipei8.PNG" alt="8">  </p>
+<p><img src="/assets/blogImg/pipeialgorithm/pipei9.PNG" alt="9">   </p>
+<p><img src="/assets/blogImg/pipeialgorithm/pipei10.PNG" alt="10">   </p>
+<p><img src="/assets/blogImg/pipeialgorithm/pipei11.PNG" alt="11">   </p>
+<p><img src="/assets/blogImg/pipeialgorithm/pipei12.PNG" alt="12">   </p>
+<p><img src="/assets/blogImg/pipeialgorithm/pipei13.PNG" alt="13">   </p>
+<p><img src="/assets/blogImg/pipeialgorithm/pipei14.PNG" alt="14">   </p>
+<h4 id="next数组程序代码"><a href="#next数组程序代码" class="headerlink" title="next数组程序代码"></a>next数组程序代码</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">GetNext</span><span class="params">(SqString t,<span class="keyword">int</span> next[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i=<span class="number">0</span>,j=<span class="number">-1</span>;</span><br><span class="line">	next[<span class="number">0</span>]=<span class="number">-1</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//这个过程实际上是间接利用KMP算法对模式串t进行的匹配 </span></span><br><span class="line">	<span class="keyword">while</span>(i&lt;t.length)&#123;</span><br><span class="line">		<span class="keyword">if</span>(j==<span class="number">-1</span>||t.data[i]==t.data[j])&#123;	<span class="comment">//j=-1意味着串t将从头开始比较 </span></span><br><span class="line">			i++,j++;	<span class="comment">//指向串t的指针向后移一位 </span></span><br><span class="line">			next[i]=j;	<span class="comment">//这一步是next算法特有的 </span></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">			j=next[j];	<span class="comment">//利用部分匹配信息跳过多余回溯 </span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="算法代码-1"><a href="#算法代码-1" class="headerlink" title="算法代码"></a>算法代码</h3><h4 id="串的定义-1"><a href="#串的定义-1" class="headerlink" title="串的定义"></a>串的定义</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	<span class="keyword">char</span> data[<span class="number">10000</span>];</span><br><span class="line">	<span class="keyword">int</span> length;</span><br><span class="line">&#125;SqString;</span><br></pre></td></tr></table></figure>
+
+<h4 id="算法设计-1"><a href="#算法设计-1" class="headerlink" title="算法设计"></a>算法设计</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">KMP</span><span class="params">(SqString s,SqString t)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i=<span class="number">0</span>,j=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">int</span> next[<span class="number">10000</span>];</span><br><span class="line">	GetNext(t,next);</span><br><span class="line">	<span class="keyword">while</span>(i&lt;s.length&amp;&amp;j&lt;t.length)&#123;</span><br><span class="line">		<span class="keyword">if</span>(j==<span class="number">-1</span>||s.data[i]==t.data[j])	<span class="comment">//j=-1意味着模式串t将从头开始比较 </span></span><br><span class="line">			i++,j++; <span class="comment">//指向串s与串t的指针同时向后移动一位 </span></span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">			j=next[j];	<span class="comment">//利用部分匹配信息跳过多余回溯 </span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(j&gt;=t.length)	<span class="comment">//若j的值大于等于模式串的长度则证明匹配成功 </span></span><br><span class="line">		<span class="keyword">return</span> (i-t.length);	<span class="comment">//返回从何处串匹配成功 </span></span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">		<span class="keyword">return</span> <span class="number">-1</span>;	<span class="comment">//无法匹配返回-1 </span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="完整代码-1"><a href="#完整代码-1" class="headerlink" title="完整代码"></a>完整代码</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	<span class="keyword">char</span> data[<span class="number">10000</span>];</span><br><span class="line">	<span class="keyword">int</span> length;</span><br><span class="line">&#125;SqString;</span><br><span class="line"></span><br><span class="line"><span class="comment">//生成串函数 </span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">StrAssign</span><span class="params">(SqString &amp;k,<span class="keyword">char</span> a[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i;</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>;a[i]!=<span class="string">'\0'</span>;i++)</span><br><span class="line">		k.data[i]=a[i];</span><br><span class="line">	k.data[i]=<span class="string">'\0'</span>;</span><br><span class="line">	k.length=i;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//求next数组函数 </span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">GetNext</span><span class="params">(SqString t,<span class="keyword">int</span> next[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i=<span class="number">0</span>,j=<span class="number">-1</span>;</span><br><span class="line">	next[<span class="number">0</span>]=<span class="number">-1</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//这个过程实际上是间接利用KMP算法对模式串t进行的匹配 </span></span><br><span class="line">	<span class="keyword">while</span>(i&lt;t.length)&#123;</span><br><span class="line">		<span class="keyword">if</span>(j==<span class="number">-1</span>||t.data[i]==t.data[j])&#123;	<span class="comment">//j=-1意味着串t将从头开始比较</span></span><br><span class="line">			i++,j++;	<span class="comment">//指向串t的指针向后移一位 </span></span><br><span class="line">			next[i]=j;	<span class="comment">//这一步是next算法特有的 </span></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">			j=next[j];	<span class="comment">//利用部分匹配信息跳过多余回溯 </span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//KMP算法 </span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">KMP</span><span class="params">(SqString s,SqString t)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i=<span class="number">0</span>,j=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">int</span> next[<span class="number">10000</span>];</span><br><span class="line">	GetNext(t,next);</span><br><span class="line">	<span class="keyword">while</span>(i&lt;s.length&amp;&amp;j&lt;t.length)&#123;</span><br><span class="line">		<span class="keyword">if</span>(j==<span class="number">-1</span>||s.data[i]==t.data[j])	<span class="comment">//j=-1意味着模式串t将从头开始比较 </span></span><br><span class="line">			i++,j++; <span class="comment">//指向串s与串t的指针同时向后移动一位 </span></span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">			j=next[j];	<span class="comment">//利用部分匹配信息跳过多余回溯 </span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(j&gt;=t.length)	<span class="comment">//若j的值大于等于模式串的长度则证明匹配成功 </span></span><br><span class="line">		<span class="keyword">return</span> (i-t.length);	<span class="comment">//返回从何处串匹配成功 </span></span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">		<span class="keyword">return</span> <span class="number">-1</span>;	<span class="comment">//无法匹配返回-1 </span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">char</span> a[<span class="number">10000</span>],b[<span class="number">10000</span>];</span><br><span class="line">	SqString s,t;</span><br><span class="line">	</span><br><span class="line">	gets(a);</span><br><span class="line">	gets(b);</span><br><span class="line">	</span><br><span class="line">	StrAssign(s,a);</span><br><span class="line">	StrAssign(t,b);</span><br><span class="line">	</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d"</span>,KMP(s,t));</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="算法总结-1"><a href="#算法总结-1" class="headerlink" title="算法总结"></a>算法总结</h3><p>KMP算法中求next数组的时间复杂度为O(m)，KMP算法的平均时间复杂度为O(m+n)，是要优于BF算法的，但并非所有时候KMP算法都优于BF算法，<code>当模式串的next数组中next[0]=-1，而其他元素值均为0时，KMP算法退化为BF算法</code>。<strong>KMP算法中的next数组仍然存在缺陷。</strong></p>
+<h2 id="改进的KMP算法"><a href="#改进的KMP算法" class="headerlink" title="改进的KMP算法"></a>改进的KMP算法</h2><p>以目标串s(“aaabaaaab”)与模式串t(“aaaab”)为例<br>首先求出next数组<br><img src="/assets/blogImg/pipeialgorithm/pipei21.PNG" alt="21"></p>
+<blockquote>
+<p>第一次匹配发现匹配失败  </p>
+</blockquote>
+<p><img src="/assets/blogImg/pipeialgorithm/pipei15.PNG" alt="15">  </p>
+<blockquote>
+<p>这时会发现模式串t中前4个字符都相同且都为a，也就是说无论利用next数组如何回溯都会匹配失败</p>
+</blockquote>
+<p><img src="/assets/blogImg/pipeialgorithm/pipei15.PNG" alt="15">   </p>
+<p><img src="/assets/blogImg/pipeialgorithm/pipei16.PNG" alt="16">   </p>
+<p><img src="/assets/blogImg/pipeialgorithm/pipei17.PNG" alt="17">   </p>
+<p><img src="/assets/blogImg/pipeialgorithm/pipei18.PNG" alt="18">   </p>
+<blockquote>
+<p>直到j=-1，模式串t从头开始与目标串s进行匹配时，才匹配成功</p>
+</blockquote>
+<p><img src="/assets/blogImg/pipeialgorithm/pipei19.PNG" alt="19">  </p>
+<p><strong>由此可见原KMP算法中next数组中存在着多余的匹配过程。也就是当当前字符与回溯字符相同时就可跳过这次回溯过程直到遇到不同字符为止</strong></p>
+<p><img src="/assets/blogImg/pipeialgorithm/pipei20.PNG" alt="20">  </p>
+<p>那么我们就改进next数组为nextval数组</p>
+<h3 id="nextval数组"><a href="#nextval数组" class="headerlink" title="nextval数组"></a>nextval数组</h3><p>首先我们看next数组中存放的值<br><img src="/assets/blogImg/pipeialgorithm/pipei21.PNG" alt="21">  </p>
+<h4 id="nextval数组公式"><a href="#nextval数组公式" class="headerlink" title="nextval数组公式"></a>nextval数组公式</h4><blockquote>
+<p>（一）默认取nextval[0]=-1。<br>（二）如果在j=1处“失配”，那么将跳转到t[next[j]]=t[0]处，但可见t[0]=t[1]，因此我们可以推出，如果t[j]=t[next[j]]，那么nextval[j]=nextval[next[j]]。同理，j=1,j=2,j=3时nextval值都为-1。如果t[j]!=t[next[j]]时，nextval[j]=next[j]</p>
+</blockquote>
+<ul>
+<li>nextval[0]=-1 </li>
+<li>当t[j]=t[next[j]]时： nextval[j]=nextval[next[j]] </li>
+<li>否则： nextval[j]=next[j]</li>
+</ul>
+<p>整个nextval数组的初始化为：<br><img src="/assets/blogImg/pipeialgorithm/pipei22.PNG" alt="22">  </p>
+<h3 id="算法代码-2"><a href="#算法代码-2" class="headerlink" title="算法代码"></a>算法代码</h3><h4 id="算法设计-2"><a href="#算法设计-2" class="headerlink" title="算法设计"></a>算法设计</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">GetNextval</span><span class="params">(SqString t,<span class="keyword">int</span> nextval[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i=<span class="number">0</span>,j=<span class="number">-1</span>;</span><br><span class="line">	nextval[<span class="number">0</span>]=<span class="number">-1</span>;	<span class="comment">//默认nextval[0]为-1</span></span><br><span class="line">	<span class="keyword">while</span>(j&lt;t.length)&#123;</span><br><span class="line">		<span class="keyword">if</span>(j==<span class="number">-1</span>||t.data[i]==t.data[j])&#123;	</span><br><span class="line">			i++,j++;</span><br><span class="line">			<span class="keyword">if</span>(t.data[i]!=t.data[j])	<span class="comment">//当t[i]!=t[next[j]]时</span></span><br><span class="line">				nextval[i]=j;	<span class="comment">//nextval[j]=next[j]</span></span><br><span class="line">			<span class="keyword">else</span></span><br><span class="line">				nextval[i]=nextval[j];	<span class="comment">//当t[i]==t[next[j]]时,nextval[j]=nextval[next[j]] </span></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">			j=nextval[j];</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="算法总结-2"><a href="#算法总结-2" class="headerlink" title="算法总结"></a>算法总结</h3><p>改进后的KMP算法时间复杂度也是O(m+n)</p>
+<ul>
+<li>学习数据结构教程（第五版）——李春葆教授主编</li>
+<li>图片来源于MOOC，数据结构——武汉大学——李春葆教授  </li>
+<li>（如若侵权可联系QQ删除）</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    <div>
+      
+        
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script type="text/javascript" src="http://jslibs.wuxubj.cn/sweetalert_mini/jquery-1.7.1.min.js"></script>
+  <script src="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.mini.css">
+  <p><span>本文标题:</span><a href="/2019/08/03/pipei-algorithm/">串的模式匹配算法设计（数据结构学习笔记）</a></p>
+  <p><span>文章作者:</span><a href="/" title="访问 陈洋 的个人博客">陈洋</a></p>
+  <p><span>发布时间:</span>2019年08月03日 - 22:08</p>
+  <p><span>最后更新:</span>2019年09月28日 - 13:09</p>
+  <p><span>原始链接:</span><a href="/2019/08/03/pipei-algorithm/" title="串的模式匹配算法设计（数据结构学习笔记）">http://Kuluuu.github.io/2019/08/03/pipei-algorithm/</a>
+    <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://Kuluuu.github.io/2019/08/03/pipei-algorithm/" aria-label="复制成功！"></i></span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+    clipboard.on('success', $(function(){
+      $(".fa-clipboard").click(function(){
+        swal({   
+          title: "",   
+          text: '复制成功',   
+          html: false,
+          timer: 500,   
+          showConfirmButton: false
+        });
+      });
+    }));  
+</script>
+
+      
+    </div>
+    
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/数据结构/" rel="tag"># 数据结构</a>
+          
+            <a href="/tags/BF算法/" rel="tag"># BF算法</a>
+          
+            <a href="/tags/KMP算法/" rel="tag"># KMP算法</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/08/03/dijkstra-poj-3268/" rel="next" title="Silver Cow Party问题(Dijkstra算法求解)">
+                <i class="fa fa-chevron-left"></i> Silver Cow Party问题(Dijkstra算法求解)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/08/06/digui-migong/" rel="prev" title="递归求解迷宫中所有迷宫路径（数据结构学习笔记）">
+                递归求解迷宫中所有迷宫路径（数据结构学习笔记） <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/me.jpg" alt="陈洋">
+            
+              <p class="site-author-name" itemprop="name">陈洋</p>
+              <p class="site-description motion-element" itemprop="description">18级软工学生</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#BF算法、KMP算法"><span class="nav-number">1.</span> <span class="nav-text">BF算法、KMP算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#BF算法"><span class="nav-number">1.1.</span> <span class="nav-text">BF算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#算法过程"><span class="nav-number">1.1.1.</span> <span class="nav-text">算法过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#算法代码"><span class="nav-number">1.1.2.</span> <span class="nav-text">算法代码</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#串的定义"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">串的定义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算法设计"><span class="nav-number">1.1.2.2.</span> <span class="nav-text">算法设计</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#完整代码"><span class="nav-number">1.1.2.3.</span> <span class="nav-text">完整代码</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#算法总结"><span class="nav-number">1.1.3.</span> <span class="nav-text">算法总结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#KMP算法"><span class="nav-number">1.2.</span> <span class="nav-text">KMP算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#算法过程-1"><span class="nav-number">1.2.1.</span> <span class="nav-text">算法过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#next数组"><span class="nav-number">1.2.2.</span> <span class="nav-text">next数组</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#next数组的公式"><span class="nav-number">1.2.2.1.</span> <span class="nav-text">next数组的公式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#next数组程序代码"><span class="nav-number">1.2.2.2.</span> <span class="nav-text">next数组程序代码</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#算法代码-1"><span class="nav-number">1.2.3.</span> <span class="nav-text">算法代码</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#串的定义-1"><span class="nav-number">1.2.3.1.</span> <span class="nav-text">串的定义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算法设计-1"><span class="nav-number">1.2.3.2.</span> <span class="nav-text">算法设计</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#完整代码-1"><span class="nav-number">1.2.3.3.</span> <span class="nav-text">完整代码</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#算法总结-1"><span class="nav-number">1.2.4.</span> <span class="nav-text">算法总结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#改进的KMP算法"><span class="nav-number">1.3.</span> <span class="nav-text">改进的KMP算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#nextval数组"><span class="nav-number">1.3.1.</span> <span class="nav-text">nextval数组</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#nextval数组公式"><span class="nav-number">1.3.1.1.</span> <span class="nav-text">nextval数组公式</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#算法代码-2"><span class="nav-number">1.3.2.</span> <span class="nav-text">算法代码</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#算法设计-2"><span class="nav-number">1.3.2.1.</span> <span class="nav-text">算法设计</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#算法总结-2"><span class="nav-number">1.3.3.</span> <span class="nav-text">算法总结</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">陈洋</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+<!-- 新增访客统计代码 -->
+
+<div class="busuanzi-count">
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      访问用户： <span class="busuanzi-value" id="busuanzi_value_site_uv"></span> 人
+    </span>
+    <div class="powered-by"></div>
+    <span class="site-uv">
+      <i class="fa fa-eye"></i>
+      访问次数： <span class="busuanzi-value" id="busuanzi_value_site_pv"></span> 次
+    </span>
+    <!-- 博客字数统计 -->
+    <span class="site-pv">
+      <i class="fa fa-pencil"></i>
+      博客全站共： <span class="post-count">18.9k</span> 字
+    </span>
+</div>
+<!-- 新增访客统计代码 END-->
+
+<!-- 在网页底部添加网站运行时间 -->
+<span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+<script>
+    var now = new Date();
+    function createtime() {
+        var grt= new Date("07/21/2019 00:00:00");//此处修改你的建站时间或者网站上线时间
+        now.setTime(now.getTime()+250);
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;}
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;}
+        document.getElementById("timeDate").innerHTML = "Run for "+dnum+" Days ";
+        document.getElementById("times").innerHTML = hnum + " Hours " + mnum + " m " + snum + " s";
+    }
+setInterval("createtime()",250);
+</script>
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共18.9k字</span>
+</div>
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

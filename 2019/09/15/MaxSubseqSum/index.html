@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-center-atom.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/1.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/1.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/1.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/1.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="最大子序列,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="题目给定K个整数组成的序列{ N​1​​, N​2​​, …, N​K​​ }，“连续子列”被定义为{ N​i​​, N​i+1​​, …, N​j​​ }，其中 1≤i≤j≤K。“最大子列和”则被定义为所有连续子列元素的和中最大者。例如给定序列{ -2, 11, -4, 13, -5, -2 }，其连续子列{ 11, -4, 13 }有最大的和20。现要求你编写程序，计算给定整数序列的最大子列和">
+<meta name="keywords" content="最大子序列">
+<meta property="og:type" content="article">
+<meta property="og:title" content="最大子序列问题四种解题方法">
+<meta property="og:url" content="http://Kuluuu.github.io/2019/09/15/MaxSubseqSum/index.html">
+<meta property="og:site_name" content="ChenYang&#39;s Blog">
+<meta property="og:description" content="题目给定K个整数组成的序列{ N​1​​, N​2​​, …, N​K​​ }，“连续子列”被定义为{ N​i​​, N​i+1​​, …, N​j​​ }，其中 1≤i≤j≤K。“最大子列和”则被定义为所有连续子列元素的和中最大者。例如给定序列{ -2, 11, -4, 13, -5, -2 }，其连续子列{ 11, -4, 13 }有最大的和20。现要求你编写程序，计算给定整数序列的最大子列和">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://kuluuu.github.io/assets/blogImg/maxsub/maxsub1.png">
+<meta property="og:image" content="http://kuluuu.github.io/assets/blogImg/maxsub/maxsub2.png">
+<meta property="og:image" content="http://kuluuu.github.io/assets/blogImg/maxsub/maxsub3.png">
+<meta property="og:image" content="http://kuluuu.github.io/assets/blogImg/maxsub/maxsub4.png">
+<meta property="og:updated_time" content="2019-09-28T05:03:17.312Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="最大子序列问题四种解题方法">
+<meta name="twitter:description" content="题目给定K个整数组成的序列{ N​1​​, N​2​​, …, N​K​​ }，“连续子列”被定义为{ N​i​​, N​i+1​​, …, N​j​​ }，其中 1≤i≤j≤K。“最大子列和”则被定义为所有连续子列元素的和中最大者。例如给定序列{ -2, 11, -4, 13, -5, -2 }，其连续子列{ 11, -4, 13 }有最大的和20。现要求你编写程序，计算给定整数序列的最大子列和">
+<meta name="twitter:image" content="http://kuluuu.github.io/assets/blogImg/maxsub/maxsub1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://Kuluuu.github.io/2019/09/15/MaxSubseqSum/">
+
+
+
+
+
+  <title>最大子序列问题四种解题方法 | ChenYang's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+  
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">ChenYang's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">心中有码，自然伟大</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://Kuluuu.github.io/2019/09/15/MaxSubseqSum/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="陈洋">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/me.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ChenYang's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">最大子序列问题四种解题方法</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-15T22:27:42+08:00">
+                2019-09-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/最大子序列/" itemprop="url" rel="index">
+                    <span itemprop="name">最大子序列</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给定K个整数组成的序列{ N​1​​, N​2​​, …, N​K​​ }，“连续子列”被定义为{ N​i​​, N​i+1​​, …, N​j​​ }，其中 1≤i≤j≤K。“最大子列和”则被定义为所有连续子列元素的和中最大者。例如给定序列{ -2, 11, -4, 13, -5, -2 }，其连续子列{ 11, -4, 13 }有最大的和20。现要求你编写程序，计算给定整数序列的最大子列和。</p>
+<a id="more"></a>
+
+<p>本题旨在测试各种不同的算法在各种数据情况下的表现。各组测试数据特点如下：</p>
+<p>数据1：与样例等价，测试基本正确性；<br>数据2：102个随机整数；<br>数据3：103个随机整数；<br>数据4：104个随机整数；<br>数据5：105个随机整数；<br>输入格式:<br>输入第1行给出正整数K (≤100000)；第2行给出K个整数，其间以空格分隔。</p>
+<p>输出格式:<br>在一行中输出最大子列和。如果序列中所有整数皆为负数，则输出0。</p>
+<p>输入样例:</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">6</span></span><br><span class="line"><span class="number">-2</span> <span class="number">11</span> <span class="number">-4</span> <span class="number">13</span> <span class="number">-5</span> <span class="number">-2</span></span><br></pre></td></tr></table></figure>
+
+<p>输出样例:</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">20</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="三重循环（控制子序列长度）"><a href="#三重循环（控制子序列长度）" class="headerlink" title="三重循环（控制子序列长度）"></a>三重循环（控制子序列长度）</h2><p>这道题拿到手的第一思路就是<strong>首先利用一重循环控制子序列的长度</strong>，再用<strong>两重循环控制子序列的左起点和右终点</strong>。</p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//三重循环 控制子序列的长度</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve1</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">   <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;k;i++)&#123;        <span class="comment">//一重循环控制子序列长度</span></span><br><span class="line">       <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;k;j++)&#123;        <span class="comment">//二重循环控制左起点</span></span><br><span class="line">           <span class="keyword">for</span>(<span class="keyword">int</span> k=j;k&lt;j+i;k++)   <span class="comment">//三重循环控制右终点</span></span><br><span class="line">               sum+=a[k];</span><br><span class="line">           <span class="keyword">if</span>(max&lt;=sum)</span><br><span class="line">               max=sum;</span><br><span class="line">           sum=<span class="number">0</span>;</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="结果（PTA数据）"><a href="#结果（PTA数据）" class="headerlink" title="结果（PTA数据）"></a>结果（PTA数据）</h3><p><strong>时间复杂度为O(n3)</strong>  </p>
+<p><img src="/assets/blogImg/maxsub/maxsub1.png" alt="1"> </p>
+<h2 id="二重循环（只控制左起点和右终点）"><a href="#二重循环（只控制左起点和右终点）" class="headerlink" title="二重循环（只控制左起点和右终点）"></a>二重循环（只控制左起点和右终点）</h2><p>在三重循环的基础上，不再控制子序列的长度。  </p>
+<blockquote>
+<p>首先让左起点固定为起始点0，然后一直变换右终点直到k-1，即可得到左起点为0时的所有子序列。  </p>
+</blockquote>
+<p>以此类推，就可以得到所有的子序列，相比三重循环复杂度更低</p>
+<h3 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//二重循环 只控制子序列的左起点和右起点</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve2</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">   <span class="comment">//经过i、j 的控制每次二重循环所得的子序列都不同</span></span><br><span class="line">   <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;k;i++)&#123;   <span class="comment">// i 控制左起点，当左起点为i时的所有子序列中求最大值</span></span><br><span class="line">       sum=<span class="number">0</span>;</span><br><span class="line">       <span class="keyword">for</span>(<span class="keyword">int</span> j=i;j&lt;k;j++)&#123;   <span class="comment">// j 控制右起点</span></span><br><span class="line">           sum+=a[j];</span><br><span class="line">           <span class="keyword">if</span>(max&lt;=sum)</span><br><span class="line">               max=sum;</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="结果（PTA数据）-1"><a href="#结果（PTA数据）-1" class="headerlink" title="结果（PTA数据）"></a>结果（PTA数据）</h3><p><strong>时间复杂度为O(n2)</strong>  </p>
+<p><img src="/assets/blogImg/maxsub/maxsub2.png" alt="2"> </p>
+<h2 id="在线处理（一重循环）"><a href="#在线处理（一重循环）" class="headerlink" title="在线处理（一重循环）"></a>在线处理（一重循环）</h2><p>在每一次更新子序列和的时候，就对此时的最大子序列进行比较处理，并且判断此时的子序列和有无往后累加的意义。</p>
+<h3 id="代码-2"><a href="#代码-2" class="headerlink" title="代码"></a>代码</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//在线处理 每次产生子序列和就更新最大子序列和</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve3</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;k;i++)&#123;</span><br><span class="line">        sum+=a[i];          <span class="comment">//一直向右累加计算子序列和</span></span><br><span class="line">        <span class="keyword">if</span>(max&lt;=sum)        <span class="comment">//更新最大子序列</span></span><br><span class="line">            max=sum;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(sum&lt;<span class="number">0</span>)      <span class="comment">//当sum的值为负数时，此时的sum就没有必要再向后累加（在后面进行解释）</span></span><br><span class="line">            sum=<span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="解释（巧妙之处）"><a href="#解释（巧妙之处）" class="headerlink" title="解释（巧妙之处）"></a>解释（巧妙之处）</h3><p>为什么当sum的值为负数时，sum就没有必要再向后累加。<br>例如，案例中的 -2 11 这两个数字，当遍历到 -2 时，sum = -2，此时再次向后累加子序列和时，sum = -2 + 11 = 9。<br>这时得到的 sum 值还没有抛弃 -2，单独长度为1的子序列 sum=11 的权值大。<br>因此当 sum &lt; 0 时，将 sum = 0 。</p>
+<h3 id="结果（PTA数据）-2"><a href="#结果（PTA数据）-2" class="headerlink" title="结果（PTA数据）"></a>结果（PTA数据）</h3><p><strong>时间复杂度为O(n)</strong></p>
+<p><img src="/assets/blogImg/maxsub/maxsub3.png" alt="3"> </p>
+<h2 id="二分"><a href="#二分" class="headerlink" title="二分"></a>二分</h2><p>将整个问题分为三部分：</p>
+<blockquote>
+<p>将整个序列二分为两个部分<br>1、求二分后的序列左边，未跨越中线的最大子序列值 (MaxLeftSum)<br>2、求二分后的序列右边，为跨越中线的最大子序列值 (MaxRightSum)<br>3、求跨越中线的最大子序列值 (MaxLeftBorderSum + MaxRightBorderSum)<br>需要注意的是：<br>这里我们把跨越中线的值的求法也二分，分为求跨越中线的左边最大子序列值  (MaxLeftBorderSum) 和跨越中线的右边最大子序列值 (MaxRightBorderSum)，最后跨越中线的最大子序列值为二者的和<br>最后比较三个部分的最大值即可确定最大子序列值</p>
+</blockquote>
+<h3 id="代码-3"><a href="#代码-3" class="headerlink" title="代码"></a>代码</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//返回三个整数的最大值</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Max3</span> <span class="params">( <span class="keyword">int</span> A, <span class="keyword">int</span> B, <span class="keyword">int</span> C )</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (A &gt; B) ? (A &gt; C ? A : C) : (B &gt; C ? B : C);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//分治法求a[left]到a[right]的最大子列和，a数组为存放序列的数组</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">DivideAndConquer</span> <span class="params">(<span class="keyword">int</span> left, <span class="keyword">int</span> right )</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> MaxLeftSum, MaxRightSum;    <span class="comment">//存放左右子问题的解。</span></span><br><span class="line">    <span class="keyword">int</span> MaxLeftBorderSum, MaxRightBorderSum;    <span class="comment">//存放跨分界线的结果。</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">int</span> LeftBorderSum, RightBorderSum;</span><br><span class="line">    <span class="keyword">int</span> center, i;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//递归的终止条件，子列只有1个数字</span></span><br><span class="line">    <span class="keyword">if</span> ( left == right ) &#123;</span><br><span class="line">        <span class="keyword">if</span> ( a[left] &gt; <span class="number">0</span> )    <span class="keyword">return</span> a[left];</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// “分”的过程</span></span><br><span class="line">    center = ( left + right ) / <span class="number">2</span>;    <span class="comment">//找到中分点。</span></span><br><span class="line">    MaxLeftSum = DivideAndConquer (left, center );    <span class="comment">//递归求左子列和。</span></span><br><span class="line">    MaxRightSum = DivideAndConquer (center+<span class="number">1</span>, right );    <span class="comment">//递归求右子列和。</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">//求跨分界线的最大子列和</span></span><br><span class="line">    <span class="comment">//先求跨越中线的左边最大子序列值</span></span><br><span class="line">    MaxLeftBorderSum = <span class="number">0</span>;    LeftBorderSum = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> ( i = center; i &gt;= left; i-- ) &#123;</span><br><span class="line">        LeftBorderSum += a[i];</span><br><span class="line">        <span class="keyword">if</span> ( LeftBorderSum &gt; MaxLeftBorderSum )</span><br><span class="line">            MaxLeftBorderSum = LeftBorderSum;</span><br><span class="line">    &#125;<span class="comment">//左边扫描结束。</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">//后求跨越中线的右边最大子序列值</span></span><br><span class="line">    MaxRightBorderSum = <span class="number">0</span>;    RightBorderSum = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> ( i = center+<span class="number">1</span>; i &lt;= right; i++ ) &#123;</span><br><span class="line">        RightBorderSum += a[i];</span><br><span class="line">        <span class="keyword">if</span> ( RightBorderSum &gt; MaxRightBorderSum )</span><br><span class="line">            MaxRightBorderSum = RightBorderSum;</span><br><span class="line">    &#125;<span class="comment">//右边扫描结束。</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">//最后取出三部分的最大值</span></span><br><span class="line">    <span class="keyword">return</span> Max3 ( MaxLeftSum, MaxRightSum, MaxLeftBorderSum + MaxRightBorderSum );</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*此函数用于保持接口相同*/</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">MaxSubseqSum3</span> <span class="params">(<span class="keyword">int</span> N )</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> DivideAndConquer (<span class="number">0</span>, N<span class="number">-1</span> );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h3><p><strong>时间复杂度为O(nlogn)</strong>  </p>
+<p><img src="/assets/blogImg/maxsub/maxsub4.png" alt="4"> </p>
+<ul>
+<li>版权声明：本文为CSDN博主「YelloJesse」的原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接及本声明。  </li>
+<li>原文链接：<a href="https://blog.csdn.net/YelloJesse/article/details/82312659" target="_blank" rel="noopener">https://blog.csdn.net/YelloJesse/article/details/82312659</a></li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    <div>
+      
+        
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script type="text/javascript" src="http://jslibs.wuxubj.cn/sweetalert_mini/jquery-1.7.1.min.js"></script>
+  <script src="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.mini.css">
+  <p><span>本文标题:</span><a href="/2019/09/15/MaxSubseqSum/">最大子序列问题四种解题方法</a></p>
+  <p><span>文章作者:</span><a href="/" title="访问 陈洋 的个人博客">陈洋</a></p>
+  <p><span>发布时间:</span>2019年09月15日 - 22:09</p>
+  <p><span>最后更新:</span>2019年09月28日 - 13:09</p>
+  <p><span>原始链接:</span><a href="/2019/09/15/MaxSubseqSum/" title="最大子序列问题四种解题方法">http://Kuluuu.github.io/2019/09/15/MaxSubseqSum/</a>
+    <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://Kuluuu.github.io/2019/09/15/MaxSubseqSum/" aria-label="复制成功！"></i></span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+    clipboard.on('success', $(function(){
+      $(".fa-clipboard").click(function(){
+        swal({   
+          title: "",   
+          text: '复制成功',   
+          html: false,
+          timer: 500,   
+          showConfirmButton: false
+        });
+      });
+    }));  
+</script>
+
+      
+    </div>
+    
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/最大子序列/" rel="tag"># 最大子序列</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/09/14/Binary-Search-Tree/" rel="next" title="线索二叉树的构建">
+                <i class="fa fa-chevron-left"></i> 线索二叉树的构建
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/me.jpg" alt="陈洋">
+            
+              <p class="site-author-name" itemprop="name">陈洋</p>
+              <p class="site-description motion-element" itemprop="description">18级软工学生</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目"><span class="nav-number">1.</span> <span class="nav-text">题目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三重循环（控制子序列长度）"><span class="nav-number">2.</span> <span class="nav-text">三重循环（控制子序列长度）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#代码"><span class="nav-number">2.1.</span> <span class="nav-text">代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#结果（PTA数据）"><span class="nav-number">2.2.</span> <span class="nav-text">结果（PTA数据）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二重循环（只控制左起点和右终点）"><span class="nav-number">3.</span> <span class="nav-text">二重循环（只控制左起点和右终点）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#代码-1"><span class="nav-number">3.1.</span> <span class="nav-text">代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#结果（PTA数据）-1"><span class="nav-number">3.2.</span> <span class="nav-text">结果（PTA数据）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在线处理（一重循环）"><span class="nav-number">4.</span> <span class="nav-text">在线处理（一重循环）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#代码-2"><span class="nav-number">4.1.</span> <span class="nav-text">代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解释（巧妙之处）"><span class="nav-number">4.2.</span> <span class="nav-text">解释（巧妙之处）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#结果（PTA数据）-2"><span class="nav-number">4.3.</span> <span class="nav-text">结果（PTA数据）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二分"><span class="nav-number">5.</span> <span class="nav-text">二分</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#代码-3"><span class="nav-number">5.1.</span> <span class="nav-text">代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#结果"><span class="nav-number">5.2.</span> <span class="nav-text">结果</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">陈洋</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+<!-- 新增访客统计代码 -->
+
+<div class="busuanzi-count">
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      访问用户： <span class="busuanzi-value" id="busuanzi_value_site_uv"></span> 人
+    </span>
+    <div class="powered-by"></div>
+    <span class="site-uv">
+      <i class="fa fa-eye"></i>
+      访问次数： <span class="busuanzi-value" id="busuanzi_value_site_pv"></span> 次
+    </span>
+    <!-- 博客字数统计 -->
+    <span class="site-pv">
+      <i class="fa fa-pencil"></i>
+      博客全站共： <span class="post-count">18.9k</span> 字
+    </span>
+</div>
+<!-- 新增访客统计代码 END-->
+
+<!-- 在网页底部添加网站运行时间 -->
+<span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+<script>
+    var now = new Date();
+    function createtime() {
+        var grt= new Date("07/21/2019 00:00:00");//此处修改你的建站时间或者网站上线时间
+        now.setTime(now.getTime()+250);
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;}
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;}
+        document.getElementById("timeDate").innerHTML = "Run for "+dnum+" Days ";
+        document.getElementById("times").innerHTML = hnum + " Hours " + mnum + " m " + snum + " s";
+    }
+setInterval("createtime()",250);
+</script>
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共18.9k字</span>
+</div>
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

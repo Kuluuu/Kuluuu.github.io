@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-center-atom.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/1.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/1.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/1.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/1.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="数据结构,迷宫问题,栈和队列,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="迷宫问题给定一个M*N的迷宫图、入口与出口、行走规则。求一条从指定入口到出口的路径（这里M=8,N=8）,所求路径必须是简单路径，即路径不重复 (为了方便算法起见，在整个迷宫外围加上一堵墙）      这里分别使用栈和队列两种方法求解迷宫问题，并比较两种算法的具体体现。">
+<meta name="keywords" content="数据结构,迷宫问题,栈和队列">
+<meta property="og:type" content="article">
+<meta property="og:title" content="栈和队列求解迷宫问题（数据结构学习笔记）">
+<meta property="og:url" content="http://Kuluuu.github.io/2019/08/02/migongwenti/index.html">
+<meta property="og:site_name" content="ChenYang&#39;s Blog">
+<meta property="og:description" content="迷宫问题给定一个M*N的迷宫图、入口与出口、行走规则。求一条从指定入口到出口的路径（这里M=8,N=8）,所求路径必须是简单路径，即路径不重复 (为了方便算法起见，在整个迷宫外围加上一堵墙）      这里分别使用栈和队列两种方法求解迷宫问题，并比较两种算法的具体体现。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://kuluuu.github.io/assets/blogImg/migong/migong1.png">
+<meta property="og:image" content="http://kuluuu.github.io/assets/blogImg/migong/migong2.png">
+<meta property="og:image" content="http://kuluuu.github.io/assets/blogImg/migong/migong3.png">
+<meta property="og:image" content="http://kuluuu.github.io/assets/blogImg/migong/migong4.png">
+<meta property="og:image" content="http://kuluuu.github.io/assets/blogImg/migong/migong5.png">
+<meta property="og:image" content="http://kuluuu.github.io/assets/blogImg/migong/migong7.png">
+<meta property="og:image" content="http://kuluuu.github.io/assets/blogImg/migong/migong6.png">
+<meta property="og:image" content="http://kuluuu.github.io/assets/blogImg/migong/migong8.png">
+<meta property="og:image" content="http://kuluuu.github.io/assets/blogImg/migong/migong9.png">
+<meta property="og:image" content="http://kuluuu.github.io/assets/blogImg/migong/migong10.png">
+<meta property="og:updated_time" content="2019-09-28T05:03:24.917Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="栈和队列求解迷宫问题（数据结构学习笔记）">
+<meta name="twitter:description" content="迷宫问题给定一个M*N的迷宫图、入口与出口、行走规则。求一条从指定入口到出口的路径（这里M=8,N=8）,所求路径必须是简单路径，即路径不重复 (为了方便算法起见，在整个迷宫外围加上一堵墙）      这里分别使用栈和队列两种方法求解迷宫问题，并比较两种算法的具体体现。">
+<meta name="twitter:image" content="http://kuluuu.github.io/assets/blogImg/migong/migong1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://Kuluuu.github.io/2019/08/02/migongwenti/">
+
+
+
+
+
+  <title>栈和队列求解迷宫问题（数据结构学习笔记） | ChenYang's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+  
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">ChenYang's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">心中有码，自然伟大</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://Kuluuu.github.io/2019/08/02/migongwenti/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="陈洋">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/me.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ChenYang's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">栈和队列求解迷宫问题（数据结构学习笔记）</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-02T17:14:21+08:00">
+                2019-08-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/栈和队列/" itemprop="url" rel="index">
+                    <span itemprop="name">栈和队列</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="迷宫问题"><a href="#迷宫问题" class="headerlink" title="迷宫问题"></a>迷宫问题</h1><p>给定一个M*N的迷宫图、入口与出口、行走规则。求一条从指定入口到出口的路径（这里M=8,N=8）,所求路径必须是简单路径，即路径不重复<code> (为了方便算法起见，在整个迷宫外围加上一堵墙）</code>    </p>
+<p><img src="/assets/blogImg/migong/migong1.png" alt="1"></p>
+<p>这里分别使用栈和队列两种方法求解迷宫问题，并比较两种算法的具体体现。</p>
+<a id="more"></a>
+
+<h2 id="“栈”求解迷宫问题"><a href="#“栈”求解迷宫问题" class="headerlink" title="“栈”求解迷宫问题"></a>“栈”求解迷宫问题</h2><h3 id="行走规则"><a href="#行走规则" class="headerlink" title="行走规则"></a>行走规则</h3><blockquote>
+<p>上、下、左、右相邻的方块行走。其中（i,j）表示一个方块  </p>
+</blockquote>
+<p><img src="/assets/blogImg/migong/migong2.png" alt="2"></p>
+<h3 id="算法思路"><a href="#算法思路" class="headerlink" title="算法思路"></a>算法思路</h3><blockquote>
+<p>1、用二维数组存放0,1来分别表示迷宫中可走方块以及不可走方块。   </p>
+</blockquote>
+<blockquote>
+<p>2、从入口处开始，顺时针方向去试探当前方块的四个方位  </p>
+</blockquote>
+<p><img src="/assets/blogImg/migong/migong3.png" alt="3"></p>
+<blockquote>
+<p>3、在当前位置寻找四个方位中的可走方块。<br><strong>若当前试探方位可走</strong>。则将该试探方位的方块入栈，<code>并将此时走过的方块置为不可走（这里将值置为-1），以防止两个方块来回进入死循环</code>，此时试探方位的方块在栈的顶部，再用栈顶方块继续对四个方位进行试探。<br><strong>若当前方块的四个试探方位都无法前进</strong>。则将当前方块退栈，<code>并将退栈方块的值恢复为0</code>，然后找此时栈顶方块的其他可能的相邻方块。</p>
+</blockquote>
+<p>当所有相邻方块都不能走时的情况<br><img src="/assets/blogImg/migong/migong4.png" alt="4">  </p>
+<h3 id="算法代码"><a href="#算法代码" class="headerlink" title="算法代码"></a>算法代码</h3><h4 id="栈的定义"><a href="#栈的定义" class="headerlink" title="栈的定义"></a>栈的定义</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//定义方块类型</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">int</span> i;  <span class="comment">//当前方块的行号</span></span><br><span class="line">    <span class="keyword">int</span> j;  <span class="comment">//当前方块的列好</span></span><br><span class="line">    <span class="keyword">int</span> dj; <span class="comment">//下个可走相邻方位的方位号</span></span><br><span class="line">&#125;Box;</span><br><span class="line"><span class="comment">//定义顺序栈类型</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    Box data[MaxSize];</span><br><span class="line">    <span class="keyword">int</span> top;    <span class="comment">//栈顶指针</span></span><br><span class="line">&#125;StType;</span><br></pre></td></tr></table></figure>
+
+<h4 id="算法设计"><a href="#算法设计" class="headerlink" title="算法设计"></a>算法设计</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">mgpath</span><span class="params">(<span class="keyword">int</span> xi,<span class="keyword">int</span> yi,<span class="keyword">int</span> xe,<span class="keyword">int</span> ye)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	Box path[<span class="number">10000</span>],e;	<span class="comment">//path数组用来记录迷宫路径，e用来记录栈顶元素 </span></span><br><span class="line">	StType *st;		<span class="comment">//定义栈st </span></span><br><span class="line">	<span class="keyword">int</span> i,j,di;		<span class="comment">//i,j,di用于记录栈顶元素 </span></span><br><span class="line">	<span class="keyword">int</span> in,jn;		<span class="comment">//用于记录下一方位的方块行列坐标 </span></span><br><span class="line">	<span class="keyword">int</span> k;				 </span><br><span class="line">	<span class="keyword">int</span> find;	<span class="comment">//记录是否找到相邻可走元素 </span></span><br><span class="line">	InitStack(st);	<span class="comment">//初始化栈</span></span><br><span class="line">	</span><br><span class="line">	e.i=xi,e.j=yi,e.di=<span class="number">-1</span>;</span><br><span class="line">	Push(st,e);</span><br><span class="line">	mg[xi][yi]=<span class="number">-1</span>;</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">while</span>(!StackEmpty(st))&#123;</span><br><span class="line">		GetTop(st,e);	<span class="comment">//取出栈顶元素 </span></span><br><span class="line">		i=e.i,j=e.j,di=e.di;</span><br><span class="line">		<span class="keyword">if</span>(i==xe&amp;&amp;j==ye)&#123;	<span class="comment">//已到达终点 </span></span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"一条迷宫路径如下:\n"</span>);</span><br><span class="line">			k=<span class="number">0</span>;</span><br><span class="line">			<span class="keyword">while</span>(!StackEmpty(st))&#123;</span><br><span class="line">				Pop(st,e);</span><br><span class="line">				path[k++]=e;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">while</span>(k&gt;=<span class="number">1</span>)</span><br><span class="line">			&#123;</span><br><span class="line">				k--;</span><br><span class="line">		                <span class="built_in">printf</span>(<span class="string">"\t(%d,%d)"</span>,path[k].i,path[k].j);</span><br><span class="line">				<span class="keyword">if</span>((k+<span class="number">2</span>)%<span class="number">5</span>==<span class="number">0</span>)	</span><br><span class="line">					<span class="built_in">printf</span>(<span class="string">"\n"</span>);	<span class="comment">//每输出5个方块后换一行 </span></span><br><span class="line">			&#125;</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line">			DestroyStack(st);	<span class="comment">//销毁栈 </span></span><br><span class="line">			<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		find=<span class="number">0</span>; <span class="comment">//初始化为0，未找到可走相邻方块 </span></span><br><span class="line">		<span class="keyword">while</span>(di&lt;<span class="number">4</span>&amp;&amp;find==<span class="number">0</span>)&#123;	 </span><br><span class="line">			di++;</span><br><span class="line">			<span class="keyword">switch</span>(di)&#123;</span><br><span class="line">				<span class="keyword">case</span> <span class="number">0</span>:&#123;in=i<span class="number">-1</span>,jn=j;<span class="keyword">break</span>;&#125;</span><br><span class="line">				<span class="keyword">case</span> <span class="number">1</span>:&#123;in=i;jn=j+<span class="number">1</span>;<span class="keyword">break</span>;&#125;</span><br><span class="line">				<span class="keyword">case</span> <span class="number">2</span>:&#123;in=i+<span class="number">1</span>;jn=j;<span class="keyword">break</span>;&#125;</span><br><span class="line">				<span class="keyword">case</span> <span class="number">3</span>:&#123;in=i;jn=j<span class="number">-1</span>;<span class="keyword">break</span>;&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span>(mg[in][jn]==<span class="number">0</span>)	<span class="comment">//找到可走相邻方块 </span></span><br><span class="line">				find=<span class="number">1</span>;	</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">if</span>(find)&#123;	<span class="comment">//找到可走相邻方块 </span></span><br><span class="line">			st-&gt;data[st-&gt;top].di=di; <span class="comment">//修改原栈顶元素的di值 </span></span><br><span class="line">			e.i=in,e.j=jn,e.di=<span class="number">-1</span>;</span><br><span class="line">			Push(st,e);	<span class="comment">//入栈操作 </span></span><br><span class="line">			mg[in][jn]=<span class="number">-1</span>; </span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span>&#123;	<span class="comment">//没有可走相邻方块 </span></span><br><span class="line">			Pop(st,e);	<span class="comment">//退栈操作 </span></span><br><span class="line">			mg[e.i][e.j]=<span class="number">0</span>;	<span class="comment">//将退栈方块位置的值恢复为 0 </span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	DestroyStack(st);	<span class="comment">//销毁栈 </span></span><br><span class="line">	<span class="keyword">return</span> <span class="literal">false</span>;	<span class="comment">//表示没有可走路径，返回false </span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="完整代码"><a href="#完整代码" class="headerlink" title="完整代码"></a>完整代码</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> M 8</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 8</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	<span class="keyword">int</span> i;</span><br><span class="line">	<span class="keyword">int</span> j;</span><br><span class="line">	<span class="keyword">int</span> di;</span><br><span class="line">&#125;Box;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	Box data[<span class="number">10000</span>];</span><br><span class="line">	<span class="keyword">int</span> top;</span><br><span class="line">&#125;StType;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> mg[M+<span class="number">2</span>][N+<span class="number">2</span>]=</span><br><span class="line">	&#123;	&#123;<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>&#125;,</span><br><span class="line">		&#123;<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">1</span>&#125;,</span><br><span class="line">		&#123;<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">1</span>&#125;,</span><br><span class="line">		&#123;<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>&#125;,</span><br><span class="line">		&#123;<span class="number">1</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>&#125;,</span><br><span class="line">		&#123;<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>&#125;,</span><br><span class="line">		&#123;<span class="number">1</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>&#125;,</span><br><span class="line">		&#123;<span class="number">1</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">1</span>&#125;,</span><br><span class="line">		&#123;<span class="number">1</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>&#125;,</span><br><span class="line">		&#123;<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>&#125;</span><br><span class="line">	&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">//初始化栈 </span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">InitStack</span><span class="params">(StType *&amp;st)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	st=(StType *)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(StType));</span><br><span class="line">	st-&gt;top=<span class="number">-1</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//取出栈顶元素 </span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">GetTop</span><span class="params">(StType *&amp;st,Box &amp;e)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	e=st-&gt;data[st-&gt;top];</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//入栈 </span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Push</span><span class="params">(StType *&amp;st,Box &amp;e)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	st-&gt;top++;</span><br><span class="line">	st-&gt;data[st-&gt;top]=e;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//出栈 </span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Pop</span><span class="params">(StType *&amp;st,Box &amp;e)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	e=st-&gt;data[st-&gt;top];</span><br><span class="line">	st-&gt;top--;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//销毁栈 </span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">DestroyStack</span><span class="params">(StType *&amp;st)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">free</span>(st);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//检验栈是否为空 </span></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">StackEmpty</span><span class="params">(StType *&amp;st)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(st-&gt;top==<span class="number">-1</span>)</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">mgpath</span><span class="params">(<span class="keyword">int</span> xi,<span class="keyword">int</span> yi,<span class="keyword">int</span> xe,<span class="keyword">int</span> ye)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	Box path[<span class="number">10000</span>],e;	<span class="comment">//path数组用来记录迷宫路径，e用来记录栈顶元素 </span></span><br><span class="line">	StType *st;		<span class="comment">//定义栈st </span></span><br><span class="line">	<span class="keyword">int</span> i,j,di;		<span class="comment">//i,j,di用于记录栈顶元素 </span></span><br><span class="line">	<span class="keyword">int</span> in,jn;		<span class="comment">//用于记录下一方位的方块行列坐标 </span></span><br><span class="line">	<span class="keyword">int</span> k;				 </span><br><span class="line">	<span class="keyword">int</span> find;	<span class="comment">//记录是否找到相邻可走元素 </span></span><br><span class="line">	InitStack(st);	<span class="comment">//初始化栈</span></span><br><span class="line">	</span><br><span class="line">	e.i=xi,e.j=yi,e.di=<span class="number">-1</span>;</span><br><span class="line">	Push(st,e);</span><br><span class="line">	mg[xi][yi]=<span class="number">-1</span>;</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">while</span>(!StackEmpty(st))&#123;</span><br><span class="line">		GetTop(st,e);	<span class="comment">//取出栈顶元素 </span></span><br><span class="line">		i=e.i,j=e.j,di=e.di;</span><br><span class="line">		<span class="keyword">if</span>(i==xe&amp;&amp;j==ye)&#123;	<span class="comment">//已到达终点 </span></span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"一条迷宫路径如下:\n"</span>);</span><br><span class="line">			k=<span class="number">0</span>;</span><br><span class="line">			<span class="keyword">while</span>(!StackEmpty(st))&#123;</span><br><span class="line">				Pop(st,e);</span><br><span class="line">				path[k++]=e;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">while</span>(k&gt;=<span class="number">1</span>)</span><br><span class="line">			&#123;</span><br><span class="line">				k--;</span><br><span class="line">				<span class="built_in">printf</span>(<span class="string">"\t(%d,%d)"</span>,path[k].i,path[k].j);</span><br><span class="line">				<span class="keyword">if</span>((k+<span class="number">2</span>)%<span class="number">5</span>==<span class="number">0</span>)	</span><br><span class="line">					<span class="built_in">printf</span>(<span class="string">"\n"</span>);	<span class="comment">//每输出5个方块后换一行 </span></span><br><span class="line">			&#125;</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line">			DestroyStack(st);	<span class="comment">//销毁栈 </span></span><br><span class="line">			<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		find=<span class="number">0</span>; <span class="comment">//初始化为0，未找到可走相邻方块 </span></span><br><span class="line">		<span class="keyword">while</span>(di&lt;<span class="number">4</span>&amp;&amp;find==<span class="number">0</span>)&#123;	 </span><br><span class="line">			di++;</span><br><span class="line">			<span class="keyword">switch</span>(di)&#123;</span><br><span class="line">				<span class="keyword">case</span> <span class="number">0</span>:&#123;in=i<span class="number">-1</span>,jn=j;<span class="keyword">break</span>;&#125;</span><br><span class="line">				<span class="keyword">case</span> <span class="number">1</span>:&#123;in=i;jn=j+<span class="number">1</span>;<span class="keyword">break</span>;&#125;</span><br><span class="line">				<span class="keyword">case</span> <span class="number">2</span>:&#123;in=i+<span class="number">1</span>;jn=j;<span class="keyword">break</span>;&#125;</span><br><span class="line">				<span class="keyword">case</span> <span class="number">3</span>:&#123;in=i;jn=j<span class="number">-1</span>;<span class="keyword">break</span>;&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span>(mg[in][jn]==<span class="number">0</span>)	<span class="comment">//找到可走相邻方块 </span></span><br><span class="line">				find=<span class="number">1</span>;	</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">if</span>(find)&#123;	<span class="comment">//找到可走相邻方块 </span></span><br><span class="line">			st-&gt;data[st-&gt;top].di=di; <span class="comment">//修改原栈顶元素的di值 </span></span><br><span class="line">			e.i=in,e.j=jn,e.di=<span class="number">-1</span>;</span><br><span class="line">			Push(st,e);	<span class="comment">//入栈操作 </span></span><br><span class="line">			mg[in][jn]=<span class="number">-1</span>; </span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span>&#123;	<span class="comment">//没有可走相邻方块 </span></span><br><span class="line">			Pop(st,e);	<span class="comment">//退栈操作 </span></span><br><span class="line">			mg[e.i][e.j]=<span class="number">0</span>;	<span class="comment">//将退栈方块位置的值恢复为 0 </span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	DestroyStack(st);	<span class="comment">//销毁栈 </span></span><br><span class="line">	<span class="keyword">return</span> <span class="literal">false</span>;	<span class="comment">//表示没有可走路径，返回false </span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(!mgpath(<span class="number">1</span>,<span class="number">1</span>,M,N))</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"该迷宫问题没有解"</span>);</span><br><span class="line">		</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="最终迷宫路径"><a href="#最终迷宫路径" class="headerlink" title="最终迷宫路径"></a>最终迷宫路径</h3><p><img src="/assets/blogImg/migong/migong5.png" alt="5">  </p>
+<h3 id="算法总结"><a href="#算法总结" class="headerlink" title="算法总结"></a>算法总结</h3><ul>
+<li><code>很显然栈求解迷宫问题，只是给出解决迷宫问题的其中一条路径，并非最优路径</code>  </li>
+</ul>
+<h2 id="“队列”求解迷宫问题"><a href="#“队列”求解迷宫问题" class="headerlink" title="“队列”求解迷宫问题"></a>“队列”求解迷宫问题</h2><p>例如此迷宫：<br><img src="/assets/blogImg/migong/migong7.png" alt="7"> </p>
+<h3 id="算法思路-1"><a href="#算法思路-1" class="headerlink" title="算法思路"></a>算法思路</h3><blockquote>
+<p>将所有相邻的可走方块进入队列，在队列中一层一层的去从出口反向寻找入口<code>（要记录当前此可走相邻方块的前一个方块位置）</code>  </p>
+</blockquote>
+<p><img src="/assets/blogImg/migong/migong6.png" alt="6"><br><img src="/assets/blogImg/migong/migong8.png" alt="8">  </p>
+<h3 id="算法代码-1"><a href="#算法代码-1" class="headerlink" title="算法代码"></a>算法代码</h3><h4 id="队列定义"><a href="#队列定义" class="headerlink" title="队列定义"></a>队列定义</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	<span class="keyword">int</span> i,j;	<span class="comment">//记录方块的行数与列数 </span></span><br><span class="line">	<span class="keyword">int</span> pre;	<span class="comment">//记录本路径上一方块在队列中的下标 </span></span><br><span class="line">&#125;Box; </span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	Box data[<span class="number">1000</span>];</span><br><span class="line">	<span class="keyword">int</span> front,rear;	<span class="comment">//队头队尾指针 </span></span><br><span class="line">&#125;Que;</span><br></pre></td></tr></table></figure>
+
+<h4 id="算法设计-1"><a href="#算法设计-1" class="headerlink" title="算法设计"></a>算法设计</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//迷宫算法函数</span></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">mgpath1</span><span class="params">(<span class="keyword">int</span> xi,<span class="keyword">int</span> yi,<span class="keyword">int</span> xe,<span class="keyword">int</span> ye)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	Box e;</span><br><span class="line">	<span class="keyword">int</span> i,j,pre;</span><br><span class="line">	Que *qu;</span><br><span class="line">	InitQue(qu);	<span class="comment">//初始化队列 </span></span><br><span class="line">	</span><br><span class="line">	<span class="comment">//起点入队</span></span><br><span class="line">	e.i=xi,e.j=yi,e.pre=<span class="number">-1</span>;	</span><br><span class="line">	mg[xi][yi]=<span class="number">-1</span>;</span><br><span class="line">	Push(qu,e);		 </span><br><span class="line">	</span><br><span class="line">	<span class="keyword">while</span>(!EmptyQue(qu))&#123;	<span class="comment">//队列不空则循环 </span></span><br><span class="line">		Pop(qu,e);	<span class="comment">//队首元素出队 </span></span><br><span class="line">		i=e.i,j=e.j,pre=e.pre;	<span class="comment">//记录当前队首元素的方块类 </span></span><br><span class="line">		<span class="keyword">if</span>(i==xe&amp;&amp;j==ye)&#123;	<span class="comment">//队首元素为出口则输出路径 </span></span><br><span class="line">			print(qu,qu-&gt;front);	<span class="comment">//输出路径函数 </span></span><br><span class="line">			<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">int</span> d=<span class="number">-1</span>;</span><br><span class="line">		<span class="keyword">int</span> in,jn;</span><br><span class="line">		<span class="keyword">while</span>(d&lt;<span class="number">4</span>)&#123;	<span class="comment">//每个方位进行试探 </span></span><br><span class="line">			d++;</span><br><span class="line">			<span class="keyword">switch</span>(d)&#123;</span><br><span class="line">				<span class="keyword">case</span> <span class="number">0</span>:&#123;in=i<span class="number">-1</span>,jn=j;<span class="keyword">break</span>;&#125;</span><br><span class="line">				<span class="keyword">case</span> <span class="number">1</span>:&#123;in=i;jn=j+<span class="number">1</span>;<span class="keyword">break</span>;&#125;</span><br><span class="line">				<span class="keyword">case</span> <span class="number">2</span>:&#123;in=i+<span class="number">1</span>;jn=j;<span class="keyword">break</span>;&#125;</span><br><span class="line">				<span class="keyword">case</span> <span class="number">3</span>:&#123;in=i;jn=j<span class="number">-1</span>;<span class="keyword">break</span>;&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span>(mg[in][jn]==<span class="number">0</span>)&#123;	<span class="comment">//找到可走相邻方块(in,jn)就入队 </span></span><br><span class="line">				e.i=in,e.j=jn,e.pre=qu-&gt;front;</span><br><span class="line">				Push(qu,e);</span><br><span class="line">				mg[in][jn]=<span class="number">-1</span>;	<span class="comment">//将其赋值-1，以避免来回重复搜索 </span></span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	DestroyQue(qu);	<span class="comment">//销毁队列 </span></span><br><span class="line">	<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//输出路径函数</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">print</span><span class="params">(Que *&amp;qu,<span class="keyword">int</span> k)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> j;</span><br><span class="line">	<span class="comment">//反向寻找最短路径 </span></span><br><span class="line">	<span class="keyword">while</span>(k!=<span class="number">-1</span>)&#123;</span><br><span class="line">		j=k;</span><br><span class="line">		k=qu-&gt;data[k].pre;</span><br><span class="line">		qu-&gt;data[j].pre=<span class="number">-1</span>;	<span class="comment">//将找到的路径上的方块的pre成员置为-1 </span></span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	k=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">int</span> ns=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">while</span>(k&lt;<span class="number">1000</span>)&#123;	<span class="comment">//遍历整个队列输出pre成员为-1的方块坐标 </span></span><br><span class="line">		<span class="keyword">if</span>(qu-&gt;data[k].pre==<span class="number">-1</span>)&#123;</span><br><span class="line">			ns++;</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"\t(%d,%d)"</span>,qu-&gt;data[k].i,qu-&gt;data[k].j);</span><br><span class="line">			<span class="keyword">if</span>(ns%<span class="number">5</span>==<span class="number">0</span>)	 <span class="built_in">printf</span>(<span class="string">"\n"</span>);	<span class="comment">//每输出5个元素后换一行 </span></span><br><span class="line">		&#125;</span><br><span class="line">		k++;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="完整代码-1"><a href="#完整代码-1" class="headerlink" title="完整代码"></a>完整代码</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> M 4</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 4</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	<span class="keyword">int</span> i,j;	<span class="comment">//记录方块的行数与列数 </span></span><br><span class="line">	<span class="keyword">int</span> pre;	<span class="comment">//记录本路径上一方块在队列中的下标 </span></span><br><span class="line">&#125;Box; </span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	Box data[<span class="number">1000</span>];</span><br><span class="line">	<span class="keyword">int</span> front,rear;	<span class="comment">//队头队尾指针 </span></span><br><span class="line">&#125;Que;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> mg[M+<span class="number">2</span>][N+<span class="number">2</span>]=</span><br><span class="line">	&#123;	&#123;<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>&#125;,</span><br><span class="line">		&#123;<span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>&#125;,</span><br><span class="line">		&#123;<span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>&#125;,</span><br><span class="line">		&#123;<span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>&#125;,</span><br><span class="line">		&#123;<span class="number">1</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>&#125;,</span><br><span class="line">		&#123;<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>&#125;</span><br><span class="line">	&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">InitQue</span><span class="params">(Que *&amp;qu)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	qu=(Que *)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(Que));</span><br><span class="line">	qu-&gt;front=qu-&gt;rear=<span class="number">-1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">EmptyQue</span><span class="params">(Que *&amp;qu)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> (qu-&gt;front==qu-&gt;rear);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">Push</span><span class="params">(Que *&amp;qu,Box &amp;e)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(qu-&gt;rear&gt;<span class="number">999</span>)</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">	e.pre=qu-&gt;front;</span><br><span class="line">	qu-&gt;rear++;</span><br><span class="line">	qu-&gt;data[qu-&gt;rear]=e;</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">Pop</span><span class="params">(Que *&amp;qu,Box &amp;e)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(EmptyQue(qu))</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">	qu-&gt;front++;</span><br><span class="line">	e=qu-&gt;data[qu-&gt;front];</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">print</span><span class="params">(Que *&amp;qu,<span class="keyword">int</span> k)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> j;</span><br><span class="line">	<span class="comment">//反向寻找最短路径 </span></span><br><span class="line">	<span class="keyword">while</span>(k!=<span class="number">-1</span>)&#123;</span><br><span class="line">		j=k;</span><br><span class="line">		k=qu-&gt;data[k].pre;</span><br><span class="line">		qu-&gt;data[j].pre=<span class="number">-1</span>;	<span class="comment">//将找到的路径上的方块的pre成员置为-1 </span></span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	k=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">int</span> ns=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">while</span>(k&lt;<span class="number">1000</span>)&#123;	<span class="comment">//遍历整个队列输出pre成员为-1的方块坐标 </span></span><br><span class="line">		<span class="keyword">if</span>(qu-&gt;data[k].pre==<span class="number">-1</span>)&#123;</span><br><span class="line">			ns++;</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"\t(%d,%d)"</span>,qu-&gt;data[k].i,qu-&gt;data[k].j);</span><br><span class="line">			<span class="keyword">if</span>(ns%<span class="number">5</span>==<span class="number">0</span>)	 <span class="built_in">printf</span>(<span class="string">"\n"</span>);	<span class="comment">//每输出5个元素后换一行 </span></span><br><span class="line">		&#125;</span><br><span class="line">		k++;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">DestroyQue</span><span class="params">(Que *&amp;qu)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">free</span>(qu);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">mgpath1</span><span class="params">(<span class="keyword">int</span> xi,<span class="keyword">int</span> yi,<span class="keyword">int</span> xe,<span class="keyword">int</span> ye)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	Box e;</span><br><span class="line">	<span class="keyword">int</span> i,j,pre;</span><br><span class="line">	Que *qu;</span><br><span class="line">	InitQue(qu);	<span class="comment">//初始化队列 </span></span><br><span class="line">	</span><br><span class="line">	<span class="comment">//起点入队</span></span><br><span class="line">	e.i=xi,e.j=yi,e.pre=<span class="number">-1</span>;	</span><br><span class="line">	mg[xi][yi]=<span class="number">-1</span>;</span><br><span class="line">	Push(qu,e);		 </span><br><span class="line">	</span><br><span class="line">	<span class="keyword">while</span>(!EmptyQue(qu))&#123;	<span class="comment">//队列不空则循环 </span></span><br><span class="line">		Pop(qu,e);	<span class="comment">//队首元素出队 </span></span><br><span class="line">		i=e.i,j=e.j,pre=e.pre;	<span class="comment">//记录当前队首元素的方块类 </span></span><br><span class="line">		<span class="keyword">if</span>(i==xe&amp;&amp;j==ye)&#123;	<span class="comment">//队首元素为出口则输出路径 </span></span><br><span class="line">			print(qu,qu-&gt;front);	<span class="comment">//输出路径函数 </span></span><br><span class="line">			<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">int</span> d=<span class="number">-1</span>;</span><br><span class="line">		<span class="keyword">int</span> in,jn;</span><br><span class="line">		<span class="keyword">while</span>(d&lt;<span class="number">4</span>)&#123;	<span class="comment">//每个方位进行试探 </span></span><br><span class="line">			d++;</span><br><span class="line">			<span class="keyword">switch</span>(d)&#123;</span><br><span class="line">				<span class="keyword">case</span> <span class="number">0</span>:&#123;in=i<span class="number">-1</span>,jn=j;<span class="keyword">break</span>;&#125;</span><br><span class="line">				<span class="keyword">case</span> <span class="number">1</span>:&#123;in=i;jn=j+<span class="number">1</span>;<span class="keyword">break</span>;&#125;</span><br><span class="line">				<span class="keyword">case</span> <span class="number">2</span>:&#123;in=i+<span class="number">1</span>;jn=j;<span class="keyword">break</span>;&#125;</span><br><span class="line">				<span class="keyword">case</span> <span class="number">3</span>:&#123;in=i;jn=j<span class="number">-1</span>;<span class="keyword">break</span>;&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span>(mg[in][jn]==<span class="number">0</span>)&#123;	<span class="comment">//找到可走相邻方块(in,jn)就入队 </span></span><br><span class="line">				e.i=in,e.j=jn,e.pre=qu-&gt;front;</span><br><span class="line">				Push(qu,e);</span><br><span class="line">				mg[in][jn]=<span class="number">-1</span>;	<span class="comment">//将其赋值-1，以避免来回重复搜索 </span></span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	DestroyQue(qu);	<span class="comment">//销毁队列 </span></span><br><span class="line">	<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(!mgpath1(<span class="number">1</span>,<span class="number">1</span>,M,N))</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"此迷宫问题无解"</span>);</span><br><span class="line">		</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="最终迷宫路径（小迷宫）"><a href="#最终迷宫路径（小迷宫）" class="headerlink" title="最终迷宫路径（小迷宫）"></a>最终迷宫路径（小迷宫）</h3><p><img src="/assets/blogImg/migong/migong9.png" alt="9"> </p>
+<h3 id="最终迷宫路径（原题迷宫）"><a href="#最终迷宫路径（原题迷宫）" class="headerlink" title="最终迷宫路径（原题迷宫）"></a>最终迷宫路径（原题迷宫）</h3><p><img src="/assets/blogImg/migong/migong10.png" alt="10">  </p>
+<h3 id="算法总结-1"><a href="#算法总结-1" class="headerlink" title="算法总结"></a>算法总结</h3><ul>
+<li><p><code>队列求解迷宫问题可以解决迷宫问题中最优（短）路径解的问题</code>  </p>
+</li>
+<li><p>学习数据结构教程（第五版）——李春葆教授主编</p>
+</li>
+<li><p>图片来源于MOOC，数据结构——武汉大学——李春葆教授  </p>
+</li>
+<li><p>（如若侵权可联系QQ删除）</p>
+</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    <div>
+      
+        
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script type="text/javascript" src="http://jslibs.wuxubj.cn/sweetalert_mini/jquery-1.7.1.min.js"></script>
+  <script src="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.mini.css">
+  <p><span>本文标题:</span><a href="/2019/08/02/migongwenti/">栈和队列求解迷宫问题（数据结构学习笔记）</a></p>
+  <p><span>文章作者:</span><a href="/" title="访问 陈洋 的个人博客">陈洋</a></p>
+  <p><span>发布时间:</span>2019年08月02日 - 17:08</p>
+  <p><span>最后更新:</span>2019年09月28日 - 13:09</p>
+  <p><span>原始链接:</span><a href="/2019/08/02/migongwenti/" title="栈和队列求解迷宫问题（数据结构学习笔记）">http://Kuluuu.github.io/2019/08/02/migongwenti/</a>
+    <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://Kuluuu.github.io/2019/08/02/migongwenti/" aria-label="复制成功！"></i></span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+    clipboard.on('success', $(function(){
+      $(".fa-clipboard").click(function(){
+        swal({   
+          title: "",   
+          text: '复制成功',   
+          html: false,
+          timer: 500,   
+          showConfirmButton: false
+        });
+      });
+    }));  
+</script>
+
+      
+    </div>
+    
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/数据结构/" rel="tag"># 数据结构</a>
+          
+            <a href="/tags/迷宫问题/" rel="tag"># 迷宫问题</a>
+          
+            <a href="/tags/栈和队列/" rel="tag"># 栈和队列</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/07/17/list-union-algorithm/" rel="next" title="有序表归并算法（数据结构学习笔记）">
+                <i class="fa fa-chevron-left"></i> 有序表归并算法（数据结构学习笔记）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/08/03/dijkstra-poj-3268/" rel="prev" title="Silver Cow Party问题(Dijkstra算法求解)">
+                Silver Cow Party问题(Dijkstra算法求解) <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/me.jpg" alt="陈洋">
+            
+              <p class="site-author-name" itemprop="name">陈洋</p>
+              <p class="site-description motion-element" itemprop="description">18级软工学生</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#迷宫问题"><span class="nav-number">1.</span> <span class="nav-text">迷宫问题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#“栈”求解迷宫问题"><span class="nav-number">1.1.</span> <span class="nav-text">“栈”求解迷宫问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#行走规则"><span class="nav-number">1.1.1.</span> <span class="nav-text">行走规则</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#算法思路"><span class="nav-number">1.1.2.</span> <span class="nav-text">算法思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#算法代码"><span class="nav-number">1.1.3.</span> <span class="nav-text">算法代码</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#栈的定义"><span class="nav-number">1.1.3.1.</span> <span class="nav-text">栈的定义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算法设计"><span class="nav-number">1.1.3.2.</span> <span class="nav-text">算法设计</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#完整代码"><span class="nav-number">1.1.3.3.</span> <span class="nav-text">完整代码</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#最终迷宫路径"><span class="nav-number">1.1.4.</span> <span class="nav-text">最终迷宫路径</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#算法总结"><span class="nav-number">1.1.5.</span> <span class="nav-text">算法总结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#“队列”求解迷宫问题"><span class="nav-number">1.2.</span> <span class="nav-text">“队列”求解迷宫问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#算法思路-1"><span class="nav-number">1.2.1.</span> <span class="nav-text">算法思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#算法代码-1"><span class="nav-number">1.2.2.</span> <span class="nav-text">算法代码</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#队列定义"><span class="nav-number">1.2.2.1.</span> <span class="nav-text">队列定义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算法设计-1"><span class="nav-number">1.2.2.2.</span> <span class="nav-text">算法设计</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#完整代码-1"><span class="nav-number">1.2.2.3.</span> <span class="nav-text">完整代码</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#最终迷宫路径（小迷宫）"><span class="nav-number">1.2.3.</span> <span class="nav-text">最终迷宫路径（小迷宫）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#最终迷宫路径（原题迷宫）"><span class="nav-number">1.2.4.</span> <span class="nav-text">最终迷宫路径（原题迷宫）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#算法总结-1"><span class="nav-number">1.2.5.</span> <span class="nav-text">算法总结</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">陈洋</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+<!-- 新增访客统计代码 -->
+
+<div class="busuanzi-count">
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      访问用户： <span class="busuanzi-value" id="busuanzi_value_site_uv"></span> 人
+    </span>
+    <div class="powered-by"></div>
+    <span class="site-uv">
+      <i class="fa fa-eye"></i>
+      访问次数： <span class="busuanzi-value" id="busuanzi_value_site_pv"></span> 次
+    </span>
+    <!-- 博客字数统计 -->
+    <span class="site-pv">
+      <i class="fa fa-pencil"></i>
+      博客全站共： <span class="post-count">18.9k</span> 字
+    </span>
+</div>
+<!-- 新增访客统计代码 END-->
+
+<!-- 在网页底部添加网站运行时间 -->
+<span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+<script>
+    var now = new Date();
+    function createtime() {
+        var grt= new Date("07/21/2019 00:00:00");//此处修改你的建站时间或者网站上线时间
+        now.setTime(now.getTime()+250);
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;}
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;}
+        document.getElementById("timeDate").innerHTML = "Run for "+dnum+" Days ";
+        document.getElementById("times").innerHTML = hnum + " Hours " + mnum + " m " + snum + " s";
+    }
+setInterval("createtime()",250);
+</script>
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共18.9k字</span>
+</div>
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
