@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="字符串,">
+  <meta name="keywords" content="模拟,">
 
 
 
@@ -86,21 +86,20 @@
 
 
 
-<meta name="description" content="题目描述输入是一个字符串，判断它是否为回文串以及镜像串。输入字符串保证不含数字0 。所谓回文串，就是反转以后和原串相同，如 abba 和 madam 。所谓镜像串，就是左右镜像之后和原串相同，如 2S 和 3AIAE 。">
-<meta name="keywords" content="字符串">
+<meta name="description" content="题目描述你的任务是实现一个经典的“猜数字”游戏。给定答案序列和用户猜的序列，统计有多少数字位置正确（设为 A ），有多少数字在两个序列中都出现过但位置不对（ B ）。输入包含多组数据。每组输入第一行为序列长度 n ，第二行是答案序列，接下来是若干行猜测序列。猜测序列全 0 时表示该组数据结束。n=0 时输入结束。">
+<meta name="keywords" content="模拟">
 <meta property="og:type" content="article">
-<meta property="og:title" content="回文词(Palindromes,UVa401)">
-<meta property="og:url" content="http://Kuluuu.github.io/2019/09/28/uva401/index.html">
+<meta property="og:title" content="猜数字游戏的提示(Master-Mind Hints,UVa 340)">
+<meta property="og:url" content="http://Kuluuu.github.io/2019/09/29/uva340/index.html">
 <meta property="og:site_name" content="ChenYang&#39;s Blog">
-<meta property="og:description" content="题目描述输入是一个字符串，判断它是否为回文串以及镜像串。输入字符串保证不含数字0 。所谓回文串，就是反转以后和原串相同，如 abba 和 madam 。所谓镜像串，就是左右镜像之后和原串相同，如 2S 和 3AIAE 。">
+<meta property="og:description" content="题目描述你的任务是实现一个经典的“猜数字”游戏。给定答案序列和用户猜的序列，统计有多少数字位置正确（设为 A ），有多少数字在两个序列中都出现过但位置不对（ B ）。输入包含多组数据。每组输入第一行为序列长度 n ，第二行是答案序列，接下来是若干行猜测序列。猜测序列全 0 时表示该组数据结束。n=0 时输入结束。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://kuluuu.github.io/assets/blogImg/uva401/401-1.jpg">
-<meta property="og:image" content="http://kuluuu.github.io/assets/blogImg/uva401/401-2.PNG">
-<meta property="og:updated_time" content="2019-09-28T17:03:50.726Z">
+<meta property="og:image" content="http://kuluuu.github.io/assets/blogImg/uva340/340-1.jpg">
+<meta property="og:updated_time" content="2019-09-28T17:27:36.239Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="回文词(Palindromes,UVa401)">
-<meta name="twitter:description" content="题目描述输入是一个字符串，判断它是否为回文串以及镜像串。输入字符串保证不含数字0 。所谓回文串，就是反转以后和原串相同，如 abba 和 madam 。所谓镜像串，就是左右镜像之后和原串相同，如 2S 和 3AIAE 。">
-<meta name="twitter:image" content="http://kuluuu.github.io/assets/blogImg/uva401/401-1.jpg">
+<meta name="twitter:title" content="猜数字游戏的提示(Master-Mind Hints,UVa 340)">
+<meta name="twitter:description" content="题目描述你的任务是实现一个经典的“猜数字”游戏。给定答案序列和用户猜的序列，统计有多少数字位置正确（设为 A ），有多少数字在两个序列中都出现过但位置不对（ B ）。输入包含多组数据。每组输入第一行为序列长度 n ，第二行是答案序列，接下来是若干行猜测序列。猜测序列全 0 时表示该组数据结束。n=0 时输入结束。">
+<meta name="twitter:image" content="http://kuluuu.github.io/assets/blogImg/uva340/340-1.jpg">
 
 
 
@@ -130,13 +129,13 @@
 
 
 
-  <link rel="canonical" href="http://Kuluuu.github.io/2019/09/28/uva401/">
+  <link rel="canonical" href="http://Kuluuu.github.io/2019/09/29/uva340/">
 
 
 
 
 
-  <title>回文词(Palindromes,UVa401) | ChenYang's Blog</title>
+  <title>猜数字游戏的提示(Master-Mind Hints,UVa 340) | ChenYang's Blog</title>
   
 
 
@@ -273,7 +272,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://Kuluuu.github.io/2019/09/28/uva401/">
+    <link itemprop="mainEntityOfPage" href="http://Kuluuu.github.io/2019/09/29/uva340/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="陈洋">
@@ -290,7 +289,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">回文词(Palindromes,UVa401)</h1>
+          <h1 class="post-title" itemprop="name headline">猜数字游戏的提示(Master-Mind Hints,UVa 340)</h1>
         
 
         <div class="post-meta">
@@ -302,8 +301,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-28T23:20:50+08:00">
-                2019-09-28
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-29T01:02:07+08:00">
+                2019-09-29
               </time>
             
 
@@ -362,29 +361,31 @@
       
 
       
-        <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>输入是一个字符串，判断它是否为回文串以及镜像串。输入字符串保证不含数字0 。所谓回文串，就是反转以后和原串相同，如 abba 和 madam 。所谓镜像串，就是左右镜像之后和原串相同，如 2S 和 3AIAE 。  </p>
+        <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>你的任务是实现一个经典的“猜数字”游戏。给定答案序列和用户猜的序列，统计有多少数字位置正确（设为 A ），有多少数字在两个序列中都出现过但位置不对（ B ）。<br>输入包含多组数据。每组输入第一行为序列长度 n ，第二行是答案序列，接下来是若干行猜测序列。猜测序列全 0 时表示该组数据结束。n=0 时输入结束。</p>
 <a id="more"></a>
 
-<p>注意，并不是每个字符在镜像之后都能得到一个合法字符。<br>在本题中，每个合法字符的镜像如下表所示：</p>
-<blockquote>
-<p>Character   Reverse<br>A    - - - -        A<br>E    - - - -        3<br>H    - - - -        H<br>I    - - - -        I<br>J    - - - -        L<br>L    - - - -        J<br>M    - - - -        M<br>O    - - - -        O<br>S    - - - -        2<br>T    - - - -        T<br>U    - - - -        U<br>V    - - - -        V<br>W    - - - -        W<br>X    - - - -        X<br>Y    - - - -        Y<br>Z    - - - -        5<br>1    - - - -        1<br>2    - - - -        S<br>5    - - - -        Z<br>8    - - - -        8  </p>
+<p>对于每一组数据，输出的开头应有一行 “Game x:”（没有双引号，x为当前组数据的编号，从1开始递增），然后对于每个猜测序列，输出一组数，格式(A,B)，A,B的意义如上所示，注意在(A,B)之前要输出四个空格符。</p>
+<h2 id="输入"><a href="#输入" class="headerlink" title="输入"></a>输入</h2><blockquote>
+<p>4<br>1 3 5 5<br>1 1 2 3<br>4 3 3 5<br>6 5 5 1<br>6 1 3 5<br>1 3 5 5<br>0 0 0 0<br>10<br>1 2 2 2 4 5 6 6 6 9<br>1 2 3 4 5 6 7 8 9 1<br>1 1 2 2 3 3 4 4 5 5<br>1 2 1 3 1 5 1 6 1 9<br>1 2 2 5 5 5 6 6 6 7<br>0 0 0 0 0 0 0 0 0 0<br>0  </p>
 </blockquote>
-<h2 id="输入"><a href="#输入" class="headerlink" title="输入"></a>输入</h2><p>NOTAPALINDROME<br>ISAPALINILAPASI<br>2A3MEAS<br>ATOYOTA</p>
-<h2 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h2><p>NOTAPALINDROME – is not a palindrome.<br>ISAPALINILAPASI – is a regular palindrome.<br>2A3MEAS – is a mirrored string.<br>ATOYOTA – is a mirrored palindrome.  </p>
-<h2 id="原题（PDF）"><a href="#原题（PDF）" class="headerlink" title="原题（PDF）"></a>原题（PDF）</h2><p><img src="/assets/blogImg/uva401/401-1.jpg" alt="1"></p>
-<h2 id="算法分析"><a href="#算法分析" class="headerlink" title="算法分析"></a>算法分析</h2><p>关键点：在判断回文串的同时，判断是否为镜像串。<br>找到对应字符在镜像表中的对应位置</p>
-<h2 id="解题代码"><a href="#解题代码" class="headerlink" title="解题代码"></a>解题代码</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;ctype.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">char</span> *rev=<span class="string">"A   3  HIL JM O   2TUVWXY51SE Z  8 "</span>;  <span class="comment">//镜像表</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">char</span> *msg[]=&#123;<span class="string">"not a palindrome"</span>,<span class="string">"a regular palindrome"</span>,<span class="string">"a mirrored string"</span>,<span class="string">"a mirrored palindrome"</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">//字符在镜像表中的对应位置</span></span><br><span class="line"><span class="function"><span class="keyword">char</span> <span class="title">r</span><span class="params">(<span class="keyword">char</span> ch)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(<span class="built_in">isalpha</span>(ch))           <span class="comment">//isalpha()用于判断字符是否为字母</span></span><br><span class="line">    <span class="keyword">return</span> rev[ch-<span class="string">'A'</span>];     <span class="comment">//镜像表中前26个均为字母排序</span></span><br><span class="line">  <span class="keyword">return</span> rev[ch-<span class="string">'0'</span>+<span class="number">25</span>];    <span class="comment">//镜像表中26个字典序结束后即为数字</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">char</span> s[<span class="number">30</span>];</span><br><span class="line">  <span class="keyword">while</span>(<span class="built_in">scanf</span>(<span class="string">"%s"</span>,s)==<span class="number">1</span>)&#123;</span><br><span class="line">    <span class="keyword">int</span> len=<span class="built_in">strlen</span>(s);</span><br><span class="line">    <span class="keyword">int</span> p=<span class="number">1</span>,m=<span class="number">1</span>;    <span class="comment">//回文串与镜像串的标志</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;(len+<span class="number">1</span>)/<span class="number">2</span>;i++)&#123;</span><br><span class="line">      <span class="keyword">if</span>(s[i]!=s[len<span class="number">-1</span>-i])  p=<span class="number">0</span>;    <span class="comment">//非回文串  </span></span><br><span class="line">      <span class="keyword">if</span>(r(s[i])!=s[len-i<span class="number">-1</span>]) m=<span class="number">0</span>;  <span class="comment">//非镜像串</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%s -- is %s.\n"</span>,s,msg[m*<span class="number">2</span>+p]);  <span class="comment">//用(m*2+p)的值巧妙的统一输出</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h2><p>（每个(A,B)前都有一个制表符TAB）</p>
+<blockquote>
+<p>Game 1:<br>(1,1)<br>(2,0)<br>(1,2)<br>(1,2)<br>(4,0)<br>Game 2:<br>(2,4)<br>(3,2)<br>(5,0)<br>(7,0)  </p>
+</blockquote>
+<h2 id="原题（PDF）"><a href="#原题（PDF）" class="headerlink" title="原题（PDF）"></a>原题（PDF）</h2><p><img src="/assets/blogImg/uva340/340-1.jpg" alt="1">  </p>
+<h2 id="题目分析"><a href="#题目分析" class="headerlink" title="题目分析"></a>题目分析</h2><p>通过匹配情况可以直接统计 A ，为了求得 B ，对于每个数字（1-9），统计二者出现次数 c1 和 c2 ，则min(c1,c2)就是该数字对于 B 的贡献。最后要减去A的部分。<br><strong>B 中记录的是猜测串和答案串中每个数字 d 可能造成的最大不匹配数，A 中记录的是猜测串和答案串的实际匹配个数，因此 B-A 即为位置不匹配数</strong></p>
+<h2 id="案例分析"><a href="#案例分析" class="headerlink" title="案例分析"></a>案例分析</h2><p>如案例1：<br>第一行 4 为序列长度<br>第二行 1 3 5 5 为答案串<br>之后若干行 为猜测串<br>注意：  </p>
+<ul>
+<li>1、先判断答案串与猜测串的匹配相同情况</li>
+<li>2、在字符匹配成功后，该字符位置的字符不可能再出现位置不同的情况</li>
+<li>3、在答案串中同一个数字会会出现多次（即无法通过某一数字是否用过来确定匹配）</li>
+<li>4、序列内容数字的范围在1-9之间</li>
+</ul>
+<h2 id="解题标程"><a href="#解题标程" class="headerlink" title="解题标程"></a>解题标程</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> maxn 1010</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">int</span> n;</span><br><span class="line">  <span class="keyword">int</span> a[maxn];    <span class="comment">//答案串</span></span><br><span class="line">  <span class="keyword">int</span> b[maxn];    <span class="comment">//猜测串</span></span><br><span class="line">  <span class="keyword">int</span> kase=<span class="number">0</span>;</span><br><span class="line">  <span class="keyword">while</span>(<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n)==<span class="number">1</span>&amp;&amp;n)&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%Game %d:\n"</span>,++kase);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)</span><br><span class="line">      <span class="built_in">scanf</span>(<span class="string">"%s"</span>,a);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span>(<span class="number">1</span>)&#123;</span><br><span class="line">      <span class="keyword">int</span> A=<span class="number">0</span>,B=<span class="number">0</span>;</span><br><span class="line">      <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%c"</span>,&amp;b[i]);</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//统计匹配情况，A 的值</span></span><br><span class="line">        <span class="keyword">if</span>(a[i]==b[i])</span><br><span class="line">          A++;</span><br><span class="line">      &#125;</span><br><span class="line">      </span><br><span class="line">      <span class="comment">//开始记录B的值</span></span><br><span class="line">      <span class="keyword">for</span>(<span class="keyword">int</span> d=<span class="number">1</span>;d&lt;=<span class="number">9</span>;d++)&#123;</span><br><span class="line">        <span class="keyword">int</span> c1=<span class="number">0</span>;   <span class="comment">//记录答案串中等于 d 的个数</span></span><br><span class="line">        <span class="keyword">int</span> c2=<span class="number">0</span>;   <span class="comment">//记录猜测串中等于 d 的个数</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)[</span><br><span class="line">          <span class="keyword">if</span>(a[i]==d) c1++;</span><br><span class="line">          <span class="keyword">if</span>(b[i]==d) c2++;</span><br><span class="line">        ]</span><br><span class="line"></span><br><span class="line">        <span class="comment">//比较c1和c2确定两串中可能的最大不匹配数</span></span><br><span class="line">        <span class="keyword">if</span>(c1&lt;c2) B+=c1;</span><br><span class="line">        <span class="keyword">else</span>  B+=c2;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="built_in">printf</span>(<span class="string">"  (%d,%d)\n"</span>,A,B-A);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h2 id="错题总结"><a href="#错题总结" class="headerlink" title="错题总结"></a>错题总结</h2><ul>
-<li>1、先进行回文串的判断，再进行镜像串的判断。二者判断可同时进行。</li>
-<li>2、&lt;ctype.h&gt; 头文件中定义的isalpha、isdigit、isprint等工具可以用于判断字符的属性  </li>
-<li><strong>isalpha()</strong>：用于<strong>判断是否为字母</strong></li>
-<li><strong>isdigit()</strong>：用于<strong>判断是否为数字</strong></li>
-<li><strong>isprint()</strong>：用于<strong>判断是否为可打印字符</strong>  </li>
-</ul>
-<p><img src="/assets/blogImg/uva401/401-2.PNG" alt="1">  </p>
-<ul>
-<li>3、标程中的 msg[m*2+p] 的巧妙统一输出，可以多进行思考、借鉴。</li>
+<li>1、用 <strong>可能的不匹配数</strong> 减去 <strong>已经成功的匹配数</strong> 所得为 <strong>实际不匹配数</strong>的巧妙想法</li>
+<li>2、最初想法为记录在答案串中每个数字的使用和匹配情况，用表来对应表示，但发现答案串中的数字可以为重复！！！</li>
 </ul>
 
       
@@ -403,12 +404,12 @@
   <script type="text/javascript" src="http://jslibs.wuxubj.cn/sweetalert_mini/jquery-1.7.1.min.js"></script>
   <script src="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.min.js"></script>
   <link rel="stylesheet" type="text/css" href="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.mini.css">
-  <p><span>本文标题:</span><a href="/2019/09/28/uva401/">回文词(Palindromes,UVa401)</a></p>
+  <p><span>本文标题:</span><a href="/2019/09/29/uva340/">猜数字游戏的提示(Master-Mind Hints,UVa 340)</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 陈洋 的个人博客">陈洋</a></p>
-  <p><span>发布时间:</span>2019年09月28日 - 23:09</p>
+  <p><span>发布时间:</span>2019年09月29日 - 01:09</p>
   <p><span>最后更新:</span>2019年09月29日 - 01:09</p>
-  <p><span>原始链接:</span><a href="/2019/09/28/uva401/" title="回文词(Palindromes,UVa401)">http://Kuluuu.github.io/2019/09/28/uva401/</a>
-    <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://Kuluuu.github.io/2019/09/28/uva401/" aria-label="复制成功！"></i></span>
+  <p><span>原始链接:</span><a href="/2019/09/29/uva340/" title="猜数字游戏的提示(Master-Mind Hints,UVa 340)">http://Kuluuu.github.io/2019/09/29/uva340/</a>
+    <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://Kuluuu.github.io/2019/09/29/uva340/" aria-label="复制成功！"></i></span>
   </p>
   <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
 </div>
@@ -440,7 +441,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/字符串/" rel="tag"># 字符串</a>
+            <a href="/tags/模拟/" rel="tag"># 模拟</a>
           
         </div>
       
@@ -453,8 +454,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/09/15/MaxSubseqSum/" rel="next" title="最大子序列问题四种解题方法">
-                <i class="fa fa-chevron-left"></i> 最大子序列问题四种解题方法
+              <a href="/2019/09/29/uva1584/" rel="next" title="环状序列(Circular Sequence,ACM/ICPC Seoul 2004,UVa1584)">
+                <i class="fa fa-chevron-left"></i> 环状序列(Circular Sequence,ACM/ICPC Seoul 2004,UVa1584)
               </a>
             
           </div>
@@ -462,10 +463,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/09/29/uva1584/" rel="prev" title="环状序列(Circular Sequence,ACM/ICPC Seoul 2004,UVa1584)">
-                环状序列(Circular Sequence,ACM/ICPC Seoul 2004,UVa1584) <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -599,7 +596,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目描述"><span class="nav-number">1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#输入"><span class="nav-number">2.</span> <span class="nav-text">输入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#输出"><span class="nav-number">3.</span> <span class="nav-text">输出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#原题（PDF）"><span class="nav-number">4.</span> <span class="nav-text">原题（PDF）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#算法分析"><span class="nav-number">5.</span> <span class="nav-text">算法分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解题代码"><span class="nav-number">6.</span> <span class="nav-text">解题代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#错题总结"><span class="nav-number">7.</span> <span class="nav-text">错题总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目描述"><span class="nav-number">1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#输入"><span class="nav-number">2.</span> <span class="nav-text">输入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#输出"><span class="nav-number">3.</span> <span class="nav-text">输出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#原题（PDF）"><span class="nav-number">4.</span> <span class="nav-text">原题（PDF）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#题目分析"><span class="nav-number">5.</span> <span class="nav-text">题目分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#案例分析"><span class="nav-number">6.</span> <span class="nav-text">案例分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解题标程"><span class="nav-number">7.</span> <span class="nav-text">解题标程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#错题总结"><span class="nav-number">8.</span> <span class="nav-text">错题总结</span></a></li></ol></div>
             
 
           </div>
