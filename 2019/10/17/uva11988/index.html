@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-center-atom.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+  <meta name="baidu-site-verification" content="3fE9IyxcPl">
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/1.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/1.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/1.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/1.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="链表,模拟,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="题目描述你在输入文章的时候，键盘上的Home键和End键出了问题，会不定时的按下。你却不知道此问题，而是专心致志地打稿子，甚至显示器都没开。当你打开显示器之后，展现你面前的数一段悲剧文本。你的任务是在显示器打开前计算出这段悲剧的文本。 给你一段按键的文本，其中’[‘表示Home键，’]’表示End键，输入结束标志是文件结束符（EOF）。输出一行，即这段悲剧文本。">
+<meta name="keywords" content="链表,模拟">
+<meta property="og:type" content="article">
+<meta property="og:title" content="残损的键盘(又名:悲剧文本)(Broken Keyboard(a.k.a Beiju Text),UVa11988)">
+<meta property="og:url" content="http://Kuluuu.github.io/2019/10/17/uva11988/index.html">
+<meta property="og:site_name" content="ChenYang&#39;s Blog">
+<meta property="og:description" content="题目描述你在输入文章的时候，键盘上的Home键和End键出了问题，会不定时的按下。你却不知道此问题，而是专心致志地打稿子，甚至显示器都没开。当你打开显示器之后，展现你面前的数一段悲剧文本。你的任务是在显示器打开前计算出这段悲剧的文本。 给你一段按键的文本，其中’[‘表示Home键，’]’表示End键，输入结束标志是文件结束符（EOF）。输出一行，即这段悲剧文本。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://kuluuu.github.io/assets/blogImg/uva11988/11988-1.png">
+<meta property="og:updated_time" content="2019-10-18T06:12:19.776Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="残损的键盘(又名:悲剧文本)(Broken Keyboard(a.k.a Beiju Text),UVa11988)">
+<meta name="twitter:description" content="题目描述你在输入文章的时候，键盘上的Home键和End键出了问题，会不定时的按下。你却不知道此问题，而是专心致志地打稿子，甚至显示器都没开。当你打开显示器之后，展现你面前的数一段悲剧文本。你的任务是在显示器打开前计算出这段悲剧的文本。 给你一段按键的文本，其中’[‘表示Home键，’]’表示End键，输入结束标志是文件结束符（EOF）。输出一行，即这段悲剧文本。">
+<meta name="twitter:image" content="http://kuluuu.github.io/assets/blogImg/uva11988/11988-1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://Kuluuu.github.io/2019/10/17/uva11988/">
+
+
+
+
+
+  <title>残损的键盘(又名:悲剧文本)(Broken Keyboard(a.k.a Beiju Text),UVa11988) | ChenYang's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+  
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">ChenYang's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">心中有码，自然伟大</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://Kuluuu.github.io/2019/10/17/uva11988/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="陈洋">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/me.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ChenYang's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">残损的键盘(又名:悲剧文本)(Broken Keyboard(a.k.a Beiju Text),UVa11988)</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-17T19:35:28+08:00">
+                2019-10-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/算法竞赛入门经典/" itemprop="url" rel="index">
+                    <span itemprop="name">算法竞赛入门经典</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>你在输入文章的时候，键盘上的Home键和End键出了问题，会不定时的按下。你却不知道此问题，而是专心致志地打稿子，甚至显示器都没开。当你打开显示器之后，展现你面前的数一段悲剧文本。你的任务是在显示器打开前计算出这段悲剧的文本。 给你一段按键的文本，其中’[‘表示Home键，’]’表示End键，输入结束标志是文件结束符（EOF）。<br>输出一行，即这段悲剧文本。</p>
+<a id="more"></a>
+
+<p>输入包含多组数据，每组数据占一行，包含不超过100000个字母、下划线、字符”[“或者”]”。</p>
+<h2 id="输入"><a href="#输入" class="headerlink" title="输入"></a>输入</h2><blockquote>
+<p>This_is_a_[Beiju]_text<br>[[]][][]Happy_Birthday_to_Tsinghua_University</p>
+</blockquote>
+<h2 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h2><blockquote>
+<p>BeijuThis_is_a__text<br>Happy_Birthday_to_Tsinghua_University</p>
+</blockquote>
+<h2 id="原题（PDF）"><a href="#原题（PDF）" class="headerlink" title="原题（PDF）"></a>原题（PDF）</h2><p><img src="/assets/blogImg/uva11988/11988-1.png" alt="1">  </p>
+<h2 id="算法分析"><a href="#算法分析" class="headerlink" title="算法分析"></a>算法分析</h2><p>最简单的方法就是用<strong>数组去存储</strong>每次在首位输出的串和末尾的串，然后频繁的将尾部串strcat连接到首位串中，但是这样的<strong>算法会超时</strong><br>因此我们这里采用<strong>链表</strong>。<br><em>在C语言的算法中用数组来模拟链表，而CPP中可以直接使用STL中的list容器加上list迭代器解决问题</em><br>这里着重讲一下C语言的算法，用next数组去存储当前字符的下一位下标比如，next[1]=2,就意味着指向下标为2的字符，我们需要将next[0]单独拿出来作为没有数据存储的“头节点”，因此串s要的有效范围为1～n，并且用cur变量来记录光标位置，用last来记录当前的尾部位置，光标始终在s[cur]的右边。</p>
+<ul>
+<li>当s[i]==’[‘时，光标cur=0，光标到首部</li>
+<li>当s[i]==’]’时，光标cur=last，光标到末尾</li>
+<li>当s[i]为字符时，根据光标的位置（模拟尾插法）next[i]=next[cur];next[cur]=i  然后让光标等于i，去处理下一个i，如果尾部和光标位置相同意味着最近的控制字符为’]’，则尾部也同样移向i的位置。<h2 id="解题标程-C"><a href="#解题标程-C" class="headerlink" title="解题标程(C)"></a>解题标程(C)</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> maxl 100005</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">char</span> s[maxl];</span><br><span class="line">    <span class="keyword">while</span>(~<span class="built_in">scanf</span>(<span class="string">"%s"</span>,s+<span class="number">1</span>))</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> Next[maxl]=&#123;<span class="number">0</span>&#125;;</span><br><span class="line">        <span class="keyword">int</span> cur=<span class="number">0</span>,last=<span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; s[i]; ++i)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(s[i]==<span class="string">'['</span>)    cur=<span class="number">0</span>;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(s[i]==<span class="string">']'</span>)    cur=last; <span class="comment">//last会停止在[的左边一个字符，让光标cur回到last来继续链接</span></span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                <span class="comment">//链表插入操作（就类似于尾插法）</span></span><br><span class="line">                Next[i]=Next[cur];  <span class="comment">//（令i的后续等于cur的后续，i始终是大于cur的）（类似于p-&gt;next=l-&gt;next）</span></span><br><span class="line">                Next[cur]=i;  <span class="comment">//（令cur的后续等于i）（类似与l-&gt;next=p）</span></span><br><span class="line"></span><br><span class="line">                <span class="comment">//last的更新</span></span><br><span class="line">                <span class="keyword">if</span>(cur==last)    last=i;</span><br><span class="line">                <span class="comment">//cur的更新</span></span><br><span class="line">                cur=i;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = Next[<span class="number">0</span>]; i != <span class="number">0</span>; i = Next[i])</span><br><span class="line">            <span class="keyword">if</span> (s[i]!=<span class="string">'['</span>&amp;&amp;s[i]!=<span class="string">']'</span>)</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">"%c"</span>,s[i]);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="解题标程-CPP"><a href="#解题标程-CPP" class="headerlink" title="解题标程(CPP)"></a>解题标程(CPP)</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;list&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">char</span> str[<span class="number">100005</span>];</span><br><span class="line">    <span class="built_in">list</span> &lt;<span class="keyword">char</span>&gt; s;</span><br><span class="line">    <span class="keyword">while</span> (<span class="built_in">scanf</span>(<span class="string">"%s"</span>,str)!=EOF)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">list</span> &lt;<span class="keyword">char</span>&gt;::iterator it=s.begin();</span><br><span class="line">        <span class="keyword">int</span> n=<span class="built_in">strlen</span>(str);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">char</span> ch=str[i];</span><br><span class="line">            <span class="keyword">if</span> (ch==<span class="string">'['</span>) it=s.begin();</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(ch==<span class="string">']'</span>) it=s.end();</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                it=s.insert(it,ch);</span><br><span class="line">                it++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (it=s.begin();it!=s.end();it++)</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"%c"</span>,*it);</span><br><span class="line">        s.clear();</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="错题总结"><a href="#错题总结" class="headerlink" title="错题总结"></a>错题总结</h2><ul>
+<li>在数组中频繁移动元素是很低效的，如有可能，可以使用链表</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    <div>
+      
+        
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script type="text/javascript" src="http://jslibs.wuxubj.cn/sweetalert_mini/jquery-1.7.1.min.js"></script>
+  <script src="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.mini.css">
+  <p><span>本文标题:</span><a href="/2019/10/17/uva11988/">残损的键盘(又名:悲剧文本)(Broken Keyboard(a.k.a Beiju Text),UVa11988)</a></p>
+  <p><span>文章作者:</span><a href="/" title="访问 陈洋 的个人博客">陈洋</a></p>
+  <p><span>发布时间:</span>2019年10月17日 - 19:10</p>
+  <p><span>最后更新:</span>2019年10月18日 - 14:10</p>
+  <p><span>原始链接:</span><a href="/2019/10/17/uva11988/" title="残损的键盘(又名:悲剧文本)(Broken Keyboard(a.k.a Beiju Text),UVa11988)">http://Kuluuu.github.io/2019/10/17/uva11988/</a>
+    <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://Kuluuu.github.io/2019/10/17/uva11988/" aria-label="复制成功！"></i></span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+    clipboard.on('success', $(function(){
+      $(".fa-clipboard").click(function(){
+        swal({   
+          title: "",   
+          text: '复制成功',   
+          html: false,
+          timer: 500,   
+          showConfirmButton: false
+        });
+      });
+    }));  
+</script>
+
+      
+    </div>
+    
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/链表/" rel="tag"># 链表</a>
+          
+            <a href="/tags/模拟/" rel="tag"># 模拟</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/10/13/uva210/" rel="next" title="并行程序模拟（Concurrency Simulator,ACM/ICPC World Finals 1991,UVa210）">
+                <i class="fa fa-chevron-left"></i> 并行程序模拟（Concurrency Simulator,ACM/ICPC World Finals 1991,UVa210）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/10/18/uva12657/" rel="prev" title="移动盒子(Boxes in a Line,Uva 12657)">
+                移动盒子(Boxes in a Line,Uva 12657) <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/me.jpg" alt="陈洋">
+            
+              <p class="site-author-name" itemprop="name">陈洋</p>
+              <p class="site-description motion-element" itemprop="description">18级软工学生</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/Kuluuu" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:1140377596@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目描述"><span class="nav-number">1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#输入"><span class="nav-number">2.</span> <span class="nav-text">输入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#输出"><span class="nav-number">3.</span> <span class="nav-text">输出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#原题（PDF）"><span class="nav-number">4.</span> <span class="nav-text">原题（PDF）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#算法分析"><span class="nav-number">5.</span> <span class="nav-text">算法分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解题标程-C"><span class="nav-number">6.</span> <span class="nav-text">解题标程(C)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解题标程-CPP"><span class="nav-number">7.</span> <span class="nav-text">解题标程(CPP)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#错题总结"><span class="nav-number">8.</span> <span class="nav-text">错题总结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">陈洋</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+<!-- 新增访客统计代码 -->
+
+<div class="busuanzi-count">
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      访问用户： <span class="busuanzi-value" id="busuanzi_value_site_uv"></span> 人
+    </span>
+    <div class="powered-by"></div>
+    <span class="site-uv">
+      <i class="fa fa-eye"></i>
+      访问次数： <span class="busuanzi-value" id="busuanzi_value_site_pv"></span> 次
+    </span>
+    <!-- 博客字数统计 -->
+    <span class="site-pv">
+      <i class="fa fa-pencil"></i>
+      博客全站共： <span class="post-count">28.6k</span> 字
+    </span>
+</div>
+<!-- 新增访客统计代码 END-->
+
+<!-- 在网页底部添加网站运行时间 -->
+<span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+<script>
+    var now = new Date();
+    function createtime() {
+        var grt= new Date("07/21/2019 00:00:00");//此处修改你的建站时间或者网站上线时间
+        now.setTime(now.getTime()+250);
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;}
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;}
+        document.getElementById("timeDate").innerHTML = "Run for "+dnum+" Days ";
+        document.getElementById("times").innerHTML = hnum + " Hours " + mnum + " m " + snum + " s";
+    }
+setInterval("createtime()",250);
+</script>
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共28.6k字</span>
+</div>
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
