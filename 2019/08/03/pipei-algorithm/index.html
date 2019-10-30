@@ -119,8 +119,8 @@
 <meta property="og:image" content="http://kuluuu.github.io/assets/blogImg/pipeialgorithm/pipei19.PNG">
 <meta property="og:image" content="http://kuluuu.github.io/assets/blogImg/pipeialgorithm/pipei20.PNG">
 <meta property="og:image" content="http://kuluuu.github.io/assets/blogImg/pipeialgorithm/pipei21.PNG">
-<meta property="og:image" content="http://kuluuu.github.io/assets/blogImg/pipeialgorithm/pipei22.PNG">
-<meta property="og:updated_time" content="2019-10-13T15:12:12.938Z">
+<meta property="og:image" content="http://kuluuu.github.io/assets/blogImg/pipeialgorithm/pipei23.PNG">
+<meta property="og:updated_time" content="2019-10-30T07:57:20.013Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="串的模式匹配算法设计（数据结构学习笔记）">
 <meta name="twitter:description" content="BF算法、KMP算法串的模式匹配问题就是在串s中找到一个与串t相等的子串，通常将串s称为目标串，串t称为模式串，因此该问题被称为模式匹配问题。Brute-Force算法与Knuth-Morris-Pratt算法都是解决串的模式匹配问题的算法设计，但二者效率不同，使用场景也不尽相同。">
@@ -476,7 +476,7 @@
 <li>当t[j]=t[next[j]]时： nextval[j]=nextval[next[j]] </li>
 <li>否则： nextval[j]=next[j]</li>
 </ul>
-<p>整个nextval数组的初始化为：<br><img src="/assets/blogImg/pipeialgorithm/pipei22.PNG" alt="22">  </p>
+<p>整个nextval数组的初始化为：<br><img src="/assets/blogImg/pipeialgorithm/pipei23.PNG" alt="23">  </p>
 <h3 id="算法代码-2"><a href="#算法代码-2" class="headerlink" title="算法代码"></a>算法代码</h3><h4 id="算法设计-2"><a href="#算法设计-2" class="headerlink" title="算法设计"></a>算法设计</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">GetNextval</span><span class="params">(SqString t,<span class="keyword">int</span> nextval[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i=<span class="number">0</span>,j=<span class="number">-1</span>;</span><br><span class="line">	nextval[<span class="number">0</span>]=<span class="number">-1</span>;	<span class="comment">//默认nextval[0]为-1</span></span><br><span class="line">	<span class="keyword">while</span>(j&lt;t.length)&#123;</span><br><span class="line">		<span class="keyword">if</span>(j==<span class="number">-1</span>||t.data[i]==t.data[j])&#123;	</span><br><span class="line">			i++,j++;</span><br><span class="line">			<span class="keyword">if</span>(t.data[i]!=t.data[j])	<span class="comment">//当t[i]!=t[next[j]]时</span></span><br><span class="line">				nextval[i]=j;	<span class="comment">//nextval[j]=next[j]</span></span><br><span class="line">			<span class="keyword">else</span></span><br><span class="line">				nextval[i]=nextval[j];	<span class="comment">//当t[i]==t[next[j]]时,nextval[j]=nextval[next[j]] </span></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">			j=nextval[j];</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h3 id="算法总结-2"><a href="#算法总结-2" class="headerlink" title="算法总结"></a>算法总结</h3><p>改进后的KMP算法时间复杂度也是O(m+n)</p>
@@ -505,7 +505,7 @@
   <p><span>本文标题:</span><a href="/2019/08/03/pipei-algorithm/">串的模式匹配算法设计（数据结构学习笔记）</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 陈洋 的个人博客">陈洋</a></p>
   <p><span>发布时间:</span>2019年08月03日 - 22:08</p>
-  <p><span>最后更新:</span>2019年10月13日 - 23:10</p>
+  <p><span>最后更新:</span>2019年10月30日 - 15:10</p>
   <p><span>原始链接:</span><a href="/2019/08/03/pipei-algorithm/" title="串的模式匹配算法设计（数据结构学习笔记）">http://Kuluuu.github.io/2019/08/03/pipei-algorithm/</a>
     <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://Kuluuu.github.io/2019/08/03/pipei-algorithm/" aria-label="复制成功！"></i></span>
   </p>
@@ -647,7 +647,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">25</span>
+                  <span class="site-state-item-count">27</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -669,7 +669,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">25</span>
+                  <span class="site-state-item-count">28</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -777,7 +777,7 @@
     <!-- 博客字数统计 -->
     <span class="site-pv">
       <i class="fa fa-pencil"></i>
-      博客全站共： <span class="post-count">29.4k</span> 字
+      博客全站共： <span class="post-count">31k</span> 字
     </span>
 </div>
 <!-- 新增访客统计代码 END-->
@@ -803,7 +803,7 @@ setInterval("createtime()",250);
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共29.4k字</span>
+  <span class="post-count">博客全站共31k字</span>
 </div>
         
 
