@@ -88,19 +88,19 @@
 
 
 
-<meta name="description" content="题目描述农场有N头牛，每头牛会在一个特定的时间区间[A, B]（包括A和B）在畜栏里挤奶，且一个畜栏里同时只能有一头牛在挤奶。现在农场主希望知道最少几个畜栏能满足上述要求，并要求给出每头牛被安排的方案。对于多种可行方案，主要输出一种即可。 输入要求输入的第一行包含一个整数N(1 ≤ N ≤ 50, 000)，表示有N牛头；接下来N行每行包含两个数，分别表示这头牛的挤奶时间[Ai, Bi](1 ≤">
+<meta name="description" content="题目描述农场有N头牛，每头牛会在一个特定的时间区间[A, B]（包括A和B）在畜栏里挤奶，且一个畜栏里同时只能有一头牛在挤奶。现在农场主希望知道最少几个畜栏能满足上述要求，并要求给出每头牛被安排的方案。对于多种可行方案，主要输出一种即可。">
 <meta name="keywords" content="贪心,优先队列">
 <meta property="og:type" content="article">
 <meta property="og:title" content="畜栏保留问题(OpenJ_Bailian - 4144)">
 <meta property="og:url" content="http://Kuluuu.github.io/2019/11/22/bailian-poj-4144/index.html">
 <meta property="og:site_name" content="ChenYang&#39;s Blog">
-<meta property="og:description" content="题目描述农场有N头牛，每头牛会在一个特定的时间区间[A, B]（包括A和B）在畜栏里挤奶，且一个畜栏里同时只能有一头牛在挤奶。现在农场主希望知道最少几个畜栏能满足上述要求，并要求给出每头牛被安排的方案。对于多种可行方案，主要输出一种即可。 输入要求输入的第一行包含一个整数N(1 ≤ N ≤ 50, 000)，表示有N牛头；接下来N行每行包含两个数，分别表示这头牛的挤奶时间[Ai, Bi](1 ≤">
+<meta property="og:description" content="题目描述农场有N头牛，每头牛会在一个特定的时间区间[A, B]（包括A和B）在畜栏里挤奶，且一个畜栏里同时只能有一头牛在挤奶。现在农场主希望知道最少几个畜栏能满足上述要求，并要求给出每头牛被安排的方案。对于多种可行方案，主要输出一种即可。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://kuluuu.github.io/assets/blogImg/bailian-poj-4144/bailian-poj-4144-1.png">
-<meta property="og:updated_time" content="2019-11-22T10:37:01.277Z">
+<meta property="og:updated_time" content="2019-11-22T11:18:03.312Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="畜栏保留问题(OpenJ_Bailian - 4144)">
-<meta name="twitter:description" content="题目描述农场有N头牛，每头牛会在一个特定的时间区间[A, B]（包括A和B）在畜栏里挤奶，且一个畜栏里同时只能有一头牛在挤奶。现在农场主希望知道最少几个畜栏能满足上述要求，并要求给出每头牛被安排的方案。对于多种可行方案，主要输出一种即可。 输入要求输入的第一行包含一个整数N(1 ≤ N ≤ 50, 000)，表示有N牛头；接下来N行每行包含两个数，分别表示这头牛的挤奶时间[Ai, Bi](1 ≤">
+<meta name="twitter:description" content="题目描述农场有N头牛，每头牛会在一个特定的时间区间[A, B]（包括A和B）在畜栏里挤奶，且一个畜栏里同时只能有一头牛在挤奶。现在农场主希望知道最少几个畜栏能满足上述要求，并要求给出每头牛被安排的方案。对于多种可行方案，主要输出一种即可。">
 <meta name="twitter:image" content="http://kuluuu.github.io/assets/blogImg/bailian-poj-4144/bailian-poj-4144-1.png">
 
 
@@ -364,6 +364,8 @@
 
       
         <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>农场有N头牛，每头牛会在一个特定的时间区间[A, B]（包括A和B）在畜栏里挤奶，且一个畜栏里同时只能有一头牛在挤奶。现在农场主希望知道最少几个畜栏能满足上述要求，并要求给出每头牛被安排的方案。对于多种可行方案，主要输出一种即可。</p>
+<a id="more"></a>
+
 <h2 id="输入要求"><a href="#输入要求" class="headerlink" title="输入要求"></a>输入要求</h2><p>输入的第一行包含一个整数N(1 ≤ N ≤ 50, 000)，表示有N牛头；接下来N行每行包含两个数，分别表示这头牛的挤奶时间[Ai, Bi](1 ≤ A≤ B ≤ 1, 000, 000)。</p>
 <h2 id="输出要求"><a href="#输出要求" class="headerlink" title="输出要求"></a>输出要求</h2><p>输出的第一行包含一个整数，表示最少需要的畜栏数；接下来N行，第i+1行描述了第i头牛所被分配的畜栏编号（从1开始）。</p>
 <h2 id="样例输入"><a href="#样例输入" class="headerlink" title="样例输入"></a>样例输入</h2><blockquote>
@@ -409,7 +411,7 @@
   <p><span>本文标题:</span><a href="/2019/11/22/bailian-poj-4144/">畜栏保留问题(OpenJ_Bailian - 4144)</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 陈洋 的个人博客">陈洋</a></p>
   <p><span>发布时间:</span>2019年11月22日 - 18:11</p>
-  <p><span>最后更新:</span>2019年11月22日 - 18:11</p>
+  <p><span>最后更新:</span>2019年11月22日 - 19:11</p>
   <p><span>原始链接:</span><a href="/2019/11/22/bailian-poj-4144/" title="畜栏保留问题(OpenJ_Bailian - 4144)">http://Kuluuu.github.io/2019/11/22/bailian-poj-4144/</a>
     <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://Kuluuu.github.io/2019/11/22/bailian-poj-4144/" aria-label="复制成功！"></i></span>
   </p>
