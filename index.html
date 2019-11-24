@@ -272,6 +272,182 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://Kuluuu.github.io/2019/11/24/poj-3187/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="陈洋">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/me.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ChenYang's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/11/24/poj-3187/" itemprop="url">Backward Digit Sums(POJ-3187)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-24T13:07:59+08:00">
+                2019-11-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/搜索算法/" itemprop="url" rel="index">
+                    <span itemprop="name">搜索算法</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>FJ and his cows enjoy playing a mental game. They write down the numbers from 1 to N (1 &lt;= N &lt;= 10) in a certain order and then sum adjacent numbers to produce a new list with one fewer number. They repeat this until only a single number is left. For example, one instance of the game (when N=4) might go like this: </p>
+<pre><code>3   1   2   4
+
+  4   3   6
+
+    7   9
+
+     16</code></pre><p>Behind FJ’s back, the cows have started playing a more difficult game, in which they try to determine the starting sequence from only the final total and the number N. Unfortunately, the game is a bit above FJ’s mental arithmetic capabilities. </p>
+<p>Write a program to help FJ play the game and keep up with the cows.</p>
+<h3 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h3><p>Line 1: Two space-separated integers: N and the final sum.</p>
+<h3 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h3><p>Line 1: An ordering of the integers 1..N that leads to the given sum. If there are multiple solutions, choose the one that is lexicographically least, i.e., that puts smaller numbers first.</p>
+<h3 id="Sample-Input"><a href="#Sample-Input" class="headerlink" title="Sample Input"></a>Sample Input</h3><p>4 16</p>
+<h3 id="Sample-Output"><a href="#Sample-Output" class="headerlink" title="Sample Output"></a>Sample Output</h3><p>3 1 2 4</p>
+<h3 id="Hint"><a href="#Hint" class="headerlink" title="Hint"></a>Hint</h3><p>Explanation of the sample: </p>
+<p>There are other possible sequences, such as 3 2 1 4, but 3 1 2 4 is the lexicographically smallest.</p>
+<h2 id="算法分析"><a href="#算法分析" class="headerlink" title="算法分析"></a>算法分析</h2><ul>
+<li>这道题目就是一个<strong>全排列</strong>加<strong>杨辉三角</strong></li>
+<li>全排列很好看出来</li>
+<li>杨辉三角的原因：<blockquote>
+<p>例如：4 16 -&gt; 3 1 2 4<br>3*1+1*3+1*3+4<em>1=16（1 3 3 1）<br>就是杨辉三角的第四行的内容<br>再如 5 56 -&gt; 1 2 4 5 3<br>1\</em>1+2*4+4*6+5*4+3*1=56(1 4 6 4 1)</p>
+</blockquote>
+</li>
+</ul>
+<p><strong>全排列可以用stl中的next_permutation(term,term+n)来遍历全排列，这个函数的时间复杂度为O(n)，这道题如果用深搜会超时！</strong></p>
+<h2 id="解题标程"><a href="#解题标程" class="headerlink" title="解题标程"></a>解题标程</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n,ed;</span><br><span class="line"><span class="keyword">int</span> a[<span class="number">100</span>];</span><br><span class="line"><span class="keyword">int</span> b[<span class="number">100</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n &gt;&gt; ed;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)</span><br><span class="line">        a[i]=i+<span class="number">1</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">do</span>&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)</span><br><span class="line">            b[i]=a[i];</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=n<span class="number">-1</span>;i&gt;<span class="number">0</span>;i--)</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;i;j++)</span><br><span class="line">                b[j]=b[j]+b[j+<span class="number">1</span>];</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span>(b[<span class="number">0</span>]==ed)&#123;</span><br><span class="line">          <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">            <span class="built_in">cout</span> &lt;&lt; a[i];</span><br><span class="line">            <span class="keyword">if</span>(i!=n<span class="number">-1</span>)</span><br><span class="line">                <span class="built_in">cout</span> &lt;&lt; <span class="string">" "</span>;</span><br><span class="line">          &#125;</span><br><span class="line">          <span class="built_in">cout</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">          <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">            </span><br><span class="line">    &#125;<span class="keyword">while</span>(next_permutation(a, a+n));</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="错题分析"><a href="#错题分析" class="headerlink" title="错题分析"></a>错题分析</h2><ul>
+<li>善于使用STL中的next_permutation()函数来进行全排列。</li>
+<li>next_permutation()实现全排列时，是直接改变数字在数组中的排序顺序。</li>
+<li>当全部排列遍历完毕后会返回false</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    <div>
+      
+    </div>
+    
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://Kuluuu.github.io/2019/11/23/bailian-poj-1017/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1617,156 +1793,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://Kuluuu.github.io/2019/10/18/uva679/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="陈洋">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/me.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ChenYang's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/10/18/uva679/" itemprop="url">小球下落(Dropping Balls,UVa 679)</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-18T15:26:34+08:00">
-                2019-10-18
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/算法竞赛入门经典/" itemprop="url" rel="index">
-                    <span itemprop="name">算法竞赛入门经典</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>许多的小球一个一个的从一棵满二叉树上掉下来组成一个新满二叉树，每一时间，一个正在下降的球第一个访问的是非叶子节点。然后继续下降时，或者走右子树，或者走左子树，直到访问到叶子节点。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/10/18/uva679/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    <div>
-      
-    </div>
-    
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1819,7 +1845,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">32</span>
+                  <span class="site-state-item-count">33</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1841,7 +1867,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">30</span>
+                  <span class="site-state-item-count">32</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -1933,7 +1959,7 @@
     <!-- 博客字数统计 -->
     <span class="site-pv">
       <i class="fa fa-pencil"></i>
-      博客全站共： <span class="post-count">35.3k</span> 字
+      博客全站共： <span class="post-count">35.8k</span> 字
     </span>
 </div>
 <!-- 新增访客统计代码 END-->
@@ -1959,7 +1985,7 @@ setInterval("createtime()",250);
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共35.3k字</span>
+  <span class="post-count">博客全站共35.8k字</span>
 </div>
         
 
