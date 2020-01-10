@@ -88,21 +88,21 @@
 
 
 
-<meta name="description" content="Prim算法算法核心算法的核心在于加点法  从所有已连的点的邻边的权值中选能到未到点的最小权值边进行连接  算法过程       算法代码123456789101112131415161718192021222324252627282930const int INF=99999;const int MAX_V=100;    //最大节点数int cost[MAX_V][MAX_V]; //cos">
+<meta name="description" content="最小生成树算法最小生成树算法">
 <meta name="keywords" content="图论,最小生成树">
 <meta property="og:type" content="article">
 <meta property="og:title" content="最小生成树算法（Prim和Kruskal[并查集板子]）">
 <meta property="og:url" content="http://Kuluuu.github.io/2020/01/10/prim-and-kruskal/index.html">
 <meta property="og:site_name" content="ChenYang&#39;s Blog">
-<meta property="og:description" content="Prim算法算法核心算法的核心在于加点法  从所有已连的点的邻边的权值中选能到未到点的最小权值边进行连接  算法过程       算法代码123456789101112131415161718192021222324252627282930const int INF=99999;const int MAX_V=100;    //最大节点数int cost[MAX_V][MAX_V]; //cos">
+<meta property="og:description" content="最小生成树算法最小生成树算法">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://kuluuu.github.io/assets/blogImg/prim-and-kruskal/prim1.png">
 <meta property="og:image" content="http://kuluuu.github.io/assets/blogImg/prim-and-kruskal/prim2.png">
 <meta property="og:image" content="http://kuluuu.github.io/assets/blogImg/prim-and-kruskal/kruskal.png">
-<meta property="og:updated_time" content="2020-01-10T09:14:14.230Z">
+<meta property="og:updated_time" content="2020-01-10T09:39:52.246Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="最小生成树算法（Prim和Kruskal[并查集板子]）">
-<meta name="twitter:description" content="Prim算法算法核心算法的核心在于加点法  从所有已连的点的邻边的权值中选能到未到点的最小权值边进行连接  算法过程       算法代码123456789101112131415161718192021222324252627282930const int INF=99999;const int MAX_V=100;    //最大节点数int cost[MAX_V][MAX_V]; //cos">
+<meta name="twitter:description" content="最小生成树算法最小生成树算法">
 <meta name="twitter:image" content="http://kuluuu.github.io/assets/blogImg/prim-and-kruskal/prim1.png">
 
 
@@ -365,7 +365,10 @@
       
 
       
-        <h2 id="Prim算法"><a href="#Prim算法" class="headerlink" title="Prim算法"></a>Prim算法</h2><h3 id="算法核心"><a href="#算法核心" class="headerlink" title="算法核心"></a>算法核心</h3><p>算法的核心在于<strong>加点法</strong></p>
+        <h1 id="最小生成树算法"><a href="#最小生成树算法" class="headerlink" title="最小生成树算法"></a>最小生成树算法</h1><p>最小生成树算法</p>
+<a id="more"></a>
+
+<h2 id="Prim算法"><a href="#Prim算法" class="headerlink" title="Prim算法"></a>Prim算法</h2><h3 id="算法核心"><a href="#算法核心" class="headerlink" title="算法核心"></a>算法核心</h3><p>算法的核心在于<strong>加点法</strong></p>
 <ul>
 <li>从所有已连的点的邻边的权值中选能到未到点的最小权值边进行连接</li>
 </ul>
@@ -552,7 +555,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">38</span>
+                  <span class="site-state-item-count">39</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -563,7 +566,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -574,7 +577,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">37</span>
+                  <span class="site-state-item-count">42</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -623,7 +626,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Prim算法"><span class="nav-number">1.</span> <span class="nav-text">Prim算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#算法核心"><span class="nav-number">1.1.</span> <span class="nav-text">算法核心</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#算法过程"><span class="nav-number">1.2.</span> <span class="nav-text">算法过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#算法代码"><span class="nav-number">1.3.</span> <span class="nav-text">算法代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#算法分析"><span class="nav-number">1.4.</span> <span class="nav-text">算法分析</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Kruskal算法"><span class="nav-number">2.</span> <span class="nav-text">Kruskal算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#算法核心-1"><span class="nav-number">2.1.</span> <span class="nav-text">算法核心</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#算法过程-1"><span class="nav-number">2.2.</span> <span class="nav-text">算法过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#算法代码-1"><span class="nav-number">2.3.</span> <span class="nav-text">算法代码</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#并查集"><span class="nav-number">2.3.1.</span> <span class="nav-text">并查集</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#简化并查集"><span class="nav-number">2.3.2.</span> <span class="nav-text">简化并查集</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Kruskal算法-1"><span class="nav-number">2.3.3.</span> <span class="nav-text">Kruskal算法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#算法分析-1"><span class="nav-number">2.4.</span> <span class="nav-text">算法分析</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#最小生成树算法"><span class="nav-number">1.</span> <span class="nav-text">最小生成树算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Prim算法"><span class="nav-number">1.1.</span> <span class="nav-text">Prim算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#算法核心"><span class="nav-number">1.1.1.</span> <span class="nav-text">算法核心</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#算法过程"><span class="nav-number">1.1.2.</span> <span class="nav-text">算法过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#算法代码"><span class="nav-number">1.1.3.</span> <span class="nav-text">算法代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#算法分析"><span class="nav-number">1.1.4.</span> <span class="nav-text">算法分析</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Kruskal算法"><span class="nav-number">1.2.</span> <span class="nav-text">Kruskal算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#算法核心-1"><span class="nav-number">1.2.1.</span> <span class="nav-text">算法核心</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#算法过程-1"><span class="nav-number">1.2.2.</span> <span class="nav-text">算法过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#算法代码-1"><span class="nav-number">1.2.3.</span> <span class="nav-text">算法代码</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#并查集"><span class="nav-number">1.2.3.1.</span> <span class="nav-text">并查集</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#简化并查集"><span class="nav-number">1.2.3.2.</span> <span class="nav-text">简化并查集</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Kruskal算法-1"><span class="nav-number">1.2.3.3.</span> <span class="nav-text">Kruskal算法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#算法分析-1"><span class="nav-number">1.2.4.</span> <span class="nav-text">算法分析</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -682,7 +685,7 @@
     <!-- 博客字数统计 -->
     <span class="site-pv">
       <i class="fa fa-pencil"></i>
-      博客全站共： <span class="post-count">40.8k</span> 字
+      博客全站共： <span class="post-count">41.7k</span> 字
     </span>
 </div>
 <!-- 新增访客统计代码 END-->
@@ -708,7 +711,7 @@ setInterval("createtime()",250);
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共40.8k字</span>
+  <span class="post-count">博客全站共41.7k字</span>
 </div>
         
 

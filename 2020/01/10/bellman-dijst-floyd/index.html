@@ -88,20 +88,21 @@
 
 
 
-<meta name="description" content="Bellman-Ford（单源最短）算法核心 对于每一个边都看能不能去更新单源最短路径 在更新过程中并不确定哪一个边就是最短路径，而是始终抱着试探的心态去更新最短路径 一旦某一次起点到其他结点的最短路径不更新时，就表示全部为最短路径  负环的判断 Bellman-Ford算法可以判断图中是否有负环，当出现负环时是不存在最短路的，并且易知最多通过(V-1)条路就能到达任何一个点并且距离最短，因此如果">
+<meta name="description" content="最短路径算法最短路径算法">
 <meta name="keywords" content="最短路径算法,图论">
 <meta property="og:type" content="article">
 <meta property="og:title" content="最短路径算法（Bellman-Ford&#x2F;Dijkstra&#x2F;Floyd）">
 <meta property="og:url" content="http://Kuluuu.github.io/2020/01/10/bellman-dijst-floyd/index.html">
 <meta property="og:site_name" content="ChenYang&#39;s Blog">
-<meta property="og:description" content="Bellman-Ford（单源最短）算法核心 对于每一个边都看能不能去更新单源最短路径 在更新过程中并不确定哪一个边就是最短路径，而是始终抱着试探的心态去更新最短路径 一旦某一次起点到其他结点的最短路径不更新时，就表示全部为最短路径  负环的判断 Bellman-Ford算法可以判断图中是否有负环，当出现负环时是不存在最短路的，并且易知最多通过(V-1)条路就能到达任何一个点并且距离最短，因此如果">
+<meta property="og:description" content="最短路径算法最短路径算法">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://kuluuu.github.io/assets/blogImg/bellman-dijst-floyd/dijk1.png">
+<meta property="og:image" content="http://kuluuu.github.io/assets/blogImg/bellman-dijst-floyd/dijk2.png">
 <meta property="og:image" content="http://kuluuu.github.io/assets/blogImg/bellman-dijst-floyd/dijk3.png">
-<meta property="og:updated_time" content="2020-01-10T09:15:13.797Z">
+<meta property="og:updated_time" content="2020-01-10T09:41:39.008Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="最短路径算法（Bellman-Ford&#x2F;Dijkstra&#x2F;Floyd）">
-<meta name="twitter:description" content="Bellman-Ford（单源最短）算法核心 对于每一个边都看能不能去更新单源最短路径 在更新过程中并不确定哪一个边就是最短路径，而是始终抱着试探的心态去更新最短路径 一旦某一次起点到其他结点的最短路径不更新时，就表示全部为最短路径  负环的判断 Bellman-Ford算法可以判断图中是否有负环，当出现负环时是不存在最短路的，并且易知最多通过(V-1)条路就能到达任何一个点并且距离最短，因此如果">
+<meta name="twitter:description" content="最短路径算法最短路径算法">
 <meta name="twitter:image" content="http://kuluuu.github.io/assets/blogImg/bellman-dijst-floyd/dijk1.png">
 
 
@@ -364,7 +365,10 @@
       
 
       
-        <h2 id="Bellman-Ford（单源最短）"><a href="#Bellman-Ford（单源最短）" class="headerlink" title="Bellman-Ford（单源最短）"></a>Bellman-Ford（单源最短）</h2><h3 id="算法核心"><a href="#算法核心" class="headerlink" title="算法核心"></a>算法核心</h3><ul>
+        <h1 id="最短路径算法"><a href="#最短路径算法" class="headerlink" title="最短路径算法"></a>最短路径算法</h1><p>最短路径算法</p>
+<a id="more"></a>
+
+<h2 id="Bellman-Ford（单源最短）"><a href="#Bellman-Ford（单源最短）" class="headerlink" title="Bellman-Ford（单源最短）"></a>Bellman-Ford（单源最短）</h2><h3 id="算法核心"><a href="#算法核心" class="headerlink" title="算法核心"></a>算法核心</h3><ul>
 <li>对于每一个边都看能不能去更新单源最短路径</li>
 <li>在更新过程中并不确定哪一个边就是最短路径，而是始终抱着试探的心态去更新最短路径</li>
 <li>一旦某一次起点到其他结点的最短路径不更新时，就表示全部为最短路径</li>
@@ -384,7 +388,7 @@
 <p>例如：  </p>
 <p><img src="/assets/blogImg/bellman-dijst-floyd/dijk1.png" alt="dijk1"></p>
 <p>最后结果的最短路径表：  </p>
-<p>![dijk2](/assets/blogImg/bellman-dijst-floyd/dijk2.png</p>
+<p><img src="/assets/blogImg/bellman-dijst-floyd/dijk2.png" alt="dijk2"></p>
 <p>实际的最短路径表：  </p>
 <p><img src="/assets/blogImg/bellman-dijst-floyd/dijk3.png" alt="dijk3"></p>
 <h3 id="算法代码-1"><a href="#算法代码-1" class="headerlink" title="算法代码"></a>算法代码</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAX_V=<span class="number">10000</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> INF=<span class="number">99999</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> cost[MAX_V][MAX_V]; <span class="comment">//cost[u][v]表示边e=(u,v)的权值，不存在时设置为INF</span></span><br><span class="line"><span class="keyword">int</span> dist[MAX_V];   <span class="comment">//顶点s出发的最短距离</span></span><br><span class="line"><span class="keyword">bool</span> used[MAX_V];   <span class="comment">//已经使用过的点</span></span><br><span class="line"><span class="keyword">int</span> V;  <span class="comment">//顶点数</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dijkstra</span><span class="params">(<span class="keyword">int</span> s)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    fill(dist,dist+V,INF);</span><br><span class="line">    fill(used,used+V,<span class="literal">false</span>);</span><br><span class="line">    dist[s]=<span class="number">0</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">while</span>(<span class="literal">true</span>)&#123;</span><br><span class="line">        <span class="keyword">int</span> v=<span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;V;i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(!used[i]&amp;&amp;(v==<span class="number">-1</span>||dist[i]&lt;dist[v])) v=i;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span>(v==<span class="number">-1</span>) <span class="keyword">break</span>;</span><br><span class="line">        used[v]=<span class="literal">true</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;V;i++)</span><br><span class="line">            dist[i]=min(dist[i],dist[v]+cost[v][i]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -487,6 +491,10 @@
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2020/01/10/gcd-primenumber-quickmi/" rel="prev" title="数论（GCD & LCM & 素数 & 快速幂）[挑战程序设计竞赛总结]">
+                数论（GCD & LCM & 素数 & 快速幂）[挑战程序设计竞赛总结] <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -564,7 +572,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">38</span>
+                  <span class="site-state-item-count">39</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -575,7 +583,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -586,7 +594,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">37</span>
+                  <span class="site-state-item-count">42</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -635,7 +643,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Bellman-Ford（单源最短）"><span class="nav-number">1.</span> <span class="nav-text">Bellman-Ford（单源最短）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#算法核心"><span class="nav-number">1.1.</span> <span class="nav-text">算法核心</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#负环的判断"><span class="nav-number">1.1.1.</span> <span class="nav-text">负环的判断</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#算法代码"><span class="nav-number">1.2.</span> <span class="nav-text">算法代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#算法分析"><span class="nav-number">1.3.</span> <span class="nav-text">算法分析</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Dijkstra算法（单源）"><span class="nav-number">2.</span> <span class="nav-text">Dijkstra算法（单源）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#算法核心-1"><span class="nav-number">2.1.</span> <span class="nav-text">算法核心</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#无法判断存在负权边的图"><span class="nav-number">2.1.1.</span> <span class="nav-text">无法判断存在负权边的图</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#算法代码-1"><span class="nav-number">2.2.</span> <span class="nav-text">算法代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#算法分析-1"><span class="nav-number">2.3.</span> <span class="nav-text">算法分析</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#堆优化的Dijkstra算法（单源）"><span class="nav-number">3.</span> <span class="nav-text">堆优化的Dijkstra算法（单源）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#算法核心-2"><span class="nav-number">3.1.</span> <span class="nav-text">算法核心</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#算法代码-2"><span class="nav-number">3.2.</span> <span class="nav-text">算法代码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Floyd算法（多源）"><span class="nav-number">4.</span> <span class="nav-text">Floyd算法（多源）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#算法核心-3"><span class="nav-number">4.1.</span> <span class="nav-text">算法核心</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#可判断负环"><span class="nav-number">4.1.1.</span> <span class="nav-text">可判断负环</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#算法代码-3"><span class="nav-number">4.2.</span> <span class="nav-text">算法代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#算法分析-2"><span class="nav-number">4.3.</span> <span class="nav-text">算法分析</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#最短路径算法"><span class="nav-number">1.</span> <span class="nav-text">最短路径算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Bellman-Ford（单源最短）"><span class="nav-number">1.1.</span> <span class="nav-text">Bellman-Ford（单源最短）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#算法核心"><span class="nav-number">1.1.1.</span> <span class="nav-text">算法核心</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#负环的判断"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">负环的判断</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#算法代码"><span class="nav-number">1.1.2.</span> <span class="nav-text">算法代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#算法分析"><span class="nav-number">1.1.3.</span> <span class="nav-text">算法分析</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Dijkstra算法（单源）"><span class="nav-number">1.2.</span> <span class="nav-text">Dijkstra算法（单源）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#算法核心-1"><span class="nav-number">1.2.1.</span> <span class="nav-text">算法核心</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#无法判断存在负权边的图"><span class="nav-number">1.2.1.1.</span> <span class="nav-text">无法判断存在负权边的图</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#算法代码-1"><span class="nav-number">1.2.2.</span> <span class="nav-text">算法代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#算法分析-1"><span class="nav-number">1.2.3.</span> <span class="nav-text">算法分析</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#堆优化的Dijkstra算法（单源）"><span class="nav-number">1.3.</span> <span class="nav-text">堆优化的Dijkstra算法（单源）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#算法核心-2"><span class="nav-number">1.3.1.</span> <span class="nav-text">算法核心</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#算法代码-2"><span class="nav-number">1.3.2.</span> <span class="nav-text">算法代码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Floyd算法（多源）"><span class="nav-number">1.4.</span> <span class="nav-text">Floyd算法（多源）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#算法核心-3"><span class="nav-number">1.4.1.</span> <span class="nav-text">算法核心</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#可判断负环"><span class="nav-number">1.4.1.1.</span> <span class="nav-text">可判断负环</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#算法代码-3"><span class="nav-number">1.4.2.</span> <span class="nav-text">算法代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#算法分析-2"><span class="nav-number">1.4.3.</span> <span class="nav-text">算法分析</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -694,7 +702,7 @@
     <!-- 博客字数统计 -->
     <span class="site-pv">
       <i class="fa fa-pencil"></i>
-      博客全站共： <span class="post-count">40.8k</span> 字
+      博客全站共： <span class="post-count">41.7k</span> 字
     </span>
 </div>
 <!-- 新增访客统计代码 END-->
@@ -720,7 +728,7 @@ setInterval("createtime()",250);
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共40.8k字</span>
+  <span class="post-count">博客全站共41.7k字</span>
 </div>
         
 
