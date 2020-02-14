@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-center-atom.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+  <meta name="baidu-site-verification" content="3fE9IyxcPl">
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/1.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/1.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/1.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/1.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="动态规划DP,标签2,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="题目描述あなたの蛙は旅立っています！ 你的蛙正在考虑它应该按怎样的路线去旅行。这些景点可以抽象为 N 个镶嵌着的六边形。每个景点 i 都有一个快乐度  Hi 。蛙蛙想要决定一条路线，使得路线上的景点快乐度之和最大。而你的蛙蛙又是一只不走回头路的蛙，所以它每次只能朝远处走。">
+<meta name="keywords" content="动态规划DP,标签2">
+<meta property="og:type" content="article">
+<meta property="og:title" content="牛客小白月赛1 - あなたの蛙は旅立っています！">
+<meta property="og:url" content="http://Kuluuu.github.io/2020/02/14/nowcoder-hexagon/index.html">
+<meta property="og:site_name" content="ChenYang&#39;s Blog">
+<meta property="og:description" content="题目描述あなたの蛙は旅立っています！ 你的蛙正在考虑它应该按怎样的路线去旅行。这些景点可以抽象为 N 个镶嵌着的六边形。每个景点 i 都有一个快乐度  Hi 。蛙蛙想要决定一条路线，使得路线上的景点快乐度之和最大。而你的蛙蛙又是一只不走回头路的蛙，所以它每次只能朝远处走。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://uploadfiles.nowcoder.com/images/20180305/304074_1520259147696_E3C1215632E3EE7404F45A21A2976583">
+<meta property="og:image" content="https://uploadfiles.nowcoder.com/images/20180305/304074_1520259175982_600070A4CCFF520F898E2E359700BB96">
+<meta property="og:image" content="https://uploadfiles.nowcoder.com/images/20180305/304074_1520259389371_1FC35E255DBBBB7314166D4727F8E1C3">
+<meta property="og:image" content="http://kuluuu.github.io/assets/blogImg/nowcoder-hexagon/1.png">
+<meta property="og:image" content="http://kuluuu.github.io/assets/blogImg/nowcoder-hexagon/2.png">
+<meta property="og:updated_time" content="2020-02-14T11:27:02.458Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="牛客小白月赛1 - あなたの蛙は旅立っています！">
+<meta name="twitter:description" content="题目描述あなたの蛙は旅立っています！ 你的蛙正在考虑它应该按怎样的路线去旅行。这些景点可以抽象为 N 个镶嵌着的六边形。每个景点 i 都有一个快乐度  Hi 。蛙蛙想要决定一条路线，使得路线上的景点快乐度之和最大。而你的蛙蛙又是一只不走回头路的蛙，所以它每次只能朝远处走。">
+<meta name="twitter:image" content="https://uploadfiles.nowcoder.com/images/20180305/304074_1520259147696_E3C1215632E3EE7404F45A21A2976583">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://Kuluuu.github.io/2020/02/14/nowcoder-hexagon/">
+
+
+
+
+
+  <title>牛客小白月赛1 - あなたの蛙は旅立っています！ | ChenYang's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+  
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">ChenYang's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">心中有码，自然伟大</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://Kuluuu.github.io/2020/02/14/nowcoder-hexagon/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="陈洋">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/me.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ChenYang's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">牛客小白月赛1 - あなたの蛙は旅立っています！</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-14T12:40:10+08:00">
+                2020-02-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/动态规划DP/" itemprop="url" rel="index">
+                    <span itemprop="name">动态规划DP</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p><strong>あなたの蛙は旅立っています！</strong><br><img src="https://uploadfiles.nowcoder.com/images/20180305/304074_1520259147696_E3C1215632E3EE7404F45A21A2976583" alt="题目描述1"></p>
+<p>你的蛙正在考虑它应该按怎样的路线去旅行。这些景点可以抽象为 <code>N</code> 个镶嵌着的六边形。每个景点 <code>i</code> 都有一个快乐度  H<sub>i</sub> 。蛙蛙想要决定一条路线，使得路线上的景点快乐度之和最大。而你的蛙蛙又是一只不走回头路的蛙，所以它每次只能朝远处走。</p>
+<a id="more"></a>
+
+<p><img src="https://uploadfiles.nowcoder.com/images/20180305/304074_1520259175982_600070A4CCFF520F898E2E359700BB96" alt="题目描述2"></p>
+<p>比如，上图就是一个例子。蛙蛙会从最上方的黄色六边形出发，每次只能走到下方的直接相邻的三个六边形中（边界上可能只有一个或两个直接相邻的六边形），这样一直走到最下方的黄色六边形中。这一段旅程总的快乐值定义为途径的景点的快乐值之和。蛙蛙想要找到一条快乐值最大的路径开始它的旅行。<br>你的蛙蛙已经迫不及待了，赶紧 したく 然后 かんりょう 吧！</p>
+<h3 id="输入描述"><a href="#输入描述" class="headerlink" title="输入描述"></a>输入描述</h3><blockquote>
+<p>输入第一行一个数 <strong><em>N</em></strong> ， 表示大六边形的边长（边长定义为大六边形的一条边上小六边形的个数）。<br>接下去 <strong><em>4N - 3</em></strong> 行，每行 <strong><em>1 ∼ N</em></strong> 个整数 <strong><em>H<sub>i</sub></em></strong> ，描述大六边形中的一行景点的快乐度。具体可以看题目描述中的图。图中，颜色相同的并且在同一行的数字将会作为输入中的一行。</p>
+</blockquote>
+<h3 id="输出描述"><a href="#输出描述" class="headerlink" title="输出描述"></a>输出描述</h3><blockquote>
+<p>输出共一行，一个整数，表示最大能得到的快乐值。</p>
+</blockquote>
+<h2 id="输入"><a href="#输入" class="headerlink" title="输入"></a>输入</h2><blockquote>
+<p>3<br>8<br>3 7<br>9 1 -5<br>-2 4<br>-1 6 2<br>8 0<br>5 -3 5<br>2 6<br>4</p>
+</blockquote>
+<h2 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h2><blockquote>
+<p>45</p>
+</blockquote>
+<h2 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h2><blockquote>
+<p><img src="https://uploadfiles.nowcoder.com/images/20180305/304074_1520259389371_1FC35E255DBBBB7314166D4727F8E1C3" alt="说明"></p>
+</blockquote>
+<h2 id="备注"><a href="#备注" class="headerlink" title="备注"></a>备注</h2><blockquote>
+<p>2 ≤ N ≤ 800<br>​0 ≤ |H<sub>i</sub>| ≤2000 </p>
+</blockquote>
+<h2 id="算法分析"><a href="#算法分析" class="headerlink" title="算法分析"></a>算法分析</h2><blockquote>
+<ul>
+<li>1、找出输入规律，将输入的数据，存在二维数组中</li>
+</ul>
+</blockquote>
+<p>将输入分为三段：  </p>
+<ul>
+<li>第一段：</li>
+</ul>
+<p><strong><em>1 ～ N</em></strong> 行，分别为 <strong><em>1 ～ N</em></strong> 个数据输入  </p>
+<ul>
+<li>第二段：</li>
+</ul>
+<p><strong><em>N ～ 3N - 3</em></strong> 行<br>第 <strong><em>N</em></strong> 行为 <strong><em>N - 1</em></strong> 个数据，第 <strong><em>N + 1</em></strong> 行为 <strong><em>N</em></strong> 个数据，第 <strong><em>N + 2</em></strong> 行为 <strong><em>N - 1</em></strong> 个数据 …………..依此类推</p>
+<ul>
+<li>第三段：</li>
+</ul>
+<p><strong><em>3N - 3 ～ 4N - 3</em></strong> 行，分别为 <strong><em>N ～ 1</em></strong> 个数据输入</p>
+<blockquote>
+<ul>
+<li>2、压缩大六边形，为二维矩形形状</li>
+</ul>
+</blockquote>
+<p><img src="/assets/blogImg/nowcoder-hexagon/1.png" alt="压缩1"></p>
+<p><img src="/assets/blogImg/nowcoder-hexagon/2.png" alt="压缩2"></p>
+<blockquote>
+<ul>
+<li>3、列出dp状态方程对二维数组进行计算</li>
+</ul>
+</blockquote>
+<ul>
+<li>状态方程为 <strong><em>dp[i][j] = max(dp[i - 1][j], dp[i][j - 1], dp[i - 1][j - 1]) + map[i][j];</em></strong></li>
+</ul>
+<p>特殊处理：<br>在dp之前对于，对于0行n列的数据 和 n行0列的数据，单独处理。<br>因为如果单纯使用dp状态方程去求解，那么就会出现特殊情况，单独处理之后，dp状态方程的情况就变得单一了。</p>
+<h2 id="解题代码"><a href="#解题代码" class="headerlink" title="解题代码"></a>解题代码</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn   = <span class="number">3e3</span> + <span class="number">5</span>;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">int</span> Map[maxn][maxn]; <span class="comment">//存放压缩存储后的数据</span></span><br><span class="line"><span class="keyword">int</span> Cur[maxn];  <span class="comment">//存放每行应该输入的数据的个数</span></span><br><span class="line"><span class="keyword">int</span> dp[maxn][maxn]; <span class="comment">//dp方程求解</span></span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;n);</span><br><span class="line">    <span class="built_in">memset</span>(Map, <span class="number">0xc0</span>, <span class="keyword">sizeof</span>(Map)); <span class="comment">//初始化为负无穷，使得后续无效dp不影响结果</span></span><br><span class="line">    <span class="built_in">memset</span>(Cur, <span class="number">0</span>, <span class="keyword">sizeof</span>(Cur));</span><br><span class="line">    <span class="built_in">memset</span>(dp, <span class="number">0</span>, <span class="keyword">sizeof</span>(dp));</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">int</span> vis = <span class="number">1</span> + (<span class="number">4</span> * (n - <span class="number">1</span>));    <span class="comment">//输入的行数</span></span><br><span class="line">    <span class="keyword">int</span> cur = <span class="number">2</span> * n - <span class="number">1</span>;    <span class="comment">//旋转之后的压缩矩阵的大小</span></span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    <span class="comment">//计算每一行存多少个数</span></span><br><span class="line">    <span class="comment">//上三行输入的数目 由1～n</span></span><br><span class="line">    <span class="keyword">int</span> i, j;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">        Cur[i] = i + <span class="number">1</span>;</span><br><span class="line">    <span class="comment">//上三行输入的数目 由1～n</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">//中间三行，如果n为奇数，则第一行为n个，如果n为偶数，则第一行为n-1个</span></span><br><span class="line">    <span class="keyword">int</span> opt[<span class="number">2</span>];</span><br><span class="line">    opt[<span class="number">0</span>] = n - <span class="number">1</span>; <span class="comment">//第一次输入就为n-1个数据</span></span><br><span class="line">    opt[<span class="number">1</span>] = n;  <span class="comment">//第二次输入就为n个数据</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">int</span> flag = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> ( ; i &lt; (vis - n); i++, flag = !flag)   <span class="comment">//i &lt; 3n - 3</span></span><br><span class="line">        Cur[i] = opt[flag];</span><br><span class="line">    <span class="comment">//中间三行，如果n为奇数，则第一行为n个，如果n为偶数，则第一行为n-1个</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">//上三行输入的数目 由n～1</span></span><br><span class="line">    <span class="keyword">for</span> (j = n ; i &lt; vis; i++, j--)</span><br><span class="line">        Cur[i] = j;</span><br><span class="line">    <span class="comment">//上三行输入的数目 由n～1</span></span><br><span class="line">    <span class="comment">//计算每一行存多少个数</span></span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    <span class="comment">//输入</span></span><br><span class="line">    <span class="built_in">vector</span> &lt;<span class="keyword">int</span>&gt; v[vis];</span><br><span class="line">    <span class="keyword">int</span> temp;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; vis; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span> (j = <span class="number">0</span>; j &lt; Cur[i]; j++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;temp);</span><br><span class="line">            v[i].push_back(temp);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//输入</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">int</span> len = cur/<span class="number">2</span> + <span class="number">1</span>;    <span class="comment">//将数组分两部分进行处理</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">//上半部分，列始终都是从0开始，列数随行数+1而+1</span></span><br><span class="line">    flag = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>, j = n; i &lt; len; i++, j++)   <span class="comment">//j按照规律下一层比上一层多一个数</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> l = <span class="number">0</span>, k = flag; l &lt; j; l++, k++)  <span class="comment">//每次从未存完的最底层开始从尾部弹出数存入数组</span></span><br><span class="line">        &#123;</span><br><span class="line">            Map[i][l] = v[k][v[k].size() - <span class="number">1</span>];</span><br><span class="line">            v[k].pop_back();</span><br><span class="line">            <span class="keyword">if</span> (v[k].size() == <span class="number">0</span>)   <span class="comment">//记录从0 - (4n-3)中未存完的最低层</span></span><br><span class="line">                flag++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//上半部分，列始终都是从0开始，列数随行数+1而+1</span></span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    <span class="comment">//下半部分，列从1开始，随着行数+1，列向后偏移1位</span></span><br><span class="line">    <span class="keyword">for</span> (j -= <span class="number">2</span>; i &lt; cur; i++, j--) <span class="comment">//j = 2*n + 1/2 ， 也可以写成j从1～n的增加，</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> l = (cur - j), k = flag; l &lt; cur; l++, k++)    <span class="comment">//l用来标志从哪一列开始存</span></span><br><span class="line">        &#123;</span><br><span class="line">            Map[i][l] = v[k][v[k].size() - <span class="number">1</span>];</span><br><span class="line">            v[k].pop_back();</span><br><span class="line">            <span class="keyword">if</span> (v[k].size() == <span class="number">0</span>)</span><br><span class="line">                flag++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//下半部分，列从1开始，随着行数+1，列向后偏移1位</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">//提前对0行和0列进行初始化，使得dp的方程普遍化</span></span><br><span class="line">    dp[<span class="number">0</span>][<span class="number">0</span>] = Map[<span class="number">0</span>][<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">1</span>; i &lt; cur; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        dp[<span class="number">0</span>][i] = dp[<span class="number">0</span>][i - <span class="number">1</span>] + Map[<span class="number">0</span>][i];</span><br><span class="line">        dp[i][<span class="number">0</span>] = dp[i - <span class="number">1</span>][<span class="number">0</span>] + Map[i][<span class="number">0</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//提前对0行和0列进行初始化，使得dp的方程普遍化</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">//dp方程</span></span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">1</span>; i &lt; cur; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span> (j = <span class="number">1</span>; j &lt; cur; j++)</span><br><span class="line">            dp[i][j] = max(max(dp[i - <span class="number">1</span>][j], dp[i][j - <span class="number">1</span>]), dp[i - <span class="number">1</span>][j - <span class="number">1</span>]) + Map[i][j];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//dp方程</span></span><br><span class="line">    </span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; dp[cur - <span class="number">1</span>][cur - <span class="number">1</span>] &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    
+    
+    
+
+    <div>
+      
+        
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script type="text/javascript" src="http://jslibs.wuxubj.cn/sweetalert_mini/jquery-1.7.1.min.js"></script>
+  <script src="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.mini.css">
+  <p><span>本文标题:</span><a href="/2020/02/14/nowcoder-hexagon/">牛客小白月赛1 - あなたの蛙は旅立っています！</a></p>
+  <p><span>文章作者:</span><a href="/" title="访问 陈洋 的个人博客">陈洋</a></p>
+  <p><span>发布时间:</span>2020年02月14日 - 12:02</p>
+  <p><span>最后更新:</span>2020年02月14日 - 19:02</p>
+  <p><span>原始链接:</span><a href="/2020/02/14/nowcoder-hexagon/" title="牛客小白月赛1 - あなたの蛙は旅立っています！">http://Kuluuu.github.io/2020/02/14/nowcoder-hexagon/</a>
+    <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://Kuluuu.github.io/2020/02/14/nowcoder-hexagon/" aria-label="复制成功！"></i></span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+    clipboard.on('success', $(function(){
+      $(".fa-clipboard").click(function(){
+        swal({   
+          title: "",   
+          text: '复制成功',   
+          html: false,
+          timer: 500,   
+          showConfirmButton: false
+        });
+      });
+    }));  
+</script>
+
+      
+    </div>
+    
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/动态规划DP/" rel="tag"># 动态规划DP</a>
+          
+            <a href="/tags/标签2/" rel="tag"># 标签2</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/01/13/POJ-3292-Semi-prime-H-numbers/" rel="next" title="Semi-prime-H-numbers(POJ-3292)">
+                <i class="fa fa-chevron-left"></i> Semi-prime-H-numbers(POJ-3292)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/me.jpg" alt="陈洋">
+            
+              <p class="site-author-name" itemprop="name">陈洋</p>
+              <p class="site-description motion-element" itemprop="description">18级软工学生</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">41</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">43</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/Kuluuu" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:1140377596@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目描述"><span class="nav-number">1.</span> <span class="nav-text">题目描述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#输入描述"><span class="nav-number">1.1.</span> <span class="nav-text">输入描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#输出描述"><span class="nav-number">1.2.</span> <span class="nav-text">输出描述</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#输入"><span class="nav-number">2.</span> <span class="nav-text">输入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#输出"><span class="nav-number">3.</span> <span class="nav-text">输出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#说明"><span class="nav-number">4.</span> <span class="nav-text">说明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#备注"><span class="nav-number">5.</span> <span class="nav-text">备注</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#算法分析"><span class="nav-number">6.</span> <span class="nav-text">算法分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解题代码"><span class="nav-number">7.</span> <span class="nav-text">解题代码</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">陈洋</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+<!-- 新增访客统计代码 -->
+
+<div class="busuanzi-count">
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      访问用户： <span class="busuanzi-value" id="busuanzi_value_site_uv"></span> 人
+    </span>
+    <div class="powered-by"></div>
+    <span class="site-uv">
+      <i class="fa fa-eye"></i>
+      访问次数： <span class="busuanzi-value" id="busuanzi_value_site_pv"></span> 次
+    </span>
+    <!-- 博客字数统计 -->
+    <span class="site-pv">
+      <i class="fa fa-pencil"></i>
+      博客全站共： <span class="post-count">44.5k</span> 字
+    </span>
+</div>
+<!-- 新增访客统计代码 END-->
+
+<!-- 在网页底部添加网站运行时间 -->
+<span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+<script>
+    var now = new Date();
+    function createtime() {
+        var grt= new Date("07/21/2019 00:00:00");//此处修改你的建站时间或者网站上线时间
+        now.setTime(now.getTime()+250);
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;}
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;}
+        document.getElementById("timeDate").innerHTML = "Run for "+dnum+" Days ";
+        document.getElementById("times").innerHTML = hnum + " Hours " + mnum + " m " + snum + " s";
+    }
+setInterval("createtime()",250);
+</script>
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共44.5k字</span>
+</div>
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
