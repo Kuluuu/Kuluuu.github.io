@@ -88,20 +88,18 @@
 
 
 
-<meta name="description" content="链接：https://ac.nowcoder.com/acm/contest/4370/B来源：牛客网 题目描述（翻译版）前缀代码是一种通过拥有“前缀属性” 来区分的代码系统，它要求系统中没有完整的代码字，而不是系统中任何其他代码字的前缀（初始段）。对于定长代码，这确实很简单，因此，在变长代码中，只有一点要考虑，例如，带有代码字的代码 {9，55} 具有prefix属性；由以下代码组成的代码 {9">
+<meta name="description" content="链接：https://ac.nowcoder.com/acm/contest/4370/B来源：牛客网 题目描述（翻译版）前缀代码是一种通过拥有“前缀属性” 来区分的代码系统，它要求系统中没有完整的代码字，而不是系统中任何其他代码字的前缀（初始段）。">
 <meta name="keywords" content="Trie树,前缀编码">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ICPC2019上海区域赛 B-Prefix-Code">
 <meta property="og:url" content="http://Kuluuu.github.io/2020/02/16/2019-ICPC-Shanghai-B-Prefix-Code/index.html">
 <meta property="og:site_name" content="ChenYang&#39;s Blog">
-<meta property="og:description" content="链接：https://ac.nowcoder.com/acm/contest/4370/B来源：牛客网 题目描述（翻译版）前缀代码是一种通过拥有“前缀属性” 来区分的代码系统，它要求系统中没有完整的代码字，而不是系统中任何其他代码字的前缀（初始段）。对于定长代码，这确实很简单，因此，在变长代码中，只有一点要考虑，例如，带有代码字的代码 {9，55} 具有prefix属性；由以下代码组成的代码 {9">
+<meta property="og:description" content="链接：https://ac.nowcoder.com/acm/contest/4370/B来源：牛客网 题目描述（翻译版）前缀代码是一种通过拥有“前缀属性” 来区分的代码系统，它要求系统中没有完整的代码字，而不是系统中任何其他代码字的前缀（初始段）。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://kuluuu.github.io/Users/chenyang/blog/source/assets/blogImg/2019-ICPC-Shanghai-B-Prefix-Code/1.png">
-<meta property="og:updated_time" content="2020-02-16T08:49:23.893Z">
+<meta property="og:updated_time" content="2020-02-16T08:55:13.245Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ICPC2019上海区域赛 B-Prefix-Code">
-<meta name="twitter:description" content="链接：https://ac.nowcoder.com/acm/contest/4370/B来源：牛客网 题目描述（翻译版）前缀代码是一种通过拥有“前缀属性” 来区分的代码系统，它要求系统中没有完整的代码字，而不是系统中任何其他代码字的前缀（初始段）。对于定长代码，这确实很简单，因此，在变长代码中，只有一点要考虑，例如，带有代码字的代码 {9，55} 具有prefix属性；由以下代码组成的代码 {9">
-<meta name="twitter:image" content="http://kuluuu.github.io/Users/chenyang/blog/source/assets/blogImg/2019-ICPC-Shanghai-B-Prefix-Code/1.png">
+<meta name="twitter:description" content="链接：https://ac.nowcoder.com/acm/contest/4370/B来源：牛客网 题目描述（翻译版）前缀代码是一种通过拥有“前缀属性” 来区分的代码系统，它要求系统中没有完整的代码字，而不是系统中任何其他代码字的前缀（初始段）。">
 
 
 
@@ -364,7 +362,10 @@
 
       
         <p>链接：<a href="https://ac.nowcoder.com/acm/contest/4370/B" target="_blank" rel="noopener">https://ac.nowcoder.com/acm/contest/4370/B</a><br>来源：牛客网</p>
-<h2 id="题目描述（翻译版）"><a href="#题目描述（翻译版）" class="headerlink" title="题目描述（翻译版）"></a>题目描述（翻译版）</h2><p>前缀代码是一种通过拥有“前缀属性” 来区分的代码系统，它要求系统中没有完整的代码字，而不是系统中任何其他代码字的前缀（初始段）。对于定长代码，这确实很简单，因此，在变长代码中，只有一点要考虑，<br>例如，带有代码字的代码 <code>{9，55}</code> 具有prefix属性；由以下代码组成的代码 <code>{9，5，59，55}</code> 并非如此，因为“5”是“59”的前缀，也是“55”的前缀。前缀代码是唯一可解码的代码：给定完整而准确的序列，接收方可以识别每个单词而无需在单词之间需要特殊的标记，但是，存在不是前缀代码的可唯一编码的代码；例如，前缀代码的反向仍然是唯一可解码的（它是后缀代码），但不一定是前缀代码。<br>前缀代码也称为无前缀代码，前缀条件代码和瞬时代码。尽管霍夫曼编码只是众多导出前缀代码的算法之一，但前缀代码也被广泛称为“霍夫曼代码’’，即使该代码不是由霍夫曼算法生成的。无逗号代码一词有时也用作无前缀代码的同义词，但在大多数数学书籍和文章中，无逗号代码用于表示自同步代码，即前缀代码的子类。<br>使用前缀代码，可以将消息作为一系列连接的代码字进行传输，而无需在单词之间使用任何带外标记或（或者）特殊标记来构筑消息中的单词。接收者可以通过重复查找和删除形成有效代码字的序列来明确解码消息。例如，对于缺少前缀属性的代码，这通常是不可能的 <code>{0，1，10，11}</code> ：接收机在代码字的开头读取“1”将不知道它是完整的代码字“1”，还是仅是代码字“10”或“11”的前缀’; 因此，字符串“10”可以解释为单个代码字，也可以解释为单词“ 1” 然后是“0”的串联。<br>变长霍夫曼代码，国家/地区代码，ISBN的国家/地区和发布者部分， UMTS W-CDMA 3G无线标准中使用的辅助同步代码，<br>前缀代码不是纠错代码。在实践中，消息可能先用前缀码压缩，然后再在传输之前用信道编码（包括纠错）再次编码。<br>对于任何唯一可解码的代码，都有一个具有相同代码字长的前缀代码。卡夫（Kraft）的不等式表征了唯一可解码代码中可能存在的代码字长集。</p>
+<h2 id="题目描述（翻译版）"><a href="#题目描述（翻译版）" class="headerlink" title="题目描述（翻译版）"></a>题目描述（翻译版）</h2><p>前缀代码是一种通过拥有“前缀属性” 来区分的代码系统，它要求系统中没有完整的代码字，而不是系统中任何其他代码字的前缀（初始段）。</p>
+<a id="more"></a>
+
+<p>对于定长代码，这确实很简单，因此，在变长代码中，只有一点要考虑，例如，带有代码字的代码 <code>{9，55}</code> 具有prefix属性；由以下代码组成的代码 <code>{9，5，59，55}</code> 并非如此，因为“5”是“59”的前缀，也是“55”的前缀。前缀代码是唯一可解码的代码：给定完整而准确的序列，接收方可以识别每个单词而无需在单词之间需要特殊的标记，但是，存在不是前缀代码的可唯一编码的代码；例如，前缀代码的反向仍然是唯一可解码的（它是后缀代码），但不一定是前缀代码。<br>前缀代码也称为无前缀代码，前缀条件代码和瞬时代码。尽管霍夫曼编码只是众多导出前缀代码的算法之一，但前缀代码也被广泛称为“霍夫曼代码’’，即使该代码不是由霍夫曼算法生成的。无逗号代码一词有时也用作无前缀代码的同义词，但在大多数数学书籍和文章中，无逗号代码用于表示自同步代码，即前缀代码的子类。<br>使用前缀代码，可以将消息作为一系列连接的代码字进行传输，而无需在单词之间使用任何带外标记或（或者）特殊标记来构筑消息中的单词。接收者可以通过重复查找和删除形成有效代码字的序列来明确解码消息。例如，对于缺少前缀属性的代码，这通常是不可能的 <code>{0，1，10，11}</code> ：接收机在代码字的开头读取“1”将不知道它是完整的代码字“1”，还是仅是代码字“10”或“11”的前缀’; 因此，字符串“10”可以解释为单个代码字，也可以解释为单词“ 1” 然后是“0”的串联。<br>变长霍夫曼代码，国家/地区代码，ISBN的国家/地区和发布者部分， UMTS W-CDMA 3G无线标准中使用的辅助同步代码，<br>前缀代码不是纠错代码。在实践中，消息可能先用前缀码压缩，然后再在传输之前用信道编码（包括纠错）再次编码。<br>对于任何唯一可解码的代码，都有一个具有相同代码字长的前缀代码。卡夫（Kraft）的不等式表征了唯一可解码代码中可能存在的代码字长集。</p>
 <p>  在这个问题上，你可以给一个代码 ñ\ mathbf {N}N个代码字。每个单词只包含数字 <code>{0，1，2，3，4，5，6，7，8，9}</code> 。您需要检查代码是否可以满足prefix属性：系统中没有完整的代码字，没有其他任何代码字的前缀。</p>
 <h3 id="输入描述"><a href="#输入描述" class="headerlink" title="输入描述"></a>输入描述</h3><blockquote>
 <p> 输入的第一行给出了测试用例的数量， <strong>Ť（1 ≤ Ť ≤ 100 ）</strong>。随后是 <strong>T</strong> 个测试用例。</p>
@@ -383,8 +384,7 @@
 <h2 id="算法分析"><a href="#算法分析" class="headerlink" title="算法分析"></a>算法分析</h2><p>本题用Trie树的思想，类似于哈夫曼编码的那棵树（因为对于哈夫曼编码而言，每个编码都是一个前缀编码），只要一个串的终点不是叶子结点，就说明这个树就不是一个Trie树。</p>
 <p>==换而言之，只要一个串的终点被多次遍历（利用），就说明不是一个Trie树==</p>
 <p>如图（对于样例2的数据）：</p>
-<img src="/Users/chenyang/blog/source/assets/blogImg/2019-ICPC-Shanghai-B-Prefix-Code/1.png" alt="1" style="zoom:50%;">
-
+<p>![1](/assets/blogImg/2019-ICPC-Shanghai-B-Prefix-Code/1.png 400x300)</p>
 <p>图中，深度为1 的 5 节点 是第二个串 <code>5</code> 的终点，同时也是串 <code>55</code> 和 <code>59</code> 的组成部分，所以这个例子不是Prefix Tree。</p>
 <h2 id="代码分析"><a href="#代码分析" class="headerlink" title="代码分析"></a>代码分析</h2><p>用  <code>T[maxn][12]</code> 数组记录树，</p>
 <p>用 <code>num[maxn]</code> 数组记录第 <code>i</code> 个节点被遍历（利用）的次数</p>
