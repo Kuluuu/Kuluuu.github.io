@@ -272,6 +272,181 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://Kuluuu.github.io/2020/02/16/2019-ICPC-Shanghai-B-Prefix-Code/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="陈洋">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/me.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ChenYang's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/02/16/2019-ICPC-Shanghai-B-Prefix-Code/" itemprop="url">ICPC2019上海区域赛 B-Prefix-Code</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-16T16:01:34+08:00">
+                2020-02-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/图论/" itemprop="url" rel="index">
+                    <span itemprop="name">图论</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>链接：<a href="https://ac.nowcoder.com/acm/contest/4370/B" target="_blank" rel="noopener">https://ac.nowcoder.com/acm/contest/4370/B</a><br>来源：牛客网</p>
+<h2 id="题目描述（翻译版）"><a href="#题目描述（翻译版）" class="headerlink" title="题目描述（翻译版）"></a>题目描述（翻译版）</h2><p>前缀代码是一种通过拥有“前缀属性” 来区分的代码系统，它要求系统中没有完整的代码字，而不是系统中任何其他代码字的前缀（初始段）。对于定长代码，这确实很简单，因此，在变长代码中，只有一点要考虑，<br>例如，带有代码字的代码 <code>{9，55}</code> 具有prefix属性；由以下代码组成的代码 <code>{9，5，59，55}</code> 并非如此，因为“5”是“59”的前缀，也是“55”的前缀。前缀代码是唯一可解码的代码：给定完整而准确的序列，接收方可以识别每个单词而无需在单词之间需要特殊的标记，但是，存在不是前缀代码的可唯一编码的代码；例如，前缀代码的反向仍然是唯一可解码的（它是后缀代码），但不一定是前缀代码。<br>前缀代码也称为无前缀代码，前缀条件代码和瞬时代码。尽管霍夫曼编码只是众多导出前缀代码的算法之一，但前缀代码也被广泛称为“霍夫曼代码’’，即使该代码不是由霍夫曼算法生成的。无逗号代码一词有时也用作无前缀代码的同义词，但在大多数数学书籍和文章中，无逗号代码用于表示自同步代码，即前缀代码的子类。<br>使用前缀代码，可以将消息作为一系列连接的代码字进行传输，而无需在单词之间使用任何带外标记或（或者）特殊标记来构筑消息中的单词。接收者可以通过重复查找和删除形成有效代码字的序列来明确解码消息。例如，对于缺少前缀属性的代码，这通常是不可能的 <code>{0，1，10，11}</code> ：接收机在代码字的开头读取“1”将不知道它是完整的代码字“1”，还是仅是代码字“10”或“11”的前缀’; 因此，字符串“10”可以解释为单个代码字，也可以解释为单词“ 1” 然后是“0”的串联。<br>变长霍夫曼代码，国家/地区代码，ISBN的国家/地区和发布者部分， UMTS W-CDMA 3G无线标准中使用的辅助同步代码，<br>前缀代码不是纠错代码。在实践中，消息可能先用前缀码压缩，然后再在传输之前用信道编码（包括纠错）再次编码。<br>对于任何唯一可解码的代码，都有一个具有相同代码字长的前缀代码。卡夫（Kraft）的不等式表征了唯一可解码代码中可能存在的代码字长集。</p>
+<p>  在这个问题上，你可以给一个代码 ñ\ mathbf {N}N个代码字。每个单词只包含数字 <code>{0，1，2，3，4，5，6，7，8，9}</code> 。您需要检查代码是否可以满足prefix属性：系统中没有完整的代码字，没有其他任何代码字的前缀。</p>
+<h3 id="输入描述"><a href="#输入描述" class="headerlink" title="输入描述"></a>输入描述</h3><blockquote>
+<p> 输入的第一行给出了测试用例的数量， <strong>Ť（1 ≤ Ť ≤ 100 ）</strong>。随后是 <strong>T</strong> 个测试用例。</p>
+<p>每个测试用例由一行和一个整数组成  <strong>N（1≤ N ≤ 10,000）</strong>，代码字的数量。<br>然后跟随 <strong>N</strong> 行，每行一个代码字。一个代码字是一个</p>
+<p>最多十位数的序列。</p>
+</blockquote>
+<h3 id="输出描述"><a href="#输出描述" class="headerlink" title="输出描述"></a>输出描述</h3><blockquote>
+<p>对于每个测试用例，输出一行包含<strong>“ Case #x：y”</strong>的行，其中x是测试用例编号（从1开始），如果代码是前缀代码，则是“ Yes”，否则为“ No”。</p>
+</blockquote>
+<h2 id="输入"><a href="#输入" class="headerlink" title="输入"></a>输入</h2><blockquote>
+<p>3<br>2<br>9<br>55<br>4<br>9<br>5<br>59<br>55<br>4<br>01<br>01<br>123<br>321</p>
+</blockquote>
+<h2 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h2><blockquote>
+<p>Case #1: Yes<br>Case #2: No<br>Case #3: No</p>
+</blockquote>
+<h2 id="算法分析"><a href="#算法分析" class="headerlink" title="算法分析"></a>算法分析</h2><p>本题用Trie树的思想，类似于哈夫曼编码的那棵树（因为对于哈夫曼编码而言，每个编码都是一个前缀编码），只要一个串的终点不是叶子结点，就说明这个树就不是一个Trie树。</p>
+<p>==换而言之，只要一个串的终点被多次遍历（利用），就说明不是一个Trie树==</p>
+<p>如图（对于样例2的数据）：</p>
+<img src="/Users/chenyang/blog/source/assets/blogImg/2019-ICPC-Shanghai-B-Prefix-Code/1.png" alt="1" style="zoom:50%;">
+
+<p>图中，深度为1 的 5 节点 是第二个串 <code>5</code> 的终点，同时也是串 <code>55</code> 和 <code>59</code> 的组成部分，所以这个例子不是Prefix Tree。</p>
+<h2 id="代码分析"><a href="#代码分析" class="headerlink" title="代码分析"></a>代码分析</h2><p>用  <code>T[maxn][12]</code> 数组记录树，</p>
+<p>用 <code>num[maxn]</code> 数组记录第 <code>i</code> 个节点被遍历（利用）的次数</p>
+<p>用 <code>isend[maxn]</code> 数组记录第 <code>i</code> 个节点是不是该串的终点</p>
+<p>用 <code>tot</code> 标记当前为第几个节点</p>
+<h2 id="解题代码"><a href="#解题代码" class="headerlink" title="解题代码"></a>解题代码</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn=<span class="number">1e5</span>+<span class="number">5</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> T[maxn][<span class="number">12</span>]; <span class="comment">//数组构成的树</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> num[maxn];  <span class="comment">//记录这个节点被经过了几次</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> isend[maxn];    <span class="comment">//这个节点是不是终点</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> tot = <span class="number">1</span>; <span class="comment">//记录节点数</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">char</span> *s)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> l=<span class="built_in">strlen</span>(s+<span class="number">1</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">int</span> rt=<span class="number">1</span>;   <span class="comment">//第几个节点，还作为这个节点的下一个层的层数</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= l; i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(T[rt][s[i]-<span class="string">'0'</span>] == <span class="number">0</span>)&#123;	</span><br><span class="line">						<span class="comment">//如果在rt这一层，没有该节点，就在这层启用这个节点</span></span><br><span class="line">          	<span class="comment">//并且该节点的下一层为该节点的节点编号tot</span></span><br><span class="line">						T[rt][s[i]-<span class="string">'0'</span>] = ++tot;</span><br><span class="line">            rt = tot;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">	          <span class="comment">//如果在rt这层，存在此节点</span></span><br><span class="line">          	<span class="comment">//就在寻找此节点所指向的下一层</span></span><br><span class="line">            rt = T[rt][s[i]-<span class="string">'0'</span>];</span><br><span class="line">        &#125;</span><br><span class="line">        num[rt]++;	<span class="comment">//每向下找一层，该层的这个节点使用次数加1</span></span><br><span class="line">    &#125;</span><br><span class="line">    isend[rt]=<span class="number">1</span>;	<span class="comment">//标记最后一个节点为 终点</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= tot; i++)&#123;</span><br><span class="line">        <span class="built_in">memset</span>(T[i], <span class="number">0</span>, <span class="keyword">sizeof</span>(T[i]));</span><br><span class="line">        num[i] = isend[i] = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    tot=<span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">char</span> s[<span class="number">15</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> T;</span><br><span class="line">    <span class="built_in">cin</span>&gt;&gt;T;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> kase=<span class="number">1</span>;kase&lt;=T;kase++)&#123;</span><br><span class="line">        init();</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">int</span> n;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">"%s"</span>,s+<span class="number">1</span>);</span><br><span class="line">            add(s);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">int</span> flag=<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=tot;i++)&#123;</span><br><span class="line">	          <span class="comment">//只要一个节点是终点，并且该节点被遍历（利用）的次数 大于 1</span></span><br><span class="line">          	<span class="comment">//就说明这个样例不是一个Trie树</span></span><br><span class="line">            <span class="keyword">if</span>(isend[i] &amp;&amp; num[i]&gt;<span class="number">1</span>)&#123;	</span><br><span class="line">                flag=<span class="number">0</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span>(flag)</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"Case #%d: Yes\n"</span>,kase);</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"Case #%d: No\n"</span>,kase);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="错题分析"><a href="#错题分析" class="headerlink" title="错题分析"></a>错题分析</h2><p>关于Trie树的概念（类似于哈夫曼编码的形成原因）：<br><a href="http://www.sohu.com/a/300621285_115128" target="_blank" rel="noopener">http://www.sohu.com/a/300621285_115128</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    <div>
+      
+    </div>
+    
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://Kuluuu.github.io/2020/02/14/nowcoder-Digital-square-matrix/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1611,163 +1786,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://Kuluuu.github.io/2019/11/24/bailian-poj-3187/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="陈洋">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/me.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ChenYang's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/11/24/bailian-poj-3187/" itemprop="url">Backward Digit Sums(POJ-3187)</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-24T13:07:59+08:00">
-                2019-11-24
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/搜索算法/" itemprop="url" rel="index">
-                    <span itemprop="name">搜索算法</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>FJ and his cows enjoy playing a mental game. They write down the numbers from 1 to N (1 &lt;= N &lt;= 10) in a certain order and then sum adjacent numbers to produce a new list with one fewer number. They repeat this until only a single number is left. For example, one instance of the game (when N=4) might go like this: </p>
-<pre><code>3   1   2   4
-
-  4   3   6
-
-    7   9
-
-     16</code></pre>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/11/24/bailian-poj-3187/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    <div>
-      
-    </div>
-    
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1820,7 +1838,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">42</span>
+                  <span class="site-state-item-count">43</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1842,7 +1860,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">44</span>
+                  <span class="site-state-item-count">46</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -1934,7 +1952,7 @@
     <!-- 博客字数统计 -->
     <span class="site-pv">
       <i class="fa fa-pencil"></i>
-      博客全站共： <span class="post-count">44.9k</span> 字
+      博客全站共： <span class="post-count">46.5k</span> 字
     </span>
 </div>
 <!-- 新增访客统计代码 END-->
@@ -1960,7 +1978,7 @@ setInterval("createtime()",250);
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共44.9k字</span>
+  <span class="post-count">博客全站共46.5k字</span>
 </div>
         
 
