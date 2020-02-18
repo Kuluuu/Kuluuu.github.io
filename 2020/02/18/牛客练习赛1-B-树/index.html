@@ -656,15 +656,7 @@
 
 <div class="busuanzi-count">
     <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-    <span class="site-uv">
-      <i class="fa fa-user"></i>
-      访问用户： <span class="busuanzi-value" id="busuanzi_value_site_uv"></span> 人
-    </span>
-    <div class="powered-by"></div>
-    <span class="site-uv">
-      <i class="fa fa-eye"></i>
-      访问次数： <span class="busuanzi-value" id="busuanzi_value_site_pv"></span> 次
-    </span>
+
     <!-- 博客字数统计 -->
     <span class="site-pv">
       <i class="fa fa-pencil"></i>
@@ -698,6 +690,19 @@ setInterval("createtime()",250);
 </div>
 
 
+
+<% if (theme.busuanzi && theme.busuanzi.enable){ %>
+        <!-- 不蒜子统计 -->
+        <span id="busuanzi_container_site_pv">
+                本站总访问量<span id="busuanzi_value_site_pv"></span>次
+        </span>
+        <span class="post-meta-divider">|</span>
+        <span id="busuanzi_container_site_uv" style="display:none">
+                本站访客数<span id="busuanzi_value_site_uv"></span>人
+        </span>
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  <% } %>
+
         
 <div class="busuanzi-count">
   <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
@@ -727,7 +732,7 @@ setInterval("createtime()",250);
 
 
         
-      </div>
+      </%></%></div>
     </footer>
 
     
