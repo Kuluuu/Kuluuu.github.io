@@ -88,18 +88,18 @@
 
 
 
-<meta name="description" content="链接：https://ac.nowcoder.com/acm/contest/2/B来源：牛客网 题目描述shy有一颗树，树有n个结点。有k种不同颜色的染料给树染色。一个染色方案是合法的，当且仅当对于所有相同颜色的点对(x,y)，x到y的路径上的所有点的颜色都要与x和y相同。请统计方案数。 输入描述: 第一行两个整数 n，k 代表点数和颜色数；接下来 n-1 *行，每行两个整数 *x,y *表示">
+<meta name="description" content="链接：https://ac.nowcoder.com/acm/contest/2/B来源：牛客网 题目描述shy有一颗树，树有n个结点。有k种不同颜色的染料给树染色。一个染色方案是合法的，当且仅当对于所有相同颜色的点对(x,y)，x到y的路径上的所有点的颜色都要与x和y相同。请统计方案数。">
 <meta name="keywords" content="动态规划DP">
 <meta property="og:type" content="article">
 <meta property="og:title" content="牛客练习赛1-B-树">
 <meta property="og:url" content="http://codeblog-cy.top/2020/02/18/牛客练习赛1-B-树/index.html">
 <meta property="og:site_name" content="ChenYang&#39;s Blog">
-<meta property="og:description" content="链接：https://ac.nowcoder.com/acm/contest/2/B来源：牛客网 题目描述shy有一颗树，树有n个结点。有k种不同颜色的染料给树染色。一个染色方案是合法的，当且仅当对于所有相同颜色的点对(x,y)，x到y的路径上的所有点的颜色都要与x和y相同。请统计方案数。 输入描述: 第一行两个整数 n，k 代表点数和颜色数；接下来 n-1 *行，每行两个整数 *x,y *表示">
+<meta property="og:description" content="链接：https://ac.nowcoder.com/acm/contest/2/B来源：牛客网 题目描述shy有一颗树，树有n个结点。有k种不同颜色的染料给树染色。一个染色方案是合法的，当且仅当对于所有相同颜色的点对(x,y)，x到y的路径上的所有点的颜色都要与x和y相同。请统计方案数。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-02-18T11:58:15.780Z">
+<meta property="og:updated_time" content="2020-02-19T02:49:41.169Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="牛客练习赛1-B-树">
-<meta name="twitter:description" content="链接：https://ac.nowcoder.com/acm/contest/2/B来源：牛客网 题目描述shy有一颗树，树有n个结点。有k种不同颜色的染料给树染色。一个染色方案是合法的，当且仅当对于所有相同颜色的点对(x,y)，x到y的路径上的所有点的颜色都要与x和y相同。请统计方案数。 输入描述: 第一行两个整数 n，k 代表点数和颜色数；接下来 n-1 *行，每行两个整数 *x,y *表示">
+<meta name="twitter:description" content="链接：https://ac.nowcoder.com/acm/contest/2/B来源：牛客网 题目描述shy有一颗树，树有n个结点。有k种不同颜色的染料给树染色。一个染色方案是合法的，当且仅当对于所有相同颜色的点对(x,y)，x到y的路径上的所有点的颜色都要与x和y相同。请统计方案数。">
 
 
 
@@ -363,6 +363,8 @@
       
         <p>链接：<a href="https://ac.nowcoder.com/acm/contest/2/B" target="_blank" rel="noopener">https://ac.nowcoder.com/acm/contest/2/B</a><br>来源：牛客网</p>
 <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>shy有一颗树，树有n个结点。有k种不同颜色的染料给树染色。一个染色方案是合法的，当且仅当对于所有相同颜色的点对(x,y)，x到y的路径上的所有点的颜色都要与x和y相同。请统计方案数。</p>
+<a id="more"></a>
+
 <h3 id="输入描述"><a href="#输入描述" class="headerlink" title="输入描述:"></a>输入描述:</h3><blockquote>
 <p>第一行两个整数 <strong>n，k</strong> 代表点数和颜色数；<br>接下来 <strong>n-1 *<em>行，每行两个整数 *</em>x,y *<em>表示 *</em>x *<em>与 *</em>y</strong> 之间存在一条边；</p>
 </blockquote>
@@ -376,6 +378,18 @@
 <p>39</p>
 </blockquote>
 <h3 id="备注"><a href="#备注" class="headerlink" title="备注:"></a>备注:</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">对于30%的数据，n≤10, k≤3；</span><br><span class="line">对于100%的数据，n,k≤300。</span><br></pre></td></tr></table></figure>
+
+<h2 id="算法分析"><a href="#算法分析" class="headerlink" title="算法分析"></a>算法分析</h2><p>题目的结果与树的形态无关， 一个点染上什么颜色是和前一个点相关。</p>
+<p>一道简单的dp问题</p>
+<p><strong><font color="purple" size="4">dp状态转移方程：</font></strong></p>
+<ul>
+<li><strong><font color="blue">如果第i个点与第i-1个点的颜色相同，那么染色方案数相同，即dp[i][j] = dp[i - 1][j]</font></strong></li>
+<li><strong><font color="gren">如果第i个点与第i-1个点的颜色不同，那么就是去除这个颜色以外的j-1种颜色在第i-1点的方案数以及第i个点的颜色的方案数，即dp[i][j] = d[i - 1][j - 1] * (k - (j - 1))</font></strong></li>
+<li><strong><font color="red">因此方程为：dp[i][j] = dp[i - 1][j] + d[i - 1][j - 1] * (k - (j - 1))</font></strong></li>
+</ul>
+<h2 id="解题代码"><a href="#解题代码" class="headerlink" title="解题代码"></a>解题代码</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="keyword">const</span> ll mode = <span class="number">1e9</span> + <span class="number">7</span>;</span><br><span class="line">ll dp[<span class="number">305</span>][<span class="number">305</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n,k;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n &gt;&gt; k;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n - <span class="number">1</span>; i++)&#123;</span><br><span class="line">        <span class="keyword">int</span> a,b;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; a &gt;&gt; b;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//dp含义：前i个节点用j种颜色填充的方案数</span></span><br><span class="line">    dp[<span class="number">0</span>][<span class="number">0</span>] = <span class="number">1</span>;   <span class="comment">//前0个节点用0个颜色填充，就一种方案</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= k; j++)&#123;</span><br><span class="line">            <span class="comment">//如果第i个点与第i-1个点的颜色相同，那么方案数相同，即dp[i][j] = dp[i - 1][j]</span></span><br><span class="line">          	<span class="comment">//如果第i个点与第i-1个点的颜色不同，那么就是去除这个颜色以外的j-1种颜色在第i-1点的方案数						//以及第i个点的颜色的方案数，即dp[i][j] = d[i - 1][j - 1] * (k - (j - 1))</span></span><br><span class="line">          	<span class="comment">//所以一个点i的方案数为：dp[i][j] = dp[i - 1][j] + d[i - 1][j - 1] * (k - (j - 1))</span></span><br><span class="line">            dp[i][j] = dp[i - <span class="number">1</span>][j] + dp[i - <span class="number">1</span>][j - <span class="number">1</span>] * (k - j + <span class="number">1</span>);</span><br><span class="line">            dp[i][j] %= mode;</span><br><span class="line">        &#125;</span><br><span class="line">    </span><br><span class="line">  	<span class="comment">//因为最多k个颜色，那么就可以用1～k种颜色去填充</span></span><br><span class="line">  	<span class="comment">//那么方案数就是1～k种颜色的结果总和</span></span><br><span class="line">    ll ans = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;=k; i++)</span><br><span class="line">        ans = (ans + dp[n][i]) % mode;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; ans &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
       
     </div>
     
@@ -395,7 +409,7 @@
   <p><span>本文标题:</span><a href="/2020/02/18/牛客练习赛1-B-树/">牛客练习赛1-B-树</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 陈洋 的个人博客">陈洋</a></p>
   <p><span>发布时间:</span>2020年02月18日 - 19:02</p>
-  <p><span>最后更新:</span>2020年02月18日 - 19:02</p>
+  <p><span>最后更新:</span>2020年02月19日 - 10:02</p>
   <p><span>原始链接:</span><a href="/2020/02/18/牛客练习赛1-B-树/" title="牛客练习赛1-B-树">http://codeblog-cy.top/2020/02/18/牛客练习赛1-B-树/</a>
     <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://codeblog-cy.top/2020/02/18/牛客练习赛1-B-树/" aria-label="复制成功！"></i></span>
   </p>
@@ -555,7 +569,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">52</span>
+                  <span class="site-state-item-count">51</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -604,7 +618,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目描述"><span class="nav-number">1.</span> <span class="nav-text">题目描述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#输入描述"><span class="nav-number">1.1.</span> <span class="nav-text">输入描述:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#输出描述"><span class="nav-number">1.2.</span> <span class="nav-text">输出描述:</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#输入"><span class="nav-number">2.</span> <span class="nav-text">输入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#输出"><span class="nav-number">3.</span> <span class="nav-text">输出</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#备注"><span class="nav-number">3.1.</span> <span class="nav-text">备注:</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目描述"><span class="nav-number">1.</span> <span class="nav-text">题目描述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#输入描述"><span class="nav-number">1.1.</span> <span class="nav-text">输入描述:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#输出描述"><span class="nav-number">1.2.</span> <span class="nav-text">输出描述:</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#输入"><span class="nav-number">2.</span> <span class="nav-text">输入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#输出"><span class="nav-number">3.</span> <span class="nav-text">输出</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#备注"><span class="nav-number">3.1.</span> <span class="nav-text">备注:</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#算法分析"><span class="nav-number">4.</span> <span class="nav-text">算法分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解题代码"><span class="nav-number">5.</span> <span class="nav-text">解题代码</span></a></li></ol></div>
             
 
           </div>
@@ -664,7 +678,7 @@
     <!-- 博客字数统计 -->
     <span class="site-pv">
       <i class="fa fa-pencil"></i>
-      博客全站共： <span class="post-count">50.4k</span> 字
+      博客全站共： <span class="post-count">52.4k</span> 字
     </span>
 </div>
 <!-- 新增访客统计代码 END-->
@@ -690,7 +704,7 @@ setInterval("createtime()",250);
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共50.4k字</span>
+  <span class="post-count">博客全站共52.4k字</span>
 </div>
 
 
