@@ -88,18 +88,23 @@
 
 
 
-<meta name="description" content="1234567891011121314151617181920212223242526272829303132333435363738394041424344454647#include &amp;lt;iostream&amp;gt;#include &amp;lt;cstdio&amp;gt;#include &amp;lt;map&amp;gt;#include &amp;lt;set&amp;gt;using namespace std;int p;i">
+<meta name="description" content="尺取法尺取法一般用于求子序列的和、乘积等，给遍历求权值以一个更低的时间复杂度的方法。 反复地推进区间的开头和结尾，来求取满足条件的最小区间的方法">
 <meta name="keywords" content="尺取法">
 <meta property="og:type" content="article">
 <meta property="og:title" content="尺取法(挑战程序设计竞赛)">
 <meta property="og:url" content="http://codeblog-cy.top/2020/02/20/Rule-taking-algorithm/index.html">
 <meta property="og:site_name" content="ChenYang&#39;s Blog">
-<meta property="og:description" content="1234567891011121314151617181920212223242526272829303132333435363738394041424344454647#include &amp;lt;iostream&amp;gt;#include &amp;lt;cstdio&amp;gt;#include &amp;lt;map&amp;gt;#include &amp;lt;set&amp;gt;using namespace std;int p;i">
+<meta property="og:description" content="尺取法尺取法一般用于求子序列的和、乘积等，给遍历求权值以一个更低的时间复杂度的方法。 反复地推进区间的开头和结尾，来求取满足条件的最小区间的方法">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-02-20T08:01:39.116Z">
+<meta property="og:image" content="http://q5sek3z73.bkt.clouddn.com/Rule-taking-algorithm-1.png">
+<meta property="og:image" content="http://q5sek3z73.bkt.clouddn.com/Rule-taking-algorithm-2.png">
+<meta property="og:image" content="http://q5sek3z73.bkt.clouddn.com/Rule-taking-algorithm-3.png">
+<meta property="og:image" content="http://q5sek3z73.bkt.clouddn.com/Rule-taking-algorithm-4.png">
+<meta property="og:updated_time" content="2020-02-20T10:46:00.566Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="尺取法(挑战程序设计竞赛)">
-<meta name="twitter:description" content="1234567891011121314151617181920212223242526272829303132333435363738394041424344454647#include &amp;lt;iostream&amp;gt;#include &amp;lt;cstdio&amp;gt;#include &amp;lt;map&amp;gt;#include &amp;lt;set&amp;gt;using namespace std;int p;i">
+<meta name="twitter:description" content="尺取法尺取法一般用于求子序列的和、乘积等，给遍历求权值以一个更低的时间复杂度的方法。 反复地推进区间的开头和结尾，来求取满足条件的最小区间的方法">
+<meta name="twitter:image" content="http://q5sek3z73.bkt.clouddn.com/Rule-taking-algorithm-1.png">
 
 
 
@@ -361,7 +366,46 @@
       
 
       
-        <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;map&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;set&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> p;</span><br><span class="line"><span class="keyword">int</span> a[<span class="number">1000005</span>];</span><br><span class="line"><span class="built_in">map</span>&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; ln;	<span class="comment">//记录每个知识点出现了多少次，知识-&gt;出现次数的映射</span></span><br><span class="line"><span class="built_in">set</span>&lt;<span class="keyword">int</span>&gt; all;	<span class="comment">//统计知识点的总数</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; p;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">int</span> cnt = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; p; i++)&#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;a[i]);</span><br><span class="line">        all.insert(a[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    cnt = (<span class="keyword">int</span>)all.size();</span><br><span class="line">    </span><br><span class="line">  	<span class="comment">//尺取法</span></span><br><span class="line">    <span class="keyword">int</span> e = <span class="number">0</span>,s = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> ans = p;</span><br><span class="line">    <span class="keyword">int</span> res = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(;;)&#123;</span><br><span class="line">        <span class="keyword">while</span>(e &lt; p &amp;&amp; res != cnt)&#123;</span><br><span class="line">            <span class="keyword">if</span>(ln[a[e]] == <span class="number">0</span>)</span><br><span class="line">                res++;	<span class="comment">//如果一个知识点新出现，那么总共学的知识点数增加</span></span><br><span class="line">            ln[a[e]]++;</span><br><span class="line">            e++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(res != cnt)</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        ans = min(ans, e - s);</span><br><span class="line">        ln[a[s]]--;	<span class="comment">//头删除，将该知识点出现次数减1</span></span><br><span class="line">        <span class="keyword">if</span>(!ln[a[s]]) <span class="comment">//如果知识点减为0，就说明这个知识点未出现</span></span><br><span class="line">            res--;</span><br><span class="line">        s++;</span><br><span class="line">    &#125;</span><br><span class="line">  	<span class="comment">//尺取法</span></span><br><span class="line">    </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, ans);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <h2 id="尺取法"><a href="#尺取法" class="headerlink" title="尺取法"></a>尺取法</h2><p>尺取法一般用于求子序列的和、乘积等，给遍历求权值以一个更低的时间复杂度的方法。</p>
+<p><strong><u>反复地推进区间的开头和结尾，来求取满足条件的最小区间的方法</u></strong></p>
+<a id="more"></a>
+
+
+
+<h3 id="例题1"><a href="#例题1" class="headerlink" title="例题1"></a>例题1</h3><h4 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h4><p>给出了<strong>N</strong>个正整数序列<strong>(10 &lt; N &lt; 100,000)</strong>，每个正整数小于或等于<strong>1000</strong>0，一个正整数<strong>S (S &lt; 100 000 000)</strong>。编写一个程序，求序列中连续元素的子序列的最小长度，其和大于或等于<strong>S</strong>。</p>
+<h4 id="输入描述"><a href="#输入描述" class="headerlink" title="输入描述"></a>输入描述</h4><p>第一行是测试用例的数量。对于每个测试用例，程序都必须读取从第一行开始的数字<strong>N</strong>和<strong>S</strong>，它们之间用间隔隔开。序列的编号在测试用例的第二行给出，用间隔隔开。输入将在文件结束时结束。</p>
+<h4 id="输出描述"><a href="#输出描述" class="headerlink" title="输出描述"></a>输出描述</h4><p>对于每种情况，程序都必须在输出文件的单独行上打印结果。如果没有回答，打印0。</p>
+<h4 id="输入"><a href="#输入" class="headerlink" title="输入"></a>输入</h4><blockquote>
+<p>2<br>10 15<br>5 1 3 5 10 7 4 9 2 8<br>5 11<br>1 2 3 4 5</p>
+</blockquote>
+<h4 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h4><blockquote>
+<p>2<br>3</p>
+</blockquote>
+<h4 id="算法分析"><a href="#算法分析" class="headerlink" title="算法分析"></a>算法分析</h4><img src="http://q5sek3z73.bkt.clouddn.com/Rule-taking-algorithm-1.png" alt="1" style="zoom:50%;">
+
+<img src="http://q5sek3z73.bkt.clouddn.com/Rule-taking-algorithm-2.png" alt="2" style="zoom:50%;">
+
+<img src="http://q5sek3z73.bkt.clouddn.com/Rule-taking-algorithm-3.png" alt="3" style="zoom:50%;">
+
+
+
+<h4 id="解题代码"><a href="#解题代码" class="headerlink" title="解题代码"></a>解题代码</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">int</span> res = n + <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">int</span> s = <span class="number">0</span>, t = <span class="number">0</span>, sum = <span class="number">0</span>;</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">for</span>(;;)&#123;</span><br><span class="line">    <span class="keyword">while</span>(t &lt; n &amp;&amp; sum &lt; S)</span><br><span class="line">      sum += a[t++];	<span class="comment">//尾加</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span>(sum &lt; S)	<span class="comment">//如果0～n的sum都比S小，那就不存在解</span></span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    res = min(res, t - s);</span><br><span class="line">    sum -= a[s++];	<span class="comment">//头减</span></span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">if</span>(res &gt; n)</span><br><span class="line">    <span class="comment">//解不存在</span></span><br><span class="line">    res = <span class="number">0</span>;</span><br><span class="line">  </span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, res);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="例题2"><a href="#例题2" class="headerlink" title="例题2"></a>例题2</h3><h4 id="题目描述-1"><a href="#题目描述-1" class="headerlink" title="题目描述"></a>题目描述</h4><p>杰西卡是一个非常可爱的女孩，很多男孩都在追求她。最近她有个问题。期末考试就要到了，但她还没怎么花时间。如果她想通过考试，她必须掌握一本厚厚的教科书中包含的所有内容。那本教科书的作者，和其他作者一样，对知识点非常挑剔，因此有些知识点被多次提及。杰西卡认为如果她能把每个知识点至少读一遍，她就能通过考试。她决定只阅读书中一个连续的部分，其中包含了整本书涵盖的所有知识点。当然，子目录应该尽可能的薄。</p>
+<p>一个非常勤奋的男孩为她手工索引了杰西卡课本的每一页，并告诉了她每一页的知识点，这对他的求爱来说是一个很大的进步。你是来拯救杰西卡的，请给出索引，帮助杰西卡决定她应该读哪个相邻的部分。为了方便起见，每个想法都被编码了一个ID，它是一个非负整数。</p>
+<h4 id="输入描述-1"><a href="#输入描述-1" class="headerlink" title="输入描述"></a>输入描述</h4><p>输入的第一行是整数<strong>P(1 ≤ P ≤ 1000000)</strong>，即Jessica的课本页数。第二行包含<strong>P</strong>个非负整数，描述每页的内容。第一个整数是第一页的内容，第二个整数是第二页的内容，以此类推。您可以假设出现的所有整数都能很好地适合有符号32位整数类型。</p>
+<h4 id="输出描述-1"><a href="#输出描述-1" class="headerlink" title="输出描述"></a>输出描述</h4><p>输出一行：书中最短连续部分的页数，包含了书中所有的知识点。</p>
+<h4 id="输入-1"><a href="#输入-1" class="headerlink" title="输入"></a>输入</h4><blockquote>
+<p>5<br>1 8 8 8 1</p>
+</blockquote>
+<h4 id="输出-1"><a href="#输出-1" class="headerlink" title="输出"></a>输出</h4><blockquote>
+<p>2</p>
+</blockquote>
+<h4 id="算法分析-1"><a href="#算法分析-1" class="headerlink" title="算法分析"></a>算法分析</h4><img src="http://q5sek3z73.bkt.clouddn.com/Rule-taking-algorithm-4.png" alt="4" style="zoom:50%;">
+
+
+
+<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;map&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;set&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> p;</span><br><span class="line"><span class="keyword">int</span> a[<span class="number">1000005</span>];</span><br><span class="line"><span class="built_in">map</span>&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; ln;	<span class="comment">//记录每个知识点出现了多少次，知识-&gt;出现次数的映射</span></span><br><span class="line"><span class="built_in">set</span>&lt;<span class="keyword">int</span>&gt; all;	<span class="comment">//统计知识点的总数</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; p;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">int</span> cnt = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; p; i++)&#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;a[i]);</span><br><span class="line">        all.insert(a[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    cnt = (<span class="keyword">int</span>)all.size();</span><br><span class="line">    </span><br><span class="line">  	<span class="comment">//尺取法</span></span><br><span class="line">    <span class="keyword">int</span> e = <span class="number">0</span>,s = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> ans = p;</span><br><span class="line">    <span class="keyword">int</span> res = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(;;)&#123;</span><br><span class="line">        <span class="keyword">while</span>(e &lt; p &amp;&amp; res != cnt)&#123;</span><br><span class="line">            <span class="keyword">if</span>(ln[a[e]] == <span class="number">0</span>)</span><br><span class="line">                res++;	<span class="comment">//如果一个知识点新出现，那么总共学的知识点数增加</span></span><br><span class="line">            ln[a[e]]++;</span><br><span class="line">            e++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(res != cnt)</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        ans = min(ans, e - s);</span><br><span class="line">        ln[a[s]]--;	<span class="comment">//头删除，将该知识点出现次数减1</span></span><br><span class="line">        <span class="keyword">if</span>(!ln[a[s]]) <span class="comment">//如果知识点减为0，就说明这个知识点未出现</span></span><br><span class="line">            res--;</span><br><span class="line">        s++;</span><br><span class="line">    &#125;</span><br><span class="line">  	<span class="comment">//尺取法</span></span><br><span class="line">    </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, ans);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
       
@@ -383,7 +427,7 @@
   <p><span>本文标题:</span><a href="/2020/02/20/Rule-taking-algorithm/">尺取法(挑战程序设计竞赛)</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 陈洋 的个人博客">陈洋</a></p>
   <p><span>发布时间:</span>2020年02月20日 - 15:02</p>
-  <p><span>最后更新:</span>2020年02月20日 - 16:02</p>
+  <p><span>最后更新:</span>2020年02月20日 - 18:02</p>
   <p><span>原始链接:</span><a href="/2020/02/20/Rule-taking-algorithm/" title="尺取法(挑战程序设计竞赛)">http://codeblog-cy.top/2020/02/20/Rule-taking-algorithm/</a>
     <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://codeblog-cy.top/2020/02/20/Rule-taking-algorithm/" aria-label="复制成功！"></i></span>
   </p>
@@ -490,8 +534,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -570,6 +623,22 @@
       </section>
 
       
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#尺取法"><span class="nav-number">1.</span> <span class="nav-text">尺取法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#例题1"><span class="nav-number">1.1.</span> <span class="nav-text">例题1</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题目描述"><span class="nav-number">1.1.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#输入描述"><span class="nav-number">1.1.2.</span> <span class="nav-text">输入描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#输出描述"><span class="nav-number">1.1.3.</span> <span class="nav-text">输出描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#输入"><span class="nav-number">1.1.4.</span> <span class="nav-text">输入</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#输出"><span class="nav-number">1.1.5.</span> <span class="nav-text">输出</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算法分析"><span class="nav-number">1.1.6.</span> <span class="nav-text">算法分析</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#解题代码"><span class="nav-number">1.1.7.</span> <span class="nav-text">解题代码</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#例题2"><span class="nav-number">1.2.</span> <span class="nav-text">例题2</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题目描述-1"><span class="nav-number">1.2.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#输入描述-1"><span class="nav-number">1.2.2.</span> <span class="nav-text">输入描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#输出描述-1"><span class="nav-number">1.2.3.</span> <span class="nav-text">输出描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#输入-1"><span class="nav-number">1.2.4.</span> <span class="nav-text">输入</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#输出-1"><span class="nav-number">1.2.5.</span> <span class="nav-text">输出</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算法分析-1"><span class="nav-number">1.2.6.</span> <span class="nav-text">算法分析</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#代码"><span class="nav-number">1.2.7.</span> <span class="nav-text">代码</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
 
       
 
@@ -623,7 +692,7 @@
     <!-- 博客字数统计 -->
     <span class="site-pv">
       <i class="fa fa-pencil"></i>
-      博客全站共： <span class="post-count">55.1k</span> 字
+      博客全站共： <span class="post-count">55.9k</span> 字
     </span>
 </div>
 <!-- 新增访客统计代码 END-->
@@ -649,7 +718,7 @@ setInterval("createtime()",250);
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共55.1k字</span>
+  <span class="post-count">博客全站共55.9k字</span>
 </div>
 
 

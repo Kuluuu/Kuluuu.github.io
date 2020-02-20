@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://codeblog-cy.top/2020/02/20/Rule-taking-algorithm/</loc>
+    
+    <lastmod>2020-02-20T10:46:00.566Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://codeblog-cy.top/2020/02/20/binary-search-subject/</loc>
     
     <lastmod>2020-02-20T10:26:33.558Z</lastmod>
@@ -26,13 +33,6 @@
     <loc>http://codeblog-cy.top/2020/02/18/one-dimensional-two-dimensional-Hash-Algorithm/</loc>
     
     <lastmod>2020-02-20T08:03:29.698Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://codeblog-cy.top/2020/02/20/Rule-taking-algorithm/</loc>
-    
-    <lastmod>2020-02-20T08:01:39.116Z</lastmod>
     
   </url>
   
