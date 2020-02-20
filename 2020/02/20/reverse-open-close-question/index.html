@@ -88,21 +88,21 @@
 
 
 
-<meta name="description" content="例题1题目描述农场主约翰把他的N(1 ≤ N ≤ 5,000)头奶牛排成一排，很多都是面向前方的，就像好奶牛一样。然而，有些人是面向过去的，而他需要所有人都面向未来，以使他的生活变得完美。 幸运的是，FJ最近买了一台自动翻牛机。因为他购买的是折扣型，所以必须一次性转K(1 ≤ K ≤ N)头，且只能转排在一起的奶牛。每次使用该机器时，它都会反转该行中一个连续的K头奶牛组的朝向(不能在少于K头的奶牛">
+<meta name="description" content="例题1题目描述农场主约翰把他的N(1 ≤ N ≤ 5,000)头奶牛排成一排，很多都是面向前方的，就像好奶牛一样。然而，有些人是面向过去的，而他需要所有人都面向未来，以使他的生活变得完美。">
 <meta name="keywords" content="开关问题,反转">
 <meta property="og:type" content="article">
 <meta property="og:title" content="反转(开关问题)(挑战程序设计竞赛)">
 <meta property="og:url" content="http://codeblog-cy.top/2020/02/20/reverse-open-close-question/index.html">
 <meta property="og:site_name" content="ChenYang&#39;s Blog">
-<meta property="og:description" content="例题1题目描述农场主约翰把他的N(1 ≤ N ≤ 5,000)头奶牛排成一排，很多都是面向前方的，就像好奶牛一样。然而，有些人是面向过去的，而他需要所有人都面向未来，以使他的生活变得完美。 幸运的是，FJ最近买了一台自动翻牛机。因为他购买的是折扣型，所以必须一次性转K(1 ≤ K ≤ N)头，且只能转排在一起的奶牛。每次使用该机器时，它都会反转该行中一个连续的K头奶牛组的朝向(不能在少于K头的奶牛">
+<meta property="og:description" content="例题1题目描述农场主约翰把他的N(1 ≤ N ≤ 5,000)头奶牛排成一排，很多都是面向前方的，就像好奶牛一样。然而，有些人是面向过去的，而他需要所有人都面向未来，以使他的生活变得完美。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://q5sek3z73.bkt.clouddn.com/reverse-open-close-question-1.png">
 <meta property="og:image" content="http://q5sek3z73.bkt.clouddn.com/reverse-open-close-question-2.png">
 <meta property="og:image" content="http://q5sek3z73.bkt.clouddn.com/reverse-open-close-question-3.png">
-<meta property="og:updated_time" content="2020-02-20T11:18:53.051Z">
+<meta property="og:updated_time" content="2020-02-20T13:17:04.703Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="反转(开关问题)(挑战程序设计竞赛)">
-<meta name="twitter:description" content="例题1题目描述农场主约翰把他的N(1 ≤ N ≤ 5,000)头奶牛排成一排，很多都是面向前方的，就像好奶牛一样。然而，有些人是面向过去的，而他需要所有人都面向未来，以使他的生活变得完美。 幸运的是，FJ最近买了一台自动翻牛机。因为他购买的是折扣型，所以必须一次性转K(1 ≤ K ≤ N)头，且只能转排在一起的奶牛。每次使用该机器时，它都会反转该行中一个连续的K头奶牛组的朝向(不能在少于K头的奶牛">
+<meta name="twitter:description" content="例题1题目描述农场主约翰把他的N(1 ≤ N ≤ 5,000)头奶牛排成一排，很多都是面向前方的，就像好奶牛一样。然而，有些人是面向过去的，而他需要所有人都面向未来，以使他的生活变得完美。">
 <meta name="twitter:image" content="http://q5sek3z73.bkt.clouddn.com/reverse-open-close-question-1.png">
 
 
@@ -366,6 +366,10 @@
 
       
         <h2 id="例题1"><a href="#例题1" class="headerlink" title="例题1"></a>例题1</h2><h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p>农场主约翰把他的<strong>N(1 ≤ N ≤ 5,000)</strong>头奶牛排成一排，很多都是面向前方的，就像好奶牛一样。然而，有些人是面向过去的，而他需要所有人都面向未来，以使他的生活变得完美。</p>
+<a id="more"></a>
+
+
+
 <p>幸运的是，FJ最近买了一台自动翻牛机。因为他购买的是折扣型，所以必须一次性转<strong>K(1 ≤ K ≤ N)</strong>头，且只能转排在一起的奶牛。每次使用该机器时，它都会反转该行中一个连续的K头奶牛组的朝向(不能在少于K头的奶牛上使用，例如在该行的任意一端)。每头奶牛都保持着和之前一样的位置，但最终却朝着相反的方向。一头牛一开始朝前，机器就会把它向后转，反之亦然。</p>
 <p>因为FJ必须选择一个单一的，不变的值K，请帮助他确定K的最小值，使机器所需的操作数量最小化，以使所有的牛面朝前。还要确定M，即使用K值使所有奶牛面向前方所需的机器操作的最小数量。</p>
 <h3 id="输入描述"><a href="#输入描述" class="headerlink" title="输入描述"></a>输入描述</h3><p>第1行：单个整数：<strong>N</strong></p>
@@ -434,7 +438,7 @@
   <p><span>本文标题:</span><a href="/2020/02/20/reverse-open-close-question/">反转(开关问题)(挑战程序设计竞赛)</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 陈洋 的个人博客">陈洋</a></p>
   <p><span>发布时间:</span>2020年02月20日 - 15:02</p>
-  <p><span>最后更新:</span>2020年02月20日 - 19:02</p>
+  <p><span>最后更新:</span>2020年02月20日 - 21:02</p>
   <p><span>原始链接:</span><a href="/2020/02/20/reverse-open-close-question/" title="反转(开关问题)(挑战程序设计竞赛)">http://codeblog-cy.top/2020/02/20/reverse-open-close-question/</a>
     <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://codeblog-cy.top/2020/02/20/reverse-open-close-question/" aria-label="复制成功！"></i></span>
   </p>
