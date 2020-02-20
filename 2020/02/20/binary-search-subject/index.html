@@ -88,18 +88,24 @@
 
 
 
-<meta name="description" content="二分搜索算法的四大应用一、从有序数组中查找某个值 一、从有序数组中查找某个值 二、假定一个解并判断是否可行 三、最大化最小值 四、最大化平均值 从有序数组中查找某个值">
+<meta name="description" content="二分搜索算法的四大应用二分搜索法，是通过不断缩小解可能存在的范围，从而求得问题最优解的方法。">
 <meta name="keywords" content="二分搜索">
 <meta property="og:type" content="article">
 <meta property="og:title" content="二分搜索算法专题(挑战程序设计竞赛)">
 <meta property="og:url" content="http://codeblog-cy.top/2020/02/20/binary-search-subject/index.html">
 <meta property="og:site_name" content="ChenYang&#39;s Blog">
-<meta property="og:description" content="二分搜索算法的四大应用一、从有序数组中查找某个值 一、从有序数组中查找某个值 二、假定一个解并判断是否可行 三、最大化最小值 四、最大化平均值 从有序数组中查找某个值">
+<meta property="og:description" content="二分搜索算法的四大应用二分搜索法，是通过不断缩小解可能存在的范围，从而求得问题最优解的方法。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-02-20T05:50:54.112Z">
+<meta property="og:image" content="http://q5sek3z73.bkt.clouddn.com/binary-search-subject-1-1.png">
+<meta property="og:image" content="http://q5sek3z73.bkt.clouddn.com/binary-search-subject-2-11.png">
+<meta property="og:image" content="http://q5sek3z73.bkt.clouddn.com/binary-search-subject-3-11.png">
+<meta property="og:image" content="http://q5sek3z73.bkt.clouddn.com/binary-search-subject-4-1.png">
+<meta property="og:image" content="http://q5sek3z73.bkt.clouddn.com/binary-search-subject-4-2.png">
+<meta property="og:updated_time" content="2020-02-20T10:26:33.558Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="二分搜索算法专题(挑战程序设计竞赛)">
-<meta name="twitter:description" content="二分搜索算法的四大应用一、从有序数组中查找某个值 一、从有序数组中查找某个值 二、假定一个解并判断是否可行 三、最大化最小值 四、最大化平均值 从有序数组中查找某个值">
+<meta name="twitter:description" content="二分搜索算法的四大应用二分搜索法，是通过不断缩小解可能存在的范围，从而求得问题最优解的方法。">
+<meta name="twitter:image" content="http://q5sek3z73.bkt.clouddn.com/binary-search-subject-1-1.png">
 
 
 
@@ -324,8 +330,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/搜索算法/" itemprop="url" rel="index">
-                    <span itemprop="name">搜索算法</span>
+                  <a href="/categories/二分算法/" itemprop="url" rel="index">
+                    <span itemprop="name">二分算法</span>
                   </a>
                 </span>
 
@@ -361,12 +367,82 @@
       
 
       
-        <h2 id="二分搜索算法的四大应用"><a href="#二分搜索算法的四大应用" class="headerlink" title="二分搜索算法的四大应用"></a>二分搜索算法的四大应用</h2><p><a href="#p1"><font size="2" color="#00f">一、从有序数组中查找某个值</font></a></p>
-<p>一、从有序数组中查找某个值</p>
-<p>二、假定一个解并判断是否可行</p>
-<p>三、最大化最小值</p>
-<p>四、最大化平均值</p>
-<h3 id="从有序数组中查找某个值"><a href="#从有序数组中查找某个值" class="headerlink" title="从有序数组中查找某个值"></a><a id="p1">从有序数组中查找某个值</a></h3>
+        <h1 id="二分搜索算法的四大应用"><a href="#二分搜索算法的四大应用" class="headerlink" title="二分搜索算法的四大应用"></a>二分搜索算法的四大应用</h1><p>二分搜索法，是通过不断缩小解可能存在的范围，从而求得问题最优解的方法。</p>
+<a id="more"></a>
+
+<p><strong><font color="#238E23">——————快速链接——————</font></strong></p>
+<p><a href="#p1"><font size="3" color="\#87CEEB">一、从有序数组中查找某个值</font></a></p>
+<p><a href="#p2"><font size="3" color="\#87CEEB">二、假定一个解并判断是否可行</font></a></p>
+<p><a href="#p3"><font size="3" color="\#87CEEB">三、最大化最小值</font></a></p>
+<p><a href="#p4"><font size="3" color="\#87CEEB">四、最大化平均值</font></a></p>
+<p><a href="#p5"><font size="3" color="\#87CEEB">关于二分精度的总结</font></a></p>
+<p><strong><font color="#238E23">——————快速链接——————</font></strong></p>
+<h2 id="一、从有序数组中查找某个值"><a href="#一、从有序数组中查找某个值" class="headerlink" title="一、从有序数组中查找某个值"></a><a id="p1"><font color="#9932CD">一、从有序数组中查找某个值</font></a></h2><p>这是二分搜索最常规的操作，在一个有序的数组中查找某个值</p>
+<h3 id="例题："><a href="#例题：" class="headerlink" title="例题："></a>例题：</h3><img src="http://q5sek3z73.bkt.clouddn.com/binary-search-subject-1-1.png" alt="1-1" style="zoom:80%;">
+
+
+
+<h4 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//输入</span></span><br><span class="line"><span class="keyword">int</span> n, k;</span><br><span class="line"><span class="keyword">int</span> a[MAX_N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="comment">//初始化解的存在范围</span></span><br><span class="line">	<span class="keyword">int</span> lb = <span class="number">-1</span>, ub = n;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">//重复循环，直到解的存在范围不大于1</span></span><br><span class="line">  <span class="keyword">while</span>(ub - lb &gt; <span class="number">1</span>)&#123;</span><br><span class="line">    <span class="keyword">int</span> mid = (lb + ub) / <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">if</span>(a[mid] &gt;= k)&#123;</span><br><span class="line">      <span class="comment">//如果mid满足条件，则解的存在范围变为(lb,mid]</span></span><br><span class="line">      ub = mid;</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">			<span class="comment">//如果mid不满足条件，则解的存在范围变为(mid,ub]</span></span><br><span class="line">      lb = mid;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">//这时，lb + 1 = ub</span></span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, ub);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="二、假定一个解并判断是否可行"><a href="#二、假定一个解并判断是否可行" class="headerlink" title="二、假定一个解并判断是否可行"></a><a id="p2"><font color="#9932CD">二、假定一个解并判断是否可行</font></a></h2><p>给定一个需要的条件，根据条件二分遍历满足条件的解。</p>
+<p><strong>假定一个解，再去判断这个解是否可行，再不断缩小范围</strong></p>
+<h3 id="例题：-1"><a href="#例题：-1" class="headerlink" title="例题："></a>例题：</h3><h4 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h4><p>为了购买网络线缆，评委会联系了当地的网络解决方案提供商，要求为他们出售一定数量的等长度的线缆。评审委员会希望电报越长越好，让参赛者坐得越远越好。</p>
+<p>公司的电缆主管被派去执行这项任务。他知道库存中每根电缆的长度，最多是一厘米，他可以精确地切割每根电缆，并被告知必须切割的部分的长度。然而，这一次，长度不知道和电缆主人完全困惑。</p>
+<p>你要帮助电缆主，通过编写一个程序，将确定最大可能长度的电缆片可以从电缆切断的股票，以获得指定的数量。</p>
+<h4 id="输入描述"><a href="#输入描述" class="headerlink" title="输入描述"></a>输入描述</h4><p>输入文件的第一行包含两个用空格分隔的整数<strong>N</strong>和<strong>K</strong>。<strong>N (1 &lt;= N &lt;= 10000)</strong>是库存电缆的数量，<strong>K (1 &lt;= K &lt;= 10000)</strong>是请求的数量。第一行后面是N行，每行有一个数字，表示库存中每根电缆的长度(以米为单位)。所有的电缆都至少1米长，最多100公里长。输入文件中的所有长度都以厘米精度写入，小数点后正好有两位数字。</p>
+<h4 id="输出描述"><a href="#输出描述" class="headerlink" title="输出描述"></a>输出描述</h4><p>写入输出文件的最大长度(米)，电缆主可以削减从电缆的股票，以获得要求的件数。数字的书写精度必须为厘米，小数点后必须有两位数字。</p>
+<p>如果无法将所请求的片段数量(每个片段至少有1厘米长)分割，则输出文件必须包含单个数字“0.00”(不带引号)。</p>
+<h4 id="输入"><a href="#输入" class="headerlink" title="输入"></a>输入</h4><blockquote>
+<p>4 11<br>8.02<br>7.43<br>4.57<br>5.39</p>
+</blockquote>
+<h4 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h4><blockquote>
+<p>2.00</p>
+</blockquote>
+<h4 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h4><img src="http://q5sek3z73.bkt.clouddn.com/binary-search-subject-2-11.png" alt="2-1" style="zoom:60%;">
+
+
+
+<h4 id="代码：-1"><a href="#代码：-1" class="headerlink" title="代码："></a>代码：</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> N,K;</span><br><span class="line"><span class="keyword">double</span> L[MAX_N];</span><br><span class="line"></span><br><span class="line"><span class="comment">//判断是否满足条件</span></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">C</span><span class="params">(<span class="keyword">double</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="comment">//以x为长度来切割绳子</span></span><br><span class="line">  <span class="comment">//如果切割的绳子数超过K，就说明该长度可行</span></span><br><span class="line">  <span class="keyword">int</span> num = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; N; i++)&#123;</span><br><span class="line">		num += (<span class="keyword">int</span>)(L[i] / x);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> num &gt;= K;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">//初始化解的范围</span></span><br><span class="line">  <span class="keyword">double</span> lb = <span class="number">0</span>, ub = INF;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">//重复循环，直到解的范围足够小</span></span><br><span class="line">  <span class="comment">//100的循环是为了控制精度，使精度达到10^-30的精度范围</span></span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">100</span>; i++)&#123;</span><br><span class="line">    <span class="keyword">double</span> mid = (lb + ub) / <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">if</span>(C(mid))</span><br><span class="line">      lb = mid;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">      ub = mid;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">"%.2f\n"</span>, <span class="built_in">floor</span>(ub * <span class="number">100</span>) / <span class="number">100</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="三、最大化最小值"><a href="#三、最大化最小值" class="headerlink" title="三、最大化最小值"></a><a id="p3"><font color="#9932CD">三、最大化最小值</font></a></h2><p>通过二分法也可以很好的解决最大化最小值的问题</p>
+<h3 id="例题：-2"><a href="#例题：-2" class="headerlink" title="例题："></a>例题：</h3><h4 id="题目描述-1"><a href="#题目描述-1" class="headerlink" title="题目描述"></a>题目描述</h4><p>农民约翰建了一个新的长谷仓，有<strong>N</strong>个摊位。摊位位于<strong>x<sub>1</sub>、…，x<sub>N</sub> (0 &lt;= x<sub>i</sub> &lt;= 1,000,000,000)。</strong></p>
+<p>他的<strong>C (2 &lt;= C &lt;= N)</strong>头奶牛不喜欢这种谷仓布局，一旦被关进牛栏，它们就会变得咄咄逼人。为了防止奶牛互相伤害，FJ想要将奶牛分配到牛棚中，使它们之间的最小距离尽可能的大。最大最小距离是多少?</p>
+<h4 id="输入描述-1"><a href="#输入描述-1" class="headerlink" title="输入描述"></a>输入描述</h4><ul>
+<li><p>第1行：两个用空格分隔的整数：<strong>N和C</strong></p>
+</li>
+<li><p>第 2..N+1行： 第i+1行包含一个整数摊位位置，<strong>x<sub>i</sub></strong></p>
+</li>
+</ul>
+<h4 id="输出描述-1"><a href="#输出描述-1" class="headerlink" title="输出描述"></a>输出描述</h4><ul>
+<li>第1行：一个整数：最大最小距离</li>
+</ul>
+<h4 id="输入-1"><a href="#输入-1" class="headerlink" title="输入"></a>输入</h4><blockquote>
+<p>5 3<br>1<br>2<br>8<br>4<br>9</p>
+</blockquote>
+<h4 id="输出-1"><a href="#输出-1" class="headerlink" title="输出"></a>输出</h4><blockquote>
+<p>3</p>
+</blockquote>
+<h4 id="提示"><a href="#提示" class="headerlink" title="提示"></a>提示</h4><blockquote>
+<p>FJ可以把他的3头奶牛放在1号、4号和8号位置的牛栏里，这样就能保证3只奶牛之间的最小距离。</p>
+<p>庞大的输入数据，建议使用scanf。</p>
+</blockquote>
+<h4 id="算法分析"><a href="#算法分析" class="headerlink" title="算法分析"></a>算法分析</h4><img src="http://q5sek3z73.bkt.clouddn.com/binary-search-subject-3-11.png" alt="3-1" style="zoom:60%;">
+
+
+
+<h4 id="代码：-2"><a href="#代码：-2" class="headerlink" title="代码："></a>代码：</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//输入</span></span><br><span class="line"><span class="keyword">int</span> N,M;</span><br><span class="line"><span class="keyword">int</span> x[MAX_N];</span><br><span class="line"></span><br><span class="line"><span class="comment">//判断是否满足条件</span></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">C</span><span class="params">(<span class="keyword">int</span> d)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">int</span> last = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; M; i++)&#123;</span><br><span class="line">    <span class="keyword">int</span> crt = last + <span class="number">1</span>;</span><br><span class="line">    <span class="comment">//保证任意两个牛之间的距离不超过d</span></span><br><span class="line">    <span class="keyword">while</span>(crt &lt; N &amp;&amp; x[crt] - x[last] &lt; d) </span><br><span class="line">      crt++;</span><br><span class="line">    <span class="keyword">if</span>(crt == N)</span><br><span class="line">      <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    last = crt;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="comment">//最开始时对x数组排序</span></span><br><span class="line">  sort(x, x + N);</span><br><span class="line">  </span><br><span class="line">  <span class="comment">//初始化解的存在范围</span></span><br><span class="line">  <span class="keyword">int</span> lb = <span class="number">0</span>, ub = INF;</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">while</span>(ub - lb &gt; <span class="number">1</span>)&#123;	<span class="comment">//保证精度为整数</span></span><br><span class="line">    <span class="keyword">int</span> mid = (lb + ub) / <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">if</span>(C(mid))</span><br><span class="line">      lb = mid;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">      ub = mid;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, lb);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="四、最大化平均值"><a href="#四、最大化平均值" class="headerlink" title="四、最大化平均值"></a><a id="p4"><font color="#9932CD">四、最大化平均值</font></a></h2><h3 id="例题：-3"><a href="#例题：-3" class="headerlink" title="例题："></a>例题：</h3><img src="http://q5sek3z73.bkt.clouddn.com/binary-search-subject-4-1.png" alt="4-1" style="zoom:65%;">
+
+<p>#### </p>
+<h4 id="算法分析-1"><a href="#算法分析-1" class="headerlink" title="算法分析"></a>算法分析</h4><img src="http://q5sek3z73.bkt.clouddn.com/binary-search-subject-4-2.png" alt="4-2" style="zoom:67%;">
+
+
+
+<h4 id="代码：-3"><a href="#代码：-3" class="headerlink" title="代码："></a>代码：</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//输入</span></span><br><span class="line"><span class="keyword">int</span> n,k;</span><br><span class="line"><span class="keyword">int</span> w[MAX_N], v[MAX_N];</span><br><span class="line"></span><br><span class="line"><span class="keyword">double</span> y[MAX_N];	<span class="comment">// v - x * w</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//判断是否满足条件</span></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">C</span><span class="params">(<span class="keyword">double</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="comment">//计算权重v - x * w</span></span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">    y[i] = v[i] - x * w[i];</span><br><span class="line">  sort(y, y + n);</span><br><span class="line">  </span><br><span class="line">  <span class="comment">//计算y数组中从大到小前k个数的和</span></span><br><span class="line">  <span class="keyword">double</span> sum = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; k; i++)</span><br><span class="line">    sum += y[n - i - <span class="number">1</span>];</span><br><span class="line"> 	</span><br><span class="line">  <span class="keyword">return</span> sum &gt;= <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">double</span> lb = <span class="number">0</span>, ub = INF;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">100</span>; i++)&#123;</span><br><span class="line">    <span class="keyword">double</span> mid = (lb + ub) / <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">if</span>(C(mid))</span><br><span class="line">      lb = mid;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">      ub = mid;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">"%.2f\n"</span>, ub);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="关于二分精度的总结"><a href="#关于二分精度的总结" class="headerlink" title="关于二分精度的总结"></a><a id="p5"><font color="red">关于二分精度的总结</font></a></h2><p>1、<strong>可以通过控制二分循环来控制二分精度</strong>，可以将终止条件设置为100次的循环，那么精度就可以达到10<sup>-30</sup>的精度范围，同样也可以把终止条件设为 <code>(ub - lb) &gt; EPS</code> 这样，<strong>*<u>但是注意，如果EPS取得太小，就有可能因为浮点小数精度的原因导致陷入死循环</u>*</strong></p>
+
       
     </div>
     
@@ -386,7 +462,7 @@
   <p><span>本文标题:</span><a href="/2020/02/20/binary-search-subject/">二分搜索算法专题(挑战程序设计竞赛)</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 陈洋 的个人博客">陈洋</a></p>
   <p><span>发布时间:</span>2020年02月20日 - 13:02</p>
-  <p><span>最后更新:</span>2020年02月20日 - 13:02</p>
+  <p><span>最后更新:</span>2020年02月20日 - 18:02</p>
   <p><span>原始链接:</span><a href="/2020/02/20/binary-search-subject/" title="二分搜索算法专题(挑战程序设计竞赛)">http://codeblog-cy.top/2020/02/20/binary-search-subject/</a>
     <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://codeblog-cy.top/2020/02/20/binary-search-subject/" aria-label="复制成功！"></i></span>
   </p>
@@ -442,6 +518,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/02/20/reverse-open-close-question/" rel="prev" title="反转(开关问题)(挑战程序设计竞赛)">
+                反转(开关问题)(挑战程序设计竞赛) <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -520,7 +600,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">51</span>
+                  <span class="site-state-item-count">53</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -531,7 +611,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-count">17</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -542,7 +622,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">52</span>
+                  <span class="site-state-item-count">55</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -591,7 +671,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#二分搜索算法的四大应用"><span class="nav-number">1.</span> <span class="nav-text">二分搜索算法的四大应用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#从有序数组中查找某个值"><span class="nav-number">1.1.</span> <span class="nav-text">从有序数组中查找某个值</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#二分搜索算法的四大应用"><span class="nav-number">1.</span> <span class="nav-text">二分搜索算法的四大应用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、从有序数组中查找某个值"><span class="nav-number">1.1.</span> <span class="nav-text">一、从有序数组中查找某个值</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#例题："><span class="nav-number">1.1.1.</span> <span class="nav-text">例题：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#代码："><span class="nav-number">1.1.1.1.</span> <span class="nav-text">代码：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、假定一个解并判断是否可行"><span class="nav-number">1.2.</span> <span class="nav-text">二、假定一个解并判断是否可行</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#例题：-1"><span class="nav-number">1.2.1.</span> <span class="nav-text">例题：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题目描述"><span class="nav-number">1.2.1.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#输入描述"><span class="nav-number">1.2.1.2.</span> <span class="nav-text">输入描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#输出描述"><span class="nav-number">1.2.1.3.</span> <span class="nav-text">输出描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#输入"><span class="nav-number">1.2.1.4.</span> <span class="nav-text">输入</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#输出"><span class="nav-number">1.2.1.5.</span> <span class="nav-text">输出</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#解题思路"><span class="nav-number">1.2.1.6.</span> <span class="nav-text">解题思路</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#代码：-1"><span class="nav-number">1.2.1.7.</span> <span class="nav-text">代码：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、最大化最小值"><span class="nav-number">1.3.</span> <span class="nav-text">三、最大化最小值</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#例题：-2"><span class="nav-number">1.3.1.</span> <span class="nav-text">例题：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题目描述-1"><span class="nav-number">1.3.1.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#输入描述-1"><span class="nav-number">1.3.1.2.</span> <span class="nav-text">输入描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#输出描述-1"><span class="nav-number">1.3.1.3.</span> <span class="nav-text">输出描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#输入-1"><span class="nav-number">1.3.1.4.</span> <span class="nav-text">输入</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#输出-1"><span class="nav-number">1.3.1.5.</span> <span class="nav-text">输出</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#提示"><span class="nav-number">1.3.1.6.</span> <span class="nav-text">提示</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算法分析"><span class="nav-number">1.3.1.7.</span> <span class="nav-text">算法分析</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#代码：-2"><span class="nav-number">1.3.1.8.</span> <span class="nav-text">代码：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四、最大化平均值"><span class="nav-number">1.4.</span> <span class="nav-text">四、最大化平均值</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#例题：-3"><span class="nav-number">1.4.1.</span> <span class="nav-text">例题：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#算法分析-1"><span class="nav-number">1.4.1.1.</span> <span class="nav-text">算法分析</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#代码：-3"><span class="nav-number">1.4.1.2.</span> <span class="nav-text">代码：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关于二分精度的总结"><span class="nav-number">1.5.</span> <span class="nav-text">关于二分精度的总结</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -651,7 +731,7 @@
     <!-- 博客字数统计 -->
     <span class="site-pv">
       <i class="fa fa-pencil"></i>
-      博客全站共： <span class="post-count">52.5k</span> 字
+      博客全站共： <span class="post-count">55.1k</span> 字
     </span>
 </div>
 <!-- 新增访客统计代码 END-->
@@ -677,7 +757,7 @@ setInterval("createtime()",250);
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共52.5k字</span>
+  <span class="post-count">博客全站共55.1k字</span>
 </div>
 
 
