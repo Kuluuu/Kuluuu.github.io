@@ -100,7 +100,7 @@
 <meta property="og:image" content="http://q5sek3z73.bkt.clouddn.com/Rule-taking-algorithm-2.png">
 <meta property="og:image" content="http://q5sek3z73.bkt.clouddn.com/Rule-taking-algorithm-3.png">
 <meta property="og:image" content="http://q5sek3z73.bkt.clouddn.com/Rule-taking-algorithm-4.png">
-<meta property="og:updated_time" content="2020-02-20T10:46:00.566Z">
+<meta property="og:updated_time" content="2020-02-20T11:01:05.386Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="尺取法(挑战程序设计竞赛)">
 <meta name="twitter:description" content="尺取法尺取法一般用于求子序列的和、乘积等，给遍历求权值以一个更低的时间复杂度的方法。 反复地推进区间的开头和结尾，来求取满足条件的最小区间的方法">
@@ -370,8 +370,7 @@
 <p><strong><u>反复地推进区间的开头和结尾，来求取满足条件的最小区间的方法</u></strong></p>
 <a id="more"></a>
 
-
-
+<p>&emsp;</p>
 <h3 id="例题1"><a href="#例题1" class="headerlink" title="例题1"></a>例题1</h3><h4 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h4><p>给出了<strong>N</strong>个正整数序列<strong>(10 &lt; N &lt; 100,000)</strong>，每个正整数小于或等于<strong>1000</strong>0，一个正整数<strong>S (S &lt; 100 000 000)</strong>。编写一个程序，求序列中连续元素的子序列的最小长度，其和大于或等于<strong>S</strong>。</p>
 <h4 id="输入描述"><a href="#输入描述" class="headerlink" title="输入描述"></a>输入描述</h4><p>第一行是测试用例的数量。对于每个测试用例，程序都必须读取从第一行开始的数字<strong>N</strong>和<strong>S</strong>，它们之间用间隔隔开。序列的编号在测试用例的第二行给出，用间隔隔开。输入将在文件结束时结束。</p>
 <h4 id="输出描述"><a href="#输出描述" class="headerlink" title="输出描述"></a>输出描述</h4><p>对于每种情况，程序都必须在输出文件的单独行上打印结果。如果没有回答，打印0。</p>
@@ -391,6 +390,8 @@
 
 <h4 id="解题代码"><a href="#解题代码" class="headerlink" title="解题代码"></a>解题代码</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">int</span> res = n + <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">int</span> s = <span class="number">0</span>, t = <span class="number">0</span>, sum = <span class="number">0</span>;</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">for</span>(;;)&#123;</span><br><span class="line">    <span class="keyword">while</span>(t &lt; n &amp;&amp; sum &lt; S)</span><br><span class="line">      sum += a[t++];	<span class="comment">//尾加</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span>(sum &lt; S)	<span class="comment">//如果0～n的sum都比S小，那就不存在解</span></span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    res = min(res, t - s);</span><br><span class="line">    sum -= a[s++];	<span class="comment">//头减</span></span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">if</span>(res &gt; n)</span><br><span class="line">    <span class="comment">//解不存在</span></span><br><span class="line">    res = <span class="number">0</span>;</span><br><span class="line">  </span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, res);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+<p>&emsp;</p>
+<p>&emsp;</p>
 <h3 id="例题2"><a href="#例题2" class="headerlink" title="例题2"></a>例题2</h3><h4 id="题目描述-1"><a href="#题目描述-1" class="headerlink" title="题目描述"></a>题目描述</h4><p>杰西卡是一个非常可爱的女孩，很多男孩都在追求她。最近她有个问题。期末考试就要到了，但她还没怎么花时间。如果她想通过考试，她必须掌握一本厚厚的教科书中包含的所有内容。那本教科书的作者，和其他作者一样，对知识点非常挑剔，因此有些知识点被多次提及。杰西卡认为如果她能把每个知识点至少读一遍，她就能通过考试。她决定只阅读书中一个连续的部分，其中包含了整本书涵盖的所有知识点。当然，子目录应该尽可能的薄。</p>
 <p>一个非常勤奋的男孩为她手工索引了杰西卡课本的每一页，并告诉了她每一页的知识点，这对他的求爱来说是一个很大的进步。你是来拯救杰西卡的，请给出索引，帮助杰西卡决定她应该读哪个相邻的部分。为了方便起见，每个想法都被编码了一个ID，它是一个非负整数。</p>
 <h4 id="输入描述-1"><a href="#输入描述-1" class="headerlink" title="输入描述"></a>输入描述</h4><p>输入的第一行是整数<strong>P(1 ≤ P ≤ 1000000)</strong>，即Jessica的课本页数。第二行包含<strong>P</strong>个非负整数，描述每页的内容。第一个整数是第一页的内容，第二个整数是第二页的内容，以此类推。您可以假设出现的所有整数都能很好地适合有符号32位整数类型。</p>
@@ -427,7 +428,7 @@
   <p><span>本文标题:</span><a href="/2020/02/20/Rule-taking-algorithm/">尺取法(挑战程序设计竞赛)</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 陈洋 的个人博客">陈洋</a></p>
   <p><span>发布时间:</span>2020年02月20日 - 15:02</p>
-  <p><span>最后更新:</span>2020年02月20日 - 18:02</p>
+  <p><span>最后更新:</span>2020年02月20日 - 19:02</p>
   <p><span>原始链接:</span><a href="/2020/02/20/Rule-taking-algorithm/" title="尺取法(挑战程序设计竞赛)">http://codeblog-cy.top/2020/02/20/Rule-taking-algorithm/</a>
     <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://codeblog-cy.top/2020/02/20/Rule-taking-algorithm/" aria-label="复制成功！"></i></span>
   </p>
@@ -692,7 +693,7 @@
     <!-- 博客字数统计 -->
     <span class="site-pv">
       <i class="fa fa-pencil"></i>
-      博客全站共： <span class="post-count">56k</span> 字
+      博客全站共： <span class="post-count">55.9k</span> 字
     </span>
 </div>
 <!-- 新增访客统计代码 END-->
@@ -718,7 +719,7 @@ setInterval("createtime()",250);
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共56k字</span>
+  <span class="post-count">博客全站共55.9k字</span>
 </div>
 
 
