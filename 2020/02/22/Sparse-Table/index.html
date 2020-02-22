@@ -88,18 +88,18 @@
 
 
 
-<meta name="description" content="Sparse Table（ST表）通过O(nlogn)的预处理，以及O(n\logn)的空间，达到O(1)时间复杂度的查询操作">
+<meta name="description" content="Sparse Table（ST表）通过O(n*logn)的预处理，以及O(n*logn)的空间，达到O(1)时间复杂度的查询操作">
 <meta name="keywords" content="ST表,模版">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【模版】Sparse-Table｜ST表｜基于ST表的RMQ">
 <meta property="og:url" content="http://codeblog-cy.top/2020/02/22/Sparse-Table/index.html">
 <meta property="og:site_name" content="ChenYang&#39;s Blog">
-<meta property="og:description" content="Sparse Table（ST表）通过O(nlogn)的预处理，以及O(n\logn)的空间，达到O(1)时间复杂度的查询操作">
+<meta property="og:description" content="Sparse Table（ST表）通过O(n*logn)的预处理，以及O(n*logn)的空间，达到O(1)时间复杂度的查询操作">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-02-22T04:27:09.890Z">
+<meta property="og:updated_time" content="2020-02-22T04:32:45.753Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【模版】Sparse-Table｜ST表｜基于ST表的RMQ">
-<meta name="twitter:description" content="Sparse Table（ST表）通过O(nlogn)的预处理，以及O(n\logn)的空间，达到O(1)时间复杂度的查询操作">
+<meta name="twitter:description" content="Sparse Table（ST表）通过O(n*logn)的预处理，以及O(n*logn)的空间，达到O(1)时间复杂度的查询操作">
 
 
 
@@ -361,7 +361,7 @@
       
 
       
-        <h2 id="Sparse-Table（ST表）"><a href="#Sparse-Table（ST表）" class="headerlink" title="Sparse Table（ST表）"></a>Sparse Table（ST表）</h2><p><strong><font color="red">通过O(n<em>logn)的预处理，以及O(n\</em>logn)的空间，达到O(1)时间复杂度的查询操作</font></strong></p>
+        <h2 id="Sparse-Table（ST表）"><a href="#Sparse-Table（ST表）" class="headerlink" title="Sparse Table（ST表）"></a>Sparse Table（ST表）</h2><p><strong><font color="red">通过O(n*logn)的预处理，以及O(n*logn)的空间，达到O(1)时间复杂度的查询操作</font></strong></p>
 <a id="more"></a>
 
 <ul>
@@ -370,6 +370,7 @@
 <p>例如：</p>
 <p>d[5][3] = min(d[5][2], d[9][2])，即意味着min(5, 12) = min( min(5….8), min(9…..12) )，即<code>区间5～12的最值</code>，等于 <code>5～8的最值和9～12的最值</code> 的<code>最值</code></p>
 <h2 id="详细介绍"><a href="#详细介绍" class="headerlink" title="详细介绍"></a>详细介绍</h2><p><a href="https://blog.csdn.net/guoyangfan_/article/details/81147253" target="_blank" rel="noopener">https://blog.csdn.net/guoyangfan_/article/details/81147253</a></p>
+<p><a href="https://www.luogu.com.cn/blog/zhouziheng666/qian-tan-st-biao" target="_blank" rel="noopener">https://www.luogu.com.cn/blog/zhouziheng666/qian-tan-st-biao</a></p>
 <h2 id="模版-最小值版本"><a href="#模版-最小值版本" class="headerlink" title="模版(最小值版本)"></a>模版(最小值版本)</h2><p>来源：<a href="https://www.cnblogs.com/autsky-jadek/p/7327416.html" target="_blank" rel="noopener">https://www.cnblogs.com/autsky-jadek/p/7327416.html</a></p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> d[<span class="number">1000006</span>][<span class="number">25</span>];</span><br><span class="line"><span class="keyword">int</span> mn[<span class="number">1000006</span>];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">rmq_init</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">        d[i][<span class="number">0</span>] = a[i];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>; (<span class="number">1</span> &lt;&lt; j) &lt;= n; j++)</span><br><span class="line">      <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i+(<span class="number">1</span>&lt;&lt;j)<span class="number">-1</span>&lt;=n;i++)</span><br><span class="line">        d[i][j]=min(d[i][j<span class="number">-1</span>],d[i+(<span class="number">1</span>&lt;&lt;(j<span class="number">-1</span>))][j<span class="number">-1</span>]);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> len=<span class="number">1</span>;len&lt;=n;++len)&#123;</span><br><span class="line">        <span class="keyword">int</span> k=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>((<span class="number">1</span>&lt;&lt;(k+<span class="number">1</span>))&lt;=len)</span><br><span class="line">            k++;</span><br><span class="line">        mn[len]=k;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">rmq</span><span class="params">(<span class="keyword">int</span> L,<span class="keyword">int</span> R)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> k=mn[R-L+<span class="number">1</span>];</span><br><span class="line">    <span class="keyword">return</span> min(d[L][k],d[R-(<span class="number">1</span>&lt;&lt;k)+<span class="number">1</span>][k]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
