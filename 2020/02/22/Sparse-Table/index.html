@@ -88,18 +88,18 @@
 
 
 
-<meta name="description" content="Sparse Table（ST表）通过O(n*logn)的预处理，以及O(n*logn)的空间，达到O(1)时间复杂度的查询操作 常用于对静态RMQ问题进行求解">
+<meta name="description" content="Sparse Table（ST表）通过O(n*logn)的预处理，以及O(n*logn)的空间，达到O(1)时间复杂度的查询操作 常用于对静态RMQ问题进行求解 &amp;emsp;">
 <meta name="keywords" content="ST表,模版">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【模版】Sparse-Table｜ST表｜基于ST表的RMQ">
 <meta property="og:url" content="http://codeblog-cy.top/2020/02/22/Sparse-Table/index.html">
 <meta property="og:site_name" content="ChenYang&#39;s Blog">
-<meta property="og:description" content="Sparse Table（ST表）通过O(n*logn)的预处理，以及O(n*logn)的空间，达到O(1)时间复杂度的查询操作 常用于对静态RMQ问题进行求解">
+<meta property="og:description" content="Sparse Table（ST表）通过O(n*logn)的预处理，以及O(n*logn)的空间，达到O(1)时间复杂度的查询操作 常用于对静态RMQ问题进行求解 &amp;emsp;">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-02-22T04:44:26.342Z">
+<meta property="og:updated_time" content="2020-02-22T16:09:58.636Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【模版】Sparse-Table｜ST表｜基于ST表的RMQ">
-<meta name="twitter:description" content="Sparse Table（ST表）通过O(n*logn)的预处理，以及O(n*logn)的空间，达到O(1)时间复杂度的查询操作 常用于对静态RMQ问题进行求解">
+<meta name="twitter:description" content="Sparse Table（ST表）通过O(n*logn)的预处理，以及O(n*logn)的空间，达到O(1)时间复杂度的查询操作 常用于对静态RMQ问题进行求解 &amp;emsp;">
 
 
 
@@ -363,6 +363,7 @@
       
         <h2 id="Sparse-Table（ST表）"><a href="#Sparse-Table（ST表）" class="headerlink" title="Sparse Table（ST表）"></a>Sparse Table（ST表）</h2><p><strong><font color="red">通过O(n*logn)的预处理，以及O(n*logn)的空间，达到O(1)时间复杂度的查询操作</font></strong></p>
 <p><strong><font color="blue">常用于对<em>静态</em>RMQ问题进行求解</font></strong></p>
+<p>&emsp;</p>
 <a id="more"></a>
 
 <ul>
@@ -370,6 +371,7 @@
 </ul>
 <p>例如：</p>
 <p>d[5][3] = min(d[5][2], d[9][2])，即意味着min(5, 12) = min( min(5….8), min(9…..12) )，即<code>区间5～12的最值</code>，等于 <code>5～8的最值和9～12的最值</code> 的<code>最值</code></p>
+<p>&emsp;</p>
 <h2 id="详细介绍"><a href="#详细介绍" class="headerlink" title="详细介绍"></a>详细介绍</h2><p><a href="https://blog.csdn.net/guoyangfan_/article/details/81147253" target="_blank" rel="noopener">https://blog.csdn.net/guoyangfan_/article/details/81147253</a></p>
 <p><a href="https://www.luogu.com.cn/blog/zhouziheng666/qian-tan-st-biao" target="_blank" rel="noopener">https://www.luogu.com.cn/blog/zhouziheng666/qian-tan-st-biao</a></p>
 <h2 id="模版-最小值版本"><a href="#模版-最小值版本" class="headerlink" title="模版(最小值版本)"></a>模版(最小值版本)</h2><p>来源：<a href="https://www.cnblogs.com/autsky-jadek/p/7327416.html" target="_blank" rel="noopener">https://www.cnblogs.com/autsky-jadek/p/7327416.html</a></p>
@@ -400,7 +402,7 @@
   <p><span>本文标题:</span><a href="/2020/02/22/Sparse-Table/">【模版】Sparse-Table｜ST表｜基于ST表的RMQ</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 陈洋 的个人博客">陈洋</a></p>
   <p><span>发布时间:</span>2020年02月22日 - 11:02</p>
-  <p><span>最后更新:</span>2020年02月22日 - 12:02</p>
+  <p><span>最后更新:</span>2020年02月23日 - 00:02</p>
   <p><span>原始链接:</span><a href="/2020/02/22/Sparse-Table/" title="【模版】Sparse-Table｜ST表｜基于ST表的RMQ">http://codeblog-cy.top/2020/02/22/Sparse-Table/</a>
     <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://codeblog-cy.top/2020/02/22/Sparse-Table/" aria-label="复制成功！"></i></span>
   </p>
@@ -458,6 +460,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/02/22/Segment-tree/" rel="prev" title="【模版】线段树详解">
+                【模版】线段树详解 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -536,7 +542,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">55</span>
+                  <span class="site-state-item-count">56</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -558,7 +564,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">58</span>
+                  <span class="site-state-item-count">59</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -667,7 +673,7 @@
     <!-- 博客字数统计 -->
     <span class="site-pv">
       <i class="fa fa-pencil"></i>
-      博客全站共： <span class="post-count">58.5k</span> 字
+      博客全站共： <span class="post-count">62k</span> 字
     </span>
 </div>
 <!-- 新增访客统计代码 END-->
@@ -693,7 +699,7 @@ setInterval("createtime()",250);
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共58.5k字</span>
+  <span class="post-count">博客全站共62k字</span>
 </div>
 
 

@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-flash.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+  <meta name="baidu-site-verification" content="3fE9IyxcPl">
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/1.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/1.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/1.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/1.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="模版,线段树,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="线段树详解参考：https://blog.csdn.net/iwts_24/article/details/81484561 线段树是一颗满二叉树，有n个元素时，对区间的操作在O(logn)的时间内完成，初始化的操作时间和总的空间复杂度都为O(n)">
+<meta name="keywords" content="模版,线段树">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【模版】线段树详解">
+<meta property="og:url" content="http://codeblog-cy.top/2020/02/22/Segment-tree/index.html">
+<meta property="og:site_name" content="ChenYang&#39;s Blog">
+<meta property="og:description" content="线段树详解参考：https://blog.csdn.net/iwts_24/article/details/81484561 线段树是一颗满二叉树，有n个元素时，对区间的操作在O(logn)的时间内完成，初始化的操作时间和总的空间复杂度都为O(n)">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2020-02-22T16:10:47.365Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="【模版】线段树详解">
+<meta name="twitter:description" content="线段树详解参考：https://blog.csdn.net/iwts_24/article/details/81484561 线段树是一颗满二叉树，有n个元素时，对区间的操作在O(logn)的时间内完成，初始化的操作时间和总的空间复杂度都为O(n)">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://codeblog-cy.top/2020/02/22/Segment-tree/">
+
+
+
+
+
+  <title>【模版】线段树详解 | ChenYang's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+  
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">ChenYang's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">心中有码，自然伟大</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://codeblog-cy.top/2020/02/22/Segment-tree/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="陈洋">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/me.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ChenYang's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">【模版】线段树详解</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-22T22:48:27+08:00">
+                2020-02-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/灵活的数据结构/" itemprop="url" rel="index">
+                    <span itemprop="name">灵活的数据结构</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="线段树详解"><a href="#线段树详解" class="headerlink" title="线段树详解"></a>线段树详解</h2><p>参考：<a href="https://blog.csdn.net/iwts_24/article/details/81484561" target="_blank" rel="noopener">https://blog.csdn.net/iwts_24/article/details/81484561</a></p>
+<p><strong><font color="red">线段树是一颗满二叉树，有n个元素时，对区间的操作在O(logn)的时间内完成，初始化的操作时间和总的空间复杂度都为O(n)</font></strong></p>
+<a id="more"></a>
+
+<p><strong><font color="blue">常用于对区间的查询和修改操作</font></strong></p>
+<p>&emsp;</p>
+<h3 id="建树"><a href="#建树" class="headerlink" title="建树"></a>建树</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAX = <span class="number">100005</span>;</span><br><span class="line"><span class="keyword">int</span> n;    <span class="comment">//叶子结点的个数</span></span><br><span class="line"><span class="keyword">int</span> dat[MAX &lt;&lt; <span class="number">2</span>];    <span class="comment">//一般为总节点个数的4倍</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//建树</span></span><br><span class="line"><span class="comment">//外部调用build(1,1,n)，l,r为总的左右区间，node为当前所在的节点位置</span></span><br><span class="line"><span class="comment">//递归的调用到叶子结点，再逐步返回求的父节点的值</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">build</span><span class="params">(<span class="keyword">int</span> node, <span class="keyword">int</span> l, <span class="keyword">int</span> r)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(l == r)&#123;	<span class="comment">//当左区间和右区间相等时，到达叶子结点</span></span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;dat[node]);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> mid = (l + r) &gt;&gt; <span class="number">1</span>;</span><br><span class="line">    build(node &lt;&lt; <span class="number">1</span>, l, mid);	<span class="comment">//递归到左子树</span></span><br><span class="line">    build(node &lt;&lt; <span class="number">1</span> | <span class="number">1</span>, mid + <span class="number">1</span>, r);	<span class="comment">//递归到右子树</span></span><br><span class="line">    dat[node] = dat[node &lt;&lt; <span class="number">1</span>] + dat[node &lt;&lt; <span class="number">1</span> | <span class="number">1</span>];	<span class="comment">//回溯修改父节点</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="区间查询"><a href="#区间查询" class="headerlink" title="区间查询"></a>区间查询</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//区间查询</span></span><br><span class="line"><span class="comment">//查询区间[a,b]的总和</span></span><br><span class="line"><span class="comment">//外部调用(a, b, 1, n, 1)</span></span><br><span class="line"><span class="comment">//如果递归到区间[l,r]是在区间[a,b]内，那么就肯定是需要 加和 的部分</span></span><br><span class="line"><span class="comment">//如果区间[l,r]与区间[a,b]无交集，那就总和就不变</span></span><br><span class="line"><span class="comment">//如果区间[l,r]与区间只有一部分的交集，那么就判断区间[a,b]的两个端点与mid的关系，递归到更小的区间范围内去寻找总和</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">query_range</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b, <span class="keyword">int</span> l, <span class="keyword">int</span> r, <span class="keyword">int</span> node)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">      <span class="comment">//区间[l,r]是在区间[a,b]内，那么就肯定是需要 加和 的部分，直接加和</span></span><br><span class="line">    <span class="keyword">if</span>(a &lt;= l &amp;&amp; b &gt;= r)</span><br><span class="line">        <span class="keyword">return</span> dat[node];</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">      	<span class="comment">//往下查询和时，需要将高层大区间的lazy标记下放</span></span><br><span class="line">      	<span class="comment">//因为查询的区间并不是高层大区间，而是大区间中的一部分</span></span><br><span class="line">      	<span class="comment">//因此需要将下面划分出来的小区间同步lazy标记，这样才能使得最后结果正确</span></span><br><span class="line">        push_down(node, l, r);	</span><br><span class="line">      	</span><br><span class="line">        <span class="keyword">int</span> mid = (l + r) &gt;&gt; <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">        <span class="comment">//如果区间[a,b]存在部分区间在mid的左边，那么就要去区间[l,mid]中寻找，并加和</span></span><br><span class="line">      	<span class="comment">//此时节点到左孩子节点</span></span><br><span class="line">        <span class="keyword">if</span>(a &lt;= mid)</span><br><span class="line">            sum += query_range(a, b, l, mid, node &lt;&lt; <span class="number">1</span>);</span><br><span class="line">          </span><br><span class="line">      	<span class="comment">//如果区间[a,b]存在部分区间在mid的右边，那么就要去区间[mid + 1,r]中寻找，并加和</span></span><br><span class="line">      	<span class="comment">//此时节点到右孩子节点</span></span><br><span class="line">        <span class="keyword">if</span>(b &gt; mid)</span><br><span class="line">            sum += query_range(a, b, mid + <span class="number">1</span>, r, node &lt;&lt; <span class="number">1</span> | <span class="number">1</span>);</span><br><span class="line">          </span><br><span class="line">        <span class="keyword">return</span> sum;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="单点修改"><a href="#单点修改" class="headerlink" title="单点修改"></a>单点修改</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//单点修改</span></span><br><span class="line"><span class="comment">//对index位置加上val值，l,r为总的左右区间，node为当前所在的节点位置</span></span><br><span class="line"><span class="comment">//外部调用update(val, index, 1, n, 1)</span></span><br><span class="line"><span class="comment">//采用二分的方法去寻找index下标，最后回溯修改父节点</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">update</span><span class="params">(<span class="keyword">int</span> val, <span class="keyword">int</span> index, <span class="keyword">int</span> l, <span class="keyword">int</span> r, <span class="keyword">int</span> node)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  	<span class="comment">//当左区间和右区间相等时，到达叶子结点</span></span><br><span class="line">  	<span class="comment">//因为使用二分的思路去寻找，所以只要到达了l==r处，一定就是index位置</span></span><br><span class="line">    <span class="keyword">if</span>(l == r)&#123;	</span><br><span class="line">        dat[node] += x;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  	</span><br><span class="line">  	<span class="comment">//二分寻找</span></span><br><span class="line">    <span class="keyword">int</span> mid = (l + r) &gt;&gt; <span class="number">1</span>;</span><br><span class="line">  	<span class="comment">//如果index在区间[l,r]的mid的左边，就在区间[l,mid]去寻找index</span></span><br><span class="line">  	<span class="keyword">if</span>(index &lt;= mid)</span><br><span class="line">        update(x, index, l, mid, node &lt;&lt; <span class="number">1</span>);</span><br><span class="line">  	<span class="comment">//如果index在区间[l,r]的mid的右边，就在区间[mid + 1,r]去寻找index</span></span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        update(x, index, mid + <span class="number">1</span>, r, node &lt;&lt; <span class="number">1</span> | <span class="number">1</span>);</span><br><span class="line">  	<span class="comment">//二分寻找</span></span><br><span class="line">  	</span><br><span class="line">    dat[node] = dat[node &lt;&lt; <span class="number">1</span>] + dat[node &lt;&lt; <span class="number">1</span> | <span class="number">1</span>];	<span class="comment">//回溯修改父节点</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="区间修改"><a href="#区间修改" class="headerlink" title="区间修改"></a>区间修改</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> lazy[MAX &lt;&lt; <span class="number">2</span>];     <span class="comment">//lazy标记，用于减少时间复杂度，区间修改时，不需要修改到叶子结点，</span></span><br><span class="line">                        <span class="comment">//只需要在对应的最大区间进行标记，最后在加和 或 其他操作时 再下放标记</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//区间修改</span></span><br><span class="line"><span class="comment">//外部调用为update_range(a, b, val ,l ,r, node)</span></span><br><span class="line"><span class="comment">//每次修改都只修改到能修改的最大区间！！！</span></span><br><span class="line"><span class="comment">//如果区间[l,r]被区间[a,b]全包含，那么就意味着这个区间[l,r]是全部都要加上val的</span></span><br><span class="line"><span class="comment">//那么就直接在这个区间上标记一个lazy标记，不再去下方遍历每个叶子结点增加val</span></span><br><span class="line"><span class="comment">//采用二分的方法去寻找[a,b]区间，最后回溯修改父节点</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">update_range</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b, <span class="keyword">int</span> val, <span class="keyword">int</span> l, <span class="keyword">int</span> r, <span class="keyword">int</span> node)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  	<span class="comment">//如果区间[l,r]被区间[a,b]全包含，那么就意味着这个区间[l,r]是全部都要加上val的</span></span><br><span class="line">  	<span class="comment">//那么就直接在这个区间上标记一个lazy标记，不再去下方遍历每个叶子结点增加val</span></span><br><span class="line">    <span class="keyword">if</span>(a &lt;= l &amp;&amp; b &gt;= r)&#123;</span><br><span class="line">        lazy[node] += val;</span><br><span class="line">        dat[node] += (r - l + <span class="number">1</span>) * val;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">     		<span class="comment">//修改值时，需要将可能的高层lazy标记下放</span></span><br><span class="line">      	<span class="comment">//使的下方的小区间的值为真实的值，最后累加才会正确</span></span><br><span class="line">        push_down(node, l, r);</span><br><span class="line">      </span><br><span class="line">        <span class="keyword">int</span> mid = (l + r) &gt;&gt; <span class="number">1</span>;</span><br><span class="line">      	<span class="comment">//二分去看区间[a,b]和mid的关系</span></span><br><span class="line">      	<span class="comment">//如果a &lt;= mid，那就意味着[a,b]区间在区间[l,mid]中有需要修改的值</span></span><br><span class="line">      	<span class="comment">//那么就需要递归的到[l,mid]区间中去修改</span></span><br><span class="line">      	<span class="comment">//此时节点到左孩子节点</span></span><br><span class="line">        <span class="keyword">if</span>(a &lt;= mid)</span><br><span class="line">            update_range(a, b, val, l, mid, node &lt;&lt; <span class="number">1</span>);</span><br><span class="line">      </span><br><span class="line">      	<span class="comment">//如果b &gt; mid，那就意味着[a,b]区间在区间[mid + 1,r]中有需要修改的值</span></span><br><span class="line">      	<span class="comment">//那么就需要递归的到[mid + 1,r]区间中去修改</span></span><br><span class="line">      	<span class="comment">//此时节点到右孩子节点</span></span><br><span class="line">        <span class="keyword">if</span>(b &gt; mid)</span><br><span class="line">            update_range(a, b, val, mid + <span class="number">1</span>, r, node &lt;&lt; <span class="number">1</span> | <span class="number">1</span>);</span><br><span class="line">      </span><br><span class="line">        dat[node] = dat[node &lt;&lt; <span class="number">1</span>] + dat[node &lt;&lt; <span class="number">1</span> | <span class="number">1</span>];	<span class="comment">//最后回溯，修改父节点的值</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Lazy标记"><a href="#Lazy标记" class="headerlink" title="Lazy标记"></a>Lazy标记</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//下放lazy标记</span></span><br><span class="line"><span class="comment">//一般在区间查询和区间修改时需要使用到下放</span></span><br><span class="line"><span class="comment">//调用为push_down(node, l ,r)</span></span><br><span class="line"><span class="comment">//将大区间的lazy标记下放到小区间</span></span><br><span class="line"><span class="comment">//并且在下放的过程中dat总和数组要加上这个lazy标记所新增的权制</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">push_down</span><span class="params">(<span class="keyword">int</span> node, <span class="keyword">int</span> l, <span class="keyword">int</span> r)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(lazy[node])&#123;</span><br><span class="line">        <span class="keyword">int</span> mid = (l + r) &gt;&gt; <span class="number">1</span>;</span><br><span class="line">      	</span><br><span class="line">      	<span class="comment">//将父节点的lazy标记下放到左右孩子节点</span></span><br><span class="line">        lazy[node &lt;&lt; <span class="number">1</span>] += lazy[node];	</span><br><span class="line">        lazy[node &lt;&lt; <span class="number">1</span> | <span class="number">1</span>] +=lazy[node]; </span><br><span class="line">      	<span class="comment">//将父节点的lazy标记下放到左右孩子节点</span></span><br><span class="line">      </span><br><span class="line">      	<span class="comment">//同时在下方过程中，修改左右孩子的dat总和数组</span></span><br><span class="line">      	<span class="comment">//使得总和数组同步到加上lazy标记的情况下</span></span><br><span class="line">        dat[node &lt;&lt; <span class="number">1</span>] += (mid - l + <span class="number">1</span>) * lazy[node];</span><br><span class="line">        dat[node &lt;&lt; <span class="number">1</span> | <span class="number">1</span>] += (r - mid) * lazy[node];</span><br><span class="line">      </span><br><span class="line">      	<span class="comment">//因为高层大区间的lazy标记下放了</span></span><br><span class="line">      	<span class="comment">//高层大区间的lazy标记清零</span></span><br><span class="line">        lazy[node] = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="模版"><a href="#模版" class="headerlink" title="模版"></a>模版</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//求总和的线段树</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAX = <span class="number">100005</span>;</span><br><span class="line"><span class="keyword">int</span> n;    <span class="comment">//叶子结点的个数</span></span><br><span class="line"><span class="keyword">int</span> dat[MAX &lt;&lt; <span class="number">2</span>];    <span class="comment">//一般为总节点个数的4倍</span></span><br><span class="line"><span class="keyword">int</span> lazy[MAX &lt;&lt; <span class="number">2</span>];     <span class="comment">//lazy标记，用于减少时间复杂度，区间修改时，不需要修改到叶子结点，</span></span><br><span class="line">                        <span class="comment">//只需要在对应的最大区间进行标记，最后在加和 或 其他操作时 再下放标记</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//建树</span></span><br><span class="line"><span class="comment">//外部调用build(1,1,n)，l,r为总的左右区间，node为当前所在的节点位置</span></span><br><span class="line"><span class="comment">//递归的调用到叶子结点，再逐步返回求的父节点的值</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">build</span><span class="params">(<span class="keyword">int</span> node, <span class="keyword">int</span> l, <span class="keyword">int</span> r)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(l == r)&#123;    <span class="comment">//当左区间和右区间相等时，到达叶子结点</span></span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;dat[node]);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> mid = (l + r) &gt;&gt; <span class="number">1</span>;</span><br><span class="line">    build(node &lt;&lt; <span class="number">1</span>, l, mid);    <span class="comment">//递归到左子树</span></span><br><span class="line">    build(node &lt;&lt; <span class="number">1</span> | <span class="number">1</span>, mid + <span class="number">1</span>, r);    <span class="comment">//递归到右子树</span></span><br><span class="line">    dat[node] = dat[node &lt;&lt; <span class="number">1</span>] + dat[node &lt;&lt; <span class="number">1</span> | <span class="number">1</span>];    <span class="comment">//回溯修改父节点</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//下放lazy标记</span></span><br><span class="line"><span class="comment">//一般在区间查询和区间修改时需要使用到下放</span></span><br><span class="line"><span class="comment">//调用为push_down(node, l ,r)</span></span><br><span class="line"><span class="comment">//将大区间的lazy标记下放到小区间</span></span><br><span class="line"><span class="comment">//并且在下放的过程中dat总和数组要加上这个lazy标记所新增的权制</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">push_down</span><span class="params">(<span class="keyword">int</span> node, <span class="keyword">int</span> l, <span class="keyword">int</span> r)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(lazy[node])&#123;</span><br><span class="line">        <span class="keyword">int</span> mid = (l + r) &gt;&gt; <span class="number">1</span>;</span><br><span class="line">      	</span><br><span class="line">      	<span class="comment">//将父节点的lazy标记下放到左右孩子节点</span></span><br><span class="line">        lazy[node &lt;&lt; <span class="number">1</span>] += lazy[node];	</span><br><span class="line">        lazy[node &lt;&lt; <span class="number">1</span> | <span class="number">1</span>] +=lazy[node]; </span><br><span class="line">      	<span class="comment">//将父节点的lazy标记下放到左右孩子节点</span></span><br><span class="line">      </span><br><span class="line">      	<span class="comment">//同时在下方过程中，修改左右孩子的dat总和数组</span></span><br><span class="line">      	<span class="comment">//使得总和数组同步到加上lazy标记的情况下</span></span><br><span class="line">        dat[node &lt;&lt; <span class="number">1</span>] += (mid - l + <span class="number">1</span>) * lazy[node];</span><br><span class="line">        dat[node &lt;&lt; <span class="number">1</span> | <span class="number">1</span>] += (r - mid) * lazy[node];</span><br><span class="line">      </span><br><span class="line">      	<span class="comment">//因为高层大区间的lazy标记下放了</span></span><br><span class="line">      	<span class="comment">//高层大区间的lazy标记清零</span></span><br><span class="line">        lazy[node] = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//单点修改</span></span><br><span class="line"><span class="comment">//对index位置加上val值，l,r为总的左右区间，node为当前所在的节点位置</span></span><br><span class="line"><span class="comment">//外部调用update(val, index, 1, n, 1)</span></span><br><span class="line"><span class="comment">//采用二分的方法去寻找index下标，最后回溯修改父节点</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">update</span><span class="params">(<span class="keyword">int</span> val, <span class="keyword">int</span> index, <span class="keyword">int</span> l, <span class="keyword">int</span> r, <span class="keyword">int</span> node)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">      <span class="comment">//当左区间和右区间相等时，到达叶子结点</span></span><br><span class="line">      <span class="comment">//因为使用二分的思路去寻找，所以只要到达了l==r处，一定就是index位置</span></span><br><span class="line">    <span class="keyword">if</span>(l == r)&#123;</span><br><span class="line">        dat[node] += val;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">      </span><br><span class="line">      <span class="comment">//二分寻找</span></span><br><span class="line">    <span class="keyword">int</span> mid = (l + r) &gt;&gt; <span class="number">1</span>;</span><br><span class="line">    	<span class="comment">// push_down(node,mid-l+1,r-mid); 若既有点更新又有区间更新，需要这句话</span></span><br><span class="line">      <span class="comment">//如果index在区间[l,r]的mid的左边，就在区间[l,mid]去寻找index</span></span><br><span class="line">  		<span class="comment">//此时节点到左孩子节点</span></span><br><span class="line">    <span class="keyword">if</span>(index &lt;= mid)</span><br><span class="line">        update(val, index, l, mid, node &lt;&lt; <span class="number">1</span>);</span><br><span class="line">      <span class="comment">//如果index在区间[l,r]的mid的右边，就在区间[mid + 1,r]去寻找index</span></span><br><span class="line">  		<span class="comment">//此时节点到右孩子节点</span></span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        update(val, index, mid + <span class="number">1</span>, r, node &lt;&lt; <span class="number">1</span> | <span class="number">1</span>);</span><br><span class="line">      <span class="comment">//二分寻找</span></span><br><span class="line">      </span><br><span class="line">    dat[node] = dat[node &lt;&lt; <span class="number">1</span>] + dat[node &lt;&lt; <span class="number">1</span> | <span class="number">1</span>];    <span class="comment">//回溯修改父节点</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//区间查询</span></span><br><span class="line"><span class="comment">//查询区间[a,b]的总和</span></span><br><span class="line"><span class="comment">//外部调用(a, b, 1, n, 1)</span></span><br><span class="line"><span class="comment">//如果递归到区间[l,r]是在区间[a,b]内，那么就肯定是需要 加和 的部分</span></span><br><span class="line"><span class="comment">//如果区间[l,r]与区间[a,b]无交集，那就总和就不变</span></span><br><span class="line"><span class="comment">//如果区间[l,r]与区间只有一部分的交集，那么就判断区间[a,b]的两个端点与mid的关系，递归到更小的区间范围内去寻找总和</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">query_range</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b, <span class="keyword">int</span> l, <span class="keyword">int</span> r, <span class="keyword">int</span> node)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">      <span class="comment">//区间[l,r]是在区间[a,b]内，那么就肯定是需要 加和 的部分，直接加和</span></span><br><span class="line">    <span class="keyword">if</span>(a &lt;= l &amp;&amp; b &gt;= r)</span><br><span class="line">        <span class="keyword">return</span> dat[node];</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">      	<span class="comment">//往下查询和时，需要将高层大区间的lazy标记下放</span></span><br><span class="line">      	<span class="comment">//因为查询的区间并不是高层大区间，而是大区间中的一部分</span></span><br><span class="line">      	<span class="comment">//因此需要将下面划分出来的小区间同步lazy标记，这样才能使得最后结果正确</span></span><br><span class="line">        push_down(node, l, r);	</span><br><span class="line">      	</span><br><span class="line">        <span class="keyword">int</span> mid = (l + r) &gt;&gt; <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">        <span class="comment">//如果区间[a,b]存在部分区间在mid的左边，那么就要去区间[l,mid]中寻找，并加和</span></span><br><span class="line">      	<span class="comment">//此时节点到左孩子节点</span></span><br><span class="line">        <span class="keyword">if</span>(a &lt;= mid)</span><br><span class="line">            sum += query_range(a, b, l, mid, node &lt;&lt; <span class="number">1</span>);</span><br><span class="line">          </span><br><span class="line">      	<span class="comment">//如果区间[a,b]存在部分区间在mid的右边，那么就要去区间[mid + 1,r]中寻找，并加和</span></span><br><span class="line">      	<span class="comment">//此时节点到右孩子节点</span></span><br><span class="line">        <span class="keyword">if</span>(b &gt; mid)</span><br><span class="line">            sum += query_range(a, b, mid + <span class="number">1</span>, r, node &lt;&lt; <span class="number">1</span> | <span class="number">1</span>);</span><br><span class="line">          </span><br><span class="line">        <span class="keyword">return</span> sum;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//区间修改</span></span><br><span class="line"><span class="comment">//外部调用为update_range(a, b, val ,l ,r, node)</span></span><br><span class="line"><span class="comment">//每次修改都只修改到能修改的最大区间！！！</span></span><br><span class="line"><span class="comment">//如果区间[l,r]被区间[a,b]全包含，那么就意味着这个区间[l,r]是全部都要加上val的</span></span><br><span class="line"><span class="comment">//那么就直接在这个区间上标记一个lazy标记，不再去下方遍历每个叶子结点增加val</span></span><br><span class="line"><span class="comment">//采用二分的方法去寻找[a,b]区间，最后回溯修改父节点</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">update_range</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b, <span class="keyword">int</span> val, <span class="keyword">int</span> l, <span class="keyword">int</span> r, <span class="keyword">int</span> node)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  	<span class="comment">//如果区间[l,r]被区间[a,b]全包含，那么就意味着这个区间[l,r]是全部都要加上val的</span></span><br><span class="line">  	<span class="comment">//那么就直接在这个区间上标记一个lazy标记，不再去下方遍历每个叶子结点增加val</span></span><br><span class="line">    <span class="keyword">if</span>(a &lt;= l &amp;&amp; b &gt;= r)&#123;</span><br><span class="line">        lazy[node] += val;</span><br><span class="line">        dat[node] += (r - l + <span class="number">1</span>) * val;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">     		<span class="comment">//修改值时，需要将可能的高层lazy标记下放</span></span><br><span class="line">      	<span class="comment">//使的下方的小区间的值为真实的值，最后累加才会正确</span></span><br><span class="line">        push_down(node, l, r);</span><br><span class="line">      </span><br><span class="line">        <span class="keyword">int</span> mid = (l + r) &gt;&gt; <span class="number">1</span>;</span><br><span class="line">      	<span class="comment">//二分去看区间[a,b]和mid的关系</span></span><br><span class="line">      	<span class="comment">//如果a &lt;= mid，那就意味着[a,b]区间在区间[l,mid]中有需要修改的值</span></span><br><span class="line">      	<span class="comment">//那么就需要递归的到[l,mid]区间中去修改</span></span><br><span class="line">      	<span class="comment">//此时节点到左孩子节点</span></span><br><span class="line">        <span class="keyword">if</span>(a &lt;= mid)</span><br><span class="line">            update_range(a, b, val, l, mid, node &lt;&lt; <span class="number">1</span>);</span><br><span class="line">      </span><br><span class="line">      	<span class="comment">//如果b &gt; mid，那就意味着[a,b]区间在区间[mid + 1,r]中有需要修改的值</span></span><br><span class="line">      	<span class="comment">//那么就需要递归的到[mid + 1,r]区间中去修改</span></span><br><span class="line">      	<span class="comment">//此时节点到右孩子节点</span></span><br><span class="line">        <span class="keyword">if</span>(b &gt; mid)</span><br><span class="line">            update_range(a, b, val, mid + <span class="number">1</span>, r, node &lt;&lt; <span class="number">1</span> | <span class="number">1</span>);</span><br><span class="line">      </span><br><span class="line">        dat[node] = dat[node &lt;&lt; <span class="number">1</span>] + dat[node &lt;&lt; <span class="number">1</span> | <span class="number">1</span>];	<span class="comment">//最后回溯，修改父节点的值</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  	<span class="comment">//n个数，m次查询</span></span><br><span class="line">    <span class="keyword">int</span> n,m;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d %d"</span>,&amp;n,&amp;m);</span><br><span class="line">  	</span><br><span class="line">  	<span class="comment">//建树</span></span><br><span class="line">    build(<span class="number">1</span>, <span class="number">1</span>, n);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; m; i++)&#123;</span><br><span class="line">        <span class="keyword">int</span> k;</span><br><span class="line">        <span class="keyword">int</span> x,y,z;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; k;</span><br><span class="line">      	<span class="comment">//1为单点更新，2为区间查询，3为区间更新</span></span><br><span class="line">        <span class="keyword">if</span>(k == <span class="number">1</span>)&#123;</span><br><span class="line">          	<span class="comment">//在x的位置加上y</span></span><br><span class="line">            <span class="built_in">cin</span> &gt;&gt; x &gt;&gt; y;</span><br><span class="line">            update(y, x, <span class="number">1</span>, n, <span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(k == <span class="number">2</span>)&#123;</span><br><span class="line">          	<span class="comment">//查询区间[x,y]</span></span><br><span class="line">            <span class="built_in">cin</span> &gt;&gt; x &gt;&gt; y;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, query_range(x, y, <span class="number">1</span>, n, <span class="number">1</span>));</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">          	<span class="comment">//给区间[x,y]同时加上z</span></span><br><span class="line">            <span class="built_in">cin</span> &gt;&gt; x &gt;&gt; y &gt;&gt; z;</span><br><span class="line">            update_range(x, y, z, <span class="number">1</span>, n, <span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    
+    
+    
+
+    <div>
+      
+        
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script type="text/javascript" src="http://jslibs.wuxubj.cn/sweetalert_mini/jquery-1.7.1.min.js"></script>
+  <script src="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.mini.css">
+  <p><span>本文标题:</span><a href="/2020/02/22/Segment-tree/">【模版】线段树详解</a></p>
+  <p><span>文章作者:</span><a href="/" title="访问 陈洋 的个人博客">陈洋</a></p>
+  <p><span>发布时间:</span>2020年02月22日 - 22:02</p>
+  <p><span>最后更新:</span>2020年02月23日 - 00:02</p>
+  <p><span>原始链接:</span><a href="/2020/02/22/Segment-tree/" title="【模版】线段树详解">http://codeblog-cy.top/2020/02/22/Segment-tree/</a>
+    <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://codeblog-cy.top/2020/02/22/Segment-tree/" aria-label="复制成功！"></i></span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+    clipboard.on('success', $(function(){
+      $(".fa-clipboard").click(function(){
+        swal({   
+          title: "",   
+          text: '复制成功',   
+          html: false,
+          timer: 500,   
+          showConfirmButton: false
+        });
+      });
+    }));  
+</script>
+
+      
+    </div>
+    
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/模版/" rel="tag"># 模版</a>
+          
+            <a href="/tags/线段树/" rel="tag"># 线段树</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/02/22/Sparse-Table/" rel="next" title="【模版】Sparse-Table｜ST表｜基于ST表的RMQ">
+                <i class="fa fa-chevron-left"></i> 【模版】Sparse-Table｜ST表｜基于ST表的RMQ
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/me.jpg" alt="陈洋">
+            
+              <p class="site-author-name" itemprop="name">陈洋</p>
+              <p class="site-description motion-element" itemprop="description">18级软工学生</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">56</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">59</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/Kuluuu" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:1140377596@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#线段树详解"><span class="nav-number">1.</span> <span class="nav-text">线段树详解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#建树"><span class="nav-number">1.1.</span> <span class="nav-text">建树</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#区间查询"><span class="nav-number">1.2.</span> <span class="nav-text">区间查询</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#单点修改"><span class="nav-number">1.3.</span> <span class="nav-text">单点修改</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#区间修改"><span class="nav-number">1.4.</span> <span class="nav-text">区间修改</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Lazy标记"><span class="nav-number">1.5.</span> <span class="nav-text">Lazy标记</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模版"><span class="nav-number">2.</span> <span class="nav-text">模版</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">陈洋</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+<!-- 新增访客统计代码 -->
+
+<div class="busuanzi-count">
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+        <!-- 不蒜子统计 -->
+        <span id="busuanzi_container_site_pv">
+                本站总访问量<span id="busuanzi_value_site_pv"></span>次
+        </span>
+        <span class="post-meta-divider">|</span>
+        <span id="busuanzi_container_site_uv" style="display:none">
+                本站访客数<span id="busuanzi_value_site_uv"></span>人
+        </span>
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <!-- 博客字数统计 -->
+    <span class="site-pv">
+      <i class="fa fa-pencil"></i>
+      博客全站共： <span class="post-count">62k</span> 字
+    </span>
+</div>
+<!-- 新增访客统计代码 END-->
+
+<!-- 在网页底部添加网站运行时间 -->
+<span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+<script>
+    var now = new Date();
+    function createtime() {
+        var grt= new Date("07/21/2019 00:00:00");//此处修改你的建站时间或者网站上线时间
+        now.setTime(now.getTime()+250);
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;}
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;}
+        document.getElementById("timeDate").innerHTML = "Run for "+dnum+" Days ";
+        document.getElementById("times").innerHTML = hnum + " Hours " + mnum + " m " + snum + " s";
+    }
+setInterval("createtime()",250);
+</script>
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共62k字</span>
+</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  <script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+  
+  
+
+  
+
+  
+
+  
+
+<!-- 代码块复制功能 -->
+<script type="text/javascript" src="/js/src/clipboard.min.js"></script>  
+<script type="text/javascript" src="/js/src/clipboard-use.js"></script>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"live2d-widget-model-wanko"},"display":{"position":"left","width":75,"height":100},"mobile":{"show":true},"log":false});</script></body>
+</html>

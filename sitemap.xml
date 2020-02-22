@@ -2,9 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://codeblog-cy.top/2020/02/22/Segment-tree/</loc>
+    
+    <lastmod>2020-02-22T16:10:47.365Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://codeblog-cy.top/2020/02/22/Sparse-Table/</loc>
     
-    <lastmod>2020-02-22T04:44:26.342Z</lastmod>
+    <lastmod>2020-02-22T16:09:58.636Z</lastmod>
     
   </url>
   
