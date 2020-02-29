@@ -100,7 +100,7 @@
 <meta property="og:image" content="http://codeblog-cy.top/assets/blogImg/bailian-poj-2811/bailian-poj-2811-2.png">
 <meta property="og:image" content="http://codeblog-cy.top/assets/blogImg/bailian-poj-2811/bailian-poj-2811-3.png">
 <meta property="og:image" content="http://codeblog-cy.top/assets/blogImg/bailian-poj-2811/bailian-poj-2811-4.png">
-<meta property="og:updated_time" content="2019-12-16T13:58:01.858Z">
+<meta property="og:updated_time" content="2020-02-29T15:14:41.152Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="熄灯问题(OpenJ_Bailian - 2811)">
 <meta name="twitter:description" content="题目描述有一个由按钮组成的矩阵，其中每行有6个按钮，共5行。每个按钮的位置上有一盏灯。当按下一个按钮后，该按钮以及周围位置(上边、下边、左边、右边)的灯都会改变一次。即，如果灯原来是点亮的，就会被熄灭；如果灯原来是熄灭的，则会被点亮。在矩阵角上的按钮改变3盏灯的状态；在矩阵边上的按钮改变4盏灯的状态；其他的按钮改变5盏灯的状态。">
@@ -336,6 +336,17 @@
 
                 
                 
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/POJ题目/" itemprop="url" rel="index">
+                    <span itemprop="name">POJ题目</span>
+                  </a>
+                </span>
+
+                
+                
               
             </span>
           
@@ -382,7 +393,7 @@
 <p>1 0 1 0 0 1<br>1 1 0 1 0 1<br>0 0 1 0 1 1<br>1 0 0 1 0 0<br>0 1 0 0 0 0</p>
 </blockquote>
 <h2 id="算法分析"><a href="#算法分析" class="headerlink" title="算法分析"></a>算法分析</h2><h3 id="想法一："><a href="#想法一：" class="headerlink" title="想法一："></a>想法一：</h3><ul>
-<li>对于每个按钮按下与不按下都有两种情况，对于本题一共5*6=30个按钮，一共2^30种情况，很明显会超时，因此我们需要将枚举范围简化。  </li>
+<li>对于每个按钮按下与不按下都有两种情况，对于本题一共5*6=30个按钮，一共2<sup>30</sup>种情况，很明显会超时，因此我们需要将枚举范围简化。  </li>
 </ul>
 <h3 id="想法二："><a href="#想法二：" class="headerlink" title="想法二："></a>想法二：</h3><ul>
 <li><code>puzzle[6][8]存放最终灯的状态</code></li>
@@ -398,7 +409,7 @@
 <li>第五行的按钮会改变第四行的灯的亮与熄（第五行开关使得第四行的灯全灭）</li>
 <li>（那么第五行的灯将由第五行的开关情况以及周围三个点的开关情况进行控制）</li>
 </ul>
-<p><strong>因此对于第一行的每一个开关的按与不按，都会使得第二行的按钮按下情况确定，第二行确定后，会使得第三行的按钮按下情况确定，依次类推，因此只需要对于第一行的开关按下情况来进行枚举，一共2^6种情况</strong>   </p>
+<p><strong>因此对于第一行的每一个开关的按与不按，都会使得第二行的按钮按下情况确定，第二行确定后，会使得第三行的按钮按下情况确定，依次类推，因此只需要对于第一行的开关按下情况来进行枚举，一共2<sup>6</sup>种情况</strong>   </p>
 <p><em>2、如何判断某种情况是正确的呢？</em></p>
 <ul>
 <li><strong>我们从上面的推导过程可以看出来，第1-4行灯将全部熄灭，而第五行的灯由当前开关和其周围的开关状态（例如puzzle[5][j]是由press[5][j],press[4][j],press[5][j-1],press[5][j+1]，即当前位置的 当前、上、左、右的开关状态）决定，因此只要第五行的灯全部熄灭，那么就意味着当前情况下的开关状态为答案</strong>   </li>
@@ -451,7 +462,7 @@
   <p><span>本文标题:</span><a href="/2019/11/24/bailian-poj-2811/">熄灯问题(OpenJ_Bailian - 2811)</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 陈洋 的个人博客">陈洋</a></p>
   <p><span>发布时间:</span>2019年11月24日 - 19:11</p>
-  <p><span>最后更新:</span>2019年12月16日 - 21:12</p>
+  <p><span>最后更新:</span>2020年02月29日 - 23:02</p>
   <p><span>原始链接:</span><a href="/2019/11/24/bailian-poj-2811/" title="熄灯问题(OpenJ_Bailian - 2811)">http://codeblog-cy.top/2019/11/24/bailian-poj-2811/</a>
     <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://codeblog-cy.top/2019/11/24/bailian-poj-2811/" aria-label="复制成功！"></i></span>
   </p>
@@ -600,7 +611,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-count">22</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -611,7 +622,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">59</span>
+                  <span class="site-state-item-count">58</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

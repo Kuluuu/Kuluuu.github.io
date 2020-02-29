@@ -99,7 +99,7 @@
 <meta property="og:image" content="http://codeblog-cy.top/assets/blogImg/bellman-dijst-floyd/dijk1.png">
 <meta property="og:image" content="http://codeblog-cy.top/assets/blogImg/bellman-dijst-floyd/dijk2.png">
 <meta property="og:image" content="http://codeblog-cy.top/assets/blogImg/bellman-dijst-floyd/dijk3.png">
-<meta property="og:updated_time" content="2020-01-10T09:41:39.008Z">
+<meta property="og:updated_time" content="2020-02-29T15:17:20.404Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="最短路径算法（Bellman-Ford&#x2F;Dijkstra&#x2F;Floyd）">
 <meta name="twitter:description" content="最短路径算法最短路径算法">
@@ -394,7 +394,7 @@
 <h3 id="算法代码-1"><a href="#算法代码-1" class="headerlink" title="算法代码"></a>算法代码</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAX_V=<span class="number">10000</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> INF=<span class="number">99999</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> cost[MAX_V][MAX_V]; <span class="comment">//cost[u][v]表示边e=(u,v)的权值，不存在时设置为INF</span></span><br><span class="line"><span class="keyword">int</span> dist[MAX_V];   <span class="comment">//顶点s出发的最短距离</span></span><br><span class="line"><span class="keyword">bool</span> used[MAX_V];   <span class="comment">//已经使用过的点</span></span><br><span class="line"><span class="keyword">int</span> V;  <span class="comment">//顶点数</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dijkstra</span><span class="params">(<span class="keyword">int</span> s)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    fill(dist,dist+V,INF);</span><br><span class="line">    fill(used,used+V,<span class="literal">false</span>);</span><br><span class="line">    dist[s]=<span class="number">0</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">while</span>(<span class="literal">true</span>)&#123;</span><br><span class="line">        <span class="keyword">int</span> v=<span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;V;i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(!used[i]&amp;&amp;(v==<span class="number">-1</span>||dist[i]&lt;dist[v])) v=i;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span>(v==<span class="number">-1</span>) <span class="keyword">break</span>;</span><br><span class="line">        used[v]=<span class="literal">true</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;V;i++)</span><br><span class="line">            dist[i]=min(dist[i],dist[v]+cost[v][i]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h3 id="算法分析-1"><a href="#算法分析-1" class="headerlink" title="算法分析"></a>算法分析</h3><blockquote>
-<p><strong>算法的复杂度为O(|V|^2)</strong></p>
+<p><strong>算法的复杂度为O(|V|<sup>2</sup>)</strong></p>
 </blockquote>
 <h2 id="堆优化的Dijkstra算法（单源）"><a href="#堆优化的Dijkstra算法（单源）" class="headerlink" title="堆优化的Dijkstra算法（单源）"></a>堆优化的Dijkstra算法（单源）</h2><h3 id="算法核心-2"><a href="#算法核心-2" class="headerlink" title="算法核心"></a>算法核心</h3><ul>
 <li>每次都将更新过的边的最短路径和顶点编号压入最小堆中，直到堆为空</li>
@@ -410,7 +410,7 @@
 <h3 id="算法代码-3"><a href="#算法代码-3" class="headerlink" title="算法代码"></a>算法代码</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAX_V=<span class="number">100000</span>;</span><br><span class="line"><span class="keyword">int</span> d[MAX_V][MAX_V];    <span class="comment">//邻接矩阵，在最终为多源最短路径表</span></span><br><span class="line"><span class="keyword">int</span> V;  <span class="comment">//顶点数</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">floyd</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> k=<span class="number">0</span>;k&lt;V;k++)</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;V;i++)</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;V;j++)</span><br><span class="line">                d[i][j]=min(d[i][j],d[i][k]+d[k][j]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h3 id="算法分析-2"><a href="#算法分析-2" class="headerlink" title="算法分析"></a>算法分析</h3><blockquote>
-<p><strong>算法的时间复杂度为O(|V|^3)</strong></p>
+<p><strong>算法的时间复杂度为O(|V|<sup>3</sup>)</strong></p>
 </blockquote>
 
       
@@ -432,7 +432,7 @@
   <p><span>本文标题:</span><a href="/2020/01/10/bellman-dijst-floyd/">最短路径算法（Bellman-Ford/Dijkstra/Floyd）</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 陈洋 的个人博客">陈洋</a></p>
   <p><span>发布时间:</span>2020年01月10日 - 16:01</p>
-  <p><span>最后更新:</span>2020年01月10日 - 17:01</p>
+  <p><span>最后更新:</span>2020年02月29日 - 23:02</p>
   <p><span>原始链接:</span><a href="/2020/01/10/bellman-dijst-floyd/" title="最短路径算法（Bellman-Ford/Dijkstra/Floyd）">http://codeblog-cy.top/2020/01/10/bellman-dijst-floyd/</a>
     <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://codeblog-cy.top/2020/01/10/bellman-dijst-floyd/" aria-label="复制成功！"></i></span>
   </p>
@@ -583,7 +583,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-count">22</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -594,7 +594,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">59</span>
+                  <span class="site-state-item-count">58</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

@@ -98,7 +98,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://codeblog-cy.top/assets/blogImg/binary-tree-traversal/bt-traversal1.PNG">
 <meta property="og:image" content="http://codeblog-cy.top/assets/blogImg/binary-tree-traversal/bt-traversal2.PNG">
-<meta property="og:updated_time" content="2019-10-13T15:11:06.453Z">
+<meta property="og:updated_time" content="2020-02-29T15:18:58.872Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="二叉树的遍历及其例题（数据结构学习笔记）">
 <meta name="twitter:description" content="二叉树的遍历方式主要有四种：先序遍历、中序遍历、后序遍历和层次遍历。这里我们用递归算法来讨论前三种遍历算法">
@@ -419,7 +419,7 @@
 <li>当 b=NULL 时，Level(b,x,h) = 0</li>
 <li>当 b 指向值为 x 的结点时，Level(b,x,h) = h,</li>
 <li>其他情况：</li>
-<li>① 首先在左子树中寻找，找到了直接返回 l=Level(b-&gt;lchild,x,h+1)!=0 ，Level(b,x,h) = l</li>
+<li>① 首先在左子树中寻找，找到了直接返回 l = Level(b-&gt;lchild,x,h+1) != 0 ，Level(b,x,h) = l</li>
 <li>② 否则返回在右子树中的查找结果，Level(b,x,h) = Level(b-&gt;rchild,x,h+1)</li>
 </ul>
 <h4 id="解题标程-2"><a href="#解题标程-2" class="headerlink" title="解题标程"></a>解题标程</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Level</span><span class="params">(BTNode *b,ElemType x,<span class="keyword">int</span> h)</span>  </span></span><br><span class="line"><span class="function"><span class="comment">//找到*p结点后h为其层次，否则为0</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> l;              <span class="comment">//记录左子树中找到的 x 的层次</span></span><br><span class="line">    <span class="keyword">if</span>(b==<span class="literal">NULL</span>)         <span class="comment">//空二叉树无结点</span></span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(b-&gt;data==x)  <span class="comment">//找到结点 b 的 data 值为 x </span></span><br><span class="line">            <span class="keyword">return</span> h;   <span class="comment">//返回结点 b 的层次</span></span><br><span class="line">        l=Level(b-&gt;lchild,x,h+<span class="number">1</span>);   </span><br><span class="line">        <span class="keyword">if</span>(l!=<span class="number">0</span>)        <span class="comment">//找到了 x</span></span><br><span class="line">            <span class="keyword">return</span> l;   <span class="comment">//返回层次l</span></span><br><span class="line">        <span class="keyword">else</span>            <span class="comment">//在右子树中找，直接返回查找的值</span></span><br><span class="line">            <span class="keyword">return</span> Level(b-&gt;rchild,x,h+<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//基于先序遍历算法思想</span></span><br></pre></td></tr></table></figure>
@@ -432,8 +432,8 @@
 <h4 id="算法思路-4"><a href="#算法思路-4" class="headerlink" title="算法思路"></a>算法思路</h4><p>递归算法：</p>
 <ul>
 <li>当 b1 = b2 = NULL，f(b1,b2) = true</li>
-<li>当 b1=NULL||b2=NULL，f(b1,b2)=false</li>
-<li>其他情况，f(b1,b2)=f(b1-&gt;lchild,b2-&gt;lchild) &amp; f(b1-&gt;rchild,b2-&gt;rchild)</li>
+<li>当 b1=NULL||b2=NULL，f(b1,b2) = false</li>
+<li>其他情况，f(b1,b2) = f(b1-&gt;lchild , b2-&gt;lchild) &amp; f(b1-&gt;rchild , b2-&gt;rchild)</li>
 </ul>
 <h4 id="解题标程-3"><a href="#解题标程-3" class="headerlink" title="解题标程"></a>解题标程</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">Like</span><span class="params">(BTNode *b1，BTNode *b2)</span></span></span><br><span class="line"><span class="function"><span class="comment">//b1 和 b2 两棵二叉树相似时返回 true，否则返回 false</span></span></span><br><span class="line"><span class="function"></span>&#123;       <span class="keyword">bool</span> like1，like2;</span><br><span class="line">        <span class="keyword">if</span> (b1==<span class="literal">NULL</span> &amp;&amp; b2==<span class="literal">NULL</span>)           <span class="comment">//b1 和 b2 都是空的二叉树</span></span><br><span class="line">	        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (b1==<span class="literal">NULL</span> || b2==<span class="literal">NULL</span>)      <span class="comment">//b1 和 b2 其中一个是空的二叉树</span></span><br><span class="line">	        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">else</span>&#123;	                            <span class="comment">//b1 和 b2 都不为空的二叉树</span></span><br><span class="line">            like1=Like(b1-&gt;lchild，b2-&gt;lchild);     <span class="comment">//递归探寻 b1的左子树 和 b2的左子树是否相似</span></span><br><span class="line">	        like2=Like(b1-&gt;rchild，b2-&gt;rchild);     <span class="comment">//递归探寻 b1的右子树 和 b2的右子树是否相似</span></span><br><span class="line">	        <span class="keyword">return</span> (like1 &amp;&amp; like2);	    <span class="comment">//当左右子树都相似时，才为相似树</span></span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -442,7 +442,7 @@
 <ul>
 <li>当 b=NULL，f(b,x)=false       //没有祖先</li>
 <li>当结点 b 左孩子或右孩子 data 域为 x， f(b,x)=true，并输出b-&gt;data</li>
-<li>当 f(b-&gt;lchild,x) = true||f(b-&gt;rchild,x) = true，f(b,x)=true，并输出b-&gt;data</li>
+<li>当 f(b-&gt;lchild , x) = true||f(b-&gt;rchild , x) = true，f(b , x)=true，并输出b-&gt;data</li>
 <li>其他情况，f(b,x)=false</li>
 </ul>
 <h4 id="解题标程-4"><a href="#解题标程-4" class="headerlink" title="解题标程"></a>解题标程</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">ancestor</span><span class="params">(BTNode *b,ElemType x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(b==<span class="literal">NULL</span>)             <span class="comment">//二叉树为空时</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>((b-&gt;lchild!=<span class="literal">NULL</span>&amp;&amp;b-&gt;lchild==x)||   <span class="comment">//当结点 b 左孩子或右孩子 data 域为 x</span></span><br><span class="line">            (b-&gt;rchild!=<span class="literal">NULL</span>&amp;&amp;b-&gt;rchild==x))&#123;  </span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%c"</span>,b-&gt;data);</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(ancestor(b-&gt;lchild,x)||ancestor(b-&gt;rchild,x))&#123;  <span class="comment">//当左、右子树的左孩子或右孩子 data 域为 x</span></span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%c"</span>,b-&gt;data);</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span>    <span class="comment">//其他情况</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -479,7 +479,7 @@
   <p><span>本文标题:</span><a href="/2019/09/06/binary-tree-traversal/">二叉树的遍历及其例题（数据结构学习笔记）</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 陈洋 的个人博客">陈洋</a></p>
   <p><span>发布时间:</span>2019年09月06日 - 21:09</p>
-  <p><span>最后更新:</span>2019年10月13日 - 23:10</p>
+  <p><span>最后更新:</span>2020年02月29日 - 23:02</p>
   <p><span>原始链接:</span><a href="/2019/09/06/binary-tree-traversal/" title="二叉树的遍历及其例题（数据结构学习笔记）">http://codeblog-cy.top/2019/09/06/binary-tree-traversal/</a>
     <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://codeblog-cy.top/2019/09/06/binary-tree-traversal/" aria-label="复制成功！"></i></span>
   </p>
@@ -630,7 +630,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-count">22</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -641,7 +641,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">59</span>
+                  <span class="site-state-item-count">58</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

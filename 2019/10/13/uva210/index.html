@@ -97,7 +97,7 @@
 <meta property="og:description" content="题目描述你的任务是模拟n个程序（按输入顺序编号为1~n）的并行执行。每个程序包含不超过25条语句，格式一共有5种：var=constant（赋值）；print var（打印）；lock；unlock；end。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://codeblog-cy.top/assets/blogImg/uva210/210-1.jpg">
-<meta property="og:updated_time" content="2019-10-15T09:31:59.310Z">
+<meta property="og:updated_time" content="2020-02-29T16:11:43.696Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="并行程序模拟（Concurrency Simulator,ACM&#x2F;ICPC World Finals 1991,UVa210）">
 <meta name="twitter:description" content="题目描述你的任务是模拟n个程序（按输入顺序编号为1~n）的并行执行。每个程序包含不超过25条语句，格式一共有5种：var=constant（赋值）；print var（打印）；lock；unlock；end。">
@@ -333,6 +333,17 @@
 
                 
                 
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/UVa题目/" itemprop="url" rel="index">
+                    <span itemprop="name">UVa题目</span>
+                  </a>
+                </span>
+
+                
+                
               
             </span>
           
@@ -367,9 +378,9 @@
 <a id="more"></a>
 
 <p>变量用单个小写字母表示，初始值为0，为所有程序公有（因此在一个程序里对某个变量赋值可能会影响到另一个程序）。常数是小于100的非负整数。   </p>
-<p>每个时刻只能有一个程序处于运行态，其他程序均处于等待。上述五种语句分别需要t1、t2、t3、t4、t5单位时间。运行态的程序每次最多运行Q个单位时间（称为配额）。当一个程序的配额用完之后，把当前语句（如果存在）执行完之后该程序会被插入一个等待队列中，然后处理器从队首取出一个程序继续执行。</p>
+<p>每个时刻只能有一个程序处于运行态，其他程序均处于等待。上述五种语句分别需要t<sub>1</sub>、t<sub>2</sub>、t<sub>3</sub>、t<sub>4</sub>、t<sub>5</sub>单位时间。运行态的程序每次最多运行Q个单位时间（称为配额）。当一个程序的配额用完之后，把当前语句（如果存在）执行完之后该程序会被插入一个等待队列中，然后处理器从队首取出一个程序继续执行。</p>
 <p>初始等待队列包含按输入顺序排列的各个程序，但由于lock和unlock语句的出现，这个序列可能会改变。 lock的作用是申请对所有变量的独占访问。lock和unlock总是成对出现，并且不会嵌套。lock总是在unlock的前面。当一个程序成功执行完lock指令后，其他程序一旦试图执行lock指令，就会马上被放到一个所谓的阻止队列的尾部（没有用完的配额就浪费了），当unlock指令执行完毕后，阻止队列的第一个程序进入等待队列的首部。</p>
-<p>有多组输入输出数据，输入kase,n、t1、t2、t3、t4、t5、Q，按照时间顺序输出所有print语句的程序编号和结果。</p>
+<p>有多组输入输出数据，输入kase,n、t<sub>1</sub>、t<sub>2</sub>、t<sub>3</sub>、t<sub>4</sub>、t<sub>5</sub>、Q，按照时间顺序输出所有print语句的程序编号和结果。</p>
 <h2 id="输入"><a href="#输入" class="headerlink" title="输入"></a>输入</h2><blockquote>
 <p>1<br>3 1 1 1 1 1 1<br>a = 4<br>print a<br>lock<br>b = 9<br>print b<br>unlock<br>print b<br>end<br>a = 3<br>print a<br>lock<br>b = 8<br>print b<br>unlock<br>print b<br>end<br>b = 5<br>a = 17<br>print a<br>print b<br>lock<br>b = 21<br>print b<br>unlock<br>print b<br>end</p>
 </blockquote>
@@ -421,7 +432,7 @@
   <p><span>本文标题:</span><a href="/2019/10/13/uva210/">并行程序模拟（Concurrency Simulator,ACM/ICPC World Finals 1991,UVa210）</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 陈洋 的个人博客">陈洋</a></p>
   <p><span>发布时间:</span>2019年10月13日 - 23:10</p>
-  <p><span>最后更新:</span>2019年10月15日 - 17:10</p>
+  <p><span>最后更新:</span>2020年03月01日 - 00:03</p>
   <p><span>原始链接:</span><a href="/2019/10/13/uva210/" title="并行程序模拟（Concurrency Simulator,ACM/ICPC World Finals 1991,UVa210）">http://codeblog-cy.top/2019/10/13/uva210/</a>
     <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://codeblog-cy.top/2019/10/13/uva210/" aria-label="复制成功！"></i></span>
   </p>
@@ -570,7 +581,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-count">22</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -581,7 +592,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">59</span>
+                  <span class="site-state-item-count">58</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

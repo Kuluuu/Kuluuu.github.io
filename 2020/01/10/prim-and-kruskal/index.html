@@ -99,7 +99,7 @@
 <meta property="og:image" content="http://codeblog-cy.top/assets/blogImg/prim-and-kruskal/prim1.png">
 <meta property="og:image" content="http://codeblog-cy.top/assets/blogImg/prim-and-kruskal/prim2.png">
 <meta property="og:image" content="http://codeblog-cy.top/assets/blogImg/prim-and-kruskal/kruskal.png">
-<meta property="og:updated_time" content="2020-01-10T09:39:52.246Z">
+<meta property="og:updated_time" content="2020-02-29T16:02:48.958Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="最小生成树算法（Prim和Kruskal[并查集板子]）">
 <meta name="twitter:description" content="最小生成树算法最小生成树算法">
@@ -377,7 +377,7 @@
 <h3 id="算法代码"><a href="#算法代码" class="headerlink" title="算法代码"></a>算法代码</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> INF=<span class="number">99999</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAX_V=<span class="number">100</span>;    <span class="comment">//最大节点数</span></span><br><span class="line"><span class="keyword">int</span> cost[MAX_V][MAX_V]; <span class="comment">//cost[u][v]表示边e=(u,v)的权值，不存在时为INF</span></span><br><span class="line"><span class="keyword">int</span> mincost[MAX_V]; <span class="comment">//记录当前已连接结点集合（U）到未连接结点集合（U-V）的最小权值</span></span><br><span class="line"><span class="keyword">bool</span> used[MAX_V];   <span class="comment">//记录点是否在已连接集合（U）中</span></span><br><span class="line"><span class="keyword">int</span> V;  <span class="comment">//顶点数</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">prim</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;V;i++)&#123;</span><br><span class="line">        mincost[i]=INF;</span><br><span class="line">        used[i]=<span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    mincost[<span class="number">0</span>]=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> res=<span class="number">0</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">while</span>(<span class="literal">true</span>)&#123;</span><br><span class="line">        <span class="keyword">int</span> v=<span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;V;i++)</span><br><span class="line">            <span class="keyword">if</span>(!used[i]&amp;&amp;(v==<span class="number">-1</span>||mincost[i]&lt;mincost[v]))    v=i;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span>(v==<span class="number">-1</span>) <span class="keyword">break</span>;</span><br><span class="line">        used[v]=<span class="literal">true</span>;</span><br><span class="line">        res+=mincost[v];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;V;i++)</span><br><span class="line">            mincost[i]=min(mincost[i],cost[v][i]);  <span class="comment">//每次加入新结点都更新一次最短权值表</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h3 id="算法分析"><a href="#算法分析" class="headerlink" title="算法分析"></a>算法分析</h3><blockquote>
-<p><strong>算法的时间复杂度为O(|V|^2)</strong><br>  如果算法使用堆进行优化，<strong>算法时间复杂度可缩减为O(|E|*log|V|)</strong></p>
+<p><strong>算法的时间复杂度为O(|V|<sub>2</sub>)</strong><br>  如果算法使用堆进行优化，<strong>算法时间复杂度可缩减为O(|E|*log|V|)</strong></p>
 </blockquote>
 <h2 id="Kruskal算法"><a href="#Kruskal算法" class="headerlink" title="Kruskal算法"></a>Kruskal算法</h2><h3 id="算法核心-1"><a href="#算法核心-1" class="headerlink" title="算法核心"></a>算法核心</h3><p>算法的核心在于<strong>加边法</strong></p>
 <ul>
@@ -415,7 +415,7 @@
   <p><span>本文标题:</span><a href="/2020/01/10/prim-and-kruskal/">最小生成树算法（Prim和Kruskal[并查集板子]）</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 陈洋 的个人博客">陈洋</a></p>
   <p><span>发布时间:</span>2020年01月10日 - 14:01</p>
-  <p><span>最后更新:</span>2020年01月10日 - 17:01</p>
+  <p><span>最后更新:</span>2020年03月01日 - 00:03</p>
   <p><span>原始链接:</span><a href="/2020/01/10/prim-and-kruskal/" title="最小生成树算法（Prim和Kruskal[并查集板子]）">http://codeblog-cy.top/2020/01/10/prim-and-kruskal/</a>
     <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://codeblog-cy.top/2020/01/10/prim-and-kruskal/" aria-label="复制成功！"></i></span>
   </p>
@@ -566,7 +566,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-count">22</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -577,7 +577,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">59</span>
+                  <span class="site-state-item-count">58</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

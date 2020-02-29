@@ -99,7 +99,7 @@
 <meta property="og:image" content="http://codeblog-cy.top/assets/blogImg/tree-storage/tree1.PNG">
 <meta property="og:image" content="http://codeblog-cy.top/assets/blogImg/tree-storage/tree2.PNG">
 <meta property="og:image" content="http://codeblog-cy.top/assets/blogImg/tree-storage/tree3.PNG">
-<meta property="og:updated_time" content="2019-10-13T15:12:26.899Z">
+<meta property="og:updated_time" content="2020-02-29T16:08:05.487Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="树的存储结构（数据结构学习笔记）">
 <meta name="twitter:description" content="存储树既要存储结点的数据元素本身，又要存储结点之间的逻辑关系。因此树的存储分为三种常用的存储方法：双亲存储结构、孩子链存储结构、孩子兄弟链存储结构。">
@@ -402,8 +402,8 @@
 </ul>
 <h3 id="应用-1"><a href="#应用-1" class="headerlink" title="应用"></a>应用</h3><p>以孩子链作为树的存储结构，设计一个求树t高度的递归算法。<br>递归算法模型分析：  </p>
 <ul>
-<li>if(t=NULL)&nbsp; &nbsp; &nbsp; &nbsp; f(t)=0</li>
-<li>其他情况&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; f(t)=MAX(f(p))+1</li>
+<li>if(t=NULL)&nbsp; &nbsp; &nbsp; &nbsp; f(t) = 0</li>
+<li>其他情况&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; f(t) = MAX(f(p)) + 1</li>
 </ul>
 <p>算法设计：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">TreeHeight2</span><span class="params">(TSBNode *t)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    TSBNode *p;</span><br><span class="line">    <span class="keyword">int</span> h,maxh=<span class="number">0</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span>(t==<span class="literal">NULL</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;               <span class="comment">//空树返回高度0</span></span><br><span class="line">    </span><br><span class="line">    p=t-&gt;vp;                    <span class="comment">//p指向第一个孩子结点</span></span><br><span class="line">    <span class="keyword">while</span>(p!=<span class="literal">NULL</span>)&#123;             <span class="comment">//扫描t的所有子树</span></span><br><span class="line">        h=TreeHeight2(p);       <span class="comment">//递归求子树的高度</span></span><br><span class="line">        <span class="keyword">if</span>(maxh&lt;h)              <span class="comment">//求出所有子树中的最大高度</span></span><br><span class="line">            maxh=h;</span><br><span class="line">        p=p-&gt;hp;                <span class="comment">//继续处理t的其他子树</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> (maxh+<span class="number">1</span>);            <span class="comment">//返回maxh+1</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -433,7 +433,7 @@
   <p><span>本文标题:</span><a href="/2019/09/04/tree-storage-structure/">树的存储结构（数据结构学习笔记）</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 陈洋 的个人博客">陈洋</a></p>
   <p><span>发布时间:</span>2019年09月04日 - 23:09</p>
-  <p><span>最后更新:</span>2019年10月13日 - 23:10</p>
+  <p><span>最后更新:</span>2020年03月01日 - 00:03</p>
   <p><span>原始链接:</span><a href="/2019/09/04/tree-storage-structure/" title="树的存储结构（数据结构学习笔记）">http://codeblog-cy.top/2019/09/04/tree-storage-structure/</a>
     <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://codeblog-cy.top/2019/09/04/tree-storage-structure/" aria-label="复制成功！"></i></span>
   </p>
@@ -584,7 +584,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-count">22</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -595,7 +595,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">59</span>
+                  <span class="site-state-item-count">58</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

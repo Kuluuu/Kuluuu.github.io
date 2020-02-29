@@ -98,7 +98,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://codeblog-cy.top/assets/blogImg/uva132/132-1.jpg">
 <meta property="og:image" content="http://codeblog-cy.top/assets/blogImg/uva132/132-2.png">
-<meta property="og:updated_time" content="2019-10-13T15:15:26.770Z">
+<meta property="og:updated_time" content="2020-02-29T16:13:39.793Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="信息编码（Message Decoding,ACM&#x2F;ICPC World Finals 1991,UVa213）">
 <meta name="twitter:description" content="题目描述 0，00，01，10，000，001，010，011，100，101，110，0000，0001，···，1101，1110，00000，···  首先是长度为1的串，然后是长度为2的串，依此类推。如果看成二进制，相同长度的后一个串等于前一个串加1。注意上述序列中不存在全为1的串。你的任务是是编写一个解码程序。">
@@ -334,6 +334,17 @@
 
                 
                 
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/UVa题目/" itemprop="url" rel="index">
+                    <span itemprop="name">UVa题目</span>
+                  </a>
+                </span>
+
+                
+                
               
             </span>
           
@@ -388,7 +399,7 @@
 <p>while(c–) v=v*2+k;  </p>
 </blockquote>
 <p>判断全为1的小节结束标志和000的编码结束标志。<br>小节结束标志可以在二进制转换十进制时处理，当十进制数为当前二进制长度中最大的值（例如1，11，111，1111，…），即(1&lt;&lt;len)-1 。<br>编码结束标志可以在计算编码长度时的三位进行判断，正常情况下编码长度不可能为0，但000的十进制表示为0，所以当编码长度为0时，即编码结束。</p>
-<p>**将整个题目分为几个部分：</p>
+<p><strong>将整个题目分为几个部分：</strong></p>
 <blockquote>
 <p>1、首先录入编码头（字符）<br>2、对编码头的每个字符对于的二进制数进行对应处理（要清空 对应表）<br>3、读入前三个01串字符，并对前三个01串字符进行十进制的转换，作为第一个编码节长度<br>4、循环读入步骤3所得到的编码节长度来读入后续01串，并每次读入编码节长度时，就输出当前长度十进制数对应的字符，当十进制数为当前编码节长度中最大的数时代表当前长度的编码节结束<br>5、循环步骤3、4，直到编码节长度为0时，退出循环，当前案例处理完毕。</p>
 </blockquote>
@@ -419,7 +430,7 @@
   <p><span>本文标题:</span><a href="/2019/10/10/uva213/">信息编码（Message Decoding,ACM/ICPC World Finals 1991,UVa213）</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 陈洋 的个人博客">陈洋</a></p>
   <p><span>发布时间:</span>2019年10月10日 - 14:10</p>
-  <p><span>最后更新:</span>2019年10月13日 - 23:10</p>
+  <p><span>最后更新:</span>2020年03月01日 - 00:03</p>
   <p><span>原始链接:</span><a href="/2019/10/10/uva213/" title="信息编码（Message Decoding,ACM/ICPC World Finals 1991,UVa213）">http://codeblog-cy.top/2019/10/10/uva213/</a>
     <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://codeblog-cy.top/2019/10/10/uva213/" aria-label="复制成功！"></i></span>
   </p>
@@ -572,7 +583,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-count">22</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -583,7 +594,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">59</span>
+                  <span class="site-state-item-count">58</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

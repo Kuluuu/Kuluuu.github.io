@@ -98,7 +98,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://codeblog-cy.top/assets/blogImg/poj_3268/poj32681.png">
 <meta property="og:image" content="http://codeblog-cy.top/assets/blogImg/poj_3268/poj32682.png">
-<meta property="og:updated_time" content="2019-10-13T15:11:27.198Z">
+<meta property="og:updated_time" content="2020-02-29T15:35:01.783Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Silver Cow Party问题(Dijkstra算法求解)">
 <meta name="twitter:description" content="Silver Cow Party问题题目 One cow from each of N farms (1 ≤ N ≤ 1000) conveniently numbered 1..N is going to attend the big cow party to be held at farm #X (1 ≤ X ≤ N). A total of M (1 ≤ M ≤ 100,000) unidi">
@@ -327,8 +327,19 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/最短路问题/" itemprop="url" rel="index">
-                    <span itemprop="name">最短路问题</span>
+                  <a href="/categories/图论/" itemprop="url" rel="index">
+                    <span itemprop="name">图论</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/POJ题目/" itemprop="url" rel="index">
+                    <span itemprop="name">POJ题目</span>
                   </a>
                 </span>
 
@@ -384,7 +395,7 @@
 <blockquote>
 <p>Hint<br>Cow 4 proceeds directly to the party (3 units) and returns via farms 1 and 3 (7 units), for a total of 10 time units. </p>
 </blockquote>
-<h2 id="初步探索算法思路"><a href="#初步探索算法思路" class="headerlink" title="初步探索算法思路"></a>初步探索算法思路</h2><p>刚接触这道题时，第一反映是使用多源最短路径的Floyd算法，在最短路的二维数组中寻找哪个点到目标点的距离最长，但是时间复杂度为O(n^3)，明显会超时，因此需要考虑其他算法。  </p>
+<h2 id="初步探索算法思路"><a href="#初步探索算法思路" class="headerlink" title="初步探索算法思路"></a>初步探索算法思路</h2><p>刚接触这道题时，第一反映是使用多源最短路径的Floyd算法，在最短路的二维数组中寻找哪个点到目标点的距离最长，但是时间复杂度为O(n<sup>3</sup>)，明显会超时，因此需要考虑其他算法。  </p>
 <h2 id="正确算法思路"><a href="#正确算法思路" class="headerlink" title="正确算法思路"></a>正确算法思路</h2><p>我们需要将这个题进行分解成两个过程：</p>
 <blockquote>
 <p>1、前往：首先求出由其他各点到目标点x的最短路径（这个过程为每头奶牛从农场出发到达目标农场的最短路径）<br>2、回家：每头奶牛回家的过程，即为从目标点x回到其他各点的过程（这个过程为从目标农场出发到达每头奶牛出发时的农场）    </p>
@@ -410,7 +421,7 @@
   <p><span>本文标题:</span><a href="/2019/08/03/dijkstra-poj-3268/">Silver Cow Party问题(Dijkstra算法求解)</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 陈洋 的个人博客">陈洋</a></p>
   <p><span>发布时间:</span>2019年08月03日 - 00:08</p>
-  <p><span>最后更新:</span>2019年10月13日 - 23:10</p>
+  <p><span>最后更新:</span>2020年02月29日 - 23:02</p>
   <p><span>原始链接:</span><a href="/2019/08/03/dijkstra-poj-3268/" title="Silver Cow Party问题(Dijkstra算法求解)">http://codeblog-cy.top/2019/08/03/dijkstra-poj-3268/</a>
     <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://codeblog-cy.top/2019/08/03/dijkstra-poj-3268/" aria-label="复制成功！"></i></span>
   </p>
@@ -561,7 +572,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-count">22</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -572,7 +583,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">59</span>
+                  <span class="site-state-item-count">58</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
