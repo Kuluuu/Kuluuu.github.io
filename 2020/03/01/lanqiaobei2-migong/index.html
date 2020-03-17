@@ -97,7 +97,7 @@
 <meta property="og:description" content="题目描述下图给出了⼀个迷宫的平⾯图，其中标记为 1 的为障碍，标记为 0 的为可以通⾏的地⽅。 1234010000000100001001110000  迷宫的⼊⼝为左上⻆，出⼝为右下⻆，在迷宫中，只能从⼀个位置⾛到这个它的上、下、左、 右四个⽅向之⼀。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://q5sek3z73.bkt.clouddn.com/lanqiaobei2-migong1.jpeg">
-<meta property="og:updated_time" content="2020-03-02T05:14:11.453Z">
+<meta property="og:updated_time" content="2020-03-02T05:42:08.554Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="2020 蓝桥杯大学模拟赛(二) - 结果填空：迷宫">
 <meta name="twitter:description" content="题目描述下图给出了⼀个迷宫的平⾯图，其中标记为 1 的为障碍，标记为 0 的为可以通⾏的地⽅。 1234010000000100001001110000  迷宫的⼊⼝为左上⻆，出⼝为右下⻆，在迷宫中，只能从⼀个位置⾛到这个它的上、下、左、 右四个⽅向之⼀。">
@@ -389,7 +389,6 @@
 </ul>
 <p>普通的bfs<u><strong>记录步数</strong></u>，<strong>新增两个变量mmin,cnt</strong>，只有当第一次到达最后一层时，修改<strong>mmin为当前步数</strong>。</p>
 <p>在<strong>当步数等于mmin</strong>，并且<strong>达到最后一层时，cnt++</strong>。</p>
-<p>&emsp;</p>
 <h5 id="而如何解决并发性问题呢？"><a href="#而如何解决并发性问题呢？" class="headerlink" title="而如何解决并发性问题呢？"></a><font color="blue"><strong>而如何解决并发性问题呢？</strong></font></h5><p>在此方法中不使用true和false去标记vist数组，<strong>用当前到达这个点时，它是第几层到达的点，来进行标记</strong></p>
 <p><strong>因此vist数组初始化为-1</strong></p>
 <p>&emsp;</p>
@@ -398,7 +397,6 @@
 </ul>
 <p>在bfs的基础上，在循环时，<u><strong>不记录步数</strong></u>，分层次循环，每次将一层处理完之后再去处理下一层。</p>
 <p><strong>即每次将当前步数能够到达的点，全部处理一边，这样就能保证，在不记录步数的情况下，保证后续出现到终点情况时，步数是相同的并且是最小的。</strong></p>
-<p>&emsp;</p>
 <h5 id="而如何解决并发性问题呢？-1"><a href="#而如何解决并发性问题呢？-1" class="headerlink" title="而如何解决并发性问题呢？"></a><font color="blue"><strong>而如何解决并发性问题呢？</strong></font></h5><p>每次修改时，参照当前层的vist数组，修改下一层的vist1。</p>
 <p><strong>最后在vist数组中无冲突，并且也保证了所有情况修改的综合在vist1中</strong></p>
 <p>&emsp;</p>

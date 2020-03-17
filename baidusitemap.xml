@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>http://codeblog-cy.top/2020/03/01/lanqiaobei2-zhiwudazhanjiangshi/</loc>
-    <lastmod>2020-03-02</lastmod>
+    <loc>http://codeblog-cy.top/2020/02/16/2019-ICPC-Shanghai-B-Prefix-Code/</loc>
+    <lastmod>2020-03-17</lastmod>
   </url>  <url>
     <loc>http://codeblog-cy.top/2020/03/01/lanqiaobei2-migong/</loc>
+    <lastmod>2020-03-02</lastmod>
+  </url>  <url>
+    <loc>http://codeblog-cy.top/2020/03/01/lanqiaobei2-zhiwudazhanjiangshi/</loc>
     <lastmod>2020-03-02</lastmod>
   </url>  <url>
     <loc>http://codeblog-cy.top/2020/02/18/nowcoder-prac-1-C-curcle/</loc>
@@ -162,9 +165,6 @@
   </url>  <url>
     <loc>http://codeblog-cy.top/2020/02/20/dispersed-x-y-axis/</loc>
     <lastmod>2020-02-20</lastmod>
-  </url>  <url>
-    <loc>http://codeblog-cy.top/2020/02/16/2019-ICPC-Shanghai-B-Prefix-Code/</loc>
-    <lastmod>2020-02-16</lastmod>
   </url>  <url>
     <loc>http://codeblog-cy.top/2019/08/03/pipei-algorithm/</loc>
     <lastmod>2019-10-30</lastmod>
