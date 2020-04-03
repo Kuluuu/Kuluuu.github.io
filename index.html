@@ -367,8 +367,86 @@
           
             <h2 id="前置条件"><a href="#前置条件" class="headerlink" title="前置条件"></a>前置条件</h2><p>在阿里云上购买了服务器，并且<strong><font color="red">服务器的操作系统为CentOS</font></strong></p>
 <p>以下指令均为在CentOS中使用</p>
-<h2 id="连接服务器软件"><a href="#连接服务器软件" class="headerlink" title="连接服务器软件"></a>连接服务器软件</h2><h2 id="一、安装nginx"><a href="#一、安装nginx" class="headerlink" title="一、安装nginx"></a>一、安装nginx</h2><h3 id="1-安装gcc-gcc-c"><a href="#1-安装gcc-gcc-c" class="headerlink" title="1. 安装gcc gcc-c++"></a>1. 安装gcc gcc-c++</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install -y gcc gcc-c++</span><br></pre></td></tr></table></figure>
+<h2 id="连接服务器软件"><a href="#连接服务器软件" class="headerlink" title="连接服务器软件"></a>连接服务器软件</h2><h2 id="为服务器添加端口"><a href="#为服务器添加端口" class="headerlink" title="为服务器添加端口"></a>为服务器添加端口</h2><img src="https://s1.ax1x.com/2020/03/24/8LXqw8.png" alt="1" style="zoom:33%;">
 
+<p>&emsp;</p>
+<img src="https://s1.ax1x.com/2020/03/24/8LXTyt.png" alt="2" style="zoom:50%;">
+
+<p>&emsp;</p>
+<img src="https://s1.ax1x.com/2020/03/24/8LXbef.png" alt="3" style="zoom:33%;">
+
+<p>&emsp;</p>
+<img src="https://s1.ax1x.com/2020/03/24/8LX7OP.png" alt="4" style="zoom:33%;">
+
+
+
+
+
+<h2 id="一、安装nginx"><a href="#一、安装nginx" class="headerlink" title="一、安装nginx"></a>一、安装nginx</h2><h3 id="1-安装gcc-gcc-c"><a href="#1-安装gcc-gcc-c" class="headerlink" title="1. 安装gcc gcc-c++"></a>1. 安装gcc gcc-c++</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install -y gcc gcc-c++</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-安装PCRE库"><a href="#2-安装PCRE库" class="headerlink" title="2. 安装PCRE库"></a>2. 安装PCRE库</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/local/</span><br><span class="line"></span><br><span class="line">wget http://downloads.sourceforge.net/project/pcre/pcre/8.37/pcre-8.37.tar.gz</span><br><span class="line"></span><br><span class="line">tar -xvf pcre-8.37.tar.gz</span><br><span class="line"></span><br><span class="line">cd pcre-8.37</span><br><span class="line"></span><br><span class="line">./configure</span><br><span class="line"></span><br><span class="line">make &amp;&amp; make install</span><br><span class="line"></span><br><span class="line">pcre-config --version</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-安装-openssl-、zlib-、-gcc-依赖"><a href="#3-安装-openssl-、zlib-、-gcc-依赖" class="headerlink" title="3.安装 openssl 、zlib 、 gcc 依赖"></a>3.安装 openssl 、zlib 、 gcc 依赖</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y install make zlib zlib-devel gcc-c++ libtool openssl openssl-devel</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-安装nginx"><a href="#4-安装nginx" class="headerlink" title="4.安装nginx"></a>4.安装nginx</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">cd ..</span><br><span class="line"></span><br><span class="line">wget http://nginx.org/download/nginx-1.17.9.tar.gz</span><br><span class="line"></span><br><span class="line">tar -xvf nginx-1.17.9.tar.gz</span><br><span class="line"></span><br><span class="line">cd nginx-1.17.9</span><br><span class="line"></span><br><span class="line">./configure</span><br><span class="line"></span><br><span class="line">make &amp;&amp; make install</span><br></pre></td></tr></table></figure>
+
+<p><strong>当到这一步结束之后，就可以在浏览器中访问自己的公网ip，这时公网ip的网站就会显示nginx的初始界面</strong></p>
+<h2 id="二、安装Git以及Node-js"><a href="#二、安装Git以及Node-js" class="headerlink" title="二、安装Git以及Node.js"></a>二、安装Git以及Node.js</h2><h3 id="1-安装Node-js"><a href="#1-安装Node-js" class="headerlink" title="1.安装Node.js"></a>1.安装Node.js</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">curl -sL https://rpm.nodesource.com/setup_10.x | bash -</span><br><span class="line"></span><br><span class="line">yum install -y nodejs</span><br></pre></td></tr></table></figure>
+
+<h3 id="查看是否安装成功"><a href="#查看是否安装成功" class="headerlink" title="查看是否安装成功"></a>查看是否安装成功</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">node -v</span><br><span class="line"></span><br><span class="line">npm -v</span><br></pre></td></tr></table></figure>
+
+<p> <strong>如果显示版本号则安装成功</strong></p>
+<h3 id="2-安装Git及配置仓库"><a href="#2-安装Git及配置仓库" class="headerlink" title="2.安装Git及配置仓库"></a>2.安装Git及配置仓库</h3><h4 id="安装git及新建git用户"><a href="#安装git及新建git用户" class="headerlink" title="安装git及新建git用户"></a><strong>安装git及新建git用户</strong></h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">yum install git</span><br><span class="line"></span><br><span class="line">adduser git</span><br><span class="line"></span><br><span class="line">chmod 740 /etc/sudoers</span><br><span class="line"></span><br><span class="line">vim /etc/sudoers</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 大概100行左右添加 git ALL=(ALL) ALL</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://s1.ax1x.com/2020/03/24/8OPslF.png" alt="5"></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">chmod 400 /etc/sudoers</span><br><span class="line"></span><br><span class="line">sudo passwd git</span><br></pre></td></tr></table></figure>
+
+<p><strong>设置git密码，这个在后面博客上传时会需要输入</strong></p>
+<p>&emsp;</p>
+<h4 id="切换git用户"><a href="#切换git用户" class="headerlink" title="切换git用户"></a><strong>切换git用户</strong></h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">su git</span><br><span class="line"></span><br><span class="line">cd ~</span><br><span class="line"></span><br><span class="line">mkdir .ssh</span><br><span class="line"></span><br><span class="line">cd .ssh</span><br><span class="line"></span><br><span class="line">ssh-keygen</span><br><span class="line"></span><br><span class="line">vim authorized_keys</span><br></pre></td></tr></table></figure>
+
+<p><strong>vim打开authorized_keys之后，你要找到本机的.ssh里的id_rsa.pub本地密钥</strong></p>
+<p><strong>将id_rsa.pub里的内容全部复制到authorized_keys中</strong></p>
+<p><strong><font color="red">（如果没有.ssh文件，就要运行一次ssh的服务，如果没有id_rsa.pub，就需要用ssh生成密钥）</font></strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">chmod 600 ~/.ssh/authorized_keys</span><br><span class="line"></span><br><span class="line">chmod 700 ~/.ssh</span><br></pre></td></tr></table></figure>
+
+<h4 id="创建git仓库"><a href="#创建git仓库" class="headerlink" title="创建git仓库"></a><strong>创建git仓库</strong></h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cd ~</span><br><span class="line"></span><br><span class="line">git init --bare blog.git</span><br><span class="line"></span><br><span class="line">vim ~/blog.git/hooks/post-receive</span><br></pre></td></tr></table></figure>
+
+<p><strong>在post-receive中写入</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git --work-tree=/home/www/website --git-dir=/home/git/blog.git checkout -f</span><br></pre></td></tr></table></figure>
+
+<p><strong>保存退出</strong></p>
+<p>&emsp;</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod +x ~/blog.git/hooks/post-receive</span><br></pre></td></tr></table></figure>
+
+<h4 id="新建-home-www-website文件夹"><a href="#新建-home-www-website文件夹" class="headerlink" title="新建/home/www/website文件夹"></a><strong>新建/home/www/website文件夹</strong></h4><p>这个文件将是我们博客的根目录</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">su root</span><br><span class="line"></span><br><span class="line">输入密码</span><br><span class="line"></span><br><span class="line">cd /home</span><br><span class="line"></span><br><span class="line">mkdir www</span><br><span class="line"></span><br><span class="line">cd www</span><br><span class="line"></span><br><span class="line">mkdir website</span><br><span class="line"></span><br><span class="line">chmod 777 /home/www/website</span><br><span class="line"></span><br><span class="line">chmod 777 /home/www</span><br></pre></td></tr></table></figure>
+
+<h4 id="在本地电脑的shell或terminal输入"><a href="#在本地电脑的shell或terminal输入" class="headerlink" title="在本地电脑的shell或terminal输入"></a><strong>在本地电脑的shell或terminal输入</strong></h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -v git@服务器的公网ip</span><br></pre></td></tr></table></figure>
+
+<p>如果之前部署过，这次失败了，因为本地记住了服务器公钥，发生改变时会报错，<strong>需要删除C//用户/你用户名/.ssh/known_hosts文件</strong></p>
+<h4 id="修改nginx的配置文件"><a href="#修改nginx的配置文件" class="headerlink" title="修改nginx的配置文件"></a>修改nginx的配置文件</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /usr/local/nginx/conf/nginx.conf</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://s1.ax1x.com/2020/03/24/8OPBWT.png" alt="6"></p>
+<h4 id="修改本地博客的配置文件-config-yml"><a href="#修改本地博客的配置文件-config-yml" class="headerlink" title="修改本地博客的配置文件_config.yml"></a>修改本地博客的配置文件_config.yml</h4><p><strong>注意这里的_config.yml不是主题中的配置文件，是根目录下的_config.yml</strong></p>
+<p><strong><font color="red">如果以前部署过，无法上传博客根目录到服务器上，试试将本地博客根目录中的.deploy_git文件删除</font></strong></p>
+<img src="https://s1.ax1x.com/2020/03/24/8OPwF0.png" alt="7" style="zoom:50%;">
+
+<p><strong>然后用terminal或者gitbash用hexo g -d部署到git上</strong></p>
+<p><strong>部署完成之后可以在/home/www/website中看到博客根目录</strong></p>
+<p><strong>这时候再在浏览器用自己的公网ip访问，即可访问到自己的个人博客</strong></p>
+<h2 id="写入nginx启动脚本"><a href="#写入nginx启动脚本" class="headerlink" title="写入nginx启动脚本"></a>写入nginx启动脚本</h2><p><strong>在/etc/init.d/路径下添加脚本文件，名称为nginx，内容如下</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/init.d/nginx</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">!/bin/bash</span></span><br><span class="line"><span class="meta">#</span><span class="bash">Startup script <span class="keyword">for</span> the nginx Web Server</span></span><br><span class="line"><span class="meta">#</span><span class="bash">chkconfig: 2345 85 15</span></span><br><span class="line">nginx=/usr/local/nginx/sbin/nginx</span><br><span class="line">conf=/usr/local/nginx/conf/nginx.conf</span><br><span class="line">case $1 in </span><br><span class="line">start)</span><br><span class="line">echo -n "Starting Nginx"</span><br><span class="line"><span class="meta">$</span><span class="bash">nginx -c <span class="variable">$conf</span></span></span><br><span class="line">echo " done."</span><br><span class="line">;;</span><br><span class="line">stop)</span><br><span class="line">echo -n "Stopping Nginx"</span><br><span class="line">killall -9 nginx</span><br><span class="line">echo " done."</span><br><span class="line">;;</span><br><span class="line">test)</span><br><span class="line"><span class="meta">$</span><span class="bash">nginx -t -c <span class="variable">$conf</span></span></span><br><span class="line">echo "Success."</span><br><span class="line">;;</span><br><span class="line">reload)</span><br><span class="line">echo -n "Reloading Nginx"</span><br><span class="line">ps auxww | grep nginx | grep master | awk '&#123;print $2&#125;' | xargs kill -HUP</span><br><span class="line">echo " done."</span><br><span class="line">;;</span><br><span class="line">restart)</span><br><span class="line"><span class="meta">$</span><span class="bash">nginx -s reload</span></span><br><span class="line">echo "reload done."</span><br><span class="line">;;</span><br><span class="line">*)</span><br><span class="line">echo "Usage: $0 &#123;start|restart|reload|stop|test|show&#125;"</span><br><span class="line">;;</span><br><span class="line">esac</span><br></pre></td></tr></table></figure>
+
+<p><strong>然后执行，给予权限</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod +x nginx</span><br></pre></td></tr></table></figure>
+
+<h4 id="nginx控制指令"><a href="#nginx控制指令" class="headerlink" title="nginx控制指令"></a>nginx控制指令</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">service nginx start 	# 启动</span><br><span class="line">service nginx stop 		# 停止</span><br><span class="line">service nginx reload	# 重启</span><br></pre></td></tr></table></figure>
+
+<h2 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h2><p><a href="https://lneverl.gitee.io/2020/03/21/AliyunDeploymentTutorial/" target="_blank" rel="noopener">https://lneverl.gitee.io/2020/03/21/AliyunDeploymentTutorial/</a></p>
 
           
         
@@ -2025,7 +2103,7 @@
     <!-- 博客字数统计 -->
     <span class="site-pv">
       <i class="fa fa-pencil"></i>
-      博客全站共： <span class="post-count">67.8k</span> 字
+      博客全站共： <span class="post-count">68.6k</span> 字
     </span>
 </div>
 <!-- 新增访客统计代码 END-->
@@ -2051,7 +2129,7 @@ setInterval("createtime()",250);
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共67.8k字</span>
+  <span class="post-count">博客全站共68.6k字</span>
 </div>
 
 
