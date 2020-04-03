@@ -364,91 +364,15 @@
 
       
         
-          
-            <h2 id="前置条件"><a href="#前置条件" class="headerlink" title="前置条件"></a>前置条件</h2><p>在阿里云上购买了服务器，并且<strong><font color="red">服务器的操作系统为CentOS</font></strong></p>
+          <h2 id="前置条件"><a href="#前置条件" class="headerlink" title="前置条件"></a>前置条件</h2><p>在阿里云上购买了服务器，并且<strong><font color="red">服务器的操作系统为CentOS</font></strong></p>
 <p>以下指令均为在CentOS中使用</p>
-<h2 id="连接服务器软件"><a href="#连接服务器软件" class="headerlink" title="连接服务器软件"></a>连接服务器软件</h2><h2 id="为服务器添加端口"><a href="#为服务器添加端口" class="headerlink" title="为服务器添加端口"></a>为服务器添加端口</h2><img src="https://s1.ax1x.com/2020/03/24/8LXqw8.png" alt="1" style="zoom:33%;">
-
-<p>&emsp;</p>
-<img src="https://s1.ax1x.com/2020/03/24/8LXTyt.png" alt="2" style="zoom:50%;">
-
-<p>&emsp;</p>
-<img src="https://s1.ax1x.com/2020/03/24/8LXbef.png" alt="3" style="zoom:33%;">
-
-<p>&emsp;</p>
-<img src="https://s1.ax1x.com/2020/03/24/8LX7OP.png" alt="4" style="zoom:33%;">
-
-
-
-
-
-<h2 id="一、安装nginx"><a href="#一、安装nginx" class="headerlink" title="一、安装nginx"></a>一、安装nginx</h2><h3 id="1-安装gcc-gcc-c"><a href="#1-安装gcc-gcc-c" class="headerlink" title="1. 安装gcc gcc-c++"></a>1. 安装gcc gcc-c++</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install -y gcc gcc-c++</span><br></pre></td></tr></table></figure>
-
-<h3 id="2-安装PCRE库"><a href="#2-安装PCRE库" class="headerlink" title="2. 安装PCRE库"></a>2. 安装PCRE库</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/local/</span><br><span class="line"></span><br><span class="line">wget http://downloads.sourceforge.net/project/pcre/pcre/8.37/pcre-8.37.tar.gz</span><br><span class="line"></span><br><span class="line">tar -xvf pcre-8.37.tar.gz</span><br><span class="line"></span><br><span class="line">cd pcre-8.37</span><br><span class="line"></span><br><span class="line">./configure</span><br><span class="line"></span><br><span class="line">make &amp;&amp; make install</span><br><span class="line"></span><br><span class="line">pcre-config --version</span><br></pre></td></tr></table></figure>
-
-<h3 id="3-安装-openssl-、zlib-、-gcc-依赖"><a href="#3-安装-openssl-、zlib-、-gcc-依赖" class="headerlink" title="3.安装 openssl 、zlib 、 gcc 依赖"></a>3.安装 openssl 、zlib 、 gcc 依赖</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y install make zlib zlib-devel gcc-c++ libtool openssl openssl-devel</span><br></pre></td></tr></table></figure>
-
-<h3 id="4-安装nginx"><a href="#4-安装nginx" class="headerlink" title="4.安装nginx"></a>4.安装nginx</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">cd ..</span><br><span class="line"></span><br><span class="line">wget http://nginx.org/download/nginx-1.17.9.tar.gz</span><br><span class="line"></span><br><span class="line">tar -xvf nginx-1.17.9.tar.gz</span><br><span class="line"></span><br><span class="line">cd nginx-1.17.9</span><br><span class="line"></span><br><span class="line">./configure</span><br><span class="line"></span><br><span class="line">make &amp;&amp; make install</span><br></pre></td></tr></table></figure>
-
-<p><strong>当到这一步结束之后，就可以在浏览器中访问自己的公网ip，这时公网ip的网站就会显示nginx的初始界面</strong></p>
-<h2 id="二、安装Git以及Node-js"><a href="#二、安装Git以及Node-js" class="headerlink" title="二、安装Git以及Node.js"></a>二、安装Git以及Node.js</h2><h3 id="1-安装Node-js"><a href="#1-安装Node-js" class="headerlink" title="1.安装Node.js"></a>1.安装Node.js</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">curl -sL https://rpm.nodesource.com/setup_10.x | bash -</span><br><span class="line"></span><br><span class="line">yum install -y nodejs</span><br></pre></td></tr></table></figure>
-
-<h3 id="查看是否安装成功"><a href="#查看是否安装成功" class="headerlink" title="查看是否安装成功"></a>查看是否安装成功</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">node -v</span><br><span class="line"></span><br><span class="line">npm -v</span><br></pre></td></tr></table></figure>
-
-<p> <strong>如果显示版本号则安装成功</strong></p>
-<h3 id="2-安装Git及配置仓库"><a href="#2-安装Git及配置仓库" class="headerlink" title="2.安装Git及配置仓库"></a>2.安装Git及配置仓库</h3><h4 id="安装git及新建git用户"><a href="#安装git及新建git用户" class="headerlink" title="安装git及新建git用户"></a><strong>安装git及新建git用户</strong></h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">yum install git</span><br><span class="line"></span><br><span class="line">adduser git</span><br><span class="line"></span><br><span class="line">chmod 740 /etc/sudoers</span><br><span class="line"></span><br><span class="line">vim /etc/sudoers</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 大概100行左右添加 git ALL=(ALL) ALL</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="https://s1.ax1x.com/2020/03/24/8OPslF.png" alt="5"></p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">chmod 400 /etc/sudoers</span><br><span class="line"></span><br><span class="line">sudo passwd git</span><br></pre></td></tr></table></figure>
-
-<p><strong>设置git密码，这个在后面博客上传时会需要输入</strong></p>
-<p>&emsp;</p>
-<h4 id="切换git用户"><a href="#切换git用户" class="headerlink" title="切换git用户"></a><strong>切换git用户</strong></h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">su git</span><br><span class="line"></span><br><span class="line">cd ~</span><br><span class="line"></span><br><span class="line">mkdir .ssh</span><br><span class="line"></span><br><span class="line">cd .ssh</span><br><span class="line"></span><br><span class="line">ssh-keygen</span><br><span class="line"></span><br><span class="line">vim authorized_keys</span><br></pre></td></tr></table></figure>
-
-<p><strong>vim打开authorized_keys之后，你要找到本机的.ssh里的id_rsa.pub本地密钥</strong></p>
-<p><strong>将id_rsa.pub里的内容全部复制到authorized_keys中</strong></p>
-<p><strong><font color="red">（如果没有.ssh文件，就要运行一次ssh的服务，如果没有id_rsa.pub，就需要用ssh生成密钥）</font></strong></p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">chmod 600 ~/.ssh/authorized_keys</span><br><span class="line"></span><br><span class="line">chmod 700 ~/.ssh</span><br></pre></td></tr></table></figure>
-
-<h4 id="创建git仓库"><a href="#创建git仓库" class="headerlink" title="创建git仓库"></a><strong>创建git仓库</strong></h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cd ~</span><br><span class="line"></span><br><span class="line">git init --bare blog.git</span><br><span class="line"></span><br><span class="line">vim ~/blog.git/hooks/post-receive</span><br></pre></td></tr></table></figure>
-
-<p><strong>在post-receive中写入</strong></p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git --work-tree=/home/www/website --git-dir=/home/git/blog.git checkout -f</span><br></pre></td></tr></table></figure>
-
-<p><strong>保存退出</strong></p>
-<p>&emsp;</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod +x ~/blog.git/hooks/post-receive</span><br></pre></td></tr></table></figure>
-
-<h4 id="新建-home-www-website文件夹"><a href="#新建-home-www-website文件夹" class="headerlink" title="新建/home/www/website文件夹"></a><strong>新建/home/www/website文件夹</strong></h4><p>这个文件将是我们博客的根目录</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">su root</span><br><span class="line"></span><br><span class="line">输入密码</span><br><span class="line"></span><br><span class="line">cd /home</span><br><span class="line"></span><br><span class="line">mkdir www</span><br><span class="line"></span><br><span class="line">cd www</span><br><span class="line"></span><br><span class="line">mkdir website</span><br><span class="line"></span><br><span class="line">chmod 777 /home/www/website</span><br><span class="line"></span><br><span class="line">chmod 777 /home/www</span><br></pre></td></tr></table></figure>
-
-<h4 id="在本地电脑的shell或terminal输入"><a href="#在本地电脑的shell或terminal输入" class="headerlink" title="在本地电脑的shell或terminal输入"></a><strong>在本地电脑的shell或terminal输入</strong></h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -v git@服务器的公网ip</span><br></pre></td></tr></table></figure>
-
-<p>如果之前部署过，这次失败了，因为本地记住了服务器公钥，发生改变时会报错，<strong>需要删除C//用户/你用户名/.ssh/known_hosts文件</strong></p>
-<h4 id="修改nginx的配置文件"><a href="#修改nginx的配置文件" class="headerlink" title="修改nginx的配置文件"></a>修改nginx的配置文件</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /usr/local/nginx/conf/nginx.conf</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://s1.ax1x.com/2020/03/24/8OPBWT.png" alt="6"></p>
-<h4 id="修改本地博客的配置文件-config-yml"><a href="#修改本地博客的配置文件-config-yml" class="headerlink" title="修改本地博客的配置文件_config.yml"></a>修改本地博客的配置文件_config.yml</h4><p><strong>注意这里的_config.yml不是主题中的配置文件，是根目录下的_config.yml</strong></p>
-<p><strong><font color="red">如果以前部署过，无法上传博客根目录到服务器上，试试将本地博客根目录中的.deploy_git文件删除</font></strong></p>
-<img src="https://s1.ax1x.com/2020/03/24/8OPwF0.png" alt="7" style="zoom:50%;">
-
-<p><strong>然后用terminal或者gitbash用hexo g -d部署到git上</strong></p>
-<p><strong>部署完成之后可以在/home/www/website中看到博客根目录</strong></p>
-<p><strong>这时候再在浏览器用自己的公网ip访问，即可访问到自己的个人博客</strong></p>
-<h2 id="写入nginx启动脚本"><a href="#写入nginx启动脚本" class="headerlink" title="写入nginx启动脚本"></a>写入nginx启动脚本</h2><p><strong>在/etc/init.d/路径下添加脚本文件，名称为nginx，内容如下</strong></p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/init.d/nginx</span><br></pre></td></tr></table></figure>
-
-<p>&emsp;</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">!/bin/bash</span></span><br><span class="line"><span class="meta">#</span><span class="bash">Startup script <span class="keyword">for</span> the nginx Web Server</span></span><br><span class="line"><span class="meta">#</span><span class="bash">chkconfig: 2345 85 15</span></span><br><span class="line">nginx=/usr/local/nginx/sbin/nginx</span><br><span class="line">conf=/usr/local/nginx/conf/nginx.conf</span><br><span class="line">case $1 in </span><br><span class="line">start)</span><br><span class="line">echo -n "Starting Nginx"</span><br><span class="line"><span class="meta">$</span><span class="bash">nginx -c <span class="variable">$conf</span></span></span><br><span class="line">echo " done."</span><br><span class="line">;;</span><br><span class="line">stop)</span><br><span class="line">echo -n "Stopping Nginx"</span><br><span class="line">killall -9 nginx</span><br><span class="line">echo " done."</span><br><span class="line">;;</span><br><span class="line">test)</span><br><span class="line"><span class="meta">$</span><span class="bash">nginx -t -c <span class="variable">$conf</span></span></span><br><span class="line">echo "Success."</span><br><span class="line">;;</span><br><span class="line">reload)</span><br><span class="line">echo -n "Reloading Nginx"</span><br><span class="line">ps auxww | grep nginx | grep master | awk '&#123;print $2&#125;' | xargs kill -HUP</span><br><span class="line">echo " done."</span><br><span class="line">;;</span><br><span class="line">restart)</span><br><span class="line"><span class="meta">$</span><span class="bash">nginx -s reload</span></span><br><span class="line">echo "reload done."</span><br><span class="line">;;</span><br><span class="line">*)</span><br><span class="line">echo "Usage: $0 &#123;start|restart|reload|stop|test|show&#125;"</span><br><span class="line">;;</span><br><span class="line">esac</span><br></pre></td></tr></table></figure>
-
-<p><strong>然后执行，给予权限</strong></p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod +x nginx</span><br></pre></td></tr></table></figure>
-
-<h4 id="nginx控制指令"><a href="#nginx控制指令" class="headerlink" title="nginx控制指令"></a>nginx控制指令</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">service nginx start 	# 启动</span><br><span class="line">service nginx stop 		# 停止</span><br><span class="line">service nginx reload	# 重启</span><br></pre></td></tr></table></figure>
-
-<h2 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h2><p><a href="https://lneverl.gitee.io/2020/03/21/AliyunDeploymentTutorial/" target="_blank" rel="noopener">https://lneverl.gitee.io/2020/03/21/AliyunDeploymentTutorial/</a></p>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/03/24/configure-blog-to-aliyunserver/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -591,54 +515,20 @@
 
       
         
-          
-            <h2 id="一、购买阿里云服务器"><a href="#一、购买阿里云服务器" class="headerlink" title="一、购买阿里云服务器"></a>一、购买阿里云服务器</h2><p>因为我还在就读大学，所以可以购买<strong>学生机服务器，一个月10元很便宜</strong>，<strong>首次购买学生机会赠送一个月的云数据库和对象存储OSS</strong>（可以作为图床，但是不太建议，因为有免费的）</p>
+          <h2 id="一、购买阿里云服务器"><a href="#一、购买阿里云服务器" class="headerlink" title="一、购买阿里云服务器"></a>一、购买阿里云服务器</h2><p>因为我还在就读大学，所以可以购买<strong>学生机服务器，一个月10元很便宜</strong>，<strong>首次购买学生机会赠送一个月的云数据库和对象存储OSS</strong>（可以作为图床，但是不太建议，因为有免费的）</p>
 <p><strong>其实后面我发现，第一次如果要购买很长时间的话，云小站这个活动更划算！！！</strong></p>
 <p>&emsp;</p>
 <ul>
 <li>学生机网站（云翼计划）：<a href="https://promotion.aliyun.com/ntms/act/campus2018.html?spm=5176.10695662.1244717.1.3b50640fpcrr3D" target="_blank" rel="noopener">https://promotion.aliyun.com/ntms/act/campus2018.html?spm=5176.10695662.1244717.1.3b50640fpcrr3D</a></li>
 <li>优惠服务器（云小站）：<a href="https://www.aliyun.com/minisite?spm=5176.10695662.1403028.1.5ab173301wHDoB" target="_blank" rel="noopener">https://www.aliyun.com/minisite?spm=5176.10695662.1403028.1.5ab173301wHDoB</a></li>
 </ul>
-<h2 id="二、选择购买"><a href="#二、选择购买" class="headerlink" title="二、选择购买"></a>二、选择购买</h2><img src="https://s1.ax1x.com/2020/03/24/8LbShR.png" alt="1" style="zoom:50%;">
-
-
-
-
-
-<h2 id="三、配置选择"><a href="#三、配置选择" class="headerlink" title="三、配置选择"></a>三、配置选择</h2><img src="https://s1.ax1x.com/2020/03/24/8LHxAJ.png" alt="2" style="zoom:50%;">
-
-
-
-<p>点击购买，购买完成之后需要等待一段时间服务器自动配置</p>
-<h2 id="四、查看服务器"><a href="#四、查看服务器" class="headerlink" title="四、查看服务器"></a>四、查看服务器</h2><p><img src="https://s1.ax1x.com/2020/03/24/8LH7pq.png" alt="3"></p>
-<p>&emsp;</p>
-<img src="https://s1.ax1x.com/2020/03/24/8LHbcV.png" alt="4" style="zoom:50%;">
-
-<p>&emsp;</p>
-<img src="https://s1.ax1x.com/2020/03/24/8LHXBF.png" alt="5" style="zoom:50%;">
-
-
-
-
-
-<h2 id="五、服务器连接软件推荐"><a href="#五、服务器连接软件推荐" class="headerlink" title="五、服务器连接软件推荐"></a>五、服务器连接软件推荐</h2><p><strong>可以使用阿里云自带的远程连接功能</strong></p>
-<p>这里只对CentOS和Windows操作系统服务器的连接软件进行推荐</p>
-<h3 id="对于Windows服务器"><a href="#对于Windows服务器" class="headerlink" title="对于Windows服务器"></a>对于Windows服务器</h3><ul>
-<li><p>Windows自带的<strong>远程连接</strong>功能（Win + r. 输入mstsc）连接Windows服务器</p>
-</li>
-<li><p>Mac系统可以使用<strong>Microsoft Remote Desktop</strong></p>
-  <img src="https://s1.ax1x.com/2020/03/24/8LbC1x.png" alt="6" style="zoom:33%;">
-
-
-
-</li>
-</ul>
-<h3 id="对于CentOS服务器"><a href="#对于CentOS服务器" class="headerlink" title="对于CentOS服务器"></a>对于CentOS服务器</h3><ul>
-<li>Windows系统可以使用<strong>Xshell</strong></li>
-<li>Mac系统可以使用Finalshell</li>
-</ul>
-<img src="https://s1.ax1x.com/2020/03/24/8LbPc6.png" alt="7" style="zoom:33%;">
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/03/24/buy-aliyun-process/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -931,39 +821,16 @@
 
       
         
-          
-            <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>众所周知的，⼩明家⾥有好多猫，经过⼀次“猫⼝普查”，我们得到了以下信息： </p>
+          <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>众所周知的，⼩明家⾥有好多猫，经过⼀次“猫⼝普查”，我们得到了以下信息： </p>
 <p>⼩明家⾥有 <code>n</code> 只猫，第 <code>i</code> 只猫的体重是 <strong>a<sub>i</sub></strong> 。然⽽⼩明热爱虐猫（并不），他决定对这些猫做⼀些有 ♂趣的事情 </p>
 <p>经过了两年半的练习之后，这些猫已经能完全听懂⼩明的指令了。 </p>
-<p>⼩明的指令分成两个阶段，具体步骤如下： </p>
-<ul>
-<li><p>1.指定⼀种颜⾊，所有这种颜⾊的猫都会从猫窝⾥跑出来，此时⼩明需要付出总共为这些猫的体重的代价。例如，现在⼩明有三只红⾊的猫，体重分别为<code>1,2,3</code>，还有两只蓝⾊的猫，体重分别为 <code>7,8</code> 。此时如果⼩明声明的颜⾊是红⾊，那么所有红⾊的猫会出来，⼩明需要⽀付的代价为 <code>6</code> 。如果⼩明声明的颜⾊是蓝⾊，那么所有蓝⾊的猫会出来，⼩明需要⽀付的代价为 <code>15</code> 。</p>
-</li>
-<li><p>2.对于现在出来的这些猫，⼩明选择其中的⼀部分，将他们染成⼀种新的颜⾊。然后放回所有的猫。</p>
-</li>
-</ul>
-<p>初始时所有猫都是⽩⾊。现在⼩明想知道，如果想要使得这些猫两两颜⾊都不同，最少需要花费多 少代价。</p>
-<h2 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h2><p>第一行一个整数 <code>n</code>,表示一共有 <code>n</code> 只猫,接下来一行 <code>n</code> 个数 <strong>a<sub>i</sub></strong> 意义如题所示</p>
-<h2 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h2><p>输出⼀⾏⼀个整数表示最⼩代价</p>
-<h2 id="数据范围"><a href="#数据范围" class="headerlink" title="数据范围"></a>数据范围</h2><img src="https://s1.ax1x.com/2020/03/21/8hmw9J.png" alt="1" style="zoom:67%;">
-
-
-
-<h2 id="样例输入"><a href="#样例输入" class="headerlink" title="样例输入"></a>样例输入</h2><blockquote>
-<p>4 </p>
-<p>6 7 70 25</p>
-</blockquote>
-<h2 id="样例输出"><a href="#样例输出" class="headerlink" title="样例输出"></a>样例输出</h2><blockquote>
-<p>159</p>
-</blockquote>
-<h2 id="算法分析"><a href="#算法分析" class="headerlink" title="算法分析"></a>算法分析</h2><p>一开始的想法是将猫的代价从大到小排序，然后每次挑出最大代价的猫去染色，但是这个算法对于样例输入的代价<code>6,7,70,25</code>是可行的，但是如果除去最大代价的剩下的猫的代价，要比最大猫的代价更大，那这个算法就不能保证最小代价</p>
-<p>例如：<code>69,70,71,72</code></p>
-<p><img src="https://s1.ax1x.com/2020/03/21/8hmah4.png" alt="2"></p>
-<p>可以观察发现，<strong>这是一颗哈夫曼树，也就是说这道题应该从小问题考虑到总体，而不是从整体模拟选猫的过程</strong></p>
-<h2 id="解题代码"><a href="#解题代码" class="headerlink" title="解题代码"></a>解题代码</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;functional&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//优先队列模拟哈夫曼树</span></span><br><span class="line">priority_queue&lt;<span class="keyword">long</span> <span class="keyword">long</span> , <span class="built_in">vector</span>&lt;<span class="keyword">long</span> <span class="keyword">long</span>&gt;, greater&lt;<span class="keyword">long</span> <span class="keyword">long</span>&gt;&gt; head;</span><br><span class="line"><span class="keyword">int</span> n;</span><br><span class="line"><span class="keyword">int</span> a[<span class="number">100005</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)&#123;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; a[i];</span><br><span class="line">        head.push(a[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> sum = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n - <span class="number">1</span>; i++)&#123;</span><br><span class="line">        <span class="keyword">long</span> <span class="keyword">long</span> a = head.top();</span><br><span class="line">        head.pop();</span><br><span class="line">        <span class="keyword">long</span> <span class="keyword">long</span> b = head.top();</span><br><span class="line">        head.pop();</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">long</span> <span class="keyword">long</span> c = a + b;</span><br><span class="line">        sum += c;	<span class="comment">//每个分支节点就是要加和的权重</span></span><br><span class="line">        head.push(c);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; sum &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/03/21/lanqiaobei3-yangmao/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1106,32 +973,15 @@
 
       
         
-          
-            <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>由于太久没有⻅到朋友们，⼩明这天晚上做了⼀个甜美的梦。 </p>
+          <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>由于太久没有⻅到朋友们，⼩明这天晚上做了⼀个甜美的梦。 </p>
 <p>这天⼀共有<code>n</code>个同学⼀起聚餐，他们⼀共点了<code>m</code>块披萨，每块披萨的⼤⼩不尽相同，分别为 <strong>a<sub>i</sub></strong> 。 现在遇到了⼀个尴尬的问题，由于⼩明是⼀个正直的⼈，他希望在场的所有⼈分得的披萨⼀样⼤， 但披萨只能被切成整数⼤⼩，不同的披萨之间也不能拼接。现在他想知道，每个⼈最多能吃到多⼤ 的披萨呢。</p>
-<h2 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h2><p>第⼀⾏包含两个整数 , 表示有 <code>n</code> 个同学和 <code>m</code> 块披萨。 </p>
-<p>接下来⼀⾏ <code>m</code> 个数表示每块披萨的⼤⼩。</p>
-<h2 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h2><p>输出⼀⾏，每个⼈最多能吃到多⼤的披萨。</p>
-<h2 id="数据范围"><a href="#数据范围" class="headerlink" title="数据范围"></a>数据范围</h2><img src="https://s1.ax1x.com/2020/03/21/8hkL4A.png" alt="1" style="zoom:67%;">
-
-
-
-<h2 id="样例输入"><a href="#样例输入" class="headerlink" title="样例输入"></a>样例输入</h2><blockquote>
-<p>4 2</p>
-<p>7 9</p>
-</blockquote>
-<h2 id="样例输出"><a href="#样例输出" class="headerlink" title="样例输出"></a>样例输出</h2><blockquote>
-<p>3</p>
-</blockquote>
-<h2 id="算法分析"><a href="#算法分析" class="headerlink" title="算法分析"></a>算法分析</h2><p>这道题思维需要转化一下，如果按照一般贪心的想法，将每种披萨都对于每一个同学平分，这样可以保证公平性，每个同学都分到一样大的披萨，但是这种方法得出的最大披萨数是不正确的。</p>
-<p>因为每种披萨是不能拼接的，也就意味着考虑每个人吃到的披萨都是某一种披萨的最大。</p>
-<p><strong>那怎么保证某一种披萨的最大呢。</strong></p>
-<p>我们换个思维，先保证某一种披萨的最大值，再保证每个同学的公平性。</p>
-<p>那么就可以使用二分的思想，二分披萨的最大值，然后去验证在这个披萨的最大值下，能不能保证公平性，使得每个同学都能分到这么大的披萨</p>
-<h2 id="解题代码"><a href="#解题代码" class="headerlink" title="解题代码"></a>解题代码</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> pizze[<span class="number">100005</span>];</span><br><span class="line"><span class="keyword">int</span> n,m;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">check</span><span class="params">(<span class="keyword">int</span> mid)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  	<span class="comment">//验证在当前披萨大小下，能否给每个同学都分到这么大</span></span><br><span class="line">    <span class="keyword">int</span> temp = <span class="number">0</span>;	<span class="comment">//记录当前大小下，能分给多少个同学</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; m; i++)</span><br><span class="line">        temp += pizze[i] / mid;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span>(temp &gt;= n) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n &gt;&gt; m;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; m; i++)</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; pizze[i];</span><br><span class="line">    </span><br><span class="line">  	<span class="comment">//二分披萨的最大值的大小</span></span><br><span class="line">    <span class="keyword">int</span> l = <span class="number">0</span>, r = <span class="number">1000005</span>;</span><br><span class="line">    <span class="keyword">int</span> mid = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(l &lt;= r)&#123;</span><br><span class="line">        <span class="keyword">int</span> mid = (l + r) &gt;&gt; <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span>(check(mid))</span><br><span class="line">            l = mid + <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            r = mid - <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; r &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">  </span><br><span class="line">  	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/03/21/lanqiaobei3-fenpisa/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
