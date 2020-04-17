@@ -1,0 +1,1136 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-flash.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+  <meta name="baidu-site-verification" content="3fE9IyxcPl">
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/1.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/1.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/1.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/1.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="UML建模,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="用例图UML中的用例图的相关知识。 以下内容均来自智慧树《面向对象与UML（山东联盟）烟台大学》课程。 仅作总结，如果侵权请联系本人删除">
+<meta name="keywords" content="UML建模">
+<meta property="og:type" content="article">
+<meta property="og:title" content="UML学习笔记——用例图">
+<meta property="og:url" content="http://codeblog-cy.top/2020/04/17/UML-UseCase/index.html">
+<meta property="og:site_name" content="ChenYang&#39;s Blog">
+<meta property="og:description" content="用例图UML中的用例图的相关知识。 以下内容均来自智慧树《面向对象与UML（山东联盟）烟台大学》课程。 仅作总结，如果侵权请联系本人删除">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/17/JVhefO.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/17/JVhVk6.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/17/JVhZtK.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/17/JVhnpD.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/17/JVhATx.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/17/JVhu1e.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/17/JVhK6H.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/17/JVhMXd.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/17/JVhlnA.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/17/JVh10I.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/17/JVh37t.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/17/JVhGAP.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/17/JVhJtf.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/17/JVhYh8.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/17/JVhN9S.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/17/JVhU1g.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/17/JVhacQ.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/17/JVhdXj.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/17/JVhBBn.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/17/JVhD7q.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/17/JVhsA0.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/17/JVhyNV.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/17/JVhg9U.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/17/JVh6hT.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/17/JVh23F.png">
+<meta property="og:updated_time" content="2020-04-17T08:33:28.103Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="UML学习笔记——用例图">
+<meta name="twitter:description" content="用例图UML中的用例图的相关知识。 以下内容均来自智慧树《面向对象与UML（山东联盟）烟台大学》课程。 仅作总结，如果侵权请联系本人删除">
+<meta name="twitter:image" content="https://s1.ax1x.com/2020/04/17/JVhefO.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://codeblog-cy.top/2020/04/17/UML-UseCase/">
+
+
+
+
+
+  <title>UML学习笔记——用例图 | ChenYang's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+  
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">ChenYang's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">心中有码，自然伟大</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://codeblog-cy.top/2020/04/17/UML-UseCase/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="陈洋">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/me.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ChenYang's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">UML学习笔记——用例图</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-17T15:45:05+08:00">
+                2020-04-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/UML建模/" itemprop="url" rel="index">
+                    <span itemprop="name">UML建模</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="用例图"><a href="#用例图" class="headerlink" title="用例图"></a>用例图</h1><p>UML中的用例图的相关知识。</p>
+<p>以下内容均来自<a href>智慧树</a>《面向对象与UML（山东联盟）烟台大学》课程。</p>
+<p><strong><u>仅作总结，如果侵权请联系本人删除</u></strong></p>
+<a id="more"></a>
+
+
+
+<h2 id="用例图的概念"><a href="#用例图的概念" class="headerlink" title="用例图的概念"></a>用例图的概念</h2><p>用例是一种<strong><font color="#FF7F50">描述系统需求</font></strong>的方法，使用用例的方法来描述系统需求的过程就是用例建模。</p>
+<h2 id="用例图的基本思想"><a href="#用例图的基本思想" class="headerlink" title="用例图的基本思想"></a>用例图的基本思想</h2><p>用例图是从<strong><font color="#FF7F50">用户角度</font></strong>来描述系统功能的，只关心系统所能提供的服务，并不需要了解系统的内部结构和设计细节</p>
+<h2 id="用例图的作用"><a href="#用例图的作用" class="headerlink" title="用例图的作用"></a>用例图的作用</h2><p>作为整个系统开发过程中的开发依据，指导和驱动其它模型。<strong><font color="#FF7F50">用例驱动的软件开发</font></strong></p>
+<h2 id="用例图的构成"><a href="#用例图的构成" class="headerlink" title="用例图的构成"></a>用例图的构成</h2><ul>
+<li>用例图用于定义系统的功能需求，描述了系统的参与者与系统提供的用例之间的连接关系。</li>
+</ul>
+<h3 id="用例图的构成元素"><a href="#用例图的构成元素" class="headerlink" title="用例图的构成元素"></a>用例图的构成元素</h3><p>（1）参与者（Actor） （活动者、角色）</p>
+<p>（2）用例（Use Case）</p>
+<p>（3）关系（Relationship ）</p>
+<p>（参与者与参与者之间的关系，参与者与用例之间的关系，用例之间的关系）</p>
+<img src="https://s1.ax1x.com/2020/04/17/JVhefO.png" alt="1" style="zoom:50%;"> 
+
+
+
+<h4 id="参与者"><a href="#参与者" class="headerlink" title="参与者"></a>参与者</h4><ul>
+<li>参与者（actor） 是系统外部与系统直接交互的事物，也称为活动者。</li>
+</ul>
+<img src="https://s1.ax1x.com/2020/04/17/JVhVk6.png" alt="2" style="zoom:50%;"> 
+
+
+
+<p>参与者参与用例的执行过程。</p>
+<ul>
+<li><p>每个参与者可以参与一个或多个用例，每个用例可以被多个参与者使用。</p>
+</li>
+<li><p>参与者是由参与用例时所担当的<strong><font color="#FF7F50">角色</font></strong>来表示。</p>
+</li>
+</ul>
+<h5 id="什么是参与者？"><a href="#什么是参与者？" class="headerlink" title="什么是参与者？"></a>什么是参与者？</h5><p>参与者的特征是其作为外部用户与系统发生交互。</p>
+<h5 id="参与者的种类"><a href="#参与者的种类" class="headerlink" title="参与者的种类"></a>参与者的种类</h5><p><img src="https://s1.ax1x.com/2020/04/17/JVhZtK.png" alt="3"> </p>
+<p>(1)与系统直接交互的真实的人</p>
+<p>(2) 与系统直接交互的其它系统:与系统进行信息交换的计算机外部设备、数据库系统，其它软件系统等。</p>
+<p>(3)一些可以运行的进程：时间(经过一段时间或到达某一个时间点，触发系统中某个事件时，时间就是参与者)</p>
+<h4 id="用例"><a href="#用例" class="headerlink" title="用例"></a>用例</h4><p>用例是外部可见的系统功能单元，是对功能需求的描叙。</p>
+<h5 id="用例的名称"><a href="#用例的名称" class="headerlink" title="用例的名称:"></a>用例的名称:</h5><p>①简单名</p>
+<p>②路径名:指出用例所在的包</p>
+<p><img src="https://s1.ax1x.com/2020/04/17/JVhnpD.png" alt="4"></p>
+<h5 id="用例规约-Use-Case-Specification"><a href="#用例规约-Use-Case-Specification" class="headerlink" title="用例规约(Use Case Specification)"></a>用例规约(Use Case Specification)</h5><p>(用例描述、用例说明)</p>
+<p>针对每一个用例都应该有一个用例规约文档与之相对应，该文档描述用例的细节内容，例如描述参与者与系统交互实现用例功能的事件流。</p>
+<h2 id="用例图的关系"><a href="#用例图的关系" class="headerlink" title="用例图的关系"></a>用例图的关系</h2><p> 关联（association）</p>
+<img src="https://s1.ax1x.com/2020/04/17/JVhATx.png" alt="5" style="zoom:50%;"> 
+
+
+
+<p>包含（include）</p>
+<img src="https://s1.ax1x.com/2020/04/17/JVhu1e.png" alt="6" style="zoom:50%;"> 
+
+
+
+<p>扩展（extend）</p>
+<img src="https://s1.ax1x.com/2020/04/17/JVhK6H.png" alt="7" style="zoom:50%;"> 
+
+
+
+<p>泛化（generalization）</p>
+<img src="https://s1.ax1x.com/2020/04/17/JVhMXd.png" alt="8" style="zoom:50%;"> 
+
+
+
+<p><strong><font color="red">注意:</font></strong></p>
+<ul>
+<li><p><strong><font color="red">关联指参与者与用例之间的关系</font></strong></p>
+</li>
+<li><p><strong><font color="red">包含、扩展、泛化指用例之间的关系</font></strong></p>
+</li>
+<li><p><strong><font color="red">泛化即可以用于参与者之间的关系，也能用于用例之间的关系。 </font></strong></p>
+</li>
+</ul>
+<h3 id="关联关系"><a href="#关联关系" class="headerlink" title="关联关系"></a>关联关系</h3><ul>
+<li><p>表示参与者与用例之间进行通信。</p>
+</li>
+<li><p>每个用例都有参与者关联，除了包含和扩展用例。</p>
+</li>
+<li><p>一个参与者可以访问多个的用例，一个用例可以被多个参与者访问。</p>
+</li>
+<li><p>关联关系可以是单向的，也可以是双向的。</p>
+</li>
+</ul>
+<img src="https://s1.ax1x.com/2020/04/17/JVhlnA.png" alt="9" style="zoom:50%;">  
+
+
+
+<h3 id="包含关系"><a href="#包含关系" class="headerlink" title="包含关系"></a>包含关系</h3><ul>
+<li>一个用例可以包含其它用例具有的行为，并把它作为自身行为的一部分，称为<strong><font color="#1E90FF">包含依赖关系。</font></strong></li>
+</ul>
+<img src="https://s1.ax1x.com/2020/04/17/JVh10I.png" alt="10" style="zoom:50%;"> 
+
+
+
+<ul>
+<li><strong><font color="red">基用例</font></strong>把<strong><font color="#1E90FF">被包含的用例</font></strong>行为作为自身行为的一部分。</li>
+</ul>
+<p>例如：</p>
+<img src="https://s1.ax1x.com/2020/04/17/JVh37t.png" alt="11" style="zoom:50%;"> 
+
+<img src="https://s1.ax1x.com/2020/04/17/JVhGAP.png" alt="12" style="zoom:50%;"> 
+
+
+
+<p><strong><font color="red">注意：</font></strong></p>
+<ul>
+<li><p>箭头方向由基用例指向被包含的用例，被包含用例如果不存在了，基用例就不完整了。</p>
+</li>
+<li><p><strong><font color="red">执行基用例时，每次都必须调用被包含的用例。</font></strong></p>
+</li>
+<li><p><strong><font color="red">被包含的用例也可以单独执行。</font></strong></p>
+</li>
+</ul>
+<img src="https://s1.ax1x.com/2020/04/17/JVhJtf.png" alt="13" style="zoom:50%;"> 
+
+
+
+<h4 id="使用包含关系的情形"><a href="#使用包含关系的情形" class="headerlink" title="使用包含关系的情形"></a>使用包含关系的情形</h4><ul>
+<li><p>如果两个以上用例有大量一致的功能，可以将一致的功能抽取到另一个用例中，其它用例和这个用例建立包含关系。——体现复用</p>
+</li>
+<li><p>一个用例的功能太多太复杂时，可以将功能分解成小功能小用例，然后使用包含关系。——功能分解</p>
+</li>
+</ul>
+<img src="https://s1.ax1x.com/2020/04/17/JVhYh8.png" alt="14" style="zoom:50%;"> 
+
+
+
+<h3 id="扩展关系"><a href="#扩展关系" class="headerlink" title="扩展关系"></a>扩展关系</h3><ul>
+<li><p>一个用例在一定条件下(扩展点)扩展另一个用例的功能，构成新用例，称为<strong><font color="#1E90FF">扩展用例</font></strong>，被扩展的用例称为<strong><font color="#FF7F50">基用例</font></strong>。</p>
+</li>
+<li><p><strong><font color="#1E90FF">扩展用例</font></strong>被定义为<strong><font color="#FF7F50">基用例</font></strong>的增量</p>
+</li>
+<li><p><strong><font color="#1E90FF">扩展用例</font></strong>依赖于<strong><font color="#FF7F50">基用例</font></strong>。</p>
+</li>
+</ul>
+<img src="https://s1.ax1x.com/2020/04/17/JVhN9S.png" alt="15" style="zoom:50%;"> 
+
+
+
+<p><font color="red">注意：</font></p>
+<ul>
+<li><p>基用例本身是一个完整的用例，可以单独执行，<strong><font color="red">在每次执行基用例时，扩展用例不是每次都被执行。</font></strong></p>
+</li>
+<li><p><strong><font color="red">扩展用例本身不是完整独立的用例，无法单独执行，</font></strong>扩展用例的执行必须依赖于基础用例。</p>
+</li>
+</ul>
+<img src="https://s1.ax1x.com/2020/04/17/JVhU1g.png" alt="16" style="zoom:67%;"> 
+
+
+
+<h4 id="使用扩展用例的情形"><a href="#使用扩展用例的情形" class="headerlink" title="使用扩展用例的情形"></a>使用扩展用例的情形</h4><p>UML提供了扩展点来为基用例扩展新的行为。</p>
+<h4 id="扩展点"><a href="#扩展点" class="headerlink" title="扩展点"></a>扩展点</h4><p>扩展点的定义：基础用例中的一个或多个位置，在该位置会衡量某个条件以决定是否启用扩展用例。</p>
+<ul>
+<li>一旦基用例中扩展点给出条件满足，则扩展用例将被执行。</li>
+</ul>
+<img src="https://s1.ax1x.com/2020/04/17/JVhacQ.png" alt="17" style="zoom:50%;"> 
+
+<ul>
+<li><p>一个用例可以有多个扩展点，每个扩展点也可以出现多次。</p>
+</li>
+<li><p>扩展关系为分支处理、异常处理、构建灵活的系统架构提供了一种非常有效的方法。</p>
+</li>
+</ul>
+<h3 id="泛化关系"><a href="#泛化关系" class="headerlink" title="泛化关系"></a>泛化关系</h3><p>体现一般和特殊之间的关系。</p>
+<p>用例之间可以泛化，参与者之间也可以泛化。</p>
+<ul>
+<li><strong><font color="#1E90FF">子用例</font></strong>表示<strong><font color="#FF7F50">父用例</font></strong>的特殊形式，通过插入额外的步骤或细节步骤，<strong><font color="#1E90FF">子用例</font></strong>特化<strong><font color="#FF7F50">父用例</font></strong>。</li>
+</ul>
+<p><img src="https://s1.ax1x.com/2020/04/17/JVhdXj.png" alt="18"> </p>
+<img src="https://s1.ax1x.com/2020/04/17/JVhBBn.png" alt="19" style="zoom:50%;"> 
+
+
+
+<h4 id="参与者间的泛化关系"><a href="#参与者间的泛化关系" class="headerlink" title="参与者间的泛化关系"></a>参与者间的泛化关系</h4><ul>
+<li>在用例图中，使用泛化关系来描述多个参与者之间的公共行为。</li>
+</ul>
+<img src="https://s1.ax1x.com/2020/04/17/JVhD7q.png" alt="20" style="zoom:50%;">
+
+
+
+<p>例如：</p>
+<img src="https://s1.ax1x.com/2020/04/17/JVhsA0.png" alt="21" style="zoom:30%;"> 
+
+
+
+
+
+<h2 id="用例描述和建模过程"><a href="#用例描述和建模过程" class="headerlink" title="用例描述和建模过程"></a>用例描述和建模过程</h2><p>●<strong><font color="#FF7F50">用例图</font></strong>描述参与者和系统功能之间的关系，但是它缺乏描述系统行为的细节。</p>
+<p>●<strong><font color="#1E90FF">用例描述</font></strong>用来更详细地描述用例的功能。</p>
+<p>●<strong><font color="#1E90FF">用例描述</font></strong>常以<strong><font color="#1E90FF">书面文档</font></strong>的方式进行表达，可以使用<strong><font color="#FF7F50">文本方式</font></strong>进行文字描述，也可以使用<strong><font color="#FF7F50">图形的方式</font></strong>可视化描述，例如<strong><font color="#228B22">活动图有助于描述复杂用例实现的决策流程，状态转移图有助于描述与状态相关的系统行为，顺序图适合于描述基于时间顺序的消息传递。</font></strong></p>
+<h2 id="用例描述一般包含的方面"><a href="#用例描述一般包含的方面" class="headerlink" title="用例描述一般包含的方面"></a>用例描述一般包含的方面</h2><p>在UML中对用例的描述并没有硬性规定，但一般情况下用例描述</p>
+<p>应包括以下几个方面:</p>
+<h3 id="用例名称"><a href="#用例名称" class="headerlink" title="用例名称"></a>用例名称</h3><p>表明用例的用途，如上面示例中的“借阅图书”、“归还图书”，</p>
+<h3 id="标识符-可选-编号"><a href="#标识符-可选-编号" class="headerlink" title="标识符[可选]编号"></a>标识符[可选]编号</h3><p>惟一标识符一个用例，如“UC200601”。这样就可在项目的其他元素(如</p>
+<p>类模型)中用它来引用这个用例。</p>
+<h3 id="参与者-可选"><a href="#参与者-可选" class="headerlink" title="参与者[可选]"></a>参与者[可选]</h3><p>与此用例相关的参与者列表。尽管这则信息包含在用例本身当中，但在没</p>
+<p>有用例图时，它有助于增加对该用例的理解。</p>
+<h3 id="简要说明"><a href="#简要说明" class="headerlink" title="简要说明"></a>简要说明</h3><p>对该用例进行说明，描述用例作用。注意语言简要，使用自然语言。</p>
+<h3 id="前置条件"><a href="#前置条件" class="headerlink" title="前置条件"></a>前置条件</h3><p>一个条件列表。前置条件描述了用例之前系统必须满足的条件。如果条件不满足，则用例不会被执行。</p>
+<p><strong><font color="#FF7F50">例如:借阅图书用例</font></strong></p>
+<p><strong><font color="#FF7F50">前置条件:学生出示的借书证必须是合法的借书证。</font></strong></p>
+<h3 id="后置条件"><a href="#后置条件" class="headerlink" title="后置条件"></a>后置条件</h3><p>后置条件在用例成功完成后得到满足，它提供了系统的部分描述。用例结束后，系统处于什么状态。</p>
+<p><strong><font color="#FF7F50">例如:借阅图书用例</font></strong></p>
+<p><strong><font color="#FF7F50">后置条件:借书成功，则返回该学生借阅信息;结束失败，则返回失败的原因。</font></strong></p>
+<h3 id="扩展点-1"><a href="#扩展点-1" class="headerlink" title="扩展点"></a>扩展点</h3><p>如果包括扩展用例，则写出扩展用例在什么情况下使用。应该在编写事件流的同时编写。</p>
+<h3 id="基本事件流-主事件流"><a href="#基本事件流-主事件流" class="headerlink" title="基本事件流(主事件流)"></a>基本事件流(主事件流)</h3><p>描述当各项工作都正常进行时用例的工作方式。</p>
+<p>事件流描述了用户和执行用例之间交互的每一步。.</p>
+<p>事件流是将个别用例进行合适的细化任务。</p>
+<p><strong><font color="#FF7F50">可以发现原始用例图遗漏的内容。</font></strong></p>
+<h3 id="其它事件流-扩展事件流，错误事件流"><a href="#其它事件流-扩展事件流，错误事件流" class="headerlink" title="其它事件流(扩展事件流，错误事件流)"></a>其它事件流(扩展事件流，错误事件流)</h3><p>在变更工作方式、出现异常或发生错误的情况下所遵循的步骤</p>
+<img src="https://s1.ax1x.com/2020/04/17/JVhyNV.png" alt="22" style="zoom:50%;"> 
+
+<img src="https://s1.ax1x.com/2020/04/17/JVhg9U.png" alt="23" style="zoom:50%;"> 
+
+
+
+<p> 例如：</p>
+<img src="https://s1.ax1x.com/2020/04/17/JVh6hT.png" alt="23" style="zoom:50%;"> 
+
+<img src="https://s1.ax1x.com/2020/04/17/JVh23F.png" alt="25" style="zoom:50%;"> 
+
+
+
+<h2 id="用例建模过程"><a href="#用例建模过程" class="headerlink" title="用例建模过程"></a>用例建模过程</h2><p>■捕获需求;</p>
+<p>■确定系统的边界范围，找出系统外部的参与者和外部系统;</p>
+<p>■确定每-一个参与者所希望的系统行为，命名用例; </p>
+<p>■把公共系统行为分解为新用例，供其他用例引用;</p>
+<p>■把一些变更的行为分解为扩展用例;</p>
+<p>■编制用例的脚本;<strong><font color="#FF7F50">编写用例描述</font></strong></p>
+<p>■绘制用例图;</p>
+<p>■把特殊情况的用例画成单独的子用例图。</p>
+
+      
+    </div>
+    
+    
+    
+
+    <div>
+      
+        
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script type="text/javascript" src="http://jslibs.wuxubj.cn/sweetalert_mini/jquery-1.7.1.min.js"></script>
+  <script src="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.mini.css">
+  <p><span>本文标题:</span><a href="/2020/04/17/UML-UseCase/">UML学习笔记——用例图</a></p>
+  <p><span>文章作者:</span><a href="/" title="访问 陈洋 的个人博客">陈洋</a></p>
+  <p><span>发布时间:</span>2020年04月17日 - 15:04</p>
+  <p><span>最后更新:</span>2020年04月17日 - 16:04</p>
+  <p><span>原始链接:</span><a href="/2020/04/17/UML-UseCase/" title="UML学习笔记——用例图">http://codeblog-cy.top/2020/04/17/UML-UseCase/</a>
+    <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://codeblog-cy.top/2020/04/17/UML-UseCase/" aria-label="复制成功！"></i></span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+    clipboard.on('success', $(function(){
+      $(".fa-clipboard").click(function(){
+        swal({   
+          title: "",   
+          text: '复制成功',   
+          html: false,
+          timer: 500,   
+          showConfirmButton: false
+        });
+      });
+    }));  
+</script>
+
+      
+    </div>
+    
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/UML建模/" rel="tag"># UML建模</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/04/17/Integer-Factorization/" rel="next" title="整数因子分解——算法设计课程">
+                <i class="fa fa-chevron-left"></i> 整数因子分解——算法设计课程
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/me.jpg" alt="陈洋">
+            
+              <p class="site-author-name" itemprop="name">陈洋</p>
+              <p class="site-description motion-element" itemprop="description">18级软工学生</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">68</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">63</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/Kuluuu" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:1140377596@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#用例图"><span class="nav-number">1.</span> <span class="nav-text">用例图</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#用例图的概念"><span class="nav-number">1.1.</span> <span class="nav-text">用例图的概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#用例图的基本思想"><span class="nav-number">1.2.</span> <span class="nav-text">用例图的基本思想</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#用例图的作用"><span class="nav-number">1.3.</span> <span class="nav-text">用例图的作用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#用例图的构成"><span class="nav-number">1.4.</span> <span class="nav-text">用例图的构成</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#用例图的构成元素"><span class="nav-number">1.4.1.</span> <span class="nav-text">用例图的构成元素</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#参与者"><span class="nav-number">1.4.1.1.</span> <span class="nav-text">参与者</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#什么是参与者？"><span class="nav-number">1.4.1.1.1.</span> <span class="nav-text">什么是参与者？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#参与者的种类"><span class="nav-number">1.4.1.1.2.</span> <span class="nav-text">参与者的种类</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#用例"><span class="nav-number">1.4.1.2.</span> <span class="nav-text">用例</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#用例的名称"><span class="nav-number">1.4.1.2.1.</span> <span class="nav-text">用例的名称:</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#用例规约-Use-Case-Specification"><span class="nav-number">1.4.1.2.2.</span> <span class="nav-text">用例规约(Use Case Specification)</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#用例图的关系"><span class="nav-number">1.5.</span> <span class="nav-text">用例图的关系</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#关联关系"><span class="nav-number">1.5.1.</span> <span class="nav-text">关联关系</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#包含关系"><span class="nav-number">1.5.2.</span> <span class="nav-text">包含关系</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#使用包含关系的情形"><span class="nav-number">1.5.2.1.</span> <span class="nav-text">使用包含关系的情形</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#扩展关系"><span class="nav-number">1.5.3.</span> <span class="nav-text">扩展关系</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#使用扩展用例的情形"><span class="nav-number">1.5.3.1.</span> <span class="nav-text">使用扩展用例的情形</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#扩展点"><span class="nav-number">1.5.3.2.</span> <span class="nav-text">扩展点</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#泛化关系"><span class="nav-number">1.5.4.</span> <span class="nav-text">泛化关系</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#参与者间的泛化关系"><span class="nav-number">1.5.4.1.</span> <span class="nav-text">参与者间的泛化关系</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#用例描述和建模过程"><span class="nav-number">1.6.</span> <span class="nav-text">用例描述和建模过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#用例描述一般包含的方面"><span class="nav-number">1.7.</span> <span class="nav-text">用例描述一般包含的方面</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#用例名称"><span class="nav-number">1.7.1.</span> <span class="nav-text">用例名称</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#标识符-可选-编号"><span class="nav-number">1.7.2.</span> <span class="nav-text">标识符[可选]编号</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参与者-可选"><span class="nav-number">1.7.3.</span> <span class="nav-text">参与者[可选]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#简要说明"><span class="nav-number">1.7.4.</span> <span class="nav-text">简要说明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#前置条件"><span class="nav-number">1.7.5.</span> <span class="nav-text">前置条件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#后置条件"><span class="nav-number">1.7.6.</span> <span class="nav-text">后置条件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#扩展点-1"><span class="nav-number">1.7.7.</span> <span class="nav-text">扩展点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基本事件流-主事件流"><span class="nav-number">1.7.8.</span> <span class="nav-text">基本事件流(主事件流)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其它事件流-扩展事件流，错误事件流"><span class="nav-number">1.7.9.</span> <span class="nav-text">其它事件流(扩展事件流，错误事件流)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#用例建模过程"><span class="nav-number">1.8.</span> <span class="nav-text">用例建模过程</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">陈洋</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+<!-- 新增访客统计代码 -->
+
+<div class="busuanzi-count">
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+        <!-- 不蒜子统计 -->
+        <span id="busuanzi_container_site_pv">
+                本站总访问量<span id="busuanzi_value_site_pv"></span>次
+        </span>
+        <span class="post-meta-divider">|</span>
+        <span id="busuanzi_container_site_uv" style="display:none">
+                本站访客数<span id="busuanzi_value_site_uv"></span>人
+        </span>
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <!-- 博客字数统计 -->
+    <span class="site-pv">
+      <i class="fa fa-pencil"></i>
+      博客全站共： <span class="post-count">71.4k</span> 字
+    </span>
+</div>
+<!-- 新增访客统计代码 END-->
+
+<!-- 在网页底部添加网站运行时间 -->
+<span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+<script>
+    var now = new Date();
+    function createtime() {
+        var grt= new Date("07/21/2019 00:00:00");//此处修改你的建站时间或者网站上线时间
+        now.setTime(now.getTime()+250);
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;}
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;}
+        document.getElementById("timeDate").innerHTML = "Run for "+dnum+" Days ";
+        document.getElementById("times").innerHTML = hnum + " Hours " + mnum + " m " + snum + " s";
+    }
+setInterval("createtime()",250);
+</script>
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共71.4k字</span>
+</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  <script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+  
+  
+
+  
+
+  
+
+  
+
+<!-- 代码块复制功能 -->
+<script type="text/javascript" src="/js/src/clipboard.min.js"></script>  
+<script type="text/javascript" src="/js/src/clipboard-use.js"></script>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"live2d-widget-model-wanko"},"display":{"position":"left","width":75,"height":100},"mobile":{"show":true},"log":false});</script></body>
+</html>
