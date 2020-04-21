@@ -1,0 +1,1538 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-flash.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+  <meta name="baidu-site-verification" content="3fE9IyxcPl">
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/1.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/1.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/1.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/1.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="UML建模,类图,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="类图UML中的类图的相关知识。 以下内容均来自智慧树《面向对象与UML（山东联盟）烟台大学》课程。 仅作总结，如果侵权请联系本人删除">
+<meta name="keywords" content="UML建模,类图">
+<meta property="og:type" content="article">
+<meta property="og:title" content="UML学习笔记——类图">
+<meta property="og:url" content="http://codeblog-cy.top/2020/04/20/UML-ClassDiagram/index.html">
+<meta property="og:site_name" content="ChenYang&#39;s Blog">
+<meta property="og:description" content="类图UML中的类图的相关知识。 以下内容均来自智慧树《面向对象与UML（山东联盟）烟台大学》课程。 仅作总结，如果侵权请联系本人删除">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/20/J1sM90.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/20/J1sw36.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/20/J1yYM8.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/20/J16Yf1.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/20/J1ci1x.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/20/J1c8u8.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/20/J1cdCn.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/20/J1gpqS.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/20/J1geMV.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/20/J1gcsf.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/20/J12nSI.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/20/J12efA.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/20/J12ult.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/20/J12ZYd.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/20/J1R4vq.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/20/J1Rh2n.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/20/J1WkPH.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/20/J1hrK1.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/20/J14ms1.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/20/J1I94U.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/20/J1IpNT.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/20/J1ISEV.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/20/J1TYh8.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/20/J1TU1g.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/20/J1TacQ.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/20/J1TN9S.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/20/J1qgaR.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/20/J1qyqJ.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/20/J1qrMF.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/20/J1qsr4.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/20/J1qcZ9.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/20/J1x0R1.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/20/J1xTL8.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/20/J1xHeS.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/20/J1x4zt.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/20/J1xosf.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/20/J1xhRI.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/20/J1xIQP.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/20/J1xOij.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/20/J1xqoQ.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/20/J1xbdg.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/20/J1xXJs.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/20/J1xjWn.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/20/J1xvzq.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/20/J1xzQ0.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/20/J1zSyV.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/20/J1zpLT.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/20/J1zCeU.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/20/J1zPwF.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/21/J3UuT0.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/21/J3Ummn.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/21/J3Unwq.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/21/J3UZOs.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/21/J3UVyj.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/21/J3UMkV.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/21/J3UQYT.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/21/J3UlfU.png">
+<meta property="og:updated_time" content="2020-04-21T00:31:32.773Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="UML学习笔记——类图">
+<meta name="twitter:description" content="类图UML中的类图的相关知识。 以下内容均来自智慧树《面向对象与UML（山东联盟）烟台大学》课程。 仅作总结，如果侵权请联系本人删除">
+<meta name="twitter:image" content="https://s1.ax1x.com/2020/04/20/J1sM90.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://codeblog-cy.top/2020/04/20/UML-ClassDiagram/">
+
+
+
+
+
+  <title>UML学习笔记——类图 | ChenYang's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+  
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">ChenYang's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">心中有码，自然伟大</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://codeblog-cy.top/2020/04/20/UML-ClassDiagram/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="陈洋">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/me.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ChenYang's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">UML学习笔记——类图</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-20T20:42:19+08:00">
+                2020-04-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/UML建模/" itemprop="url" rel="index">
+                    <span itemprop="name">UML建模</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="类图"><a href="#类图" class="headerlink" title="类图"></a>类图</h1><p>UML中的类图的相关知识。</p>
+<p>以下内容均来自<a href>智慧树</a>《面向对象与UML（山东联盟）烟台大学》课程。</p>
+<p><strong><u>仅作总结，如果侵权请联系本人删除</u></strong></p>
+<a id="more"></a>
+
+
+
+<h1 id="类图的概念"><a href="#类图的概念" class="headerlink" title="类图的概念"></a>类图的概念</h1><p>●<strong><font color="red">类图</font></strong>描述系统中类的静态结构，描述系统中的<strong><font color="#1E90FF">类及类之间的关系</font></strong>，还描述类的<strong><font color="#1E90FF">内部结构</font></strong>(类的属性和操作)。</p>
+<p>●<strong><font color="red">类图</font></strong>是面向对象系统建模中最常用、最重要的图。</p>
+<p>●<strong><font color="red">类图</font></strong>是定义其它图的<strong><font color="red">类图</font></strong>，在类图的基础上，可以使用状态图、协作图、顺序图、组件图等进一步描述系统其它方面的特征。</p>
+<p>●对于<strong><font color="#1E90FF">抽象建模</font></strong>和<strong><font color="#1E90FF">设计实际</font></strong>的程序而言，类图都是有用的。</p>
+<p>●<strong><font color="#1E90FF">类图中的类</font></strong>可以直接用某种面向对象编程语言实现。<strong><font color="#228B22">C++、java、C#..</font></strong>. </p>
+<h1 id="类图的元素"><a href="#类图的元素" class="headerlink" title="类图的元素"></a>类图的元素</h1><p>①类(Class)</p>
+<p>②接口( Interface )</p>
+<p><strong><font color="#8E2323">③依赖关系(Dependency)</font></strong></p>
+<p><strong><font color="#8E2323">④泛化关系(Generalization)</font></strong></p>
+<p><strong><font color="#8E2323">⑤关联关系(Association)</font></strong></p>
+<p><strong><font color="#8E2323">⑥实现关系(Realization)</font></strong></p>
+<p><strong><font color="#8E2323">⑦聚合关系(aggregation)</font></strong></p>
+<p><strong><font color="#8E2323">⑧组合关系( composition)</font></strong></p>
+<h2 id="类"><a href="#类" class="headerlink" title="类"></a>类</h2><p><strong><font color="red">类</font></strong>是构成类图的基础，也是面向对象系统组织结构的核心。</p>
+<p><strong><font color="red">类</font></strong>是对一组具有相同属性、操作、关系和语义的对象的抽象。</p>
+<p><strong><font color="red">类</font></strong>包括<strong><font color="#8E2323">名称部分(Name)、属性部分(Attribute)和操作部分(Operation)</font></strong></p>
+<ul>
+<li>UML规范采用一个具有3个分栏的图标表示一个类。</li>
+</ul>
+<img src="https://s1.ax1x.com/2020/04/20/J1sM90.png" alt="1" style="zoom:50%;">
+
+
+
+<h2 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h2><p><strong><font color="red">属性可见性</font></strong>(访问权限，可访问性)</p>
+<p><strong><font color="red">可见性描述了该属性对其它类是否可见，以及是否可以被其它类引用。</font></strong></p>
+<p>类型：</p>
+<p>①公有(Public)  “+”</p>
+<p>②私有( Private )  “-”</p>
+<p>③受保护( Protected)  “#”</p>
+<img src="https://s1.ax1x.com/2020/04/20/J1sw36.png" alt="2" style="zoom:50%;">
+
+
+
+<p><strong><font color="red">注意：UML未规定默认的可见性，如果没有给出，表明该属性的可见性尚未定义。</font></strong></p>
+<h2 id="作用域描述"><a href="#作用域描述" class="headerlink" title="作用域描述"></a>作用域描述</h2><p><strong><font color="#FF7F50">作用域(scope)</font></strong>是与属性和操作相关的一一个重要概念。</p>
+<ul>
+<li>存在两种作用域:</li>
+</ul>
+<p>(1)<strong><font color="#1E90FF">实例(instance) 作用域下</font></strong>，类的不同实例对象拥有自己的属性值，类</p>
+<p>似于C++中的<strong><font color="#FF7F50">非静态成员</font></strong>。</p>
+<p>(2)<strong><font color="#1E90FF">分类(classifier) 作用域下</font></strong>，类的所有实例对象共享相同的属性值，类，</p>
+<p>似于C++中的<strong><font color="#FF7F50">静态成员</font></strong>。</p>
+<ul>
+<li>UML分类作用域的属性和操作名字要带<strong><font color="#FF7F50">下划线</font></strong>。</li>
+</ul>
+<img src="https://s1.ax1x.com/2020/04/20/J1yYM8.png" alt="3" style="zoom:50%;">
+
+
+
+<h2 id="抽象类"><a href="#抽象类" class="headerlink" title="抽象类"></a>抽象类</h2><p><strong><font color="#FF7F50">抽象类：</font></strong>至少拥有一个抽象操作的类。</p>
+<p><strong><font color="#FF7F50">抽象操作：</font></strong>在指定该操作的类中并没有该操作的实现方法，而只是</p>
+<p>显示了操作签名的那种操作。<strong><font color="#1E90FF">例如，C++中的纯虚函数，Java中的抽象方法</font></strong></p>
+<p><strong><font color="#8E2323">在UML图中，抽象操作的显示是在操作签名后面用特性字符串，{abstract}，或者将操作签名用斜体字体方式显示。</font></strong></p>
+<p><strong><font color="#1E90FF">在UML图中，抽象类的显示是在类名后面用特性字符串{abstract},或者将类名用斜体字体方式显示。</font></strong></p>
+<img src="https://s1.ax1x.com/2020/04/20/J16Yf1.png" alt="4" style="zoom:50%;">
+
+
+
+<h2 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h2><ul>
+<li><p>接口是一组没有相应实现方法的描述。</p>
+</li>
+<li><p><strong><font color="#1E90FF">接口通常被描述抽象操作，即用操作名、参数表和返回类型说明接口行为，而操作的实现部分将出现在实现该接口的元素中。</font></strong></p>
+</li>
+<li><p><strong><font color="#228B22">使用接口可以很好地将类所需要的行为与该行为如何被实现完全分开。</font></strong></p>
+</li>
+<li><p>在进行系统建模时，接口起到十分重要的作用，因为模型元素之间的协作是通过接口进行的。</p>
+</li>
+</ul>
+<ul>
+<li><p><strong><font color="#FF7F50">UML中接口通常只包含操作不包含属性。</font></strong></p>
+</li>
+<li><p><strong><font color="#228B22">接口不能实例化为对象。</font></strong></p>
+</li>
+<li><p><strong><font color="#1E90FF">一个类可以实现一个或多个接口，一个接口可以被多个类实现。</font></strong></p>
+</li>
+<li><p><strong><font color="#8E2323">如果类实现了接口，但未实现该接口中的所有操作，那么此类必须声明为抽象的。</font></strong></p>
+</li>
+</ul>
+<img src="https://s1.ax1x.com/2020/04/20/J1ci1x.png" alt="5" style="zoom:50%;">
+
+
+
+<h1 id="类之间的关系"><a href="#类之间的关系" class="headerlink" title="类之间的关系"></a>类之间的关系</h1><p>(1)关联(association)</p>
+<img src="https://s1.ax1x.com/2020/04/20/J1c8u8.png" alt="6" style="zoom:50%;">
+
+<p>(2)泛化( generalization)</p>
+<img src="https://s1.ax1x.com/2020/04/20/J1cdCn.png" alt="7" style="zoom:50%;">
+
+<p>(3)聚合(aggregation)</p>
+<p>​    组合(composition)</p>
+<img src="https://s1.ax1x.com/2020/04/20/J1gpqS.png" alt="8" style="zoom:50%;">
+
+<p>(4)实现(realization)</p>
+<img src="https://s1.ax1x.com/2020/04/20/J1geMV.png" alt="9" style="zoom:50%;">
+
+<p>(5)依赖( dependency)</p>
+<img src="https://s1.ax1x.com/2020/04/20/J1gcsf.png" alt="10" style="zoom:50%;">
+
+
+
+<h2 id="关联关系-Association"><a href="#关联关系-Association" class="headerlink" title="关联关系(Association)"></a>关联关系(Association)</h2><ul>
+<li><p>当类之间在概念上有<strong><font color="#FF7F50">实例连接</font></strong>关系时，这种类关系叫做<strong><font color="#FF7F50">关联</font></strong>。</p>
+</li>
+<li><p><strong><font color="#1E90FF">关联关系表明了类的对象与另一个类的对象之间的链接。</font></strong> </p>
+</li>
+</ul>
+<ul>
+<li>例如：</li>
+</ul>
+<p>(1)一个人为一家公司工作。</p>
+<img src="https://s1.ax1x.com/2020/04/20/J12nSI.png" alt="11" style="zoom:50%;">
+
+<p>(2)一个人可持有多家公司的股票。</p>
+<img src="https://s1.ax1x.com/2020/04/20/J12efA.png" alt="12" style="zoom:50%;">
+
+<p>(3)每个国家都有一个首都。</p>
+<img src="https://s1.ax1x.com/2020/04/20/J12ult.png" alt="13" style="zoom:50%;">
+
+<p>(4)飞行员驾驶飞机， 飞机被某一航空公司所拥有。</p>
+<img src="https://s1.ax1x.com/2020/04/20/J12ZYd.png" alt="14" style="zoom:50%;">
+
+
+
+<h3 id="关联关系——相关内容"><a href="#关联关系——相关内容" class="headerlink" title="关联关系——相关内容"></a>关联关系——相关内容</h3><p>①关联名(name)</p>
+<p>②导航性( navigation)</p>
+<p>③角色—关联端名(role)</p>
+<p>④多重性(multiplicity)</p>
+<p>⑤自反关联( self- association )</p>
+<p>⑥限定关联( qualified association )</p>
+<p>⑦关联上的约束( constraint on association )</p>
+<p>⑧派生关联(derived- association )</p>
+<p>⑨关联类( association class )</p>
+<h4 id="①关联名-name"><a href="#①关联名-name" class="headerlink" title="①关联名(name)"></a>①关联名(name)</h4><ul>
+<li><strong><font color="#FF7F50">关联名</font></strong>来描述关联的作用，清晰而简洁地说明对象间关系。使用一个动词或动词短语来命名关联。</li>
+</ul>
+<img src="https://s1.ax1x.com/2020/04/20/J1R4vq.png" alt="15" style="zoom:50%;">
+
+
+
+<p><strong><font color="red">注意：</font></strong></p>
+<ul>
+<li><p>关联名并不是必需的。如果模型是无歧义的，<strong><font color="#FF7F50">关联名</font></strong>可不写。</p>
+</li>
+<li><p>如果关联两端都明确了<strong><font color="#228B22">角色(关联端名)。</font>**</strong><font color="#FF7F50">关联名</font>**可以不写。</p>
+</li>
+</ul>
+<img src="https://s1.ax1x.com/2020/04/20/J1Rh2n.png" alt="16" style="zoom:60%;">
+
+
+
+<ul>
+<li><strong><font color="#FF7F50">特例情况：</font></strong>当模型中在相同的类中有<strong><font color="#1E90FF"> 多重关联(相同类之间的多种不同关联关系)</font></strong>，就必须用关联名或角色(关联端名)来消除歧义。</li>
+</ul>
+<img src="https://s1.ax1x.com/2020/04/20/J1WkPH.png" alt="17" style="zoom:67%;">
+
+
+
+<h4 id="②导航性-navigation"><a href="#②导航性-navigation" class="headerlink" title="②导航性( navigation)"></a>②导航性( navigation)</h4><ul>
+<li><p>关联具有<strong><font color="#FF7F50">方向性(导航性)</font></strong>，可以是单向的，也可以是双向的。</p>
+</li>
+<li><p>关联用箭头来表示导航性，由源类指向目标类，表示源类的一个成员是目标类的对象。</p>
+</li>
+<li><p><strong><font color="#1E90FF"> 单向关联(uni-directional association)：</font></strong>关联是单向的，从一个源类的对象可以找到目标类的对象，反过来却不可。</p>
+</li>
+</ul>
+<img src="https://s1.ax1x.com/2020/04/20/J1hrK1.png" alt="18" style="zoom:67%;">
+
+<ul>
+<li><strong><font color="#1E90FF"> 双向关联(bi-directional)：</font></strong> 关联是双向的，如果一个类和另一个类是双向关联，那么这两个类的对象都互相找到对方。</li>
+</ul>
+<img src="https://s1.ax1x.com/2020/04/20/J14ms1.png" alt="19" style="zoom:67%;">
+
+
+
+<h4 id="③角色—关联端名-role"><a href="#③角色—关联端名-role" class="headerlink" title="③角色—关联端名(role)"></a>③角色—关联端名(role)</h4><ul>
+<li><p>当一个类和另一个类发生关联时，每个类通常在关联中扮演着某种<strong><font color="#FF7F50">角色</font></strong>。角色写在关联的两端，所以也叫<strong><font color="#FF7F50">关联端名</font></strong>。</p>
+</li>
+<li><p><strong><font color="#FF7F50">角色</font></strong>是关联中一个类对另一个类所表现出来的职责。</p>
+</li>
+<li><p>例如: Person类 和Company类都参与了关联<strong><font color="#FF7F50">WorksFor</font></strong>。对于公司来说，人是雇员<strong><font color="#228B22">(employee) </font></strong>，对于人来说，公司是雇主<strong><font color="#228B22">(employer)</font></strong>。</p>
+</li>
+</ul>
+<img src="https://s1.ax1x.com/2020/04/20/J1I94U.png" alt="20" style="zoom:50%;">
+
+
+
+<p><strong><font color="red">注意：</font></strong></p>
+<ul>
+<li><p>角色是关联本身的属性，而不是类的组成部分，因为一个类可以在不同的关联中扮演不同的角色。</p>
+</li>
+<li><p><strong><font color="#1E90FF"> 由于角色名称和关联名称都被用来描述关系的目的，所以角色名称可以代替关联名称，或者两者同时使用。</font></strong></p>
+</li>
+<li><p><strong><font color="#FF7F50">与关联名称不同，角色名可以生成代码。(使用Rose工具可以直接生成代码)</font></strong></p>
+</li>
+</ul>
+<p><strong><font color="red">角色(关联端名)也不是必须，但存在以下特例情况：</font></strong></p>
+<p>(1)当模型中在相同的类中有<strong><font color="#1E90FF">多重关联(相同类之间的多种不同关联关系)</font></strong>，就必须用关联名或角色(关联端名)来消除歧义。</p>
+<img src="https://s1.ax1x.com/2020/04/20/J1IpNT.png" alt="21" style="zoom:50%;">
+
+
+
+<p>(2)对于自反关联或自身关联<strong><font color="#1E90FF">(同一类的两个对象之间的关联)</font></strong>，关联端名(角色)是必须的。</p>
+<img src="https://s1.ax1x.com/2020/04/20/J1ISEV.png" alt="22" style="zoom:50%;">
+
+
+
+<h4 id="④多重性-multiplicity"><a href="#④多重性-multiplicity" class="headerlink" title="④多重性(multiplicity)"></a>④多重性(multiplicity)</h4><ul>
+<li><p>关联的多重性指某个类有多少个对象可以和另一个类的单个对象关联。</p>
+</li>
+<li><p><strong><font color="#1E90FF">表示多重性的方法是在参与关联的类附近的关联线上注明多重性数值。可以表达一一个取值范围、特定值、无限定的范围或一组离散值。</font></strong></p>
+</li>
+</ul>
+<img src="https://s1.ax1x.com/2020/04/20/J1TYh8.png" alt="23" style="zoom:67%;">
+
+
+
+<ul>
+<li><p>UML使用星号(*)来代表许多(more)和多个(many)。</p>
+</li>
+<li><p>在一种语境中，两点代表or(或)关系</p>
+</li>
+</ul>
+<p>例如：“1..*代表一个或者多个。</p>
+<ul>
+<li>在另一种语境中，or关系用逗号来表示</li>
+</ul>
+<p>例如：“5，10”代表5或者10。</p>
+<img src="https://s1.ax1x.com/2020/04/20/J1TU1g.png" alt="24" style="zoom:50%;">
+
+
+
+<h5 id="类图与某一时刻的对象图"><a href="#类图与某一时刻的对象图" class="headerlink" title="类图与某一时刻的对象图"></a>类图与某一时刻的对象图</h5><img src="https://s1.ax1x.com/2020/04/20/J1TacQ.png" alt="25" style="zoom:50%;">
+
+
+
+<h5 id="关联上的多重性可以对应到类属性代码上"><a href="#关联上的多重性可以对应到类属性代码上" class="headerlink" title="关联上的多重性可以对应到类属性代码上"></a>关联上的多重性可以对应到类属性代码上</h5><p><strong><font color="#1E90FF">多重性为1</font></strong>—-对应属性中的<strong><font color="#FF7F50">单对象</font></strong></p>
+<p><strong><font color="#1E90FF">多重性为n</font></strong>—-对应属性中的<strong><font color="#FF7F50">对象集合(对象数组)</font></strong></p>
+<img src="https://s1.ax1x.com/2020/04/20/J1TN9S.png" alt="26" style="zoom:50%;">
+
+
+
+<h4 id="⑤自反关联-self-association"><a href="#⑤自反关联-self-association" class="headerlink" title="⑤自反关联( self- association )"></a>⑤自反关联( self- association )</h4><ul>
+<li>一个类可能与它自己发生关联,这样的关联被称为自身关联。(同一个类的不同对象之间的</li>
+</ul>
+<p>关系)</p>
+<ul>
+<li><p>当一个类的对象可以充当多种角色时，自身关联就可能发生。</p>
+</li>
+<li><p>CarOccupant(车.上的人)既可能是一个司机(driver)也可能是一个乘客(passenger)。</p>
+</li>
+</ul>
+<img src="https://s1.ax1x.com/2020/04/20/J1qgaR.png" alt="27" style="zoom:50%;">
+
+
+
+<p><strong><font color="red">注意：</font></strong>自反关联也具有导航性(方向性)</p>
+<img src="https://s1.ax1x.com/2020/04/20/J1qyqJ.png" alt="28" style="zoom:50%;">
+
+
+
+<h4 id="⑥限定关联-qualified-association"><a href="#⑥限定关联-qualified-association" class="headerlink" title="⑥限定关联( qualified association )"></a>⑥限定关联( qualified association )</h4><ul>
+<li><p>带有<strong><font color="#1E90FF">限定符(qualifier)</font></strong>的关联称为<strong><font color="#1E90FF">限定关联(受限关联)</font></strong>。</p>
+</li>
+<li><p><strong><font color="#1E90FF">限定符</font></strong>常用于一对多或多对多关联。</p>
+</li>
+<li><p><strong><font color="#1E90FF">限定符的作用</font></strong>是在目标对象之间进行选择，将有效的多重性从“多”降为“一”</p>
+</li>
+</ul>
+<p><strong><font color="#FF7F50">注意：引入限定关联后发生多重性的变化。(限定符减少了在关联目标端的多重性，通常由多变为一)。</font></strong></p>
+<img src="https://s1.ax1x.com/2020/04/20/J1qrMF.png" alt="29" style="zoom:50%;">
+
+
+
+<h5 id="限定符作用"><a href="#限定符作用" class="headerlink" title="限定符作用"></a>限定符作用</h5><ul>
+<li><p>限定符这个概念在设计软件时非常有用，如果一个应用系统需要根据关键字对-一个数据集做查询操作，则经常会用到限定关联。</p>
+</li>
+<li><p><strong><font color="#FF7F50">引入限定符的一个目的就是把多重性从n降到1或0..1，这样如果做查询操作，则返回的对象至多是一个，而不会是一个对象集。如果查询操作的结果是单个对象，则这个查询操作的效率会较高。</font></strong></p>
+</li>
+<li><p><strong><font color="#1E90FF">如果使用限定符后,限定符另一端的多重性仍为n，则引入这个限定符的作用就不是很大，因为查询结果仍然还是结果集。因此也可以根据多重性来判断一一个限定符的设计是否合理。</font></strong>。</p>
+</li>
+</ul>
+<h4 id="⑦关联上的约束-constraint-on-association"><a href="#⑦关联上的约束-constraint-on-association" class="headerlink" title="⑦关联上的约束( constraint on association )"></a>⑦关联上的约束( constraint on association )</h4><ul>
+<li><p>关联上的<strong><font color="#1E90FF">多重性</font></strong>是集合基数上的约束，限制了与给定对象相关的对象数量。</p>
+</li>
+<li><p>关联端上“多”侧对象常常没有明确的顺序，可以看成集合。</p>
+</li>
+</ul>
+<p>关联端上“多”侧对象如果需要有明确顺序可以用<strong><font color="#1E90FF">{ordered}进行约束</font></strong>，建立一个有序的对象集合。</p>
+<p>例如：</p>
+<p>屏幕上显示的窗口的顺序（栈）</p>
+<p>银行窗口的排队的顺序（队列）</p>
+<img src="https://s1.ax1x.com/2020/04/20/J1qsr4.png" alt="30" style="zoom:50%;">
+
+
+
+<h4 id="⑧派生关联-derived-association"><a href="#⑧派生关联-derived-association" class="headerlink" title="⑧派生关联(derived- association )"></a>⑧派生关联(derived- association )</h4><ul>
+<li><p>派生关联(derived association)是指可以从其他关联计算推演得到的关联。</p>
+</li>
+<li><p><strong><font color="#1E90FF">派生关联的名字前需要加一一个斜杠“/”。</font></strong></p>
+</li>
+<li><p><strong><font color="#228B22">在生成代码时，派生关联都不产生相应的代码。</font></strong></p>
+</li>
+</ul>
+<p>例如：</p>
+<p>一个公司有多个部门，一个职员为其中某部门工作，</p>
+<p>则可推导该职员为该公司工作</p>
+<img src="https://s1.ax1x.com/2020/04/20/J1qcZ9.png" alt="31" style="zoom:50%;">
+
+
+
+<h4 id="⑨关联类-association-class"><a href="#⑨关联类-association-class" class="headerlink" title="⑨关联类( association class )"></a>⑨关联类( association class )</h4><ul>
+<li><p>和类一样，关联本身也可以有自己的属性和操作。此时，这个关联实际上是个关联类。</p>
+</li>
+<li><p>关联类的可视化表示方式与一般的类相同，但是要用一条虚线把关联类和对应的关联线连接起来，来标识关联的一些附加信息。</p>
+</li>
+</ul>
+<img src="https://s1.ax1x.com/2020/04/20/J1x0R1.png" alt="32" style="zoom:50%;">
+
+
+
+<h2 id="泛化关系-Generalization"><a href="#泛化关系-Generalization" class="headerlink" title="泛化关系(Generalization)"></a>泛化关系(Generalization)</h2><p><strong><font color="#1E90FF">泛化关系</font></strong>是指<strong><font color="#FF7F50">一般元素和特殊元素</font></strong>的分类关系。</p>
+<p><strong><font color="#1E90FF">泛化关系</font></strong>可以用于类、用例、参与者以及其他模型元素。</p>
+<p><strong><font color="#1E90FF">泛化关系</font></strong>描述了一种<strong><font color="red">“is a kind of”</font></strong>的关系，因为子类的每个实例也都是父类的实例</p>
+<img src="https://s1.ax1x.com/2020/04/20/J1xTL8.png" alt="33" style="zoom:50%;">
+
+
+
+<ul>
+<li><p><strong><font color="#1E90FF">泛化关系</font></strong>可以<strong><font color="#FF7F50">传递</font></strong>，可以跨越多个多层。</p>
+</li>
+<li><p>术语<strong><font color="#8E2323">祖先(ancestor)</font></strong>和<strong><font color="#8E2323">后代( descendant)</font></strong>指跨越多层的类的泛化。</p>
+</li>
+</ul>
+<img src="https://s1.ax1x.com/2020/04/20/J1xHeS.png" alt="34" style="zoom:50%;">
+
+
+
+<p><strong><font color="red">注意：不要把子类嵌套得过深，深度嵌套的子类很难理解。</font></strong></p>
+<h3 id="泛化的用途"><a href="#泛化的用途" class="headerlink" title="泛化的用途"></a>泛化的用途</h3><h4 id="1-结构化描述对象"><a href="#1-结构化描述对象" class="headerlink" title="(1)结构化描述对象"></a>(1)结构化描述对象</h4><p>当使用泛化时，就是做出概念性的陈述：根据对象的相似性和差异来组织对象，并形成分类。比单独建模每个类要来的深刻。</p>
+<h4 id="2-支持代码复用—-继承代码，体现继承性"><a href="#2-支持代码复用—-继承代码，体现继承性" class="headerlink" title="(2)支持代码复用—-继承代码，体现继承性"></a>(2)支持代码复用—-继承代码，体现继承性</h4><p>把一般的公共信息放在一般元素中，处理某个具体特殊情况时只需定义该情况的个别信息，公共信息从一般元素中继承得到，增强了系统的灵活性、易维护性和可扩充性。</p>
+<h4 id="3-支持多态"><a href="#3-支持多态" class="headerlink" title="(3) 支持多态"></a>(3) 支持多态</h4><ul>
+<li><p>多态技术利用抽象类或接口定义操作，而用子类<strong><font color="#FF7F50">实现</font></strong>该操作的方法，达到单一接口，多种功能的目的。</p>
+</li>
+<li><p>也可以通过子类操作<strong><font color="#FF7F50">覆盖</font></strong>从父类继承下来的操作来实现多态。</p>
+</li>
+</ul>
+<img src="https://s1.ax1x.com/2020/04/20/J1x4zt.png" alt="35" style="zoom:50%;">
+
+
+
+<h3 id="面向对象设计原则–里氏替换原则-Liskov"><a href="#面向对象设计原则–里氏替换原则-Liskov" class="headerlink" title="面向对象设计原则–里氏替换原则(Liskov)"></a>面向对象设计原则–里氏替换原则(Liskov)</h3><p><strong><font color="#FF7F50">里氏替换原则：</font></strong>在一个软件系统中，子类应该可以替换任何基类能够出现的地方，并且经过替换以后，代码还能正常工作。</p>
+<h3 id><a href="#" class="headerlink" title=" "></a> </h3><h4 id="类中的替换原则"><a href="#类中的替换原则" class="headerlink" title="类中的替换原则"></a>类中的替换原则</h4><p>父类出现的任何地方都可以用子类代替。</p>
+<h4 id="更广泛的替换原则"><a href="#更广泛的替换原则" class="headerlink" title="更广泛的替换原则"></a>更广泛的替换原则</h4><p><strong><font color="#FF7F50">一般元素出现的地方都可以用特殊元素来代替。</font></strong></p>
+<h4 id="里氏替换原则-Liskov-用途"><a href="#里氏替换原则-Liskov-用途" class="headerlink" title="里氏替换原则(Liskov) 用途"></a>里氏替换原则(Liskov) 用途</h4><p><strong><font color="#1E90FF">来判断在设计中的继承关系是否正确。</font></strong></p>
+<h2 id="聚合关系-Aggregation"><a href="#聚合关系-Aggregation" class="headerlink" title="聚合关系(Aggregation)"></a>聚合关系(Aggregation)</h2><ul>
+<li><p>聚合关系是一种特殊类型的<strong><font color="#FF7F50">关联</font></strong>，表示<strong><font color="#FF7F50">整体与部分关系</font></strong>的关联。</p>
+</li>
+<li><p>描述了“<strong><font color="#1E90FF">由…构成</font></strong>”、“<strong><font color="#1E90FF">包含</font></strong>”、“<strong><font color="#1E90FF">是…的一部分</font></strong>”的关系。</p>
+</li>
+<li><p><strong><font color="#8E2323">聚合关系体现了复杂事物可以由简单事物组成的面向对象的思想。</font></strong></p>
+</li>
+</ul>
+<img src="https://s1.ax1x.com/2020/04/20/J1xosf.png" alt="36" style="zoom:50%;">
+
+
+
+<h3 id="关联关系和聚合关系的相同点和不同点"><a href="#关联关系和聚合关系的相同点和不同点" class="headerlink" title="关联关系和聚合关系的相同点和不同点"></a>关联关系和聚合关系的相同点和不同点</h3><ul>
+<li><p>聚合关系在代码上的形式和关联关系相似<strong><font color="#1E90FF">(即一个类的对象作为另一个类中的成员出现，作为其组成部分)</font></strong></p>
+</li>
+<li><p>在关联关系上体现不出<strong><font color="#FF7F50">整体和部分</font></strong>的关系。</p>
+</li>
+<li><p>在聚合关系上一定会体现<strong><font color="#FF7F50">整体和部分</font></strong>的关系。</p>
+</li>
+</ul>
+<img src="https://s1.ax1x.com/2020/04/20/J1xhRI.png" alt="37" style="zoom:50%;">
+
+
+
+<h3 id="聚合关系的重要特性"><a href="#聚合关系的重要特性" class="headerlink" title="聚合关系的重要特性"></a>聚合关系的重要特性</h3><p>(1)传递性( transitivity)</p>
+<p>(2)反对称的( antisymmetric)</p>
+<ul>
+<li>聚合关系上可以多重性、角色和约束。</li>
+</ul>
+<h3 id="共享聚合"><a href="#共享聚合" class="headerlink" title="共享聚合"></a>共享聚合</h3><ul>
+<li><p>如果聚合关系中的处于部分方的对象同时参与了多个处于整体方对象的构成，则该聚合称为共享聚合。</p>
+</li>
+<li><p>共享聚合关系可以通过聚合的多重性反应出来。如果作为整体方的类的多重性不是1，该聚合就是共享聚合。</p>
+</li>
+<li><p><strong><font color="#1E90FF">例如：一个球队(整体方)由多个球员(部分方)组成，但是一个球员还可能参加多个球队，球队和球员的这种关系就是共享聚合。</font></strong></p>
+</li>
+</ul>
+<img src="https://s1.ax1x.com/2020/04/20/J1xIQP.png" alt="38" style="zoom:50%;">
+
+
+
+<h3 id="聚合关系和组合关系"><a href="#聚合关系和组合关系" class="headerlink" title="聚合关系和组合关系"></a>聚合关系和组合关系</h3><ul>
+<li>可以在<strong><font color="#FF7F50">聚合关系</font></strong>上建立约束。</li>
+</ul>
+<p><strong><font color="#1E90FF">例如：</font></strong>聚集上的“or”约束，表示某个整体包含一个或另一个部分。 </p>
+<img src="https://s1.ax1x.com/2020/04/20/J1xOij.png" alt="39" style="zoom:50%;">
+
+
+
+<h2 id="组合关系-Composition"><a href="#组合关系-Composition" class="headerlink" title="组合关系(Composition)"></a>组合关系(Composition)</h2><ul>
+<li>组合关系是聚合关系中的一种特殊情况，是更强形式的聚合，又称强聚合,有两个额外的约束。</li>
+</ul>
+<p><strong><font color="#1E90FF">(1)一个部分至多属于一个整体，整体部分多重性为1</font></strong></p>
+<p><strong><font color="#1E90FF">(2)部分对象的生命周期取决于组合对象的生命周期，部分类完全隶属于整体类。</font></strong></p>
+<img src="https://s1.ax1x.com/2020/04/20/J1xqoQ.png" alt="40" style="zoom:50%;">
+
+
+
+<ul>
+<li>组合不仅控制着成员对象的行为，而且控制着成员对象的创建和析构。如果删除组合对象则要触发删除所有部分对象。</li>
+</ul>
+<img src="https://s1.ax1x.com/2020/04/20/J1xbdg.png" alt="41" style="zoom:50%;">
+
+
+
+<p><strong><font color="red">聚合和组合的两端也可以添加角色和多重性。</font></strong></p>
+<img src="https://s1.ax1x.com/2020/04/20/J1xXJs.png" alt="42" style="zoom:50%;">
+
+
+
+<h2 id="实现关系-Realization"><a href="#实现关系-Realization" class="headerlink" title="实现关系(Realization)"></a>实现关系(Realization)</h2><ul>
+<li><p><strong><font color="#1E90FF">一个元素完成另一个元素的操作功能。 (实现是规格说明和具体实现之间的关系。) </font></strong></p>
+</li>
+<li><p>例如：具体类实现抽象类、具体类实现接口。</p>
+</li>
+</ul>
+<img src="https://s1.ax1x.com/2020/04/20/J1xjWn.png" alt="43" style="zoom:50%;">
+
+
+
+<p>例如：主动类</p>
+<ul>
+<li><p>主动对象( avtive object) :运行于自己控制的执行线程之上。</p>
+</li>
+<li><p>主动对象的类即为主动类(用双竖线或者黑色边框表示)</p>
+</li>
+</ul>
+<h2 id="依赖关系-Dependency"><a href="#依赖关系-Dependency" class="headerlink" title="依赖关系(Dependency)"></a>依赖关系(Dependency)</h2><img src="https://s1.ax1x.com/2020/04/20/J1xvzq.png" alt="44" style="zoom:50%;">
+
+
+
+<ul>
+<li><p>依赖可以视为<strong><font color="#FF7F50">耦合(coupling)</font></strong>的另一个版本，耦合是软件开发中的传统术语，意为某元素耦合或依赖于另一个元素。</p>
+</li>
+<li><p>关联、实现和泛化都是依赖关系。但它们有更特别的语义，所以在UML中被分离出来作为独立的关系。</p>
+</li>
+</ul>
+<h3 id="使用依赖—最常使用的依赖"><a href="#使用依赖—最常使用的依赖" class="headerlink" title="使用依赖—最常使用的依赖"></a>使用依赖—最常使用的依赖</h3><ul>
+<li>表示一种元素(客户)使用其它元素(提供者)提供的服务以实现它的行为，包括:</li>
+</ul>
+<p>①使用(《use》)</p>
+<p>②调用(《call》)</p>
+<p>③参数《parameter》 )</p>
+<p>④发送(《send》)</p>
+<p>⑤实例化(《instantiate》 )</p>
+<h3 id="各类依赖"><a href="#各类依赖" class="headerlink" title="各类依赖"></a>各类依赖</h3><p>①使用《use》:声明使用一个模型元素需要用到已存在的另一个模型元素，这样才能实现使用者的功能(包括调用、实例化、参数、发送)。</p>
+<p>②调用《call》:声明一个类调用其他类的操作的方法。</p>
+<p>③参数《parameter》 :声明一个操作和它的参数之间的关系。</p>
+<p>④发送《send》:声明信号发送者和信号接受者之间的关系。(例如遥控器和电视机)</p>
+<p>⑤实例化《instantiate》 :声明 一个类的方法创建了另一个类的实例。</p>
+<p><strong><font color="red">注意：与关联关系不一样的是，依赖关系本身不生成专门的实现代码。</font></strong></p>
+<img src="https://s1.ax1x.com/2020/04/20/J1xzQ0.png" alt="45" style="zoom:50%;">
+
+
+
+<h1 id="分析类介绍"><a href="#分析类介绍" class="headerlink" title="分析类介绍"></a>分析类介绍</h1><ul>
+<li><p>在系统分析阶段将分析类分成三种类型：<strong><font color="#FF7F50">实体类、边界类、控制类。</font></strong></p>
+</li>
+<li><p>UML中类有三种主要的版型:<strong><font color="#FF7F50">边界类</font><font color="#1E90FF">《boundary》</font></strong>、<strong><font color="#FF7F50">控制类</font><font color="#1E90FF">《control》</font></strong>和<strong><font color="#FF7F50">实体类</font><font color="#1E90FF">《entity》</font></strong>。</p>
+</li>
+</ul>
+<img src="https://s1.ax1x.com/2020/04/20/J1zSyV.png" alt="46" style="zoom:50%;">
+
+
+
+<p><strong><font color="#1E90FF">引入边界类、控制类及实体类的概念有助于分析和设计人员确定系统中的类。</font></strong></p>
+<img src="https://s1.ax1x.com/2020/04/20/J1zpLT.png" alt="47" style="zoom:50%;">
+
+
+
+<img src="https://s1.ax1x.com/2020/04/20/J1zCeU.png" alt="48" style="zoom:50%;">
+
+
+
+<h2 id="边界类《boundary》"><a href="#边界类《boundary》" class="headerlink" title="边界类《boundary》"></a>边界类《boundary》</h2><ul>
+<li><p>边界类用于描述外部参与者与系统之间的交互。</p>
+</li>
+<li><p><strong><font color="#1E90FF">识别边界类可以帮助开发人员识别出用户对界面的需求。</font></strong></p>
+</li>
+<li><p>边界类位于系统与外界的交界处，窗体、对话框、报表、以及表示通讯协议的类、直接与外部设备交互的类、直接与外部系统交互的类等都是边界类。</p>
+</li>
+<li><p><strong><font color="#FF7F50">边界类可以通过用例确定，因为参与者必须通过边界类参与用例。</font></strong></p>
+</li>
+</ul>
+<img src="https://s1.ax1x.com/2020/04/20/J1zPwF.png" alt="49" style="zoom:50%;">
+
+
+
+<ul>
+<li>通过用例图可以确定需要的边界类，每个actor/user case对<strong><font color="#FF7F50">至少</font></strong>要有一个边界类。但并非每个actor/user case对都要生成唯一的边界类。<strong><font color="#1E90FF">例如：多个actor启动一个用例时，可以用一一个边界类与系统通信。</font></strong></li>
+</ul>
+<img src="https://s1.ax1x.com/2020/04/21/J3UuT0.png" alt="50" style="zoom:50%;">
+
+
+
+<h3 id="边界类的分类"><a href="#边界类的分类" class="headerlink" title="边界类的分类"></a>边界类的分类</h3><p>一个系统可能会有多种边界类:</p>
+<p><strong><font color="#FF7F50">(1)用户界面类：</font></strong>帮助与系统用户进行通信的类，通过标准的I/O设备提供人机界面。</p>
+<ul>
+<li><p><strong><font color="#8E2323">参与者与用例之间应当建立边界类：</font></strong>用例可以提供给参与者完成功能的操作只能通过边界类暴露出来。</p>
+</li>
+<li><p><strong><font color="#1E90FF">例如：参与者通过一组网页、一组Windows窗口、或者字符终端或鼠标来使用用例功能。都可以称为用例的边界类。</font></strong></p>
+</li>
+</ul>
+<p><strong><font color="#FF7F50">(2)系统接口类：</font></strong>帮助与其他系统进行通信的类，系统接口对象隐藏如何与外部接口通信的细节。</p>
+<p><strong><font color="#FF7F50">与外部系统通信的边界类负责管理与外部系统的对话，它为正在构建的系统提供与该外部系统的接口。</font></strong></p>
+<p>例如：在ATM系统中，提款必须通过ATM网络得到验证,然后该网络再通过银行会计系统对提款进行验证。我们可以确定一个ATM网络接口，让其对象来提供与ATM网络之间的通信。</p>
+<p><strong><font color="#FF7F50">(3)设备接口类：</font></strong>为用来监测外部事件的(硬件)设备(如传感器、Timer)提供接口的类。</p>
+<p><strong><font color="red">★从架构角度上来说，边界类主要位于展现层(用户界面层)</font></strong></p>
+<h3 id="书店系统"><a href="#书店系统" class="headerlink" title="书店系统"></a>书店系统</h3><img src="https://s1.ax1x.com/2020/04/21/J3Ummn.png" alt="51" style="zoom:50%;">
+
+
+
+<h2 id="实体类《entity》"><a href="#实体类《entity》" class="headerlink" title="实体类《entity》"></a>实体类《entity》</h2><ul>
+<li><p>实体类是用于对必须存储的信息和相关行为建模的类。</p>
+</li>
+<li><p><strong><font color="#FF7F50">实体类是持久的，是永久保存的信息(需要保存到数据库或文件中)。</font></strong></p>
+</li>
+<li><p><strong><font color="#1E90FF">通常，每个实体类在数据库中有相应的表，实体类中的属性对应数据库中表的字段。</font><font color="#228B22">但这并不意味着，实体类和数据库中的表是一一对应的。有可能是一个实体类对应多个表，也可能是多个实体类对应一个表。( 与数据库设计模式有关)。</font></strong></p>
+</li>
+<li><p>例如：银行系统中实体类的典型示例是账户和客户。</p>
+</li>
+</ul>
+<ul>
+<li><p><strong><font color="#FF7F50">实体对象可以出现在多个用例中。</font></strong></p>
+</li>
+<li><p>实体类可以通过事件流和交互图发现。</p>
+</li>
+<li><p>有时Actor也可作为实体类。</p>
+</li>
+</ul>
+<img src="https://s1.ax1x.com/2020/04/21/J3Unwq.png" alt="52" style="zoom:50%;">
+
+
+
+<h3 id="书店系统-1"><a href="#书店系统-1" class="headerlink" title="书店系统"></a>书店系统</h3><img src="https://s1.ax1x.com/2020/04/21/J3UZOs.png" alt="53" style="zoom:50%;">
+
+
+
+<p><strong><font color="red">★从架构角度上来说，实体类主要位于数据持久层(数据层)</font></strong></p>
+<h2 id="控制类《control》"><a href="#控制类《control》" class="headerlink" title="控制类《control》"></a>控制类《control》</h2><ul>
+<li><p>控制类用于对一个或几个用例所特有的控制行为进行建模。</p>
+</li>
+<li><p><strong><font color="#FF7F50">控制类对象通常被看成一个乐队的指挥，它指挥(控制)参与use case的其它对象的行为，通知对象什么时候执行以及执行什么，完成功能实现的总体逻辑流程。</font></strong></p>
+</li>
+<li><p><strong><font color="#FF7F50">其它类并不向控制类发送很多消息，而是控制类向其它类对象发出很多消息。</font></strong></p>
+</li>
+<li><p>控制类将用例的特有行为进行封装。</p>
+</li>
+<li><p><strong><font color="#1E90FF">一般每个用例都有一个控制类，控制用例中的事件顺序，控制类也可以在多个用例间共用。</font></strong></p>
+</li>
+</ul>
+<img src="https://s1.ax1x.com/2020/04/21/J3UVyj.png" alt="54" style="zoom:50%;">
+
+
+
+<h3 id="注册课程用例对应的完整分析类图"><a href="#注册课程用例对应的完整分析类图" class="headerlink" title="注册课程用例对应的完整分析类图"></a>注册课程用例对应的完整分析类图</h3><img src="https://s1.ax1x.com/2020/04/21/J3UMkV.png" alt="55" style="zoom:50%;">
+
+
+
+<h3 id="书店系统-2"><a href="#书店系统-2" class="headerlink" title="书店系统"></a>书店系统</h3><img src="https://s1.ax1x.com/2020/04/21/J3UQYT.png" alt="56" style="zoom:50%;">
+
+<ul>
+<li><p>在UML的定义中，控制类主要起到协调对象的作用，例如：从边界类通过控制类访问实体类，或者实体类通过控制类访问另一个实体类。</p>
+</li>
+<li><p>但不必强行使用控制类，例如：边界类也可以直接访问实体类。</p>
+</li>
+</ul>
+<p><strong><font color="red">★从架构角度上来说，控制类主要位于业务逻辑层。</font></strong></p>
+<h1 id="生活中的类图实例"><a href="#生活中的类图实例" class="headerlink" title="生活中的类图实例"></a>生活中的类图实例</h1><img src="https://s1.ax1x.com/2020/04/21/J3UlfU.png" alt="57" style="zoom:67%;">
+
+
+
+
+
+
+
+
+
+
+
+
+      
+    </div>
+    
+    
+    
+
+    <div>
+      
+        
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script type="text/javascript" src="http://jslibs.wuxubj.cn/sweetalert_mini/jquery-1.7.1.min.js"></script>
+  <script src="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.mini.css">
+  <p><span>本文标题:</span><a href="/2020/04/20/UML-ClassDiagram/">UML学习笔记——类图</a></p>
+  <p><span>文章作者:</span><a href="/" title="访问 陈洋 的个人博客">陈洋</a></p>
+  <p><span>发布时间:</span>2020年04月20日 - 20:04</p>
+  <p><span>最后更新:</span>2020年04月21日 - 08:04</p>
+  <p><span>原始链接:</span><a href="/2020/04/20/UML-ClassDiagram/" title="UML学习笔记——类图">http://codeblog-cy.top/2020/04/20/UML-ClassDiagram/</a>
+    <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://codeblog-cy.top/2020/04/20/UML-ClassDiagram/" aria-label="复制成功！"></i></span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+    clipboard.on('success', $(function(){
+      $(".fa-clipboard").click(function(){
+        swal({   
+          title: "",   
+          text: '复制成功',   
+          html: false,
+          timer: 500,   
+          showConfirmButton: false
+        });
+      });
+    }));  
+</script>
+
+      
+    </div>
+    
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/UML建模/" rel="tag"># UML建模</a>
+          
+            <a href="/tags/类图/" rel="tag"># 类图</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/04/17/UML-UseCase/" rel="next" title="UML学习笔记——用例图">
+                <i class="fa fa-chevron-left"></i> UML学习笔记——用例图
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/me.jpg" alt="陈洋">
+            
+              <p class="site-author-name" itemprop="name">陈洋</p>
+              <p class="site-description motion-element" itemprop="description">18级软工学生</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">69</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">65</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/Kuluuu" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:1140377596@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#类图"><span class="nav-number">1.</span> <span class="nav-text">类图</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#类图的概念"><span class="nav-number">2.</span> <span class="nav-text">类图的概念</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#类图的元素"><span class="nav-number">3.</span> <span class="nav-text">类图的元素</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#类"><span class="nav-number">3.1.</span> <span class="nav-text">类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#属性"><span class="nav-number">3.2.</span> <span class="nav-text">属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#作用域描述"><span class="nav-number">3.3.</span> <span class="nav-text">作用域描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#抽象类"><span class="nav-number">3.4.</span> <span class="nav-text">抽象类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#接口"><span class="nav-number">3.5.</span> <span class="nav-text">接口</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#类之间的关系"><span class="nav-number">4.</span> <span class="nav-text">类之间的关系</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#关联关系-Association"><span class="nav-number">4.1.</span> <span class="nav-text">关联关系(Association)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#关联关系——相关内容"><span class="nav-number">4.1.1.</span> <span class="nav-text">关联关系——相关内容</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#①关联名-name"><span class="nav-number">4.1.1.1.</span> <span class="nav-text">①关联名(name)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#②导航性-navigation"><span class="nav-number">4.1.1.2.</span> <span class="nav-text">②导航性( navigation)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#③角色—关联端名-role"><span class="nav-number">4.1.1.3.</span> <span class="nav-text">③角色—关联端名(role)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#④多重性-multiplicity"><span class="nav-number">4.1.1.4.</span> <span class="nav-text">④多重性(multiplicity)</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#类图与某一时刻的对象图"><span class="nav-number">4.1.1.4.1.</span> <span class="nav-text">类图与某一时刻的对象图</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#关联上的多重性可以对应到类属性代码上"><span class="nav-number">4.1.1.4.2.</span> <span class="nav-text">关联上的多重性可以对应到类属性代码上</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#⑤自反关联-self-association"><span class="nav-number">4.1.1.5.</span> <span class="nav-text">⑤自反关联( self- association )</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#⑥限定关联-qualified-association"><span class="nav-number">4.1.1.6.</span> <span class="nav-text">⑥限定关联( qualified association )</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#限定符作用"><span class="nav-number">4.1.1.6.1.</span> <span class="nav-text">限定符作用</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#⑦关联上的约束-constraint-on-association"><span class="nav-number">4.1.1.7.</span> <span class="nav-text">⑦关联上的约束( constraint on association )</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#⑧派生关联-derived-association"><span class="nav-number">4.1.1.8.</span> <span class="nav-text">⑧派生关联(derived- association )</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#⑨关联类-association-class"><span class="nav-number">4.1.1.9.</span> <span class="nav-text">⑨关联类( association class )</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#泛化关系-Generalization"><span class="nav-number">4.2.</span> <span class="nav-text">泛化关系(Generalization)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#泛化的用途"><span class="nav-number">4.2.1.</span> <span class="nav-text">泛化的用途</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-结构化描述对象"><span class="nav-number">4.2.1.1.</span> <span class="nav-text">(1)结构化描述对象</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-支持代码复用—-继承代码，体现继承性"><span class="nav-number">4.2.1.2.</span> <span class="nav-text">(2)支持代码复用—-继承代码，体现继承性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-支持多态"><span class="nav-number">4.2.1.3.</span> <span class="nav-text">(3) 支持多态</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#面向对象设计原则–里氏替换原则-Liskov"><span class="nav-number">4.2.2.</span> <span class="nav-text">面向对象设计原则–里氏替换原则(Liskov)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">4.2.3.</span> <span class="nav-text"> </span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#类中的替换原则"><span class="nav-number">4.2.3.1.</span> <span class="nav-text">类中的替换原则</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#更广泛的替换原则"><span class="nav-number">4.2.3.2.</span> <span class="nav-text">更广泛的替换原则</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#里氏替换原则-Liskov-用途"><span class="nav-number">4.2.3.3.</span> <span class="nav-text">里氏替换原则(Liskov) 用途</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#聚合关系-Aggregation"><span class="nav-number">4.3.</span> <span class="nav-text">聚合关系(Aggregation)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#关联关系和聚合关系的相同点和不同点"><span class="nav-number">4.3.1.</span> <span class="nav-text">关联关系和聚合关系的相同点和不同点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#聚合关系的重要特性"><span class="nav-number">4.3.2.</span> <span class="nav-text">聚合关系的重要特性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#共享聚合"><span class="nav-number">4.3.3.</span> <span class="nav-text">共享聚合</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#聚合关系和组合关系"><span class="nav-number">4.3.4.</span> <span class="nav-text">聚合关系和组合关系</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#组合关系-Composition"><span class="nav-number">4.4.</span> <span class="nav-text">组合关系(Composition)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实现关系-Realization"><span class="nav-number">4.5.</span> <span class="nav-text">实现关系(Realization)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#依赖关系-Dependency"><span class="nav-number">4.6.</span> <span class="nav-text">依赖关系(Dependency)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#使用依赖—最常使用的依赖"><span class="nav-number">4.6.1.</span> <span class="nav-text">使用依赖—最常使用的依赖</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#各类依赖"><span class="nav-number">4.6.2.</span> <span class="nav-text">各类依赖</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#分析类介绍"><span class="nav-number">5.</span> <span class="nav-text">分析类介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#边界类《boundary》"><span class="nav-number">5.1.</span> <span class="nav-text">边界类《boundary》</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#边界类的分类"><span class="nav-number">5.1.1.</span> <span class="nav-text">边界类的分类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#书店系统"><span class="nav-number">5.1.2.</span> <span class="nav-text">书店系统</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实体类《entity》"><span class="nav-number">5.2.</span> <span class="nav-text">实体类《entity》</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#书店系统-1"><span class="nav-number">5.2.1.</span> <span class="nav-text">书店系统</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#控制类《control》"><span class="nav-number">5.3.</span> <span class="nav-text">控制类《control》</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#注册课程用例对应的完整分析类图"><span class="nav-number">5.3.1.</span> <span class="nav-text">注册课程用例对应的完整分析类图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#书店系统-2"><span class="nav-number">5.3.2.</span> <span class="nav-text">书店系统</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#生活中的类图实例"><span class="nav-number">6.</span> <span class="nav-text">生活中的类图实例</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">陈洋</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+<!-- 新增访客统计代码 -->
+
+<div class="busuanzi-count">
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+        <!-- 不蒜子统计 -->
+        <span id="busuanzi_container_site_pv">
+                本站总访问量<span id="busuanzi_value_site_pv"></span>次
+        </span>
+        <span class="post-meta-divider">|</span>
+        <span id="busuanzi_container_site_uv" style="display:none">
+                本站访客数<span id="busuanzi_value_site_uv"></span>人
+        </span>
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <!-- 博客字数统计 -->
+    <span class="site-pv">
+      <i class="fa fa-pencil"></i>
+      博客全站共： <span class="post-count">76.8k</span> 字
+    </span>
+</div>
+<!-- 新增访客统计代码 END-->
+
+<!-- 在网页底部添加网站运行时间 -->
+<span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+<script>
+    var now = new Date();
+    function createtime() {
+        var grt= new Date("07/21/2019 00:00:00");//此处修改你的建站时间或者网站上线时间
+        now.setTime(now.getTime()+250);
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;}
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;}
+        document.getElementById("timeDate").innerHTML = "Run for "+dnum+" Days ";
+        document.getElementById("times").innerHTML = hnum + " Hours " + mnum + " m " + snum + " s";
+    }
+setInterval("createtime()",250);
+</script>
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共76.8k字</span>
+</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  <script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+  
+  
+
+  
+
+  
+
+  
+
+<!-- 代码块复制功能 -->
+<script type="text/javascript" src="/js/src/clipboard.min.js"></script>  
+<script type="text/javascript" src="/js/src/clipboard-use.js"></script>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"live2d-widget-model-wanko"},"display":{"position":"left","width":75,"height":100},"mobile":{"show":true},"log":false});</script></body>
+</html>
