@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://codeblog-cy.top/2020/04/24/UML-SequenceDiagram/</loc>
+    
+    <lastmod>2020-04-24T05:17:37.533Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://codeblog-cy.top/2020/04/17/UML-UseCase/</loc>
+    
+    <lastmod>2020-04-24T03:01:46.555Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://codeblog-cy.top/2020/04/23/Matrix-Multiplication/</loc>
     
     <lastmod>2020-04-24T00:34:29.533Z</lastmod>
@@ -33,13 +47,6 @@
     <loc>http://codeblog-cy.top/2020/04/20/UML-ClassDiagram/</loc>
     
     <lastmod>2020-04-21T00:31:32.773Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://codeblog-cy.top/2020/04/17/UML-UseCase/</loc>
-    
-    <lastmod>2020-04-20T12:44:20.209Z</lastmod>
     
   </url>
   

@@ -1,0 +1,1240 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-flash.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+  <meta name="baidu-site-verification" content="3fE9IyxcPl">
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/1.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/1.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/1.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/1.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="UML建模,顺序图,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="顺序图（时序图）UML中的顺序图（时序图）的相关知识。 以下内容均来自智慧树《面向对象与UML（山东联盟）烟台大学》课程。 仅作总结，如果侵权请联系本人删除">
+<meta name="keywords" content="UML建模,顺序图">
+<meta property="og:type" content="article">
+<meta property="og:title" content="UML学习笔记——顺序图（时序图）">
+<meta property="og:url" content="http://codeblog-cy.top/2020/04/24/UML-SequenceDiagram/index.html">
+<meta property="og:site_name" content="ChenYang&#39;s Blog">
+<meta property="og:description" content="顺序图（时序图）UML中的顺序图（时序图）的相关知识。 以下内容均来自智慧树《面向对象与UML（山东联盟）烟台大学》课程。 仅作总结，如果侵权请联系本人删除">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/24/JBA6PS.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/24/JBAc8g.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/24/JBAs58.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/24/JBA2vj.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/24/JBArUf.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/24/JBAg2Q.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/24/JBAWKs.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/24/JBAfrn.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/24/JBA5V0.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/24/JBAhbq.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/24/JBAIaV.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/24/JBAo5T.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/24/JBA7PU.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/24/JBAHGF.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/24/JBAb24.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/24/JBAqxJ.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/24/JBAOM9.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/24/JBAXrR.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/24/JBAjq1.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/24/JBAxVx.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/24/JBNrXn.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/24/JBNc7V.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/24/JBNymq.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/24/JBND6s.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/24/JBNBlj.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/24/JBN600.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/24/JBNRtU.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/24/JBNWhF.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/24/JBNhp4.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/24/JBN41J.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/24/JBN5c9.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/24/JBNIXR.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/24/JBNTn1.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/24/JBN70x.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/24/JBNH76.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/24/JBNqAK.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/24/JBNLtO.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/24/JBNOhD.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/24/JBNv1H.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/24/JBNj9e.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/24/JBNxcd.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/04/24/JBNzjA.png">
+<meta property="og:updated_time" content="2020-04-24T05:17:37.533Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="UML学习笔记——顺序图（时序图）">
+<meta name="twitter:description" content="顺序图（时序图）UML中的顺序图（时序图）的相关知识。 以下内容均来自智慧树《面向对象与UML（山东联盟）烟台大学》课程。 仅作总结，如果侵权请联系本人删除">
+<meta name="twitter:image" content="https://s1.ax1x.com/2020/04/24/JBA6PS.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://codeblog-cy.top/2020/04/24/UML-SequenceDiagram/">
+
+
+
+
+
+  <title>UML学习笔记——顺序图（时序图） | ChenYang's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+  
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">ChenYang's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">心中有码，自然伟大</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://codeblog-cy.top/2020/04/24/UML-SequenceDiagram/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="陈洋">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/me.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ChenYang's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">UML学习笔记——顺序图（时序图）</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-24T10:50:28+08:00">
+                2020-04-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/UML建模/" itemprop="url" rel="index">
+                    <span itemprop="name">UML建模</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="顺序图（时序图）"><a href="#顺序图（时序图）" class="headerlink" title="顺序图（时序图）"></a>顺序图（时序图）</h1><p>UML中的顺序图（时序图）的相关知识。</p>
+<p>以下内容均来自<a href>智慧树</a>《面向对象与UML（山东联盟）烟台大学》课程。</p>
+<p><strong><u>仅作总结，如果侵权请联系本人删除</u></strong></p>
+<a id="more"></a>
+
+<p>&emsp;</p>
+<h1 id="顺序图的引入"><a href="#顺序图的引入" class="headerlink" title="顺序图的引入"></a>顺序图的引入</h1><ul>
+<li><p>用例图描述系统需求，类图描述组成系统结构的类关系。</p>
+</li>
+<li><p>用例图和类图无法描述系统动态行为。</p>
+</li>
+<li><p>使用交互图为系统各部分交互进行建模。</p>
+</li>
+<li><p><strong><font color="#8E2323">交互图( interaction diagram)通常用来描述一个用例或者部分用例的行为，显示该用例中所涉及的对象和这些对象之间的消息传递情况。( 动态交互行为建模)</font></strong></p>
+</li>
+<li><p><strong><font color="#1E90FF">UML2.x交互图包括顺序图、通信图(协作图)、交互纵览图、定时图。</font></strong></p>
+</li>
+<li><p><strong><font color="#FF7F50">顺序图着重描述对象之间消息传递的时间顺序。</font></strong><br>  <strong><font color="#1E90FF">通信图(协作图)</font></strong>强调对象之间的链接关系。</p>
+</li>
+<li><p><strong><font color="#228B22">顺序图和通信图从不同的角度表达了系统中的交互，它们之间可以互相转换。</font></strong></p>
+</li>
+<li><p>UML规范更多是以顺序图为核心，对其表示法和语义投入更多的精力。</p>
+</li>
+<li><p>准则：针对每个用例中所描述的需求，使用类图进行静态对象建模后，使用交互图进行动态对象建模可以帮助考虑更多的设计细节，<strong><font color="#FF7F50">提醒分析人员去补充遗漏的类或方法</font></strong>，“ 落实”发送哪些消息、发送给谁、以何种顺序发送等具体问题。</p>
+</li>
+<li><p><strong><font color="#8E2323">当执行一个用例行为时，顺序图中的每条消息对应了一个类操作或状态机中引起状态转换的触发事件。</font></strong></p>
+</li>
+</ul>
+<p>&emsp;</p>
+<h1 id="顺序图的概念"><a href="#顺序图的概念" class="headerlink" title="顺序图的概念"></a>顺序图的概念</h1><ul>
+<li><p>顺序图 (sequence diagram)是一种详细表示对象之间动态交互的图形文档。</p>
+</li>
+<li><p>顺序图将交互关系表示为一个<strong><font color="#1E90FF">二维图</font></strong>。</p>
+</li>
+<li><p><strong><font color="#FF7F50">横轴</font></strong>代表了在协作中各独立的对象。</p>
+</li>
+<li><p><strong><font color="#FF7F50">纵轴</font></strong>是时间轴，时间沿竖线向下延伸。</p>
+</li>
+<li><p>沿时间方向按时间递增顺序列出个对象所发出和接收的消息。</p>
+<img src="https://s1.ax1x.com/2020/04/24/JBA6PS.png" alt="1" style="zoom:33%;">
+
+
+
+</li>
+</ul>
+<p>例如：<strong>汽车租赁系统中客户取车的顺序图</strong><br>取车的动作是从客户向工作人员提出取车要求并出示清单开始，工作人员检查客户的预定申请，确认后顾客付款。工作人员填写工作记录，同时登记汽车的状态，最后客户取车。</p>
+<img src="https://s1.ax1x.com/2020/04/24/JBAc8g.png" alt="2" style="zoom:25%;">
+
+<p>&emsp;</p>
+<h1 id="顺序图的组成"><a href="#顺序图的组成" class="headerlink" title="顺序图的组成"></a>顺序图的组成</h1><p><strong><font color="#1E90FF">顺序图包含了4个元素：</font></strong><br>①对象( Object)</p>
+<p>②生命线( Lifeline )</p>
+<p>③激活(Activation)  / (控制焦点focus of control)  /  控制条</p>
+<p>④消息(Message)</p>
+<p>&emsp;</p>
+<h2 id="①对象-Object"><a href="#①对象-Object" class="headerlink" title="①对象( Object)"></a>①对象( Object)</h2><p><strong><font color="#1E90FF">顺序图中对象的符号和对象图中对象所用的符号一样。</font></strong></p>
+<ul>
+<li>对象的命名方式有三种:<ul>
+<li>包括对象名和类名</li>
+<li>类名（匿名对象）</li>
+<li>对象名（不关心类）</li>
+</ul>
+</li>
+</ul>
+<img src="https://s1.ax1x.com/2020/04/24/JBAs58.png" alt="3" style="zoom:33%;">
+
+
+
+<ul>
+<li>对象间的排列顺序并不重要，但一般把表示参与者的对象放在图的两侧。</li>
+</ul>
+<img src="https://s1.ax1x.com/2020/04/24/JBA2vj.png" alt="4" style="zoom:25%;">
+
+
+
+<ul>
+<li>将对象置于顺序图的顶部意味着在交互开始的时候对象就已经存在了。</li>
+<li>如果对象的位置不在顶部，那么表示对象是在交互的过程中被创建的。</li>
+</ul>
+<img src="https://s1.ax1x.com/2020/04/24/JBArUf.png" alt="5" style="zoom:33%;">
+
+<p>&emsp;</p>
+<h2 id="②生命线-Lifeline"><a href="#②生命线-Lifeline" class="headerlink" title="②生命线( Lifeline )"></a>②生命线( Lifeline )</h2><ul>
+<li>每个对象都有自己的生命线，生命线在顺序图中表示为从对象图标向下延伸的一条虚线，表示对象在特定时间内的存在。</li>
+</ul>
+<img src="https://s1.ax1x.com/2020/04/24/JBAg2Q.png" alt="6" style="zoom:33%;">
+
+
+
+<p><strong><font color="#1E90FF">如果对象生命期结束，则用注销符号表示</font></strong></p>
+<img src="https://s1.ax1x.com/2020/04/24/JBAWKs.png" alt="7" style="zoom:33%;">
+
+<p>&emsp;</p>
+<h2 id="③激活-Activation-控制焦点focus-of-control"><a href="#③激活-Activation-控制焦点focus-of-control" class="headerlink" title="③激活(Activation) (控制焦点focus of control)"></a>③激活(Activation) (控制焦点focus of control)</h2><ul>
+<li><strong><font color="#FF7F50">激活</font></strong>表示该对象被占用以完成某个任务，对象执行某个动作的时期。</li>
+<li><strong><font color="#FF7F50">去激活</font></strong>指对象处于空闲状态，不做什么事情，但它是存在的，等待新的消息激活它。</li>
+<li><strong><font color="#1E90FF">在UML中，为了表示对象是激活的，可以将该对象的生命线拓宽成为矩形。其中的矩形称为激活条或控制期，对象就是在激活条的顶部被激活的，对象在完成自己的工作后被去激活。</font></strong></li>
+</ul>
+<img src="https://s1.ax1x.com/2020/04/24/JBAfrn.png" alt="8" style="zoom:33%;">
+
+<p><strong><font color="#FF7F50">激活</font></strong>表示一个对象直接或者通过从属例程执行一个行为的时期，既可以表示行为执行的<strong><font color="#1E90FF">持续时间</font></strong>，也表示了活动和它的调用者之间的<strong><font color="#8E2323">控制关系</font></strong>。</p>
+<img src="https://s1.ax1x.com/2020/04/24/JBA5V0.png" alt="9" style="zoom:50%;">
+
+<p>&emsp;</p>
+<h2 id="④消息-Message"><a href="#④消息-Message" class="headerlink" title="④消息(Message)"></a>④消息(Message)</h2><ul>
+<li>消息是对象之间某种形式的通信，它可以激发某个操作、发送信号或导致目标对象的创建或撤销。</li>
+<li><strong><font color="#1E90FF">消息是两个对象之间的单路通信，从发送方到接收方的控制信息流。</font><font color="#FF7F50">即从源对象指向目标对象，以触发目标对象中的特定操作。</font></strong></li>
+</ul>
+<img src="https://s1.ax1x.com/2020/04/24/JBAhbq.png" alt="10" style="zoom:33%;">
+
+
+
+<ul>
+<li><strong><font color="#228B22">消息可以用于在对象间传递参数。</font></strong></li>
+<li><strong><font color="#FF7F50">消息可以是信号(对象间的异步通信)，也可以是调用(具有返回控制机制的同步调用)。</font></strong></li>
+</ul>
+<p>&emsp;</p>
+<h3 id="消息的表示和分类"><a href="#消息的表示和分类" class="headerlink" title="消息的表示和分类"></a>消息的表示和分类</h3><ul>
+<li><strong><font color="#FF7F50">消息</font></strong>——在UML中，消息使用箭头来表示，箭头的类型表示了消息的类型。</li>
+<li><strong><font color="#FF7F50">UML三种消息</font></strong><ul>
+<li>调用消息(Procedure Call)</li>
+<li>异步消息(Asynchronous)</li>
+<li>返回消息(Return)</li>
+</ul>
+</li>
+<li><strong><font color="#FF7F50">Rose消息扩充</font></strong><ul>
+<li>阻止消息(Balking )</li>
+<li>超时消息(Time-out)</li>
+</ul>
+</li>
+</ul>
+<p>&emsp;</p>
+<h4 id="调用消息-Procedure-Call"><a href="#调用消息-Procedure-Call" class="headerlink" title="调用消息(Procedure Call)"></a>调用消息(Procedure Call)</h4><p><strong><font color="red">UML用一个带实心箭头的实线表示调用消息。</font></strong></p>
+<img src="https://s1.ax1x.com/2020/04/24/JBAIaV.png" alt="11" style="zoom:50%;">
+
+<ul>
+<li>调用消息的发送者把控制传递给消息的接收者，然后停止活动，等待消息接收者执行其某种操作后返回控制。</li>
+<li><strong><font color="#FF7F50">由于发送者等待接收者，这种消息又叫做同步消息( synchronous)。</font></strong></li>
+<li><strong><font color="#8E2323">通常，同步消息会隐含包含了来自接收者的一个返回消息,尽管建模者经常忽略这个返回消息的符号。</font></strong></li>
+</ul>
+<img src="https://s1.ax1x.com/2020/04/24/JBAo5T.png" alt="12" style="zoom:50%;">
+
+<p>&emsp;</p>
+<h4 id="异步消息-Asynchronous"><a href="#异步消息-Asynchronous" class="headerlink" title="异步消息(Asynchronous)"></a>异步消息(Asynchronous)</h4><img src="https://s1.ax1x.com/2020/04/24/JBA7PU.png" alt="13" style="zoom:50%;">
+
+<p>➢消息发送后，发送者继续操作，不等待，常用于并发;</p>
+<p>&emsp;</p>
+<h4 id="返回消息-Return"><a href="#返回消息-Return" class="headerlink" title="返回消息(Return)"></a>返回消息(Return)</h4><ul>
+<li><strong><font color="red">如果异步消息有返回消息，必须明确表示出来。</font></strong></li>
+</ul>
+<img src="https://s1.ax1x.com/2020/04/24/JBAHGF.png" alt="14" style="zoom:67%;">
+
+<p>➢表示消息的返回。一般同步(过程调用)的返回不需画出，直接隐含，而异步返回则可用它。</p>
+<img src="https://s1.ax1x.com/2020/04/24/JBAb24.png" alt="15" style="zoom:33%;">
+
+<p>&emsp;</p>
+<h3 id="三种消息的示例"><a href="#三种消息的示例" class="headerlink" title="三种消息的示例"></a>三种消息的示例</h3><img src="https://s1.ax1x.com/2020/04/24/JBAqxJ.png" alt="16" style="zoom:33%;">
+
+<p>&emsp;</p>
+<h3 id="特殊的消息"><a href="#特殊的消息" class="headerlink" title="特殊的消息"></a>特殊的消息</h3><h4 id="自反消息"><a href="#自反消息" class="headerlink" title="自反消息"></a>自反消息</h4><ul>
+<li>自调用消息(反身消息) (SelfCall) ：一个对象将一个消息发送给它本身。</li>
+<li>在反身消息里，消息的发送方和接收方是同一个对象。</li>
+<li><strong><font color="red">自反消息一般是同步消息</font></strong></li>
+</ul>
+<img src="https://s1.ax1x.com/2020/04/24/JBAOM9.png" alt="17" style="zoom:33%;">
+
+
+
+<h4 id="阻止消息-Rose中"><a href="#阻止消息-Rose中" class="headerlink" title="阻止消息(Rose中)"></a>阻止消息(Rose中)</h4><ul>
+<li><strong><font color="#FF7F50">阻止消息</font></strong>是指消息发送者发送消息给接收者，如果接收者无法立即接收消息，则发送者放弃这个消息。</li>
+<li>Rose中用折回的箭头表示<strong><font color="#FF7F50">阻止消息</font></strong>。</li>
+</ul>
+<img src="https://s1.ax1x.com/2020/04/24/JBAXrR.png" alt="18" style="zoom:33%;">
+
+
+
+<h4 id="超时消息-Rose中"><a href="#超时消息-Rose中" class="headerlink" title="超时消息(Rose中)"></a>超时消息(Rose中)</h4><ul>
+<li><strong><font color="#FF7F50">超时消息</font></strong>指消息发送者发出消息给接收者并按指定时间等待。如果接收者无法在指定时间内接收消息，则发送者放弃这个消息。</li>
+</ul>
+<img src="https://s1.ax1x.com/2020/04/24/JBAjq1.png" alt="19" style="zoom:50%;">
+
+
+
+<h4 id="创始消息-Found-Message"><a href="#创始消息-Found-Message" class="headerlink" title="创始消息(Found Message)"></a>创始消息(Found Message)</h4><ul>
+<li>以实心圆作为起点来表示此类消息。</li>
+<li>创始消息表示没有特定发送者、发送者不明确或消息源众多的消息。</li>
+</ul>
+<img src="https://s1.ax1x.com/2020/04/24/JBAxVx.png" alt="20" style="zoom:45%;">
+
+<p>&emsp;</p>
+<h1 id="UML交互片段"><a href="#UML交互片段" class="headerlink" title="UML交互片段"></a>UML交互片段</h1><ul>
+<li>UML2.x针对UML1.x顺序图添加了一个有用的改动：<strong><font color="#FF7F50">交互片段( interaction fragment)</font></strong>。</li>
+<li><strong><font color="#FF7F50">交互片段：</font> <font color="#1E90FF">用一个边框包围顺序图中的部分交互，并在其左上角添加一个间隔区。</font></strong></li>
+<li><strong><font color="#FF7F50">间隔区中，有操作符来描述交互片段的类型。</font></strong></li>
+</ul>
+<img src="https://s1.ax1x.com/2020/04/24/JBNrXn.png" alt="21" style="zoom:50%;">
+
+<p>&emsp;</p>
+<h2 id="常用的交互片段对应的操作符及其作用"><a href="#常用的交互片段对应的操作符及其作用" class="headerlink" title="常用的交互片段对应的操作符及其作用"></a>常用的交互片段对应的操作符及其作用</h2><img src="https://s1.ax1x.com/2020/04/24/JBNc7V.png" alt="22" style="zoom:45%;">
+
+
+
+<h3 id="①ref-交互片段——-引用reference"><a href="#①ref-交互片段——-引用reference" class="headerlink" title="①ref 交互片段—— (引用reference)"></a>①ref 交互片段—— (引用reference)</h3><ul>
+<li>为一个用例的多个场景创建实例顺序图，图和图之间的相当一部分内容是重复的。</li>
+<li><strong><font color="#1E90FF">ref交互片段能够在一张顺序图中快速容易地复用另一张顺序图的部分内容。</font></strong></li>
+</ul>
+<h4 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h4><p>当想要简化图时，将其中的一部分分解到另;一个图中，或者存在可复用的交互。</p>
+<h4 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h4><p><strong><font color="#FF7F50">引用其它的顺序图作为自身交互的一部分，使用ref交互片段并写明要引用的交互图的名称。</font></strong></p>
+<p>例如：</p>
+<img src="https://s1.ax1x.com/2020/04/24/JBNymq.png" alt="23" style="zoom:30%;">
+
+
+
+<p>或：</p>
+<img src="https://s1.ax1x.com/2020/04/24/JBND6s.png" alt="24" style="zoom:33%;">
+
+
+
+<h3 id="②loop交互片段——-循环交互片段"><a href="#②loop交互片段——-循环交互片段" class="headerlink" title="②loop交互片段——(循环交互片段)"></a>②loop交互片段——(循环交互片段)</h3><p>用<strong><font color="#FF7F50">loop操作符</font></strong>来表示变互判断，表明该片段内的交互被循环执行多次，而具体的次数由<strong><font color="#1E90FF">循环次数</font></strong>和<strong><font color="#FF7F50">监护条件</font></strong>表达式来说明。</p>
+<h4 id="1-loop-minint-maxint"><a href="#1-loop-minint-maxint" class="headerlink" title="(1) loop(minint, maxint)"></a>(1) loop(minint, maxint)</h4><p>minint表示循环的最小次数，maxint表示循环的最多次数</p>
+<img src="https://s1.ax1x.com/2020/04/24/JBNBlj.png" alt="25" style="zoom:50%;">
+
+
+
+<h4 id="2-loop-minint"><a href="#2-loop-minint" class="headerlink" title="(2) loop(minint)"></a>(2) loop(minint)</h4><img src="https://s1.ax1x.com/2020/04/24/JBN600.png" alt="26" style="zoom:50%;">
+
+
+
+<h4 id="3-loop"><a href="#3-loop" class="headerlink" title="(3) loop"></a>(3) loop</h4><p>永无止境的循环</p>
+<img src="https://s1.ax1x.com/2020/04/24/JBNRtU.png" alt="27" style="zoom:50%;">
+
+
+
+<h4 id="4-loop-minint-maxint-监护条件"><a href="#4-loop-minint-maxint-监护条件" class="headerlink" title="(4) loop(minint, maxint) +监护条件"></a>(4) loop(minint, maxint) +监护条件</h4><img src="https://s1.ax1x.com/2020/04/24/JBNWhF.png" alt="28" style="zoom:50%;">
+
+
+
+<h4 id="loop实例"><a href="#loop实例" class="headerlink" title="loop实例"></a>loop实例</h4><img src="https://s1.ax1x.com/2020/04/24/JBNhp4.png" alt="29" style="zoom:33%;">
+
+
+
+<h4 id="对集合的迭代"><a href="#对集合的迭代" class="headerlink" title="对集合的迭代"></a>对集合的迭代</h4><ul>
+<li>对集合(例如list和map)中所有成员进行迭代的常用算法是向每个成员发送同一条消息。</li>
+<li>在这种情况下，通常最终会使用某种迭代器(iterator) 对象。</li>
+</ul>
+<img src="https://s1.ax1x.com/2020/04/24/JBN41J.png" alt="30" style="zoom:33%;">
+
+<p>&emsp;</p>
+<h3 id="③opt和alt交互片段——-表示分支"><a href="#③opt和alt交互片段——-表示分支" class="headerlink" title="③opt和alt交互片段——(表示分支)"></a>③opt和alt交互片段——(表示分支)</h3><ul>
+<li>分支：表明交互的控制流程取决于某个特定的条件。</li>
+<li>可以表示分支的操作符有两个:支持单条件的<strong><font color="#FF7F50">opt</font></strong>和支持多条件的<strong><font color="#FF7F50">alt</font></strong>.</li>
+</ul>
+<h4 id="opt交互片段——-单分支"><a href="#opt交互片段——-单分支" class="headerlink" title="opt交互片段—— (单分支)"></a>opt交互片段—— (单分支)</h4><p>●包含在此片段中的交互只有在判断条件为真时才执行</p>
+<img src="https://s1.ax1x.com/2020/04/24/JBN5c9.png" alt="31" style="zoom:33%;">
+
+
+
+<p>特殊情况：</p>
+<p><img src="https://s1.ax1x.com/2020/04/24/JBNIXR.png" alt="32"></p>
+<h4 id="alt交互片段——-多分支"><a href="#alt交互片段——-多分支" class="headerlink" title="alt交互片段—— (多分支)"></a>alt交互片段—— (多分支)</h4><ul>
+<li>alt交互片段中可以有多个区域，不同的区域用虚线分割，每一个区域设置一个监护条件，代表一个分支。根据判断条件，选择片段中的一个区域中的交互执行。</li>
+</ul>
+<img src="https://s1.ax1x.com/2020/04/24/JBNTn1.png" alt="33" style="zoom:33%;">
+
+
+
+<p>例如：</p>
+<img src="https://s1.ax1x.com/2020/04/24/JBN70x.png" alt="34" style="zoom:50%;">
+
+
+
+<h3 id="④par交互片段——-表示并发"><a href="#④par交互片段——-表示并发" class="headerlink" title="④par交互片段——(表示并发)"></a>④par交互片段——(表示并发)</h3><ul>
+<li>在<strong><font color="#FF7F50">par交互片段</font></strong>中，每个区域中的交互并发工作而不会互相交互。用于各个片段并行执行。</li>
+<li>操作符par是用来表示“并行”的，也就是用来表示两个或多个并发执行的子片段，并行子片段中，单个元素的执行次序可以以任何可能的顺序相互操作(除非采用critical禁止)。</li>
+</ul>
+<img src="https://s1.ax1x.com/2020/04/24/JBNH76.png" alt="35" style="zoom:33%;">
+
+<p>例如：</p>
+<img src="https://s1.ax1x.com/2020/04/24/JBNqAK.png" alt="36" style="zoom:40%;">
+
+
+
+<h3 id="⑤break交互片段"><a href="#⑤break交互片段" class="headerlink" title="⑤break交互片段"></a>⑤break交互片段</h3><ul>
+<li><p>操作符break和循环语句的break有些类似。</p>
+</li>
+<li><p>通常用break定义一个含有监护条件的子片段。</p>
+</li>
+<li><p>如果监护条件为“真”则执行子片段，而且不执行子片段后面的其他交互;如果监护条件为“假”，那么就按正常流程执行。</p>
+</li>
+</ul>
+<img src="https://s1.ax1x.com/2020/04/24/JBNLtO.png" alt="37" style="zoom:33%;">
+
+<p>例如：</p>
+<p>下图中，当系统要用户登录时。如果单击“取消”按钮，那么就将取消登录。并且不再执行后续地交互；否则就将等待用户输入登录信息，系统对输入的信息进行相应地应答。</p>
+<img src="https://s1.ax1x.com/2020/04/24/JBNOhD.png" alt="38" style="zoom:33%;">
+
+
+
+<h3 id="⑥critical-临界-交互片段"><a href="#⑥critical-临界-交互片段" class="headerlink" title="⑥critical (临界)交互片段"></a>⑥critical (临界)交互片段</h3><ul>
+<li><strong><font color="#FF7F50">操作符critical</font></strong>表示子片段是<strong><font color="#1E90FF">“临界区域“</font></strong>在临界区域中，生命线上的事件序列不能和其它区域中的任何其它事<br>  件交错。</li>
+</ul>
+<img src="https://s1.ax1x.com/2020/04/24/JBNv1H.png" alt="39" style="zoom:33%;">
+
+<p><strong><font color="#FF7F50">多进程并发执行时，表示排它处理，类似于操作系统中的加锁，以防止死锁的产生。</font></strong></p>
+<p>例如：<strong>交互片段实例</strong><br>在VCD播放的过程中，显示图像(displayframe) 的同时，可以响应各种按键。但是有一个例外，当用户按下暂定键(pause)时，在用户按下恢复键resume之前是无法显示图像displayFrame的，即displayFrame不能交错在pause和resume之间。</p>
+<img src="https://s1.ax1x.com/2020/04/24/JBNj9e.png" alt="40" style="zoom:33%;">
+
+
+
+<p>●使用操作符critical还常用来表示一个原子性的连续操作，例如事务性操作。<br>例如：<br>从银行帐号( bankaccount)扣钱和往证券帐户(stockaccount)加钱的这两个动作要么全部成功完成，要么都不执行。</p>
+<img src="https://s1.ax1x.com/2020/04/24/JBNxcd.png" alt="41" style="zoom:33%;">
+
+<p>&emsp;</p>
+<h2 id="交互片段的嵌套"><a href="#交互片段的嵌套" class="headerlink" title="交互片段的嵌套"></a>交互片段的嵌套</h2><img src="https://s1.ax1x.com/2020/04/24/JBNzjA.png" alt="42" style="zoom:40%;">
+
+
+
+
+
+
+      
+    </div>
+    
+    
+    
+
+    <div>
+      
+        
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script type="text/javascript" src="http://jslibs.wuxubj.cn/sweetalert_mini/jquery-1.7.1.min.js"></script>
+  <script src="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.mini.css">
+  <p><span>本文标题:</span><a href="/2020/04/24/UML-SequenceDiagram/">UML学习笔记——顺序图（时序图）</a></p>
+  <p><span>文章作者:</span><a href="/" title="访问 陈洋 的个人博客">陈洋</a></p>
+  <p><span>发布时间:</span>2020年04月24日 - 10:04</p>
+  <p><span>最后更新:</span>2020年04月24日 - 13:04</p>
+  <p><span>原始链接:</span><a href="/2020/04/24/UML-SequenceDiagram/" title="UML学习笔记——顺序图（时序图）">http://codeblog-cy.top/2020/04/24/UML-SequenceDiagram/</a>
+    <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://codeblog-cy.top/2020/04/24/UML-SequenceDiagram/" aria-label="复制成功！"></i></span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+    clipboard.on('success', $(function(){
+      $(".fa-clipboard").click(function(){
+        swal({   
+          title: "",   
+          text: '复制成功',   
+          html: false,
+          timer: 500,   
+          showConfirmButton: false
+        });
+      });
+    }));  
+</script>
+
+      
+    </div>
+    
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/UML建模/" rel="tag"># UML建模</a>
+          
+            <a href="/tags/顺序图/" rel="tag"># 顺序图</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/04/23/Matrix-Multiplication/" rel="next" title="矩阵连乘问题——算法设计课程">
+                <i class="fa fa-chevron-left"></i> 矩阵连乘问题——算法设计课程
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/me.jpg" alt="陈洋">
+            
+              <p class="site-author-name" itemprop="name">陈洋</p>
+              <p class="site-description motion-element" itemprop="description">18级软工学生</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">71</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">66</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/Kuluuu" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:1140377596@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#顺序图（时序图）"><span class="nav-number">1.</span> <span class="nav-text">顺序图（时序图）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#顺序图的引入"><span class="nav-number">2.</span> <span class="nav-text">顺序图的引入</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#顺序图的概念"><span class="nav-number">3.</span> <span class="nav-text">顺序图的概念</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#顺序图的组成"><span class="nav-number">4.</span> <span class="nav-text">顺序图的组成</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#①对象-Object"><span class="nav-number">4.1.</span> <span class="nav-text">①对象( Object)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#②生命线-Lifeline"><span class="nav-number">4.2.</span> <span class="nav-text">②生命线( Lifeline )</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#③激活-Activation-控制焦点focus-of-control"><span class="nav-number">4.3.</span> <span class="nav-text">③激活(Activation) (控制焦点focus of control)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#④消息-Message"><span class="nav-number">4.4.</span> <span class="nav-text">④消息(Message)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#消息的表示和分类"><span class="nav-number">4.4.1.</span> <span class="nav-text">消息的表示和分类</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#调用消息-Procedure-Call"><span class="nav-number">4.4.1.1.</span> <span class="nav-text">调用消息(Procedure Call)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#异步消息-Asynchronous"><span class="nav-number">4.4.1.2.</span> <span class="nav-text">异步消息(Asynchronous)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#返回消息-Return"><span class="nav-number">4.4.1.3.</span> <span class="nav-text">返回消息(Return)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三种消息的示例"><span class="nav-number">4.4.2.</span> <span class="nav-text">三种消息的示例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#特殊的消息"><span class="nav-number">4.4.3.</span> <span class="nav-text">特殊的消息</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#自反消息"><span class="nav-number">4.4.3.1.</span> <span class="nav-text">自反消息</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#阻止消息-Rose中"><span class="nav-number">4.4.3.2.</span> <span class="nav-text">阻止消息(Rose中)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#超时消息-Rose中"><span class="nav-number">4.4.3.3.</span> <span class="nav-text">超时消息(Rose中)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#创始消息-Found-Message"><span class="nav-number">4.4.3.4.</span> <span class="nav-text">创始消息(Found Message)</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#UML交互片段"><span class="nav-number">5.</span> <span class="nav-text">UML交互片段</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#常用的交互片段对应的操作符及其作用"><span class="nav-number">5.1.</span> <span class="nav-text">常用的交互片段对应的操作符及其作用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#①ref-交互片段——-引用reference"><span class="nav-number">5.1.1.</span> <span class="nav-text">①ref 交互片段—— (引用reference)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#使用场景"><span class="nav-number">5.1.1.1.</span> <span class="nav-text">使用场景</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用方法"><span class="nav-number">5.1.1.2.</span> <span class="nav-text">使用方法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#②loop交互片段——-循环交互片段"><span class="nav-number">5.1.2.</span> <span class="nav-text">②loop交互片段——(循环交互片段)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-loop-minint-maxint"><span class="nav-number">5.1.2.1.</span> <span class="nav-text">(1) loop(minint, maxint)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-loop-minint"><span class="nav-number">5.1.2.2.</span> <span class="nav-text">(2) loop(minint)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-loop"><span class="nav-number">5.1.2.3.</span> <span class="nav-text">(3) loop</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-loop-minint-maxint-监护条件"><span class="nav-number">5.1.2.4.</span> <span class="nav-text">(4) loop(minint, maxint) +监护条件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#loop实例"><span class="nav-number">5.1.2.5.</span> <span class="nav-text">loop实例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#对集合的迭代"><span class="nav-number">5.1.2.6.</span> <span class="nav-text">对集合的迭代</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#③opt和alt交互片段——-表示分支"><span class="nav-number">5.1.3.</span> <span class="nav-text">③opt和alt交互片段——(表示分支)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#opt交互片段——-单分支"><span class="nav-number">5.1.3.1.</span> <span class="nav-text">opt交互片段—— (单分支)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#alt交互片段——-多分支"><span class="nav-number">5.1.3.2.</span> <span class="nav-text">alt交互片段—— (多分支)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#④par交互片段——-表示并发"><span class="nav-number">5.1.4.</span> <span class="nav-text">④par交互片段——(表示并发)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#⑤break交互片段"><span class="nav-number">5.1.5.</span> <span class="nav-text">⑤break交互片段</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#⑥critical-临界-交互片段"><span class="nav-number">5.1.6.</span> <span class="nav-text">⑥critical (临界)交互片段</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#交互片段的嵌套"><span class="nav-number">5.2.</span> <span class="nav-text">交互片段的嵌套</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">陈洋</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+<!-- 新增访客统计代码 -->
+
+<div class="busuanzi-count">
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+        <!-- 不蒜子统计 -->
+        <span id="busuanzi_container_site_pv">
+                本站总访问量<span id="busuanzi_value_site_pv"></span>次
+        </span>
+        <span class="post-meta-divider">|</span>
+        <span id="busuanzi_container_site_uv" style="display:none">
+                本站访客数<span id="busuanzi_value_site_uv"></span>人
+        </span>
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <!-- 博客字数统计 -->
+    <span class="site-pv">
+      <i class="fa fa-pencil"></i>
+      博客全站共： <span class="post-count">80.2k</span> 字
+    </span>
+</div>
+<!-- 新增访客统计代码 END-->
+
+<!-- 在网页底部添加网站运行时间 -->
+<span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+<script>
+    var now = new Date();
+    function createtime() {
+        var grt= new Date("07/21/2019 00:00:00");//此处修改你的建站时间或者网站上线时间
+        now.setTime(now.getTime()+250);
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;}
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;}
+        document.getElementById("timeDate").innerHTML = "Run for "+dnum+" Days ";
+        document.getElementById("times").innerHTML = hnum + " Hours " + mnum + " m " + snum + " s";
+    }
+setInterval("createtime()",250);
+</script>
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共80.2k字</span>
+</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  <script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+  
+  
+
+  
+
+  
+
+  
+
+<!-- 代码块复制功能 -->
+<script type="text/javascript" src="/js/src/clipboard.min.js"></script>  
+<script type="text/javascript" src="/js/src/clipboard-use.js"></script>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"live2d-widget-model-wanko"},"display":{"position":"left","width":75,"height":100},"mobile":{"show":true},"log":false});</script></body>
+</html>
