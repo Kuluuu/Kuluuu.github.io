@@ -88,19 +88,19 @@
 
 
 
-<meta name="description" content="题目描述x星球的居民脾气不太好，但好在他们生气的时候唯一的异常举动是：摔手机。各大厂商也就纷纷推出各种耐摔型手机。x星球的质监局规定了手机必须经过耐摔测试，并且评定出一个耐摔指数来，之后才允许上市流通。x星球有很多高耸入云的高塔，刚好可以用来做耐摔测试。塔的每一层高度都是一样的，与地球上稍有不同的是，他们的第一层不是地面，而是相当于我们的2楼。如果手机从第7层扔下去没摔坏，但第8层摔坏了，则手机耐">
+<meta name="description" content="题目描述x星球的居民脾气不太好，但好在他们生气的时候唯一的异常举动是：摔手机。各大厂商也就纷纷推出各种耐摔型手机。x星球的质监局规定了手机必须经过耐摔测试，并且评定出一个耐摔指数来，之后才允许上市流通。">
 <meta name="keywords" content="动态规划DP">
 <meta property="og:type" content="article">
 <meta property="og:title" content="2018年蓝桥杯C&#x2F;C++ B组省赛 试题D：测试次数">
 <meta property="og:url" content="https://codeblog-cy.top/2020/10/14/2018lanqiao-d-NumberOfTests/index.html">
 <meta property="og:site_name" content="ChenYang&#39;s Blog">
-<meta property="og:description" content="题目描述x星球的居民脾气不太好，但好在他们生气的时候唯一的异常举动是：摔手机。各大厂商也就纷纷推出各种耐摔型手机。x星球的质监局规定了手机必须经过耐摔测试，并且评定出一个耐摔指数来，之后才允许上市流通。x星球有很多高耸入云的高塔，刚好可以用来做耐摔测试。塔的每一层高度都是一样的，与地球上稍有不同的是，他们的第一层不是地面，而是相当于我们的2楼。如果手机从第7层扔下去没摔坏，但第8层摔坏了，则手机耐">
+<meta property="og:description" content="题目描述x星球的居民脾气不太好，但好在他们生气的时候唯一的异常举动是：摔手机。各大厂商也就纷纷推出各种耐摔型手机。x星球的质监局规定了手机必须经过耐摔测试，并且评定出一个耐摔指数来，之后才允许上市流通。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://s1.ax1x.com/2020/10/14/05HOHg.jpg">
-<meta property="og:updated_time" content="2020-10-14T09:30:04.470Z">
+<meta property="og:updated_time" content="2020-10-14T10:00:04.715Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="2018年蓝桥杯C&#x2F;C++ B组省赛 试题D：测试次数">
-<meta name="twitter:description" content="题目描述x星球的居民脾气不太好，但好在他们生气的时候唯一的异常举动是：摔手机。各大厂商也就纷纷推出各种耐摔型手机。x星球的质监局规定了手机必须经过耐摔测试，并且评定出一个耐摔指数来，之后才允许上市流通。x星球有很多高耸入云的高塔，刚好可以用来做耐摔测试。塔的每一层高度都是一样的，与地球上稍有不同的是，他们的第一层不是地面，而是相当于我们的2楼。如果手机从第7层扔下去没摔坏，但第8层摔坏了，则手机耐">
+<meta name="twitter:description" content="题目描述x星球的居民脾气不太好，但好在他们生气的时候唯一的异常举动是：摔手机。各大厂商也就纷纷推出各种耐摔型手机。x星球的质监局规定了手机必须经过耐摔测试，并且评定出一个耐摔指数来，之后才允许上市流通。">
 <meta name="twitter:image" content="https://s1.ax1x.com/2020/10/14/05HOHg.jpg">
 
 
@@ -363,7 +363,10 @@
       
 
       
-        <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>x星球的居民脾气不太好，但好在他们生气的时候唯一的异常举动是：摔手机。<br>各大厂商也就纷纷推出各种耐摔型手机。x星球的质监局规定了手机必须经过耐摔测试，并且评定出一个耐摔指数来，之后才允许上市流通。<br>x星球有很多高耸入云的高塔，刚好可以用来做耐摔测试。<br>塔的每一层高度都是一样的，与地球上稍有不同的是，他们的第一层不是地面，而是相当于我们的2楼。<br>如果手机从第7层扔下去没摔坏，但第8层摔坏了，则手机耐摔指数=7。<br>特别地，如果手机从第1层扔下去就坏了，则耐摔指数=0。<br>如果到了塔的最高层第n层扔没摔坏，则耐摔指数=n<br>为了减少测试次数，从每个厂家抽样3部手机参加测试。<br>某次测试的塔高为1000层，如果我们总是采用最佳策略，在最坏的运气下最多需要测试多少次才能确定手机的耐摔指数呢？</p>
+        <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>x星球的居民脾气不太好，但好在他们生气的时候唯一的异常举动是：摔手机。<br>各大厂商也就纷纷推出各种耐摔型手机。x星球的质监局规定了手机必须经过耐摔测试，并且评定出一个耐摔指数来，之后才允许上市流通。</p>
+<a id="more"></a>
+
+<p>x星球有很多高耸入云的高塔，刚好可以用来做耐摔测试。<br>塔的每一层高度都是一样的，与地球上稍有不同的是，他们的第一层不是地面，而是相当于我们的2楼。<br>如果手机从第7层扔下去没摔坏，但第8层摔坏了，则手机耐摔指数=7。<br>特别地，如果手机从第1层扔下去就坏了，则耐摔指数=0。<br>如果到了塔的最高层第n层扔没摔坏，则耐摔指数=n<br>为了减少测试次数，从每个厂家抽样3部手机参加测试。<br>某次测试的塔高为1000层，如果我们总是采用最佳策略，在最坏的运气下最多需要测试多少次才能确定手机的耐摔指数呢？</p>
 <h2 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h2><blockquote>
 <p>输出一个整数表示答案</p>
 </blockquote>
@@ -413,7 +416,7 @@
   <p><span>本文标题:</span><a href="/2020/10/14/2018lanqiao-d-NumberOfTests/">2018年蓝桥杯C/C++ B组省赛 试题D：测试次数</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 陈洋 的个人博客">陈洋</a></p>
   <p><span>发布时间:</span>2020年10月14日 - 16:10</p>
-  <p><span>最后更新:</span>2020年10月14日 - 17:10</p>
+  <p><span>最后更新:</span>2020年10月14日 - 18:10</p>
   <p><span>原始链接:</span><a href="/2020/10/14/2018lanqiao-d-NumberOfTests/" title="2018年蓝桥杯C/C++ B组省赛 试题D：测试次数">https://codeblog-cy.top/2020/10/14/2018lanqiao-d-NumberOfTests/</a>
     <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://codeblog-cy.top/2020/10/14/2018lanqiao-d-NumberOfTests/" aria-label="复制成功！"></i></span>
   </p>
@@ -682,7 +685,7 @@
     <!-- 博客字数统计 -->
     <span class="site-pv">
       <i class="fa fa-pencil"></i>
-      博客全站共： <span class="post-count">84.1k</span> 字
+      博客全站共： <span class="post-count">84.2k</span> 字
     </span>
 </div>
 <!-- 新增访客统计代码 END-->
@@ -708,7 +711,7 @@ setInterval("createtime()",250);
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共84.1k字</span>
+  <span class="post-count">博客全站共84.2k字</span>
 </div>
 
 
