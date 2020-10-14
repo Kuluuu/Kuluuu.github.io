@@ -92,7 +92,7 @@
 <meta name="keywords" content="Hash算法">
 <meta property="og:type" content="article">
 <meta property="og:title" content="一维、二维Hash算法(转载 &amp;&amp; 代码加注释版)">
-<meta property="og:url" content="http://codeblog-cy.top/2020/02/18/one-dimensional-two-dimensional-Hash-Algorithm/index.html">
+<meta property="og:url" content="http://Kuluuu.github.io/2020/02/18/one-dimensional-two-dimensional-Hash-Algorithm/index.html">
 <meta property="og:site_name" content="ChenYang&#39;s Blog">
 <meta property="og:description" content="一维字符串哈希功能：在O(1)时间内查询某个区间的子串是什么(该串的哈希值)等等 实现方法：类似于前缀合，对字符串从前到后进行哈希">
 <meta property="og:locale" content="zh-Hans">
@@ -129,7 +129,7 @@
 
 
 
-  <link rel="canonical" href="http://codeblog-cy.top/2020/02/18/one-dimensional-two-dimensional-Hash-Algorithm/">
+  <link rel="canonical" href="http://Kuluuu.github.io/2020/02/18/one-dimensional-two-dimensional-Hash-Algorithm/">
 
 
 
@@ -272,7 +272,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://codeblog-cy.top/2020/02/18/one-dimensional-two-dimensional-Hash-Algorithm/">
+    <link itemprop="mainEntityOfPage" href="http://Kuluuu.github.io/2020/02/18/one-dimensional-two-dimensional-Hash-Algorithm/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="陈洋">
@@ -380,7 +380,7 @@
 <p><strong>查询：查询某个x*y的子矩阵(相同方法先处理出hs[x][y]的值)在原矩阵中出现了多少次</strong></p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">check</span><span class="params">(<span class="keyword">int</span> x , <span class="keyword">int</span> y)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> cnt = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = x; i &lt;= n; i ++) &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = y; j &lt;= m; j ++) &#123;</span><br><span class="line">            uLL k = has[i][j] - has[i-x][j]*p2[x] - has[i][j-y]*p1[y] + has[i-x][j-y]*p1[y]*p2[x];	</span><br><span class="line">          	<span class="comment">//加上has[i-x][j-y]*p1[y]*p2[x]的原因：</span></span><br><span class="line">          	<span class="comment">//因为has[i-x][j]*p2[x]和has[i][j-y]*p1[y]都是由has[i-x][j-y]*p1[y]*p2[x]变换而来</span></span><br><span class="line">          	<span class="comment">//因此在➖时，减去了两个has[i-x][j-y]*p1[y]*p2[x]</span></span><br><span class="line">            <span class="keyword">if</span>(k == hs[nn][mm]) <span class="comment">//子矩阵的值为hs[nn][mm]</span></span><br><span class="line">              cnt ++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> cnt;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p><a href="http://codeblog-cy.top/2020/02/18/nowcoder-prac-1-A-matrix/">应用题目   牛客练习赛1-A-矩阵 二分+ 二维Hash</a></p>
+<p><a href="http://codeblog-cy.top/2020/02/18/nowcoder-prac-1-A-matrix/" target="_blank" rel="noopener">应用题目   牛客练习赛1-A-矩阵 二分+ 二维Hash</a></p>
 <ul>
 <li>转载于<a href="https://blog.csdn.net/I_believe_CWJ/article/details/82965434" target="_blank" rel="noopener">https://blog.csdn.net/I_believe_CWJ/article/details/82965434</a></li>
 <li>如若侵权，请联系删除</li>
@@ -406,8 +406,8 @@
   <p><span>文章作者:</span><a href="/" title="访问 陈洋 的个人博客">陈洋</a></p>
   <p><span>发布时间:</span>2020年02月18日 - 19:02</p>
   <p><span>最后更新:</span>2020年02月29日 - 23:02</p>
-  <p><span>原始链接:</span><a href="/2020/02/18/one-dimensional-two-dimensional-Hash-Algorithm/" title="一维、二维Hash算法(转载 && 代码加注释版)">http://codeblog-cy.top/2020/02/18/one-dimensional-two-dimensional-Hash-Algorithm/</a>
-    <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://codeblog-cy.top/2020/02/18/one-dimensional-two-dimensional-Hash-Algorithm/" aria-label="复制成功！"></i></span>
+  <p><span>原始链接:</span><a href="/2020/02/18/one-dimensional-two-dimensional-Hash-Algorithm/" title="一维、二维Hash算法(转载 && 代码加注释版)">http://Kuluuu.github.io/2020/02/18/one-dimensional-two-dimensional-Hash-Algorithm/</a>
+    <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://Kuluuu.github.io/2020/02/18/one-dimensional-two-dimensional-Hash-Algorithm/" aria-label="复制成功！"></i></span>
   </p>
   <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
 </div>
