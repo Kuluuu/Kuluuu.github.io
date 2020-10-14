@@ -272,7 +272,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://codeblog-cy.top/2020/10/13/2018lanqiao-h-LogStatistics/">
+    <link itemprop="mainEntityOfPage" href="https://codeblog-cy.top/2020/10/14/2018lanqiao-g-SpiralBrokenLine/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="陈洋">
@@ -291,7 +291,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2020/10/13/2018lanqiao-h-LogStatistics/" itemprop="url">未命名</a></h1>
+                <a class="post-title-link" href="/2020/10/14/2018lanqiao-g-SpiralBrokenLine/" itemprop="url">2018年蓝桥杯C/C++ B组省赛 试题G：螺旋折线</a></h1>
         
 
         <div class="post-meta">
@@ -303,8 +303,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-10-13T19:11:51+08:00">
-                2020-10-13
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-10-14T17:29:19+08:00">
+                2020-10-14
               </time>
             
 
@@ -313,6 +313,28 @@
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/数论/" itemprop="url" rel="index">
+                    <span itemprop="name">数论</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -343,7 +365,56 @@
       
         
           
-            <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  main.cpp</span></span><br><span class="line"><span class="comment">//  2018lanqiao-h</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  Created by 陈洋 on 2020/10/13.</span></span><br><span class="line"><span class="comment">//  Copyright © 2020 陈洋. All rights reserved.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v[<span class="number">100005</span>];</span><br><span class="line"><span class="keyword">int</span> n,d,k;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">const</span> <span class="keyword">char</span> * argv[])</span> </span>&#123;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n &gt;&gt; d &gt;&gt; k;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">int</span> ts,id;</span><br><span class="line">    <span class="keyword">int</span> max = <span class="number">0</span>;    <span class="comment">//统计最大的id号用于遍历</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)&#123;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; ts &gt;&gt; id;</span><br><span class="line">        <span class="keyword">if</span>(max &lt; id)</span><br><span class="line">            max = id;</span><br><span class="line">        v[id].push_back(ts);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= max; i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(v[i].size() &lt; k)</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        </span><br><span class="line">        sort(v[i].begin(), v[i].end());</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; v[i].size() - k + <span class="number">1</span>; j++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(v[i][j + k - <span class="number">1</span>] - v[i][j] &lt; d)&#123;</span><br><span class="line">                <span class="built_in">cout</span> &lt;&lt; i &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+            <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>如图所示的螺旋折线经过平面上所有整点恰好一次。</p>
+<p> <img src="https://s1.ax1x.com/2020/10/14/05X4p9.png" alt="题目描述" style="zoom: 67%;"><img src="https://s1.ax1x.com/2020/10/14/05X5lR.png" alt="函数"></p>
+<p>对于整点(X, Y)，我们定义它到原点的距离dis(X, Y)是从原点到(X, Y)的螺旋折线段的长度。 </p>
+<p>例如<code>dis(0, 1)=3</code>, <code>dis(-2, -1)=9</code></p>
+<p>给出整点坐标(X, Y)，你能计算出dis(X, Y)吗？</p>
+<h3 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h3><blockquote>
+<p> X和Y  </p>
+<p>对于40%的数据，-1000 &lt;= X, Y &lt;= 1000  </p>
+<p>对于70%的数据，-100000 &lt;= X， Y &lt;= 100000  </p>
+<p>对于100%的数据, -1000000000 &lt;= X, Y &lt;= 1000000000  </p>
+</blockquote>
+<h3 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h3><blockquote>
+<p>输出dis(X, Y)  </p>
+</blockquote>
+<h2 id="样例输入"><a href="#样例输入" class="headerlink" title="样例输入"></a>样例输入</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">0 1</span><br></pre></td></tr></table></figure>
+
+<h2 id="样例输出"><a href="#样例输出" class="headerlink" title="样例输出"></a>样例输出</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">3</span><br></pre></td></tr></table></figure>
+
+<h2 id="资源约定："><a href="#资源约定：" class="headerlink" title="资源约定："></a>资源约定：</h2><p>峰值内存消耗（含虚拟机） &lt; 256M</p>
+<p>CPU消耗 &lt; 1000ms</p>
+<h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p>我们可以将螺旋折线看成大正方形内有小的正方形。</p>
+<p>我们认为<code>(0,0)</code>为第一个正方形的起点，将起点开始的第一个方格线向下翻折即可得到正方形</p>
+<img src="https://s1.ax1x.com/2020/10/14/05XI61.png" alt="正方形" style="zoom:70%;">
+
+
+
+
+
+<blockquote>
+<p>由图可以知道第一个正方形结束的终点为<code>(-1,-1)</code></p>
+<p>这时我们可以得到第t圈的正方形的终点为<code>(-t,-t)</code></p>
+<p>那么第t个正方形本身的长度就为<code>8 * t</code></p>
+</blockquote>
+<p>那么我们考虑正方形的四个边长所构成的函数</p>
+<p>分别为：<code>x = -t</code>，<code>x = t</code>，<code>y = -t</code>，<code>y = t</code></p>
+<img src="https://s1.ax1x.com/2020/10/14/05X5lR.png" alt="正方形" style="zoom:67%;">
+
+
+
+<p>这样就一目了然了</p>
+<blockquote>
+<p>圈数 <code>t = max(abs(x), abs(y))</code></p>
+<p>1、当<code>(x,y)</code>在<code>(-t,-t)</code>处时，即为第 t 个正方形的起点，第 t - 1 个正方形的终点，那么长度就为<code>ans = (8 + 8 * t) * t / 2</code></p>
+<p>2、当不在<code>(-t,-t)</code>时，前 t - 1个正方形的长度为<code>dis = (8 + 8 * (t - 1)) * (t - 1) / 2</code></p>
+<p>当<code>x = -t</code>时，<code>ans = dis + y + t</code></p>
+<p>当<code>y = t</code>时，<code>ans = dis + 2 * t + x + t</code></p>
+<p>当<code>x = t</code>时，<code>ans = dis + 4 * t + t - y</code></p>
+<p>当<code>y = -t</code>时，<code>ans = dis + 6 * t + t - x</code></p>
+</blockquote>
+<h2 id="解题代码"><a href="#解题代码" class="headerlink" title="解题代码"></a>解题代码</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  main.cpp</span></span><br><span class="line"><span class="comment">//  2018lanqiao-g</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  Created by 陈洋 on 2020/10/12.</span></span><br><span class="line"><span class="comment">//  Copyright © 2020 陈洋. All rights reserved.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">const</span> <span class="keyword">char</span> * argv[])</span> </span>&#123;</span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> x,y;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> t,dis;</span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> ans = <span class="number">0</span>;</span><br><span class="line">    </span><br><span class="line"><span class="comment">//    while(1)&#123;</span></span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; x &gt;&gt; y;</span><br><span class="line">        </span><br><span class="line">        t = max(<span class="built_in">abs</span>(x), <span class="built_in">abs</span>(y));</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span>(x == -t &amp;&amp; y == -t)&#123;</span><br><span class="line">            ans = (<span class="number">8</span> + <span class="number">8</span> * t) * t / <span class="number">2</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            dis = (<span class="number">8</span> + <span class="number">8</span> * (t - <span class="number">1</span>)) * (t - <span class="number">1</span>) / <span class="number">2</span>;</span><br><span class="line">            <span class="keyword">if</span>(x == -t)&#123;</span><br><span class="line">                ans = dis + y + t;</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">if</span>(y == t)&#123;</span><br><span class="line">                ans = dis + <span class="number">2</span> * t + x + t;</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">if</span>(x == t)&#123;</span><br><span class="line">                ans = dis + <span class="number">4</span> * t + t - y;</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">if</span>(y == -t &amp;&amp; x != -(t + <span class="number">1</span>))&#123;</span><br><span class="line">                ans = dis + <span class="number">6</span> * t + t - x;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        </span><br><span class="line">        </span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; ans &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line"><span class="comment">//    &#125;</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
           
@@ -397,7 +468,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://codeblog-cy.top/2020/10/13/2018lanqiao-i-GlobalWarming/">
+    <link itemprop="mainEntityOfPage" href="https://codeblog-cy.top/2020/10/14/2018lanqiao-d-NumberOfTests/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="陈洋">
@@ -416,7 +487,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2020/10/13/2018lanqiao-i-GlobalWarming/" itemprop="url">未命名</a></h1>
+                <a class="post-title-link" href="/2020/10/14/2018lanqiao-d-NumberOfTests/" itemprop="url">2018年蓝桥杯C/C++ B组省赛 试题D：测试次数</a></h1>
         
 
         <div class="post-meta">
@@ -428,8 +499,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-10-13T18:40:53+08:00">
-                2020-10-13
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-10-14T16:56:42+08:00">
+                2020-10-14
               </time>
             
 
@@ -438,6 +509,28 @@
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/动态规划DP/" itemprop="url" rel="index">
+                    <span itemprop="name">动态规划DP</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -468,384 +561,34 @@
       
         
           
-            <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  main.cpp</span></span><br><span class="line"><span class="comment">//  2018lanqiao-i</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  Created by 陈洋 on 2020/10/12.</span></span><br><span class="line"><span class="comment">//  Copyright © 2020 陈洋. All rights reserved.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; pii;</span><br><span class="line"><span class="built_in">queue</span>&lt;pii&gt; q;</span><br><span class="line"><span class="keyword">char</span> mmap[<span class="number">1010</span>][<span class="number">1010</span>];</span><br><span class="line"><span class="keyword">int</span> mark[<span class="number">1010</span>][<span class="number">1010</span>];</span><br><span class="line"><span class="keyword">int</span> n;</span><br><span class="line"><span class="keyword">int</span> to[<span class="number">4</span>][<span class="number">2</span>] = &#123;&#123;<span class="number">0</span> , <span class="number">1</span>&#125;, &#123;<span class="number">1</span>, <span class="number">0</span>&#125;, &#123;<span class="number">0</span>, <span class="number">-1</span>&#125;, &#123;<span class="number">-1</span>, <span class="number">0</span>&#125;&#125;;</span><br><span class="line"><span class="keyword">int</span> flag = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">4</span>; i++)&#123;</span><br><span class="line">        <span class="keyword">int</span> nx = x + to[i][<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">int</span> ny = y + to[i][<span class="number">1</span>];</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span>(!(nx &gt;= <span class="number">0</span> &amp;&amp; nx &lt; n &amp;&amp; ny &gt;= <span class="number">0</span> &amp;&amp; ny &lt; n)) <span class="keyword">continue</span>;</span><br><span class="line">        <span class="keyword">if</span>(mmap[nx][ny] == <span class="string">'#'</span> &amp;&amp; mark[nx][ny] == <span class="number">0</span>)&#123;</span><br><span class="line">            mark[nx][ny] = <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">if</span>(mmap[nx - <span class="number">1</span>][ny] == <span class="string">'#'</span> &amp;&amp; mmap[nx + <span class="number">1</span>][ny] == <span class="string">'#'</span> &amp;&amp; mmap[nx][ny - <span class="number">1</span>] == <span class="string">'#'</span> &amp;&amp; mmap[nx][ny + <span class="number">1</span>] == <span class="string">'#'</span>)</span><br><span class="line">                flag = <span class="number">1</span>;</span><br><span class="line">            dfs(nx,ny);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">const</span> <span class="keyword">char</span> * argv[])</span> </span>&#123;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; n; j++)&#123;</span><br><span class="line">            <span class="built_in">cin</span> &gt;&gt; mmap[i][j];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">int</span> cnt1 = <span class="number">0</span>, cnt2 = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; n; j++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(mmap[i][j] == <span class="string">'#'</span> &amp;&amp; mark[i][j] == <span class="number">0</span>)&#123;</span><br><span class="line">                flag = <span class="number">0</span>;</span><br><span class="line">                dfs(i, j);</span><br><span class="line">                cnt1 ++;</span><br><span class="line">                <span class="keyword">if</span>(flag)</span><br><span class="line">                    cnt2 ++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">        </span><br><span class="line">    </span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; cnt1 - cnt2 &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">7</span></span><br><span class="line"><span class="comment">.......</span></span><br><span class="line"><span class="comment">.##....</span></span><br><span class="line"><span class="comment">.##....</span></span><br><span class="line"><span class="comment">....##.</span></span><br><span class="line"><span class="comment">..####.</span></span><br><span class="line"><span class="comment">...###.</span></span><br><span class="line"><span class="comment">.......</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment"> </span></span><br><span class="line"><span class="comment"> 7</span></span><br><span class="line"><span class="comment"> .....##</span></span><br><span class="line"><span class="comment"> .##...#</span></span><br><span class="line"><span class="comment"> .###...</span></span><br><span class="line"><span class="comment"> ..#.##.</span></span><br><span class="line"><span class="comment"> ..####.</span></span><br><span class="line"><span class="comment"> ...###.</span></span><br><span class="line"><span class="comment"> .......</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">6</span></span><br><span class="line"><span class="comment">.###..</span></span><br><span class="line"><span class="comment">.#.##.</span></span><br><span class="line"><span class="comment">.####.</span></span><br><span class="line"><span class="comment">..###.</span></span><br><span class="line"><span class="comment">......</span></span><br><span class="line"><span class="comment">......</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">10</span></span><br><span class="line"><span class="comment">..........</span></span><br><span class="line"><span class="comment">.....#.#..</span></span><br><span class="line"><span class="comment">.....#....</span></span><br><span class="line"><span class="comment">.###....#.</span></span><br><span class="line"><span class="comment">....###...</span></span><br><span class="line"><span class="comment">...#....#.</span></span><br><span class="line"><span class="comment">..........</span></span><br><span class="line"><span class="comment">..##....#.</span></span><br><span class="line"><span class="comment">......##..</span></span><br><span class="line"><span class="comment">..........</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
-
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    <div>
-      
-    </div>
-    
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://codeblog-cy.top/2020/10/12/2018lanqiao-g-SpiralBrokenLine/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="陈洋">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/me.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ChenYang's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/10/12/2018lanqiao-g-SpiralBrokenLine/" itemprop="url">未命名</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-10-12T20:12:55+08:00">
-                2020-10-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <img src="/Users/chenyang/Desktop/20180404220439349.png" alt="20180404220439349" style="zoom:70%;">
-
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  main.cpp</span></span><br><span class="line"><span class="comment">//  2018lanqiao-g</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  Created by 陈洋 on 2020/10/12.</span></span><br><span class="line"><span class="comment">//  Copyright © 2020 陈洋. All rights reserved.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">const</span> <span class="keyword">char</span> * argv[])</span> </span>&#123;</span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> x,y;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> t,dis;</span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> ans = <span class="number">0</span>;</span><br><span class="line">    </span><br><span class="line"><span class="comment">//    while(1)&#123;</span></span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; x &gt;&gt; y;</span><br><span class="line">        </span><br><span class="line">        t = max(<span class="built_in">abs</span>(x), <span class="built_in">abs</span>(y));</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span>(x == -t &amp;&amp; y == -t)&#123;</span><br><span class="line">            ans = (<span class="number">8</span> + <span class="number">8</span> * t) * t / <span class="number">2</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            dis = (<span class="number">8</span> + <span class="number">8</span> * (t - <span class="number">1</span>)) * (t - <span class="number">1</span>) / <span class="number">2</span>;</span><br><span class="line">            <span class="keyword">if</span>(x == -t)&#123;</span><br><span class="line">                ans = dis + y + t;</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">if</span>(y == t)&#123;</span><br><span class="line">                ans = dis + <span class="number">2</span> * t + x + t;</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">if</span>(x == t)&#123;</span><br><span class="line">                ans = dis + <span class="number">4</span> * t + t - y;</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">if</span>(y == -t &amp;&amp; x != -(t + <span class="number">1</span>))&#123;</span><br><span class="line">                ans = dis + <span class="number">6</span> * t + t - x;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        </span><br><span class="line">        </span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; ans &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line"><span class="comment">//    &#125;</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>  git config –global user.name “Your Name”</p>
-<p>  git config –global user.email <a href="mailto:you@example.com" target="_blank" rel="noopener">you@example.com</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    <div>
-      
-    </div>
-    
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://codeblog-cy.top/2020/10/11/2018lanqiao-IncrementalTriples/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="陈洋">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/me.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ChenYang's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/10/11/2018lanqiao-IncrementalTriples/" itemprop="url">未命名</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-10-11T20:43:29+08:00">
-                2020-10-11
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  main.cpp</span></span><br><span class="line"><span class="comment">//  2018lanqiao-f</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  Created by 陈洋 on 2020/10/11.</span></span><br><span class="line"><span class="comment">//  Copyright © 2020 陈洋. All rights reserved.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; a;</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; b;</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; c;</span><br><span class="line"><span class="keyword">int</span> n,t;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">const</span> <span class="keyword">char</span> * argv[])</span> </span>&#123;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)&#123;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; t;</span><br><span class="line">        a.push_back(t);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)&#123;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; t;</span><br><span class="line">        b.push_back(t);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)&#123;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; t;</span><br><span class="line">        c.push_back(t);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    sort(a.begin(), a.end());</span><br><span class="line">    sort(b.begin(), b.end());</span><br><span class="line">    sort(c.begin(), c.end());</span><br><span class="line"></span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> ans = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; n; j++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(a[i] &lt; b[i])&#123;</span><br><span class="line">                <span class="keyword">int</span> k = upper_bound(c.begin(), c.end(), b[i]) - c.begin();</span><br><span class="line">                ans += n - k;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; ans &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    <div>
-      
-    </div>
-    
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://codeblog-cy.top/2020/10/11/2018lanqiao-d-NumberOfTests/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="陈洋">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/me.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ChenYang's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/10/11/2018lanqiao-d-NumberOfTests/" itemprop="url">未命名</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-10-11T20:13:39+08:00">
-                2020-10-11
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  main.cpp</span></span><br><span class="line"><span class="comment">//  2019lanqiao-d</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  Created by 陈洋 on 2020/10/11.</span></span><br><span class="line"><span class="comment">//  Copyright © 2020 陈洋. All rights reserved.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> dp[<span class="number">5</span>][<span class="number">1010</span>];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">const</span> <span class="keyword">char</span> * argv[])</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n = <span class="number">3</span>, m = <span class="number">1000</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= m; i++)</span><br><span class="line">        dp[<span class="number">1</span>][i] = i;   <span class="comment">//当只有一个手机，就从1楼试到m楼，最坏情况是m</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= n; i++)&#123;    <span class="comment">//从两部手机开始循环，第i部手机</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= m; j++)&#123;    <span class="comment">//j表示有j层楼</span></span><br><span class="line">            dp[i][j] = dp[i][j - <span class="number">1</span>] + <span class="number">1</span>;    <span class="comment">//最坏情况下每一层楼都试一次</span></span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> k = <span class="number">2</span>; k &lt; j; k++)&#123;</span><br><span class="line">                <span class="comment">/*</span></span><br><span class="line"><span class="comment">                 dp[i][j - k]代表当前这个手机在第k层没有摔坏，那么就看剩下的j - k层楼</span></span><br><span class="line"><span class="comment">                 dp[i - 1][k - 1]代表当前这个手机在第k层摔坏了，那么就看i - 1个手机在 k - 1层测试。</span></span><br><span class="line"><span class="comment">                 因为我用手机测试第k层时，如果摔坏了就说明在向下的k - 1层，如果没有摔坏则说明在向上的j - k层</span></span><br><span class="line"><span class="comment">                 不管测试结果如何，最后都摔了一次，则尾部 +1</span></span><br><span class="line"><span class="comment">                 */</span></span><br><span class="line">                <span class="keyword">int</span> temp = max(dp[i][j - k], dp[i - <span class="number">1</span>][k - <span class="number">1</span>]) + <span class="number">1</span>;</span><br><span class="line">                dp[i][j] = min(dp[i][j] , temp);    <span class="comment">//找到最优的k</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; dp[<span class="number">3</span>][<span class="number">1000</span>] &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+            <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>x星球的居民脾气不太好，但好在他们生气的时候唯一的异常举动是：摔手机。<br>各大厂商也就纷纷推出各种耐摔型手机。x星球的质监局规定了手机必须经过耐摔测试，并且评定出一个耐摔指数来，之后才允许上市流通。<br>x星球有很多高耸入云的高塔，刚好可以用来做耐摔测试。<br>塔的每一层高度都是一样的，与地球上稍有不同的是，他们的第一层不是地面，而是相当于我们的2楼。<br>如果手机从第7层扔下去没摔坏，但第8层摔坏了，则手机耐摔指数=7。<br>特别地，如果手机从第1层扔下去就坏了，则耐摔指数=0。<br>如果到了塔的最高层第n层扔没摔坏，则耐摔指数=n<br>为了减少测试次数，从每个厂家抽样3部手机参加测试。<br>某次测试的塔高为1000层，如果我们总是采用最佳策略，在最坏的运气下最多需要测试多少次才能确定手机的耐摔指数呢？</p>
+<h2 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h2><blockquote>
+<p>输出一个整数表示答案</p>
+</blockquote>
+<h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p>刚拿到题目时，我以为这道题目用二分来写，但是需要考虑到<code>二分适用于有无数台手机给我们去尝试</code>，而这道题目的手机数量是有限的。</p>
+<p><strong>这是一道典型的dp问题。</strong></p>
+<p>众所周知dp问题的关键在于填表，我们认为<code>dp[i][j]</code>表示 i 为使用到了几个手机，j 表示验证了几层，那么<code>dp[i][j]</code>的结果为测试了几次。</p>
+<p>那么我们来考虑：</p>
+<p>1、当只有一部手机时，<strong>最坏情况下</strong>我们需要从第 1 层一直测试到第 j 层楼，那么一共测试 j 次，<code>dp[1][j] = j</code></p>
+<p>2、当拥有两部或两部以上手机时，这时我们需要考虑<strong>最优策略</strong>。</p>
+<p>当前我们在<code>第 k 层测试</code>，用到<code>第 i 部手机</code>时，测试会出现两种情况</p>
+<img src="https://s1.ax1x.com/2020/10/14/05HOHg.jpg" alt="第k层示意图" style="zoom:30%;">
+
+<p>a.摔坏：如果在<code>第 k 层摔坏了</code>，那么我们只需要用剩下的 <code>i - 1 部手机</code>去测试剩下的<code>k - 1层楼</code>，即<code>dp[i - 1][k - 1]</code></p>
+<p>b.未摔坏：如果在<code>第 k 层没有摔坏</code>，那么我们只需要用 <code>i 部手机</code>去测试剩下的<code>n - k层楼</code>，即<code>dp[i][n - k]</code></p>
+<p>因为在这个测试过程中，我要<strong>保证运气最坏</strong>，因此<code>dp[i][k] = max(dp[i - 1][k - 1], dp[i][n - k]) + 1</code></p>
+<blockquote>
+<p>其中：</p>
+<p>+1 是指 无论当前这次测试摔坏、没摔坏，我都进行了一次测试</p>
+<p>max 的目的 是要在测试过程中保证运气最坏，<strong>即最坏情况</strong></p>
+</blockquote>
+<ul>
+<li><p>状态转移方程：<code>dp[i][j] = min(d[i][j], max(dp[i - 1][k - 1], dp[i][n - k]) + 1)</code></p>
+</li>
+<li><p>其中min是时刻要<strong>保证最优策略</strong></p>
+</li>
+</ul>
+<h2 id="解题代码"><a href="#解题代码" class="headerlink" title="解题代码"></a>解题代码</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  main.cpp</span></span><br><span class="line"><span class="comment">//  2018lanqiao-d</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  Created by 陈洋 on 2020/10/11.</span></span><br><span class="line"><span class="comment">//  Copyright © 2020 陈洋. All rights reserved.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> dp[<span class="number">5</span>][<span class="number">1010</span>];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">const</span> <span class="keyword">char</span> * argv[])</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n = <span class="number">3</span>, m = <span class="number">1000</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= m; i++)</span><br><span class="line">        dp[<span class="number">1</span>][i] = i;   <span class="comment">//当只有一个手机，就从1楼试到m楼，最坏情况是m</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= n; i++)&#123;    <span class="comment">//从两部手机开始循环，第i部手机</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= m; j++)&#123;    <span class="comment">//j表示有j层楼</span></span><br><span class="line">            dp[i][j] = dp[i][j - <span class="number">1</span>] + <span class="number">1</span>;    <span class="comment">//最坏情况下每一层楼都试一次</span></span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> k = <span class="number">2</span>; k &lt; j; k++)&#123;</span><br><span class="line">                <span class="comment">/*</span></span><br><span class="line"><span class="comment">                 dp[i][j - k]代表当前这个手机在第k层没有摔坏，那么就看剩下的j - k层楼</span></span><br><span class="line"><span class="comment">                 dp[i - 1][k - 1]代表当前这个手机在第k层摔坏了，那么就看i - 1个手机在 k - 1层测试。</span></span><br><span class="line"><span class="comment">                 因为我用手机测试第k层时，如果摔坏了就说明在向下的k - 1层，如果没有摔坏则说明在向上的j - k层</span></span><br><span class="line"><span class="comment">                 不管测试结果如何，最后都摔了一次，则尾部 +1</span></span><br><span class="line"><span class="comment">                 */</span></span><br><span class="line">                <span class="keyword">int</span> temp = max(dp[i][j - k], dp[i - <span class="number">1</span>][k - <span class="number">1</span>]) + <span class="number">1</span>;</span><br><span class="line">                dp[i][j] = min(dp[i][j] , temp);    <span class="comment">//找到最优的k</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; dp[<span class="number">3</span>][<span class="number">1000</span>] &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>参考：<a href="http://www.manongjc.com/detail/18-qmghnotunghkkhc.html" target="_blank" rel="noopener">2018蓝桥杯B组第4题：测试次数</a></p>
 
@@ -900,7 +643,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://codeblog-cy.top/2020/10/09/2019lanqiao-i-PostfixExpressions/">
+    <link itemprop="mainEntityOfPage" href="https://codeblog-cy.top/2020/10/14/2019lanqiao-i-PostfixExpressions/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="陈洋">
@@ -919,7 +662,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2020/10/09/2019lanqiao-i-PostfixExpressions/" itemprop="url">未命名</a></h1>
+                <a class="post-title-link" href="/2020/10/14/2019lanqiao-i-PostfixExpressions/" itemprop="url">2019年蓝桥杯C/C++ B组省赛 试题I：后缀表达式</a></h1>
         
 
         <div class="post-meta">
@@ -931,8 +674,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-10-09T18:54:14+08:00">
-                2020-10-09
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-10-14T16:51:14+08:00">
+                2020-10-14
               </time>
             
 
@@ -941,6 +684,28 @@
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/数论/" itemprop="url" rel="index">
+                    <span itemprop="name">数论</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -971,7 +736,38 @@
       
         
           
-            <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  main.cpp</span></span><br><span class="line"><span class="comment">//  2019lanqiao-i</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  Created by 陈洋 on 2020/10/8.</span></span><br><span class="line"><span class="comment">//  Copyright © 2020 陈洋. All rights reserved.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> a[<span class="number">200005</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">const</span> <span class="keyword">char</span> * argv[])</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n,m;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n &gt;&gt; m;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">int</span> len = n + m + <span class="number">1</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; len; i++)</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; a[i];</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">int</span> mmax = <span class="number">0</span>, mmin = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; len; i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(a[mmax] &lt; a[i]) mmax = i;</span><br><span class="line">        <span class="keyword">if</span>(a[mmin] &gt; a[i]) mmin = i;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> sum = <span class="number">0</span>;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span>(m == <span class="number">0</span>)&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; len; i++)</span><br><span class="line">            sum += a[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">        sum += a[mmax];</span><br><span class="line">        sum -= a[mmin];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; len; i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(i != mmax &amp;&amp; i != mmin)&#123;</span><br><span class="line">                sum += <span class="built_in">abs</span>(a[i]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; sum &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+            <a id="more"></a>
+
+<img src="https://s1.ax1x.com/2020/10/14/05bugx.png" alt="题目" style="zoom:80%;">
+
+
+
+<h2 id="初步思路"><a href="#初步思路" class="headerlink" title="初步思路"></a>初步思路</h2><p>写这道题首先要了解什么叫<a href="https://baike.baidu.com/item/%E9%80%86%E6%B3%A2%E5%85%B0%E5%BC%8F/128437?fromtitle=%E5%90%8E%E7%BC%80%E8%A1%A8%E8%BE%BE%E5%BC%8F&fromid=6160580&fr=aladdin" target="_blank" rel="noopener">后缀表达式</a></p>
+<p>了解完之后，我们开始考虑这道题目。</p>
+<p><strong>想法一：</strong>刚拿到题目，就觉得这道题似乎很简单。将所有大的正数相加，减去所有负数或者小的正数，那么就可以得到最大的结果。</p>
+<p>但是这道题目的位置显然说明了这道题的难度</p>
+<p>难点就在于</p>
+<blockquote>
+<p><strong><font color="red">后缀表达式中其实隐含了括号的存在</font></strong></p>
+</blockquote>
+<p>举个例子：</p>
+<p>2 1</p>
+<p>2 3 -1 -2</p>
+<p>如果按照<strong>想法一</strong>，得到的答案为：<code>2 + 3 - (-2) + (-1)</code>结果为<code>6</code></p>
+<p>但是还有有更优的方法：<code>2 + 3 - ((-2) + (-1))</code>结果为<code>8</code></p>
+<p>那么这道题瞬间就变得复杂了起来</p>
+<h2 id="算法思路"><a href="#算法思路" class="headerlink" title="算法思路"></a>算法思路</h2><p>那么我们顺着 <code>2 + 3 - ((-2) + (-1))</code>的思路来想</p>
+<p>考虑符号个数：</p>
+<blockquote>
+<p>（1）<strong>如果没有减号，全是加号：</strong>那么将所有数字加和即可</p>
+<p>（2）<strong>如果只有一个减号：</strong>那么就构造形如<code>...+...+...-(...+...+...)</code>的形式，只需使得括号内得到的总和负的越大，或者正的越小，即可</p>
+<p>（3）<strong>如果存在多个减号：</strong>那么就构造形如<code>...+...-(...+...-...-...)</code>的形式</p>
+<p>因此可以得出，<strong>只要存在减号(m &gt; 0)</strong>，那么拆掉括号后，实际的减号个数至少是1个，最多是n+m个，即<code>1 ~ (n + m)</code></p>
+</blockquote>
+<p>那么为了得到最大的后缀表达式的值，肯定是使得实际的减号数最少，即减号为1个时。</p>
+<p>那么只需要加上最大值<code>sum += a[mmax]</code>，再减去最小值<code>sum -= a[mmin]</code>，加上中间所有值的绝对值<code>sum += abs(a[i])</code>，就是最后的答案<code>sum</code></p>
+<p>参考题解<a href="https://www.acwing.com/solution/content/8491/" target="_blank" rel="noopener">acwing题解 by BakaC1rno</a></p>
+<h2 id="解题代码"><a href="#解题代码" class="headerlink" title="解题代码"></a>解题代码</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  main.cpp</span></span><br><span class="line"><span class="comment">//  2019lanqiao-i</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  Created by 陈洋 on 2020/10/8.</span></span><br><span class="line"><span class="comment">//  Copyright © 2020 陈洋. All rights reserved.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> a[<span class="number">200005</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">const</span> <span class="keyword">char</span> * argv[])</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n,m;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n &gt;&gt; m;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">int</span> len = n + m + <span class="number">1</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; len; i++)</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; a[i];</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">int</span> mmax = <span class="number">0</span>, mmin = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; len; i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(a[mmax] &lt; a[i]) mmax = i;</span><br><span class="line">        <span class="keyword">if</span>(a[mmin] &gt; a[i]) mmin = i;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> sum = <span class="number">0</span>;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span>(m == <span class="number">0</span>)&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; len; i++)</span><br><span class="line">            sum += a[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">        sum += a[mmax];</span><br><span class="line">        sum -= a[mmin];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; len; i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(i != mmax &amp;&amp; i != mmin)&#123;</span><br><span class="line">                sum += <span class="built_in">abs</span>(a[i]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; sum &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
           
@@ -1025,7 +821,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://codeblog-cy.top/2020/10/08/2019lanqiao-h-ArithmeticProgression/">
+    <link itemprop="mainEntityOfPage" href="https://codeblog-cy.top/2020/10/14/2019lanqiao-h-ArithmeticProgression/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="陈洋">
@@ -1044,7 +840,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2020/10/08/2019lanqiao-h-ArithmeticProgression/" itemprop="url">未命名</a></h1>
+                <a class="post-title-link" href="/2020/10/14/2019lanqiao-h-ArithmeticProgression/" itemprop="url">2019年蓝桥杯C/C++ B组省赛 试题H：等差数列</a></h1>
         
 
         <div class="post-meta">
@@ -1056,8 +852,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-10-08T19:09:42+08:00">
-                2020-10-08
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-10-14T16:51:05+08:00">
+                2020-10-14
               </time>
             
 
@@ -1066,6 +862,28 @@
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/数论/" itemprop="url" rel="index">
+                    <span itemprop="name">数论</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -1096,11 +914,25 @@
       
         
           
-            <h2 id="暴力算法"><a href="#暴力算法" class="headerlink" title="暴力算法"></a>暴力算法</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  main.cpp</span></span><br><span class="line"><span class="comment">//  2019lanqiao-h</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  Created by 陈洋 on 2020/10/8.</span></span><br><span class="line"><span class="comment">//  Copyright © 2020 陈洋. All rights reserved.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> a[<span class="number">200005</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">const</span> <span class="keyword">char</span> * argv[])</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)  <span class="built_in">cin</span> &gt;&gt; a[i];</span><br><span class="line">    </span><br><span class="line">    sort(a, a + n);</span><br><span class="line">    </span><br><span class="line"><span class="comment">//    for(int i = 0; i &lt; n; i++) cout &lt;&lt; a[i] &lt;&lt; endl;</span></span><br><span class="line">    <span class="keyword">int</span> mmin = <span class="number">-1</span>;</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//找到两个数之间最小的差</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n - <span class="number">1</span>; i++)&#123;</span><br><span class="line">        <span class="keyword">int</span> temp = a[i + <span class="number">1</span>] - a[i];</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(mmin == <span class="number">-1</span> || mmin &gt; temp) mmin = temp;</span><br><span class="line">    &#125;</span><br><span class="line">  	<span class="comment">//找到两个数之间最小的差</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> ans = <span class="number">-1</span>;</span><br><span class="line">    </span><br><span class="line">  	<span class="comment">//从1到两个数之间最小的差，依次测试公差</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = mmin; i &gt;= <span class="number">1</span>; i--)&#123;</span><br><span class="line">        <span class="keyword">int</span> j = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(j = <span class="number">1</span>; j &lt; n; j++)&#123;</span><br><span class="line">            <span class="keyword">if</span>((a[j] - a[<span class="number">0</span>]) % i != <span class="number">0</span>)</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span>(j == n)&#123;</span><br><span class="line">            ans = (a[n - <span class="number">1</span>] - a[<span class="number">0</span>]) / i + <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  	</span><br><span class="line">  	<span class="comment">//ans == -1说明公差为0</span></span><br><span class="line">    <span class="keyword">if</span>(ans == <span class="number">-1</span>)   ans = n;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; ans &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+            <a id="more"></a>
 
-<h2 id="gcd最大公约数"><a href="#gcd最大公约数" class="headerlink" title="gcd最大公约数"></a>gcd最大公约数</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  main.cpp</span></span><br><span class="line"><span class="comment">//  2019lanqiao-h</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  Created by 陈洋 on 2020/10/8.</span></span><br><span class="line"><span class="comment">//  Copyright © 2020 陈洋. All rights reserved.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//gcd</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="keyword">int</span> a[<span class="number">200005</span>];</span><br><span class="line"><span class="keyword">int</span> n;</span><br><span class="line"></span><br><span class="line"><span class="function">ll <span class="title">gcd</span><span class="params">(ll a, ll b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(a &lt; b) <span class="keyword">return</span> gcd(b, a);</span><br><span class="line">    <span class="keyword">if</span>(b == <span class="number">0</span>) <span class="keyword">return</span> a;</span><br><span class="line">    <span class="keyword">return</span> gcd(b, a % b);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)  <span class="built_in">cin</span> &gt;&gt; a[i];</span><br><span class="line">    </span><br><span class="line">    sort(a, a + n);</span><br><span class="line">    </span><br><span class="line">  	<span class="comment">//算出所有差的最大公约数</span></span><br><span class="line">    <span class="keyword">int</span> GCD = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n - <span class="number">1</span>; i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(i == <span class="number">0</span>)&#123;</span><br><span class="line">            GCD = a[i + <span class="number">1</span>] - a[i];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">int</span> temp = a[i + <span class="number">1</span>] - a[i];</span><br><span class="line">            GCD = gcd(GCD, temp);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  	<span class="comment">//算出所有差的最大公约数</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span>(GCD == <span class="number">0</span>)</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; n &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; (a[n - <span class="number">1</span>] - a[<span class="number">0</span>]) / GCD + <span class="number">1</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<img src="https://s1.ax1x.com/2020/10/14/05by5j.png" alt="题目" style="zoom:80%;">
 
 
+
+<h2 id="解题代码"><a href="#解题代码" class="headerlink" title="解题代码"></a>解题代码</h2><h3 id="暴力算法"><a href="#暴力算法" class="headerlink" title="暴力算法"></a>暴力算法</h3><blockquote>
+<p>经过分析可以知道，排序后的数列中，每两个数之间都存在一个差，<strong>所有的差最小的<code>mmin</code>那个才有可能会是公差<font color="red">（因为如果公差比最小的还要大，那么中间就会至少越过一项，不满足等差数列）</font></strong></p>
+</blockquote>
+<p>因此只需要将公差<code>mmin ~ 0</code>进行遍历即可找到使得等差数列最短的公差</p>
+<p><strong><font color="red">存在超时风险！！！！</font></strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  main.cpp</span></span><br><span class="line"><span class="comment">//  2019lanqiao-h</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  Created by 陈洋 on 2020/10/8.</span></span><br><span class="line"><span class="comment">//  Copyright © 2020 陈洋. All rights reserved.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> a[<span class="number">200005</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">const</span> <span class="keyword">char</span> * argv[])</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)  <span class="built_in">cin</span> &gt;&gt; a[i];</span><br><span class="line">    </span><br><span class="line">    sort(a, a + n);</span><br><span class="line">    </span><br><span class="line"><span class="comment">//    for(int i = 0; i &lt; n; i++) cout &lt;&lt; a[i] &lt;&lt; endl;</span></span><br><span class="line">    <span class="keyword">int</span> mmin = <span class="number">-1</span>;</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//找到两个数之间最小的差</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n - <span class="number">1</span>; i++)&#123;</span><br><span class="line">        <span class="keyword">int</span> temp = a[i + <span class="number">1</span>] - a[i];</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(mmin == <span class="number">-1</span> || mmin &gt; temp) mmin = temp;</span><br><span class="line">    &#125;</span><br><span class="line">  	<span class="comment">//找到两个数之间最小的差</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> ans = <span class="number">-1</span>;</span><br><span class="line">    </span><br><span class="line">  	<span class="comment">//从1到两个数之间最小的差，依次测试公差</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = mmin; i &gt;= <span class="number">1</span>; i--)&#123;</span><br><span class="line">        <span class="keyword">int</span> j = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(j = <span class="number">1</span>; j &lt; n; j++)&#123;</span><br><span class="line">            <span class="keyword">if</span>((a[j] - a[<span class="number">0</span>]) % i != <span class="number">0</span>)</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span>(j == n)&#123;</span><br><span class="line">            ans = (a[n - <span class="number">1</span>] - a[<span class="number">0</span>]) / i + <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  	</span><br><span class="line">  	<span class="comment">//ans == -1说明公差为0</span></span><br><span class="line">    <span class="keyword">if</span>(ans == <span class="number">-1</span>)   ans = n;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; ans &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="时间复杂度是O-mmin-n"><a href="#时间复杂度是O-mmin-n" class="headerlink" title="时间复杂度是O(mmin * n)"></a>时间复杂度是O(mmin * n)</h4><h3 id="gcd最大公约数"><a href="#gcd最大公约数" class="headerlink" title="gcd最大公约数"></a>gcd最大公约数</h3><p> 我们可以知道等差数列中的每个项的组成为<code>an = a1 + (n - 1) * d</code></p>
+<p>由此可知<strong>a<sub>i</sub></strong> 与<strong>a<sub>j</sub></strong> 之间会差<code>(j - i) * d</code></p>
+<p>因此我不需要管当前数列的排列，计算出每两个项之间的差，求出他们的最大公约数，就可以的到最大公差。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  main.cpp</span></span><br><span class="line"><span class="comment">//  2019lanqiao-h</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  Created by 陈洋 on 2020/10/8.</span></span><br><span class="line"><span class="comment">//  Copyright © 2020 陈洋. All rights reserved.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//gcd</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="keyword">int</span> a[<span class="number">200005</span>];</span><br><span class="line"><span class="keyword">int</span> n;</span><br><span class="line"></span><br><span class="line"><span class="function">ll <span class="title">gcd</span><span class="params">(ll a, ll b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(a &lt; b) <span class="keyword">return</span> gcd(b, a);</span><br><span class="line">    <span class="keyword">if</span>(b == <span class="number">0</span>) <span class="keyword">return</span> a;</span><br><span class="line">    <span class="keyword">return</span> gcd(b, a % b);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)  <span class="built_in">cin</span> &gt;&gt; a[i];</span><br><span class="line">    </span><br><span class="line">    sort(a, a + n);</span><br><span class="line">    </span><br><span class="line">  	<span class="comment">//算出所有差的最大公约数</span></span><br><span class="line">    <span class="keyword">int</span> GCD = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n - <span class="number">1</span>; i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(i == <span class="number">0</span>)&#123;</span><br><span class="line">            GCD = a[i + <span class="number">1</span>] - a[i];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">int</span> temp = a[i + <span class="number">1</span>] - a[i];</span><br><span class="line">            GCD = gcd(GCD, temp);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  	<span class="comment">//算出所有差的最大公约数</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span>(GCD == <span class="number">0</span>)</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; n &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; (a[n - <span class="number">1</span>] - a[<span class="number">0</span>]) / GCD + <span class="number">1</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="时间复杂度是O-logmax-a-b-n"><a href="#时间复杂度是O-logmax-a-b-n" class="headerlink" title="时间复杂度是O(logmax(a,b) * n)"></a>时间复杂度是O(logmax(a,b) * n)</h4>
           
         
       
@@ -1152,7 +984,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://codeblog-cy.top/2020/10/08/2019lanqiao-g-TheValueCompleteBinaryTree/">
+    <link itemprop="mainEntityOfPage" href="https://codeblog-cy.top/2020/10/14/2019lanqiao-g-TheValueCompleteBinaryTree/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="陈洋">
@@ -1171,7 +1003,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2020/10/08/2019lanqiao-g-TheValueCompleteBinaryTree/" itemprop="url">未命名</a></h1>
+                <a class="post-title-link" href="/2020/10/14/2019lanqiao-g-TheValueCompleteBinaryTree/" itemprop="url">2019年蓝桥杯C/C++ B组省赛 试题G：完全二叉树的权值</a></h1>
         
 
         <div class="post-meta">
@@ -1183,8 +1015,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-10-08T18:50:43+08:00">
-                2020-10-08
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-10-14T16:50:37+08:00">
+                2020-10-14
               </time>
             
 
@@ -1193,6 +1025,28 @@
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/图论/" itemprop="url" rel="index">
+                    <span itemprop="name">图论</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -1223,10 +1077,16 @@
       
         
           
-            <blockquote>
+            <a id="more"></a>
+
+<img src="https://s1.ax1x.com/2020/10/14/05bwKf.png" alt="题目" style="zoom:80%;">
+
+
+
+<h2 id="注意问题"><a href="#注意问题" class="headerlink" title="注意问题"></a>注意问题</h2><blockquote>
 <p><strong><font color="red">主要注意树中会出现负权制，因此初始化mmax时需要考虑一下</font></strong></p>
 </blockquote>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> a[<span class="number">1000005</span>];</span><br><span class="line"><span class="keyword">long</span> <span class="keyword">long</span> sum = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">long</span> <span class="keyword">long</span> mmax = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">int</span> mark;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">const</span> <span class="keyword">char</span> * argv[])</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; a[i];</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> i = <span class="number">1</span>;	<span class="comment">//当前深度的起始下标</span></span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> j = <span class="number">2</span>;	<span class="comment">//当前深度的结束下标</span></span><br><span class="line">    <span class="keyword">int</span> root = <span class="number">1</span>;	<span class="comment">//当前深度</span></span><br><span class="line">    <span class="keyword">while</span>(i &lt;= n)&#123;</span><br><span class="line">        sum = <span class="number">0</span>;</span><br><span class="line">      </span><br><span class="line">      	<span class="comment">//统计当前深度的权制</span></span><br><span class="line">        <span class="keyword">for</span>(;i &lt; j; i++)&#123;</span><br><span class="line">            sum += a[i];</span><br><span class="line">        &#125;</span><br><span class="line">      	<span class="comment">//统计当前深度的权制</span></span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span>(root == <span class="number">1</span> || mmax &lt; sum)&#123;</span><br><span class="line">            mmax = sum;</span><br><span class="line">            mark = root;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        i = j;</span><br><span class="line">        j = j * <span class="number">2</span>;</span><br><span class="line">        root ++;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; mark &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="解题代码"><a href="#解题代码" class="headerlink" title="解题代码"></a>解题代码</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> a[<span class="number">1000005</span>];</span><br><span class="line"><span class="keyword">long</span> <span class="keyword">long</span> sum = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">long</span> <span class="keyword">long</span> mmax = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">int</span> mark;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">const</span> <span class="keyword">char</span> * argv[])</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; a[i];</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> i = <span class="number">1</span>;	<span class="comment">//当前深度的起始下标</span></span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> j = <span class="number">2</span>;	<span class="comment">//当前深度的结束下标</span></span><br><span class="line">    <span class="keyword">int</span> root = <span class="number">1</span>;	<span class="comment">//当前深度</span></span><br><span class="line">    <span class="keyword">while</span>(i &lt;= n)&#123;</span><br><span class="line">        sum = <span class="number">0</span>;</span><br><span class="line">      </span><br><span class="line">      	<span class="comment">//统计当前深度的权制</span></span><br><span class="line">        <span class="keyword">for</span>(;i &lt; j; i++)&#123;</span><br><span class="line">            sum += a[i];</span><br><span class="line">        &#125;</span><br><span class="line">      	<span class="comment">//统计当前深度的权制</span></span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span>(root == <span class="number">1</span> || mmax &lt; sum)&#123;</span><br><span class="line">            mmax = sum;</span><br><span class="line">            mark = root;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        i = j;</span><br><span class="line">        j = j * <span class="number">2</span>;</span><br><span class="line">        root ++;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; mark &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
           
@@ -1581,6 +1441,471 @@
 
 
     
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://codeblog-cy.top/2020/04/23/Matrix-Multiplication/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="陈洋">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/me.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ChenYang's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/04/23/Matrix-Multiplication/" itemprop="url">矩阵连乘问题——算法设计课程</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-23T09:13:02+08:00">
+                2020-04-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/动态规划DP/" itemprop="url" rel="index">
+                    <span itemprop="name">动态规划DP</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/算法设计分析笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">算法设计分析笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="算法思想"><a href="#算法思想" class="headerlink" title="算法思想"></a>算法思想</h1><p>从小到大找不同的连乘矩阵的分割点，将所有分割点计算一遍就可以知道最优情况</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/04/23/Matrix-Multiplication/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    <div>
+      
+    </div>
+    
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://codeblog-cy.top/2020/04/20/UML-ClassDiagram/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="陈洋">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/me.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ChenYang's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/04/20/UML-ClassDiagram/" itemprop="url">UML学习笔记——类图</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-20T20:42:19+08:00">
+                2020-04-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/UML建模/" itemprop="url" rel="index">
+                    <span itemprop="name">UML建模</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="类图"><a href="#类图" class="headerlink" title="类图"></a>类图</h1><p>UML中的类图的相关知识。</p>
+<p>以下内容均来自<a href>智慧树</a>《面向对象与UML（山东联盟）烟台大学》课程。</p>
+<p><strong><u>仅作总结，如果侵权请联系本人删除</u></strong></p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/04/20/UML-ClassDiagram/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    <div>
+      
+    </div>
+    
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://codeblog-cy.top/2020/04/17/UML-UseCase/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="陈洋">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/me.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ChenYang's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/04/17/UML-UseCase/" itemprop="url">UML学习笔记——用例图</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-17T15:45:05+08:00">
+                2020-04-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/UML建模/" itemprop="url" rel="index">
+                    <span itemprop="name">UML建模</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="用例图"><a href="#用例图" class="headerlink" title="用例图"></a>用例图</h1><p>UML中的用例图的相关知识。</p>
+<p>以下内容均来自<a href>智慧树</a>《面向对象与UML（山东联盟）烟台大学》课程。</p>
+<p><strong><u>仅作总结，如果侵权请联系本人删除</u></strong></p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/04/17/UML-UseCase/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    <div>
+      
+    </div>
+    
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
   </section>
 
   
@@ -1633,7 +1958,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">80</span>
+                  <span class="site-state-item-count">77</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1655,7 +1980,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">66</span>
+                  <span class="site-state-item-count">68</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -1748,7 +2073,7 @@
     <!-- 博客字数统计 -->
     <span class="site-pv">
       <i class="fa fa-pencil"></i>
-      博客全站共： <span class="post-count">82.9k</span> 字
+      博客全站共： <span class="post-count">84.1k</span> 字
     </span>
 </div>
 <!-- 新增访客统计代码 END-->
@@ -1774,7 +2099,7 @@ setInterval("createtime()",250);
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共82.9k字</span>
+  <span class="post-count">博客全站共84.1k字</span>
 </div>
 
 

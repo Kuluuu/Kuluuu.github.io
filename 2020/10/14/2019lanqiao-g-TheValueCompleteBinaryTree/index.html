@@ -77,7 +77,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="二叉树,">
 
 
 
@@ -88,18 +88,20 @@
 
 
 
-<meta name="description" content="12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152////  main.cpp//  2019lanqiao-i////  Created by 陈洋 on 2020/10/8.//  Copyright © 2020 陈洋. All rights reser">
-<meta name="keywords" content="程序员,前端,c语言">
+<meta name="description" content="注意问题 主要注意树中会出现负权制，因此初始化mmax时需要考虑一下  解题代码123456789101112131415161718192021222324252627282930313233343536373839404142#include &amp;lt;iostream&amp;gt;using namespace std;int a[1000005];long long sum = 0;l">
+<meta name="keywords" content="二叉树">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ChenYang&#39;s Blog">
-<meta property="og:url" content="https://codeblog-cy.top/2020/10/09/2019lanqiao-i-PostfixExpressions/index.html">
+<meta property="og:title" content="2019年蓝桥杯C&#x2F;C++ B组省赛 试题G：完全二叉树的权值">
+<meta property="og:url" content="https://codeblog-cy.top/2020/10/14/2019lanqiao-g-TheValueCompleteBinaryTree/index.html">
 <meta property="og:site_name" content="ChenYang&#39;s Blog">
-<meta property="og:description" content="12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152////  main.cpp//  2019lanqiao-i////  Created by 陈洋 on 2020/10/8.//  Copyright © 2020 陈洋. All rights reser">
+<meta property="og:description" content="注意问题 主要注意树中会出现负权制，因此初始化mmax时需要考虑一下  解题代码123456789101112131415161718192021222324252627282930313233343536373839404142#include &amp;lt;iostream&amp;gt;using namespace std;int a[1000005];long long sum = 0;l">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-10-09T13:02:40.273Z">
+<meta property="og:image" content="https://s1.ax1x.com/2020/10/14/05bwKf.png">
+<meta property="og:updated_time" content="2020-10-14T09:28:29.243Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ChenYang&#39;s Blog">
-<meta name="twitter:description" content="12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152////  main.cpp//  2019lanqiao-i////  Created by 陈洋 on 2020/10/8.//  Copyright © 2020 陈洋. All rights reser">
+<meta name="twitter:title" content="2019年蓝桥杯C&#x2F;C++ B组省赛 试题G：完全二叉树的权值">
+<meta name="twitter:description" content="注意问题 主要注意树中会出现负权制，因此初始化mmax时需要考虑一下  解题代码123456789101112131415161718192021222324252627282930313233343536373839404142#include &amp;lt;iostream&amp;gt;using namespace std;int a[1000005];long long sum = 0;l">
+<meta name="twitter:image" content="https://s1.ax1x.com/2020/10/14/05bwKf.png">
 
 
 
@@ -129,13 +131,13 @@
 
 
 
-  <link rel="canonical" href="https://codeblog-cy.top/2020/10/09/2019lanqiao-i-PostfixExpressions/">
+  <link rel="canonical" href="https://codeblog-cy.top/2020/10/14/2019lanqiao-g-TheValueCompleteBinaryTree/">
 
 
 
 
 
-  <title> | ChenYang's Blog</title>
+  <title>2019年蓝桥杯C/C++ B组省赛 试题G：完全二叉树的权值 | ChenYang's Blog</title>
   
 
 
@@ -272,7 +274,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://codeblog-cy.top/2020/10/09/2019lanqiao-i-PostfixExpressions/">
+    <link itemprop="mainEntityOfPage" href="https://codeblog-cy.top/2020/10/14/2019lanqiao-g-TheValueCompleteBinaryTree/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="陈洋">
@@ -289,7 +291,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline"></h1>
+          <h1 class="post-title" itemprop="name headline">2019年蓝桥杯C/C++ B组省赛 试题G：完全二叉树的权值</h1>
         
 
         <div class="post-meta">
@@ -301,8 +303,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-10-09T18:54:14+08:00">
-                2020-10-09
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-10-14T16:50:37+08:00">
+                2020-10-14
               </time>
             
 
@@ -311,6 +313,28 @@
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/图论/" itemprop="url" rel="index">
+                    <span itemprop="name">图论</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -339,7 +363,16 @@
       
 
       
-        <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  main.cpp</span></span><br><span class="line"><span class="comment">//  2019lanqiao-i</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  Created by 陈洋 on 2020/10/8.</span></span><br><span class="line"><span class="comment">//  Copyright © 2020 陈洋. All rights reserved.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> a[<span class="number">200005</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">const</span> <span class="keyword">char</span> * argv[])</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n,m;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n &gt;&gt; m;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">int</span> len = n + m + <span class="number">1</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; len; i++)</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; a[i];</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">int</span> mmax = <span class="number">0</span>, mmin = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; len; i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(a[mmax] &lt; a[i]) mmax = i;</span><br><span class="line">        <span class="keyword">if</span>(a[mmin] &gt; a[i]) mmin = i;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> sum = <span class="number">0</span>;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span>(m == <span class="number">0</span>)&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; len; i++)</span><br><span class="line">            sum += a[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">        sum += a[mmax];</span><br><span class="line">        sum -= a[mmin];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; len; i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(i != mmax &amp;&amp; i != mmin)&#123;</span><br><span class="line">                sum += <span class="built_in">abs</span>(a[i]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; sum &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <a id="more"></a>
+
+<img src="https://s1.ax1x.com/2020/10/14/05bwKf.png" alt="题目" style="zoom:80%;">
+
+
+
+<h2 id="注意问题"><a href="#注意问题" class="headerlink" title="注意问题"></a>注意问题</h2><blockquote>
+<p><strong><font color="red">主要注意树中会出现负权制，因此初始化mmax时需要考虑一下</font></strong></p>
+</blockquote>
+<h2 id="解题代码"><a href="#解题代码" class="headerlink" title="解题代码"></a>解题代码</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> a[<span class="number">1000005</span>];</span><br><span class="line"><span class="keyword">long</span> <span class="keyword">long</span> sum = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">long</span> <span class="keyword">long</span> mmax = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">int</span> mark;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">const</span> <span class="keyword">char</span> * argv[])</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; a[i];</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> i = <span class="number">1</span>;	<span class="comment">//当前深度的起始下标</span></span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> j = <span class="number">2</span>;	<span class="comment">//当前深度的结束下标</span></span><br><span class="line">    <span class="keyword">int</span> root = <span class="number">1</span>;	<span class="comment">//当前深度</span></span><br><span class="line">    <span class="keyword">while</span>(i &lt;= n)&#123;</span><br><span class="line">        sum = <span class="number">0</span>;</span><br><span class="line">      </span><br><span class="line">      	<span class="comment">//统计当前深度的权制</span></span><br><span class="line">        <span class="keyword">for</span>(;i &lt; j; i++)&#123;</span><br><span class="line">            sum += a[i];</span><br><span class="line">        &#125;</span><br><span class="line">      	<span class="comment">//统计当前深度的权制</span></span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span>(root == <span class="number">1</span> || mmax &lt; sum)&#123;</span><br><span class="line">            mmax = sum;</span><br><span class="line">            mark = root;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        i = j;</span><br><span class="line">        j = j * <span class="number">2</span>;</span><br><span class="line">        root ++;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; mark &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
       
@@ -351,6 +384,37 @@
     <div>
       
         
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script type="text/javascript" src="http://jslibs.wuxubj.cn/sweetalert_mini/jquery-1.7.1.min.js"></script>
+  <script src="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.mini.css">
+  <p><span>本文标题:</span><a href="/2020/10/14/2019lanqiao-g-TheValueCompleteBinaryTree/">2019年蓝桥杯C/C++ B组省赛 试题G：完全二叉树的权值</a></p>
+  <p><span>文章作者:</span><a href="/" title="访问 陈洋 的个人博客">陈洋</a></p>
+  <p><span>发布时间:</span>2020年10月14日 - 16:10</p>
+  <p><span>最后更新:</span>2020年10月14日 - 17:10</p>
+  <p><span>原始链接:</span><a href="/2020/10/14/2019lanqiao-g-TheValueCompleteBinaryTree/" title="2019年蓝桥杯C/C++ B组省赛 试题G：完全二叉树的权值">https://codeblog-cy.top/2020/10/14/2019lanqiao-g-TheValueCompleteBinaryTree/</a>
+    <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://codeblog-cy.top/2020/10/14/2019lanqiao-g-TheValueCompleteBinaryTree/" aria-label="复制成功！"></i></span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+    clipboard.on('success', $(function(){
+      $(".fa-clipboard").click(function(){
+        swal({   
+          title: "",   
+          text: '复制成功',   
+          html: false,
+          timer: 500,   
+          showConfirmButton: false
+        });
+      });
+    }));  
+</script>
+
       
     </div>
     
@@ -362,6 +426,12 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/二叉树/" rel="tag"># 二叉树</a>
+          
+        </div>
+      
 
       
       
@@ -371,8 +441,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/10/08/2019lanqiao-h-ArithmeticProgression/" rel="next" title>
-                <i class="fa fa-chevron-left"></i> 
+              <a href="/2020/04/24/find-similar-string/" rel="next" title="找相似串问题——算法设计课程">
+                <i class="fa fa-chevron-left"></i> 找相似串问题——算法设计课程
               </a>
             
           </div>
@@ -381,8 +451,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2020/10/11/2018lanqiao-d-NumberOfTests/" rel="prev" title>
-                 <i class="fa fa-chevron-right"></i>
+              <a href="/2020/10/14/2019lanqiao-h-ArithmeticProgression/" rel="prev" title="2019年蓝桥杯C/C++ B组省赛 试题H：等差数列">
+                2019年蓝桥杯C/C++ B组省赛 试题H：等差数列 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -435,8 +505,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -453,7 +532,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">80</span>
+                  <span class="site-state-item-count">77</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -475,7 +554,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">66</span>
+                  <span class="site-state-item-count">68</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -514,6 +593,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#注意问题"><span class="nav-number">1.</span> <span class="nav-text">注意问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解题代码"><span class="nav-number">2.</span> <span class="nav-text">解题代码</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -568,7 +663,7 @@
     <!-- 博客字数统计 -->
     <span class="site-pv">
       <i class="fa fa-pencil"></i>
-      博客全站共： <span class="post-count">82.9k</span> 字
+      博客全站共： <span class="post-count">84.1k</span> 字
     </span>
 </div>
 <!-- 新增访客统计代码 END-->
@@ -594,7 +689,7 @@ setInterval("createtime()",250);
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共82.9k字</span>
+  <span class="post-count">博客全站共84.1k字</span>
 </div>
 
 
