@@ -92,39 +92,39 @@
 <meta name="keywords" content="数据结构,BF算法,KMP算法">
 <meta property="og:type" content="article">
 <meta property="og:title" content="串的模式匹配算法设计（数据结构学习笔记）">
-<meta property="og:url" content="http://Kuluuu.github.io/2019/08/03/pipei-algorithm/index.html">
+<meta property="og:url" content="https://codeblog-cy.top/2019/08/03/pipei-algorithm/index.html">
 <meta property="og:site_name" content="ChenYang&#39;s Blog">
 <meta property="og:description" content="BF算法、KMP算法串的模式匹配问题就是在串s中找到一个与串t相等的子串，通常将串s称为目标串，串t称为模式串，因此该问题被称为模式匹配问题。Brute-Force算法与Knuth-Morris-Pratt算法都是解决串的模式匹配问题的算法设计，但二者效率不同，使用场景也不尽相同。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://kuluuu.github.io/assets/blogImg/pipeialgorithm/pipei1.PNG">
-<meta property="og:image" content="http://kuluuu.github.io/assets/blogImg/pipeialgorithm/pipei2.PNG">
-<meta property="og:image" content="http://kuluuu.github.io/assets/blogImg/pipeialgorithm/pipei3.PNG">
-<meta property="og:image" content="http://kuluuu.github.io/assets/blogImg/pipeialgorithm/pipei4.PNG">
-<meta property="og:image" content="http://kuluuu.github.io/assets/blogImg/pipeialgorithm/pipei5.PNG">
-<meta property="og:image" content="http://kuluuu.github.io/assets/blogImg/pipeialgorithm/pipei6.PNG">
-<meta property="og:image" content="http://kuluuu.github.io/assets/blogImg/pipeialgorithm/pipei7.PNG">
-<meta property="og:image" content="http://kuluuu.github.io/assets/blogImg/pipeialgorithm/pipei8.PNG">
-<meta property="og:image" content="http://kuluuu.github.io/assets/blogImg/pipeialgorithm/pipei9.PNG">
-<meta property="og:image" content="http://kuluuu.github.io/assets/blogImg/pipeialgorithm/pipei10.PNG">
-<meta property="og:image" content="http://kuluuu.github.io/assets/blogImg/pipeialgorithm/pipei11.PNG">
-<meta property="og:image" content="http://kuluuu.github.io/assets/blogImg/pipeialgorithm/pipei12.PNG">
-<meta property="og:image" content="http://kuluuu.github.io/assets/blogImg/pipeialgorithm/pipei13.PNG">
-<meta property="og:image" content="http://kuluuu.github.io/assets/blogImg/pipeialgorithm/pipei14.PNG">
-<meta property="og:image" content="http://kuluuu.github.io/assets/blogImg/pipeialgorithm/pipei21.PNG">
-<meta property="og:image" content="http://kuluuu.github.io/assets/blogImg/pipeialgorithm/pipei15.PNG">
-<meta property="og:image" content="http://kuluuu.github.io/assets/blogImg/pipeialgorithm/pipei15.PNG">
-<meta property="og:image" content="http://kuluuu.github.io/assets/blogImg/pipeialgorithm/pipei16.PNG">
-<meta property="og:image" content="http://kuluuu.github.io/assets/blogImg/pipeialgorithm/pipei17.PNG">
-<meta property="og:image" content="http://kuluuu.github.io/assets/blogImg/pipeialgorithm/pipei18.PNG">
-<meta property="og:image" content="http://kuluuu.github.io/assets/blogImg/pipeialgorithm/pipei19.PNG">
-<meta property="og:image" content="http://kuluuu.github.io/assets/blogImg/pipeialgorithm/pipei20.PNG">
-<meta property="og:image" content="http://kuluuu.github.io/assets/blogImg/pipeialgorithm/pipei21.PNG">
-<meta property="og:image" content="http://kuluuu.github.io/assets/blogImg/pipeialgorithm/pipei23.PNG">
+<meta property="og:image" content="https://codeblog-cy.top/assets/blogImg/pipeialgorithm/pipei1.PNG">
+<meta property="og:image" content="https://codeblog-cy.top/assets/blogImg/pipeialgorithm/pipei2.PNG">
+<meta property="og:image" content="https://codeblog-cy.top/assets/blogImg/pipeialgorithm/pipei3.PNG">
+<meta property="og:image" content="https://codeblog-cy.top/assets/blogImg/pipeialgorithm/pipei4.PNG">
+<meta property="og:image" content="https://codeblog-cy.top/assets/blogImg/pipeialgorithm/pipei5.PNG">
+<meta property="og:image" content="https://codeblog-cy.top/assets/blogImg/pipeialgorithm/pipei6.PNG">
+<meta property="og:image" content="https://codeblog-cy.top/assets/blogImg/pipeialgorithm/pipei7.PNG">
+<meta property="og:image" content="https://codeblog-cy.top/assets/blogImg/pipeialgorithm/pipei8.PNG">
+<meta property="og:image" content="https://codeblog-cy.top/assets/blogImg/pipeialgorithm/pipei9.PNG">
+<meta property="og:image" content="https://codeblog-cy.top/assets/blogImg/pipeialgorithm/pipei10.PNG">
+<meta property="og:image" content="https://codeblog-cy.top/assets/blogImg/pipeialgorithm/pipei11.PNG">
+<meta property="og:image" content="https://codeblog-cy.top/assets/blogImg/pipeialgorithm/pipei12.PNG">
+<meta property="og:image" content="https://codeblog-cy.top/assets/blogImg/pipeialgorithm/pipei13.PNG">
+<meta property="og:image" content="https://codeblog-cy.top/assets/blogImg/pipeialgorithm/pipei14.PNG">
+<meta property="og:image" content="https://codeblog-cy.top/assets/blogImg/pipeialgorithm/pipei21.PNG">
+<meta property="og:image" content="https://codeblog-cy.top/assets/blogImg/pipeialgorithm/pipei15.PNG">
+<meta property="og:image" content="https://codeblog-cy.top/assets/blogImg/pipeialgorithm/pipei15.PNG">
+<meta property="og:image" content="https://codeblog-cy.top/assets/blogImg/pipeialgorithm/pipei16.PNG">
+<meta property="og:image" content="https://codeblog-cy.top/assets/blogImg/pipeialgorithm/pipei17.PNG">
+<meta property="og:image" content="https://codeblog-cy.top/assets/blogImg/pipeialgorithm/pipei18.PNG">
+<meta property="og:image" content="https://codeblog-cy.top/assets/blogImg/pipeialgorithm/pipei19.PNG">
+<meta property="og:image" content="https://codeblog-cy.top/assets/blogImg/pipeialgorithm/pipei20.PNG">
+<meta property="og:image" content="https://codeblog-cy.top/assets/blogImg/pipeialgorithm/pipei21.PNG">
+<meta property="og:image" content="https://codeblog-cy.top/assets/blogImg/pipeialgorithm/pipei23.PNG">
 <meta property="og:updated_time" content="2019-10-30T07:57:20.013Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="串的模式匹配算法设计（数据结构学习笔记）">
 <meta name="twitter:description" content="BF算法、KMP算法串的模式匹配问题就是在串s中找到一个与串t相等的子串，通常将串s称为目标串，串t称为模式串，因此该问题被称为模式匹配问题。Brute-Force算法与Knuth-Morris-Pratt算法都是解决串的模式匹配问题的算法设计，但二者效率不同，使用场景也不尽相同。">
-<meta name="twitter:image" content="http://kuluuu.github.io/assets/blogImg/pipeialgorithm/pipei1.PNG">
+<meta name="twitter:image" content="https://codeblog-cy.top/assets/blogImg/pipeialgorithm/pipei1.PNG">
 
 
 
@@ -154,7 +154,7 @@
 
 
 
-  <link rel="canonical" href="http://Kuluuu.github.io/2019/08/03/pipei-algorithm/">
+  <link rel="canonical" href="https://codeblog-cy.top/2019/08/03/pipei-algorithm/">
 
 
 
@@ -297,7 +297,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://Kuluuu.github.io/2019/08/03/pipei-algorithm/">
+    <link itemprop="mainEntityOfPage" href="https://codeblog-cy.top/2019/08/03/pipei-algorithm/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="陈洋">
@@ -506,8 +506,8 @@
   <p><span>文章作者:</span><a href="/" title="访问 陈洋 的个人博客">陈洋</a></p>
   <p><span>发布时间:</span>2019年08月03日 - 22:08</p>
   <p><span>最后更新:</span>2019年10月30日 - 15:10</p>
-  <p><span>原始链接:</span><a href="/2019/08/03/pipei-algorithm/" title="串的模式匹配算法设计（数据结构学习笔记）">http://Kuluuu.github.io/2019/08/03/pipei-algorithm/</a>
-    <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://Kuluuu.github.io/2019/08/03/pipei-algorithm/" aria-label="复制成功！"></i></span>
+  <p><span>原始链接:</span><a href="/2019/08/03/pipei-algorithm/" title="串的模式匹配算法设计（数据结构学习笔记）">https://codeblog-cy.top/2019/08/03/pipei-algorithm/</a>
+    <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://codeblog-cy.top/2019/08/03/pipei-algorithm/" aria-label="复制成功！"></i></span>
   </p>
   <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
 </div>
