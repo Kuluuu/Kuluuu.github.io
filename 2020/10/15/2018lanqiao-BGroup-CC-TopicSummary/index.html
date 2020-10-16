@@ -1,0 +1,1042 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-flash.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+  <meta name="baidu-site-verification" content="3fE9IyxcPl">
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/1.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/1.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/1.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/1.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="蓝桥杯,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="A题：第几天">
+<meta name="keywords" content="蓝桥杯">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2018年蓝桥杯C&#x2F;C++ B组省赛题目汇总及部分题解">
+<meta property="og:url" content="https://codeblog-cy.top/2020/10/15/2018lanqiao-BGroup-CC-TopicSummary/index.html">
+<meta property="og:site_name" content="ChenYang&#39;s Blog">
+<meta property="og:description" content="A题：第几天">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://s1.ax1x.com/2020/10/16/0brzRS.png">
+<meta property="og:updated_time" content="2020-10-16T10:52:40.125Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="2018年蓝桥杯C&#x2F;C++ B组省赛题目汇总及部分题解">
+<meta name="twitter:description" content="A题：第几天">
+<meta name="twitter:image" content="https://s1.ax1x.com/2020/10/16/0brzRS.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://codeblog-cy.top/2020/10/15/2018lanqiao-BGroup-CC-TopicSummary/">
+
+
+
+
+
+  <title>2018年蓝桥杯C/C++ B组省赛题目汇总及部分题解 | ChenYang's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+  
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">ChenYang's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">心中有码，自然伟大</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://codeblog-cy.top/2020/10/15/2018lanqiao-BGroup-CC-TopicSummary/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="陈洋">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/me.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ChenYang's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">2018年蓝桥杯C/C++ B组省赛题目汇总及部分题解</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-10-15T20:07:29+08:00">
+                2020-10-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/历年蓝桥杯题目汇总/" itemprop="url" rel="index">
+                    <span itemprop="name">历年蓝桥杯题目汇总</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="A题：第几天"><a href="#A题：第几天" class="headerlink" title="A题：第几天"></a>A题：第几天</h2><a id="more"></a>
+
+<blockquote>
+<p>【题目描述】</p>
+<p>2000年的1月1日，是那一年的第1天。<br>那么，2000年的5月4日，是那一年的第几天？</p>
+<p>【输出】</p>
+<p>输出一个整数表示答案 </p>
+</blockquote>
+<h2 id="B题：明码"><a href="#B题：明码" class="headerlink" title="B题：明码"></a>B题：明码</h2><blockquote>
+<p>【题目描述】</p>
+<p>汉字的字形存在于字库中，即便在今天，16点阵的字库也仍然使用广泛。<br>16点阵的字库把每个汉字看成是16x16个像素信息。并把这些信息记录在字节中。<br>一个字节可以存储8位信息，用32个字节就可以存一个汉字的字形了。<br>把每个字节转为2进制表示，1表示墨迹，0表示底色。每行2个字节，<br>一共16行，布局是：<br>  第1字节，第2字节<br>  第3字节，第4字节<br>  ….<br>  第31字节, 第32字节<br>这道题目是给你一段多个汉字组成的信息，每个汉字用32个字节表示，这里给出了字节作为有符号整数的值。<br>题目的要求隐藏在这些信息中。你的任务是复原这些汉字的字形，从中看出题目的要求，并根据要求填写答案。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&gt; ###这段信息是（一共10个汉字）：</span><br><span class="line">&gt; 4 0 4 0 4 0 4 32 -1 -16 4 32 4 32 4 32 4 32 4 32 8 32 8 32 16 34 16 34 32 30 -64 0</span><br><span class="line">&gt; 16 64 16 64 34 68 127 126 66 -124 67 4 66 4 66 -124 126 100 66 36 66 4 66 4 66 4 126 4 66 40 0 16</span><br><span class="line">&gt; 4 0 4 0 4 0 4 32 -1 -16 4 32 4 32 4 32 4 32 4 32 8 32 8 32 16 34 16 34 32 30 -64 0</span><br><span class="line">&gt; 0 -128 64 -128 48 -128 17 8 1 -4 2 8 8 80 16 64 32 64 -32 64 32 -96 32 -96 33 16 34 8 36 14 40 4</span><br><span class="line">&gt; 4 0 3 0 1 0 0 4 -1 -2 4 0 4 16 7 -8 4 16 4 16 4 16 8 16 8 16 16 16 32 -96 64 64</span><br><span class="line">&gt; 16 64 20 72 62 -4 73 32 5 16 1 0 63 -8 1 0 -1 -2 0 64 0 80 63 -8 8 64 4 64 1 64 0 -128</span><br><span class="line">&gt; 0 16 63 -8 1 0 1 0 1 0 1 4 -1 -2 1 0 1 0 1 0 1 0 1 0 1 0 1 0 5 0 2 0</span><br><span class="line">&gt; 2 0 2 0 7 -16 8 32 24 64 37 -128 2 -128 12 -128 113 -4 2 8 12 16 18 32 33 -64 1 0 14 0 112 0</span><br><span class="line">&gt; 1 0 1 0 1 0 9 32 9 16 17 12 17 4 33 16 65 16 1 32 1 64 0 -128 1 0 2 0 12 0 112 0</span><br><span class="line">&gt; 0 0 0 0 7 -16 24 24 48 12 56 12 0 56 0 -32 0 -64 0 -128 0 0 0 0 1 -128 3 -64 1 -128 0 0</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>数字转换成二进制。</p>
+<p>0代表底色，可以输出空白，1代表笔迹，可以输出#。</p>
+<p>注意负数，负数在计算机中是以补码的方式储存的，</p>
+<p>比如-1 的原码是【1000 0001】</p>
+<p>​        反码是【1111 1110】（按位取反）</p>
+<p>​        补码是【1111 1111】（相加）</p>
+<p>等同于127的原码，所以对于负数，可以+128后处理。</p>
+<h2 id="C题：乘积尾零"><a href="#C题：乘积尾零" class="headerlink" title="C题：乘积尾零"></a>C题：乘积尾零</h2><blockquote>
+<p>【题目描述】</p>
+<p>如下的10行数据，每行有10个整数，请你求出它们的乘积的末尾有多少个零？</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&gt; 5650 4542 3554 473 946 4114 3871 9073 90 4329 </span><br><span class="line">&gt; 2758 7949 6113 5659 5245 7432 3051 4434 6704 3594 </span><br><span class="line">&gt; 9937 1173 6866 3397 4759 7557 3070 2287 1453 9899 </span><br><span class="line">&gt; 1486 5722 3135 1170 4014 5510 5120 729 2880 9019 </span><br><span class="line">&gt; 2049 698 4582 4346 4427 646 9742 7340 1230 7683 </span><br><span class="line">&gt; 5693 7015 6887 7381 4172 4341 2909 2027 7355 5649 </span><br><span class="line">&gt; 6701 6645 1671 5978 2704 9926 295 3125 3878 6785 </span><br><span class="line">&gt; 2066 4247 4800 1578 6652 4616 1113 6205 3264 2915 </span><br><span class="line">&gt; 3966 5291 2904 1285 2193 1428 2265 8730 9436 7074 </span><br><span class="line">&gt; 689 5510 8243 6114 337 4096 8199 7313 3685 211 </span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+<p>【输出】</p>
+<p>输出一个整数表示答案</p>
+</blockquote>
+<h2 id="D题：测试次数"><a href="#D题：测试次数" class="headerlink" title="D题：测试次数"></a>D题：测试次数</h2><blockquote>
+<p>【题目描述】</p>
+<p>x星球的居民脾气不太好，但好在他们生气的时候唯一的异常举动是：摔手机。<br>各大厂商也就纷纷推出各种耐摔型手机。x星球的质监局规定了手机必须经过耐摔测试，并且评定出一个耐摔指数来，之后才允许上市流通。<br>x星球有很多高耸入云的高塔，刚好可以用来做耐摔测试。<br>塔的每一层高度都是一样的，与地球上稍有不同的是，他们的第一层不是地面，而是相当于我们的2楼。<br>如果手机从第7层扔下去没摔坏，但第8层摔坏了，则手机耐摔指数=7。<br>特别地，如果手机从第1层扔下去就坏了，则耐摔指数=0。<br>如果到了塔的最高层第n层扔没摔坏，则耐摔指数=n<br>为了减少测试次数，从每个厂家抽样3部手机参加测试。<br>某次测试的塔高为1000层，如果我们总是采用最佳策略，在最坏的运气下最多需要测试多少次才能确定手机的耐摔指数呢？</p>
+<p>【输出】</p>
+<p>输出一个整数表示答案</p>
+</blockquote>
+<h2 id="E题：快速排序"><a href="#E题：快速排序" class="headerlink" title="E题：快速排序"></a>E题：快速排序</h2><blockquote>
+<p>以下代码可以从数组a[]中找出第k小的元素。</p>
+<p>它使用了类似快速排序中的分治算法，期望时间复杂度是O(N)的。请仔细阅读分析源码，填写划线部分缺失的内容。</p>
+<p>只填写划线部分缺少的代码，不要抄写已经存在的代码或符号。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="function"><span class="keyword">int</span> <span class="title">quick_select</span><span class="params">(<span class="keyword">int</span> a[], <span class="keyword">int</span> l, <span class="keyword">int</span> r, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">&gt; 	<span class="keyword">int</span> p = rand() % (r - l + <span class="number">1</span>) + l;</span><br><span class="line">&gt; 	<span class="keyword">int</span> x = a[p];</span><br><span class="line">&gt; 	&#123;<span class="keyword">int</span> t = a[p]; a[p] = a[r]; a[r] = t;&#125;</span><br><span class="line">&gt; 	<span class="keyword">int</span> i = l, j = r;</span><br><span class="line">&gt; 	<span class="keyword">while</span>(i &lt; j) &#123;</span><br><span class="line">&gt; 		<span class="keyword">while</span>(i &lt; j &amp;&amp; a[i] &lt; x) i++;</span><br><span class="line">&gt; 		<span class="keyword">if</span>(i &lt; j) &#123;</span><br><span class="line">&gt; 			a[j] = a[i];</span><br><span class="line">&gt; 			j--;</span><br><span class="line">&gt; 		&#125;</span><br><span class="line">&gt; 		<span class="keyword">while</span>(i &lt; j &amp;&amp; a[j] &gt; x) j--;</span><br><span class="line">&gt; 		<span class="keyword">if</span>(i &lt; j) &#123;</span><br><span class="line">&gt; 			a[i] = a[j];</span><br><span class="line">&gt; 			i++;</span><br><span class="line">&gt; 		&#125;</span><br><span class="line">&gt; 	&#125;</span><br><span class="line">&gt; 	a[i] = x;</span><br><span class="line">&gt; 	p = i;</span><br><span class="line">&gt; 	<span class="keyword">if</span>(i - l + <span class="number">1</span> == k) <span class="keyword">return</span> a[i];</span><br><span class="line">&gt; 	<span class="keyword">if</span>(i - l + <span class="number">1</span> &lt; k) <span class="keyword">return</span> quick_select( _____________________________ ); <span class="comment">//填空</span></span><br><span class="line">&gt; 	<span class="keyword">else</span> <span class="keyword">return</span> quick_select(a, l, i - <span class="number">1</span>, k);</span><br><span class="line">&gt; &#125;</span><br><span class="line">&gt; 	</span><br><span class="line">&gt; <span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line">&gt; &#123;</span><br><span class="line">&gt; 	<span class="keyword">int</span> a[] = &#123;<span class="number">1</span>, <span class="number">4</span>, <span class="number">2</span>, <span class="number">8</span>, <span class="number">5</span>, <span class="number">7</span>, <span class="number">23</span>, <span class="number">58</span>, <span class="number">16</span>, <span class="number">27</span>, <span class="number">55</span>, <span class="number">13</span>, <span class="number">26</span>, <span class="number">24</span>, <span class="number">12</span>&#125;;</span><br><span class="line">&gt; 	<span class="built_in">printf</span>(<span class="string">"%d\n"</span>, quick_select(a, <span class="number">0</span>, <span class="number">14</span>, <span class="number">5</span>));</span><br><span class="line">&gt; 	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&gt; &#125;</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<h2 id="F题：递增三元组"><a href="#F题：递增三元组" class="headerlink" title="F题：递增三元组"></a>F题：递增三元组</h2><blockquote>
+<p>【题目描述】</p>
+<p>给定三个整数数组<br>A = [A1, A2, … AN],<br>B = [B1, B2, … BN],<br>C = [C1, C2, … CN]，<br>请你统计有多少个三元组(i, j, k) 满足：</p>
+<ol>
+<li>1 &lt;= i, j, k &lt;= N </li>
+<li>Ai &lt; Bj &lt; Ck </li>
+</ol>
+<p>【输入】</p>
+<p>第一行包含一个整数N。<br>第二行包含N个整数A1, A2, … AN。<br>第三行包含N个整数B1, B2, … BN。<br>第四行包含N个整数C1, C2, … CN。<br>1 &lt;= N &lt;= 100000 0 &lt;= Ai, Bi, Ci &lt;= 100000 </p>
+<p>【输出】</p>
+<p>一个整数表示答案</p>
+<p>【样例输入】</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt; 3</span><br><span class="line">&gt; 1 1 1</span><br><span class="line">&gt; 2 2 2</span><br><span class="line">&gt; 3 3 3</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+<p>【样例输出】</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; 27</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<h2 id="G题：螺旋折线"><a href="#G题：螺旋折线" class="headerlink" title="G题：螺旋折线"></a>G题：螺旋折线</h2><blockquote>
+<p>如图p1.png所示的螺旋折线经过平面上所有整点恰好一次。</p>
+ <img src="https://s1.ax1x.com/2020/10/16/0brzRS.png" alt="img" style="zoom:50%;">
+
+<p>对于整点(X, Y)，我们定义它到原点的距离dis(X, Y)是从原点到(X, Y)的螺旋折线段的长度。 </p>
+<p>例如dis(0, 1)=3, dis(-2, -1)=9  </p>
+<p>给出整点坐标(X, Y)，你能计算出dis(X, Y)吗？</p>
+<p>【输入格式】</p>
+<p>X和Y  </p>
+<p>对于40%的数据，-1000 &lt;= X, Y &lt;= 1000  </p>
+<p>对于70%的数据，-100000 &lt;= X， Y &lt;= 100000  </p>
+<p>对于100%的数据, -1000000000 &lt;= X, Y &lt;= 1000000000  </p>
+<p>【输出格式】</p>
+<p>输出dis(X, Y)  </p>
+<p>【样例输入】</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; 0 1</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+<p>【样例输出】</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; 3</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+<p>资源约定：</p>
+<p>峰值内存消耗（含虚拟机） &lt; 256M</p>
+<p>CPU消耗 &lt; 1000ms</p>
+</blockquote>
+<h2 id="H题：日志统计"><a href="#H题：日志统计" class="headerlink" title="H题：日志统计"></a>H题：日志统计</h2><blockquote>
+<p>小明维护着一个程序员论坛。现在他收集了一份”点赞”日志，日志共有N行。其中每一行的格式是：</p>
+<p>ts id</p>
+<p>表示在ts时刻编号id的帖子收到一个”赞”。</p>
+<p>现在小明想统计有哪些帖子曾经是”热帖”。如果一个帖子曾在任意一个长度为D的时间段内收到不少于K个赞，小明就认为这个帖子曾是”热帖”。</p>
+<p>具体来说，如果存在某个时刻T满足该帖在[T, T+D)这段时间内(注意是左闭右开区间)收到不少于K个赞，该帖就曾是”热帖”。</p>
+<p>给定日志，请你帮助小明统计出所有曾是”热帖”的帖子编号。</p>
+<p>【输入格式】<br>第一行包含三个整数N、D和K。<br>以下N行每行一条日志，包含两个整数ts和id。</p>
+<p>对于50%的数据，1 &lt;= K &lt;= N &lt;= 1000<br>对于100%的数据，1 &lt;= K &lt;= N &lt;= 100000 0 &lt;= ts &lt;= 100000 0 &lt;= id &lt;= 100000</p>
+<p>【输出格式】<br>按从小到大的顺序输出热帖id。每个id一行。</p>
+<p>【输入样例】</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&gt; 7 10 2 </span><br><span class="line">&gt; 0 1 </span><br><span class="line">&gt; 0 10 </span><br><span class="line">&gt; 10 10 </span><br><span class="line">&gt; 10 1 </span><br><span class="line">&gt; 9 1</span><br><span class="line">&gt; 100 3 </span><br><span class="line">&gt; 100 3</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+<p>【输出样例】</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt; 1</span><br><span class="line">&gt; 3</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<h2 id="I题：全球变暖"><a href="#I题：全球变暖" class="headerlink" title="I题：全球变暖"></a>I题：全球变暖</h2><blockquote>
+<p>你有一张某海域NxN像素的照片，“。”表示海洋，“＃”表示陆地，如下所示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&gt; .......</span><br><span class="line">&gt; .##....</span><br><span class="line">&gt; .##....</span><br><span class="line">&gt; ....##.</span><br><span class="line">&gt; ..####.</span><br><span class="line">&gt; ...###.</span><br><span class="line">&gt; .......</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+<p>其中“上下左右”四个方向上连在一起的一片陆地组成一座岛屿。例如上图就有2座岛屿。<br>由于全球变暖导致了海面上升，科学家预测未来几十年，岛屿边缘一个像素的范围会被海水淹没。具体来说如果一块陆地像素与海洋相邻（上下左右四个相邻像素中有海洋），它就会被淹没。<br>例如上图中的海域未来会变成如下样子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&gt; .......</span><br><span class="line">&gt; .......</span><br><span class="line">&gt; .......</span><br><span class="line">&gt; .......</span><br><span class="line">&gt; ....#..</span><br><span class="line">&gt; .......</span><br><span class="line">&gt; .......</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+<p>请你计算：依照科学家的预测，照片中有多少岛屿会被完全淹没。<br>【输入格式】<br>第一行包含一个整数N.（1 &lt;= N &lt;= 1000）<br>以下N行N列代表一张海域照片。<br>照片保证第1行，第1列，第N行，第N列的像素都是海洋。 </p>
+<p>【输出格式】<br>一个整数表示答案。<br>【输入样例】</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&gt; 7 </span><br><span class="line">&gt; .......</span><br><span class="line">&gt; .##....</span><br><span class="line">&gt; .##....</span><br><span class="line">&gt; ....##.</span><br><span class="line">&gt; ..####.</span><br><span class="line">&gt; ...###.</span><br><span class="line">&gt; .......  </span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+<p>【输出样例】</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; 1 </span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+<p> 资源约定：<br>峰值内存消耗（含虚拟机）&lt;256M<br>CPU消耗&lt;1000ms</p>
+</blockquote>
+<h2 id="J题：乘积最大"><a href="#J题：乘积最大" class="headerlink" title="J题：乘积最大"></a>J题：乘积最大</h2><blockquote>
+<p>给定N个整数A1, A2, … AN。请你从中选出K个数，使其乘积最大。<br>请你求出最大的乘积，由于乘积可能超出整型范围，你只需输出乘积除以1000000009的余数。<br>10e9+9<br>注意，如果X&lt;0， 我们定义X除以1000000009的余数是负(-X)除以1000000009的余数。<br>即：0-((0-x) % 1000000009)<br>【输入格式】<br>第一行包含两个整数N和K。<br>以下N行每行一个整数Ai。<br>对于40%的数据，1 &lt;= K &lt;= N &lt;= 100<br>对于60%的数据，1 &lt;= K &lt;= 1000<br>对于100%的数据，1 &lt;= K &lt;= N &lt;= 100000 -100000 &lt;= Ai &lt;= 100000<br>【输出格式】<br>一个整数，表示答案。<br>【输入样例】</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="number">5</span> <span class="number">3</span></span><br><span class="line">&gt; <span class="number">-100000</span></span><br><span class="line">&gt; <span class="number">-10000</span></span><br><span class="line">&gt; <span class="number">2</span></span><br><span class="line">&gt; <span class="number">100000</span></span><br><span class="line">&gt; <span class="number">10000</span></span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+<p>【输出样例】</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="number">999100009</span></span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+<p>再例如：<br>【输入样例】</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="number">5</span> <span class="number">3</span></span><br><span class="line">&gt; <span class="number">-100000</span></span><br><span class="line">&gt; <span class="number">-100000</span></span><br><span class="line">&gt; <span class="number">-2</span></span><br><span class="line">&gt; <span class="number">-100000</span></span><br><span class="line">&gt; <span class="number">-100000</span></span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+<p>【输出样例】</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="number">-999999829</span></span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<h2 id="部分题目答案及题解"><a href="#部分题目答案及题解" class="headerlink" title="部分题目答案及题解"></a>部分题目答案及题解</h2><ul>
+<li><p>A题：<em>125</em></p>
+</li>
+<li><p>B题：<em>387420489</em></p>
+</li>
+<li><p>C题：<em>31</em></p>
+</li>
+<li><p><a href>D题</a>：19</p>
+</li>
+<li><p>E题：<em>a,i+1,r,k-(i-l+1)</em></p>
+</li>
+<li><p><a href>F题题解</a></p>
+</li>
+<li><p><a href>G题题解</a></p>
+</li>
+<li><p><a href>H题题解</a></p>
+</li>
+<li><p><a href>I题题解</a></p>
+</li>
+</ul>
+<p>大部分来源于<a href="https://blog.csdn.net/qq_18841761/article/details/107723550" target="_blank" rel="noopener">2018 【第九届蓝桥杯省赛】 C/C++ B组</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    <div>
+      
+        
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script type="text/javascript" src="http://jslibs.wuxubj.cn/sweetalert_mini/jquery-1.7.1.min.js"></script>
+  <script src="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.mini.css">
+  <p><span>本文标题:</span><a href="/2020/10/15/2018lanqiao-BGroup-CC-TopicSummary/">2018年蓝桥杯C/C++ B组省赛题目汇总及部分题解</a></p>
+  <p><span>文章作者:</span><a href="/" title="访问 陈洋 的个人博客">陈洋</a></p>
+  <p><span>发布时间:</span>2020年10月15日 - 20:10</p>
+  <p><span>最后更新:</span>2020年10月16日 - 18:10</p>
+  <p><span>原始链接:</span><a href="/2020/10/15/2018lanqiao-BGroup-CC-TopicSummary/" title="2018年蓝桥杯C/C++ B组省赛题目汇总及部分题解">https://codeblog-cy.top/2020/10/15/2018lanqiao-BGroup-CC-TopicSummary/</a>
+    <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://codeblog-cy.top/2020/10/15/2018lanqiao-BGroup-CC-TopicSummary/" aria-label="复制成功！"></i></span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+    clipboard.on('success', $(function(){
+      $(".fa-clipboard").click(function(){
+        swal({   
+          title: "",   
+          text: '复制成功',   
+          html: false,
+          timer: 500,   
+          showConfirmButton: false
+        });
+      });
+    }));  
+</script>
+
+      
+    </div>
+    
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/蓝桥杯/" rel="tag"># 蓝桥杯</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/10/15/2017lanqiao-BGroup-CC-TopicSummary/" rel="next" title="2017年蓝桥杯C/C++ B组省赛题目汇总及部分题解">
+                <i class="fa fa-chevron-left"></i> 2017年蓝桥杯C/C++ B组省赛题目汇总及部分题解
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/10/15/2019lanqiao-BGroup-CC-TopicSummary/" rel="prev" title="2019lanqiao-BGroup-CC++-TopicSummary">
+                2019lanqiao-BGroup-CC++-TopicSummary <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/me.jpg" alt="陈洋">
+            
+              <p class="site-author-name" itemprop="name">陈洋</p>
+              <p class="site-description motion-element" itemprop="description">18级软工学生</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">85</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">71</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/Kuluuu" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:1140377596@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#A题：第几天"><span class="nav-number">1.</span> <span class="nav-text">A题：第几天</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#B题：明码"><span class="nav-number">2.</span> <span class="nav-text">B题：明码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#C题：乘积尾零"><span class="nav-number">3.</span> <span class="nav-text">C题：乘积尾零</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#D题：测试次数"><span class="nav-number">4.</span> <span class="nav-text">D题：测试次数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#E题：快速排序"><span class="nav-number">5.</span> <span class="nav-text">E题：快速排序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#F题：递增三元组"><span class="nav-number">6.</span> <span class="nav-text">F题：递增三元组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#G题：螺旋折线"><span class="nav-number">7.</span> <span class="nav-text">G题：螺旋折线</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#H题：日志统计"><span class="nav-number">8.</span> <span class="nav-text">H题：日志统计</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#I题：全球变暖"><span class="nav-number">9.</span> <span class="nav-text">I题：全球变暖</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#J题：乘积最大"><span class="nav-number">10.</span> <span class="nav-text">J题：乘积最大</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#部分题目答案及题解"><span class="nav-number">11.</span> <span class="nav-text">部分题目答案及题解</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">陈洋</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+<!-- 新增访客统计代码 -->
+
+<div class="busuanzi-count">
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+        <!-- 不蒜子统计 -->
+        <span id="busuanzi_container_site_pv">
+                本站总访问量<span id="busuanzi_value_site_pv"></span>次
+        </span>
+        <span class="post-meta-divider">|</span>
+        <span id="busuanzi_container_site_uv" style="display:none">
+                本站访客数<span id="busuanzi_value_site_uv"></span>人
+        </span>
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <!-- 博客字数统计 -->
+    <span class="site-pv">
+      <i class="fa fa-pencil"></i>
+      博客全站共： <span class="post-count">94.8k</span> 字
+    </span>
+</div>
+<!-- 新增访客统计代码 END-->
+
+<!-- 在网页底部添加网站运行时间 -->
+<span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+<script>
+    var now = new Date();
+    function createtime() {
+        var grt= new Date("07/21/2019 00:00:00");//此处修改你的建站时间或者网站上线时间
+        now.setTime(now.getTime()+250);
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;}
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;}
+        document.getElementById("timeDate").innerHTML = "Run for "+dnum+" Days ";
+        document.getElementById("times").innerHTML = hnum + " Hours " + mnum + " m " + snum + " s";
+    }
+setInterval("createtime()",250);
+</script>
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共94.8k字</span>
+</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  <script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+  
+  
+
+  
+
+  
+
+  
+
+<!-- 代码块复制功能 -->
+<script type="text/javascript" src="/js/src/clipboard.min.js"></script>  
+<script type="text/javascript" src="/js/src/clipboard-use.js"></script>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"live2d-widget-model-wanko"},"display":{"position":"left","width":75,"height":100},"mobile":{"show":true},"log":false});</script></body>
+</html>

@@ -1,5 +1,5 @@
-https://codeblog-cy.top/2020/10/15/2018lanqiao-i-GlobalWarming/
-https://codeblog-cy.top/2020/10/15/2018lanqiao-h-LogStatistics/
-https://codeblog-cy.top/2020/10/15/2018lanqiao-f-IncrementalTriples/
-https://codeblog-cy.top/2020/10/14/2018lanqiao-g-SpiralBrokenLine/
-https://codeblog-cy.top/2020/10/14/2018lanqiao-d-NumberOfTests/
+https://codeblog-cy.top/2020/10/15/2019lanqiao-BGroup-CC-TopicSummary/
+https://codeblog-cy.top/2020/10/15/2018lanqiao-BGroup-CC-TopicSummary/
+https://codeblog-cy.top/2020/10/15/2017lanqiao-BGroup-CC-TopicSummary/
+https://codeblog-cy.top/2020/10/15/2017lanqiao-c-PressureCalculation/
+https://codeblog-cy.top/2020/10/15/2017lanqiao-b-ArithmeticPrimeSequence/

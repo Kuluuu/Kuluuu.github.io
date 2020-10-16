@@ -1,0 +1,1039 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-flash.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+  <meta name="baidu-site-verification" content="3fE9IyxcPl">
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/1.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/1.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/1.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/1.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="蓝桥杯,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="A题：购物单">
+<meta name="keywords" content="蓝桥杯">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2017年蓝桥杯C&#x2F;C++ B组省赛题目汇总及部分题解">
+<meta property="og:url" content="https://codeblog-cy.top/2020/10/15/2017lanqiao-BGroup-CC-TopicSummary/index.html">
+<meta property="og:site_name" content="ChenYang&#39;s Blog">
+<meta property="og:description" content="A题：购物单">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://s1.ax1x.com/2020/10/16/0bs0eA.jpg">
+<meta property="og:updated_time" content="2020-10-16T10:52:14.372Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="2017年蓝桥杯C&#x2F;C++ B组省赛题目汇总及部分题解">
+<meta name="twitter:description" content="A题：购物单">
+<meta name="twitter:image" content="https://s1.ax1x.com/2020/10/16/0bs0eA.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://codeblog-cy.top/2020/10/15/2017lanqiao-BGroup-CC-TopicSummary/">
+
+
+
+
+
+  <title>2017年蓝桥杯C/C++ B组省赛题目汇总及部分题解 | ChenYang's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+  
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">ChenYang's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">心中有码，自然伟大</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://codeblog-cy.top/2020/10/15/2017lanqiao-BGroup-CC-TopicSummary/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="陈洋">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/me.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ChenYang's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">2017年蓝桥杯C/C++ B组省赛题目汇总及部分题解</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-10-15T20:07:22+08:00">
+                2020-10-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/历年蓝桥杯题目汇总/" itemprop="url" rel="index">
+                    <span itemprop="name">历年蓝桥杯题目汇总</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="A题：购物单"><a href="#A题：购物单" class="headerlink" title="A题：购物单"></a>A题：购物单</h2><a id="more"></a>
+
+<blockquote>
+<p>本题总分：5分</p>
+<p>小明刚刚找到工作，老板人很好，只是老板夫人很爱购物。老板忙的时候经常让小明帮忙到商场代为购物。小明很厌烦，但又不好推辞。</p>
+<p>这不，XX大促销又来了！老板夫人开出了长长的购物单，都是有打折优惠的。<br>小明也有个怪癖，不到万不得已，从不刷卡，直接现金搞定。<br>现在小明很心烦，请你帮他计算一下，需要从取款机上取多少现金，才能搞定这次购物。</p>
+<p>取款机只能提供100元面额的纸币。小明想尽可能少取些现金，够用就行了。<br>你的任务是计算出，小明最少需要取多少现金。</p>
+<p>以下是让人头疼的购物单，为了保护隐私，物品名称被隐藏了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">&gt; -----------------</span><br><span class="line">&gt; ****     180.90       88折</span><br><span class="line">&gt; ****      10.25       65折</span><br><span class="line">&gt; ****      56.14        9折</span><br><span class="line">&gt; ****     104.65        9折</span><br><span class="line">&gt; ****     100.30       88折</span><br><span class="line">&gt; ****     297.15        半价</span><br><span class="line">&gt; ****      26.75       65折</span><br><span class="line">&gt; ****     130.62        半价</span><br><span class="line">&gt; ****     240.28       58折</span><br><span class="line">&gt; ****     270.62        8折</span><br><span class="line">&gt; ****     115.87       88折</span><br><span class="line">&gt; ****     247.34       95折</span><br><span class="line">&gt; ****      73.21        9折</span><br><span class="line">&gt; ****     101.00        半价</span><br><span class="line">&gt; ****      79.54        半价</span><br><span class="line">&gt; ****     278.44        7折</span><br><span class="line">&gt; ****     199.26        半价</span><br><span class="line">&gt; ****      12.97        9折</span><br><span class="line">&gt; ****     166.30       78折</span><br><span class="line">&gt; ****     125.50       58折</span><br><span class="line">&gt; ****      84.98        9折</span><br><span class="line">&gt; ****     113.35       68折</span><br><span class="line">&gt; ****     166.57        半价</span><br><span class="line">&gt; ****      42.56        9折</span><br><span class="line">&gt; ****      81.90       95折</span><br><span class="line">&gt; ****     131.78        8折</span><br><span class="line">&gt; ****     255.89       78折</span><br><span class="line">&gt; ****     109.17        9折</span><br><span class="line">&gt; ****     146.69       68折</span><br><span class="line">&gt; ****     139.33       65折</span><br><span class="line">&gt; ****     141.16       78折</span><br><span class="line">&gt; ****     154.74        8折</span><br><span class="line">&gt; ****      59.42        8折</span><br><span class="line">&gt; ****      85.44       68折</span><br><span class="line">&gt; ****     293.70       88折</span><br><span class="line">&gt; ****     261.79       65折</span><br><span class="line">&gt; ****      11.30       88折</span><br><span class="line">&gt; ****     268.27       58折</span><br><span class="line">&gt; ****     128.29       88折</span><br><span class="line">&gt; ****     251.03        8折</span><br><span class="line">&gt; ****     208.39       75折</span><br><span class="line">&gt; ****     128.88       75折</span><br><span class="line">&gt; ****      62.06        9折</span><br><span class="line">&gt; ****     225.87       75折</span><br><span class="line">&gt; ****      12.89       75折</span><br><span class="line">&gt; ****      34.28       75折</span><br><span class="line">&gt; ****      62.16       58折</span><br><span class="line">&gt; ****     129.12        半价</span><br><span class="line">&gt; ****     218.37        半价</span><br><span class="line">&gt; ****     289.69        8折</span><br><span class="line">&gt; --------------------</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+<p>需要说明的是，88折指的是按标价的88%计算，而8折是按80%计算，余者类推。<br>特别地，半价是按50%计算。</p>
+<p>请提交小明要从取款机上提取的金额，单位是元。<br>答案是一个整数，类似4300的样子，结尾必然是00，不要填写任何多余的内容。</p>
+<p>特别提醒：不许携带计算器入场，也不能打开手机。</p>
+</blockquote>
+<h2 id="B题：等差素数列"><a href="#B题：等差素数列" class="headerlink" title="B题：等差素数列"></a>B题：等差素数列</h2><blockquote>
+<p>本题总分：7分</p>
+<p>2,3,5,7,11,13,….是素数序列。<br>类似：7,37,67,97,127,157 这样完全由素数组成的等差数列，叫等差素数数列。<br>上边的数列公差为30，长度为6。</p>
+<p>2004年，格林与华人陶哲轩合作证明了：存在任意长度的素数等差数列。<br>这是数论领域一项惊人的成果！</p>
+<p>有这一理论为基础，请你借助手中的计算机，满怀信心地搜索：</p>
+<p>长度为10的等差素数列，其公差最小值是多少？</p>
+<p>注意：需要提交的是一个整数，不要填写任何多余的内容和说明文字。</p>
+</blockquote>
+<h2 id="C题：承压计算"><a href="#C题：承压计算" class="headerlink" title="C题：承压计算"></a>C题：承压计算</h2><blockquote>
+<p>本题总分：13分</p>
+<p>X星球的高科技实验室中整齐地堆放着某批珍贵金属原料。</p>
+<p>每块金属原料的外形、尺寸完全一致，但重量不同。<br>金属材料被严格地堆放成金字塔形。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">&gt;                                 7 </span><br><span class="line">&gt;                                5 8 </span><br><span class="line">&gt;                               7 8 8 </span><br><span class="line">&gt;                              9 2 7 2 </span><br><span class="line">&gt;                             8 1 4 9 1 </span><br><span class="line">&gt;                            8 1 8 8 4 1 </span><br><span class="line">&gt;                           7 9 6 1 4 5 4 </span><br><span class="line">&gt;                          5 6 5 5 6 9 5 6 </span><br><span class="line">&gt;                         5 5 4 7 9 3 5 5 1 </span><br><span class="line">&gt;                        7 5 7 9 7 4 7 3 3 1 </span><br><span class="line">&gt;                       4 6 4 5 5 8 8 3 2 4 3 </span><br><span class="line">&gt;                      1 1 3 3 1 6 6 5 5 4 4 2 </span><br><span class="line">&gt;                     9 9 9 2 1 9 1 9 2 9 5 7 9 </span><br><span class="line">&gt;                    4 3 3 7 7 9 3 6 1 3 8 8 3 7 </span><br><span class="line">&gt;                   3 6 8 1 5 3 9 5 8 3 8 1 8 3 3 </span><br><span class="line">&gt;                  8 3 2 3 3 5 5 8 5 4 2 8 6 7 6 9 </span><br><span class="line">&gt;                 8 1 8 1 8 4 6 2 2 1 7 9 4 2 3 3 4 </span><br><span class="line">&gt;                2 8 4 2 2 9 9 2 8 3 4 9 6 3 9 4 6 9 </span><br><span class="line">&gt;               7 9 7 4 9 7 6 6 2 8 9 4 1 8 1 7 2 1 6 </span><br><span class="line">&gt;              9 2 8 6 4 2 7 9 5 4 1 2 5 1 7 3 9 8 3 3 </span><br><span class="line">&gt;             5 2 1 6 7 9 3 2 8 9 5 5 6 6 6 2 1 8 7 9 9 </span><br><span class="line">&gt;            6 7 1 8 8 7 5 3 6 5 4 7 3 4 6 7 8 1 3 2 7 4 </span><br><span class="line">&gt;           2 2 6 3 5 3 4 9 2 4 5 7 6 6 3 2 7 2 4 8 5 5 4 </span><br><span class="line">&gt;          7 4 4 5 8 3 3 8 1 8 6 3 2 1 6 2 6 4 6 3 8 2 9 6 </span><br><span class="line">&gt;         1 2 4 1 3 3 5 3 4 9 6 3 8 6 5 9 1 5 3 2 6 8 8 5 3 </span><br><span class="line">&gt;        2 2 7 9 3 3 2 8 6 9 8 4 4 9 5 8 2 6 3 4 8 4 9 3 8 8 </span><br><span class="line">&gt;       7 7 7 9 7 5 2 7 9 2 5 1 9 2 6 5 3 9 3 5 7 3 5 4 2 8 9 </span><br><span class="line">&gt;     7 7 6 6 8 7 5 5 8 2 4 7 7 4 7 2 6 9 2 1 8 2 9 8 5 7 3 6 </span><br><span class="line">&gt;   5 9 4 5 5 7 5 5 6 3 5 3 9 5 8 9 5 4 1 2 6 1 4 3 5 3 2 4 1 </span><br><span class="line">&gt; X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X </span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+<p>其中的数字代表金属块的重量（计量单位较大）。<br>最下一层的X代表30台极高精度的电子秤。</p>
+<p>假设每块原料的重量都十分精确地平均落在下方的两个金属块上，<br>最后，所有的金属块的重量都严格精确地平分落在最底层的电子秤上。<br>电子秤的计量单位很小，所以显示的数字很大。</p>
+<p>工作人员发现，其中读数最小的电子秤的示数为：2086458231</p>
+<p>请你推算出：读数最大的电子秤的示数为多少？</p>
+<p>注意：需要提交的是一个整数，不要填写任何多余的内容。</p>
+</blockquote>
+<h2 id="D题：方格分割"><a href="#D题：方格分割" class="headerlink" title="D题：方格分割"></a>D题：方格分割</h2><blockquote>
+<p>本题总分：17分</p>
+<p>6x6的方格，沿着格子的边线剪开成两部分。<br>要求这两部分的形状完全相同。</p>
+<p>如图：p1.png, p2.png, p3.png 就是可行的分割法。</p>
+<img src="https://s1.ax1x.com/2020/10/16/0bs0eA.jpg" alt="img" style="zoom:50%;">
+
+<p>试计算：<br>包括这3种分法在内，一共有多少种不同的分割方法。<br>注意：旋转对称的属于同一种分割法。</p>
+<p>请提交该整数，不要填写任何多余的内容或说明文字。</p>
+</blockquote>
+<h2 id="E题：取数位"><a href="#E题：取数位" class="headerlink" title="E题：取数位"></a>E题：取数位</h2><blockquote>
+<p>本题总分：9分</p>
+<p>求1个整数的第k位数字有很多种方法。<br>以下的方法就是一种。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="function"><span class="keyword">int</span> <span class="title">len</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">&gt; 	<span class="keyword">if</span>(x&lt;<span class="number">10</span>) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">&gt; 	<span class="keyword">return</span> len(x/<span class="number">10</span>)+<span class="number">1</span>;</span><br><span class="line">&gt; &#125;</span><br><span class="line">&gt; 	</span><br><span class="line">&gt; <span class="comment">// 取x的第k位数字</span></span><br><span class="line">&gt; <span class="function"><span class="keyword">int</span> <span class="title">f</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> k)</span></span>&#123;</span><br><span class="line">&gt; 	<span class="keyword">if</span>(len(x)-k==<span class="number">0</span>) <span class="keyword">return</span> x%<span class="number">10</span>;</span><br><span class="line">&gt; 	<span class="keyword">return</span> _____________________;  <span class="comment">//填空</span></span><br><span class="line">&gt; &#125;</span><br><span class="line">&gt; 	</span><br><span class="line">&gt; <span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line">&gt; &#123;</span><br><span class="line">&gt; 	<span class="keyword">int</span> x = <span class="number">23574</span>;</span><br><span class="line">&gt; 	<span class="built_in">printf</span>(<span class="string">"%d\n"</span>, f(x,<span class="number">3</span>));</span><br><span class="line">&gt; 	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&gt; &#125;</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+<p>对于题目中的测试数据，应该打印5。</p>
+<p>请仔细分析源码，并补充划线部分所缺少的代码。</p>
+<p>注意：只提交缺失的代码，不要填写任何已有内容或说明性的文字。</p>
+</blockquote>
+<h2 id="F题：最大公共子串"><a href="#F题：最大公共子串" class="headerlink" title="F题：最大公共子串"></a>F题：最大公共子串</h2><blockquote>
+<p>本题总分：11分</p>
+<p>最大公共子串长度问题就是：<br>求两个串的所有子串中能够匹配上的最大长度是多少。</p>
+<p>比如：”abcdkkk” 和 “baabcdadabc”，<br>可以找到的最长的公共子串是”abcd”,所以最大公共子串长度为4。</p>
+<p>下面的程序是采用矩阵法进行求解的，这对串的规模不大的情况还是比较有效的解法。</p>
+<p>请分析该解法的思路，并补全划线部分缺失的代码。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line">&gt; <span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line">&gt;  </span><br><span class="line">&gt; <span class="meta">#<span class="meta-keyword">define</span> N 256</span></span><br><span class="line">&gt; <span class="function"><span class="keyword">int</span> <span class="title">f</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span>* s1, <span class="keyword">const</span> <span class="keyword">char</span>* s2)</span></span></span><br><span class="line">&gt; &#123;</span><br><span class="line">&gt; 	<span class="keyword">int</span> a[N][N];</span><br><span class="line">&gt; 	<span class="keyword">int</span> len1 = <span class="built_in">strlen</span>(s1);</span><br><span class="line">&gt; 	<span class="keyword">int</span> len2 = <span class="built_in">strlen</span>(s2);</span><br><span class="line">&gt; 	<span class="keyword">int</span> i,j;</span><br><span class="line">&gt; 	</span><br><span class="line">&gt; 	<span class="built_in">memset</span>(a,<span class="number">0</span>,<span class="keyword">sizeof</span>(<span class="keyword">int</span>)*N*N);</span><br><span class="line">&gt; 	<span class="keyword">int</span> max = <span class="number">0</span>;</span><br><span class="line">&gt; 	<span class="keyword">for</span>(i=<span class="number">1</span>; i&lt;=len1; i++)&#123;</span><br><span class="line">&gt; 		<span class="keyword">for</span>(j=<span class="number">1</span>; j&lt;=len2; j++)&#123;</span><br><span class="line">&gt; 			<span class="keyword">if</span>(s1[i<span class="number">-1</span>]==s2[j<span class="number">-1</span>]) &#123;</span><br><span class="line">&gt; 				a[i][j] = __________________________;  <span class="comment">//填空</span></span><br><span class="line">&gt; 				<span class="keyword">if</span>(a[i][j] &gt; max) max = a[i][j];</span><br><span class="line">&gt; 			&#125;</span><br><span class="line">&gt; 		&#125;</span><br><span class="line">&gt; 	&#125;</span><br><span class="line">&gt; 	</span><br><span class="line">&gt; 	<span class="keyword">return</span> max;</span><br><span class="line">&gt; &#125;</span><br><span class="line">&gt;  </span><br><span class="line">&gt; <span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line">&gt; &#123;</span><br><span class="line">&gt; 	<span class="built_in">printf</span>(<span class="string">"%d\n"</span>, f(<span class="string">"abcdkkk"</span>, <span class="string">"baabcdadabc"</span>));</span><br><span class="line">&gt; 	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&gt; &#125;</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+<p>注意：只提交缺少的代码，不要提交已有的代码和符号。也不要提交说明性文字。</p>
+</blockquote>
+<h2 id="G题：日期问题"><a href="#G题：日期问题" class="headerlink" title="G题：日期问题"></a>G题：日期问题</h2><blockquote>
+<p>本题总分：19分</p>
+<p>小明正在整理一批历史文献。这些历史文献中出现了很多日期。小明知道这些日期都在1960年1月1日至2059年12月31日。令小明头疼的是，这些日期采用的格式非常不统一，有采用年/月/日的，有采用月/日/年的，还有采用日/月/年的。更加麻烦的是，年份也都省略了前两位，使得文献上的一个日期，存在很多可能的日期与其对应。  </p>
+<p>比如02/03/04，可能是2002年03月04日、2004年02月03日或2004年03月02日。  </p>
+<p>给出一个文献上的日期，你能帮助小明判断有哪些可能的日期对其对应吗？</p>
+<p>输入<br>-—<br>一个日期，格式是”AA/BB/CC”。  (0 &lt;= A, B, C &lt;= 9)  </p>
+<p>输入<br>-—<br>输出若干个不相同的日期，每个日期一行，格式是”yyyy-MM-dd”。多个日期按从早到晚排列。  </p>
+<p>样例输入<br>-—</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; 02/03/04  </span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+<p>样例输出<br>-—</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt; 2002-03-04  </span><br><span class="line">&gt; 2004-02-03  </span><br><span class="line">&gt; 2004-03-02  </span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+<p>资源约定：<br>峰值内存消耗（含虚拟机） &lt; 256M<br>CPU消耗  &lt; 1000ms</p>
+<p>请严格按要求输出，不要画蛇添足地打印类似：“请您输入…” 的多余内容。</p>
+<p>注意：<br>main函数需要返回0;<br>只使用ANSI C/ANSI C++ 标准;<br>不要调用依赖于编译环境或操作系统的特殊函数。<br>所有依赖的函数必须明确地在源文件中 #include <xxx><br>不能通过工程设置而省略常用头文件。</xxx></p>
+<p>提交程序时，注意选择所期望的语言类型和编译器类型。</p>
+</blockquote>
+<h2 id="H题：包子凑数"><a href="#H题：包子凑数" class="headerlink" title="H题：包子凑数"></a>H题：包子凑数</h2><blockquote>
+<p>本题总分：21分</p>
+<p>小明几乎每天早晨都会在一家包子铺吃早餐。他发现这家包子铺有N种蒸笼，其中第i种蒸笼恰好能放Ai个包子。每种蒸笼都有非常多笼，可以认为是无限笼。</p>
+<p>每当有顾客想买X个包子，卖包子的大叔就会迅速选出若干笼包子来，使得这若干笼中恰好一共有X个包子。比如一共有3种蒸笼，分别能放3、4和5个包子。当顾客想买11个包子时，大叔就会选2笼3个的再加1笼5个的（也可能选出1笼3个的再加2笼4个的）。</p>
+<p>当然有时包子大叔无论如何也凑不出顾客想买的数量。比如一共有3种蒸笼，分别能放4、5和6个包子。而顾客想买7个包子时，大叔就凑不出来了。</p>
+<p>小明想知道一共有多少种数目是包子大叔凑不出来的。</p>
+<p>输入<br>-—<br>第一行包含一个整数N。(1 &lt;= N &lt;= 100)<br>以下N行每行包含一个整数Ai。(1 &lt;= Ai &lt;= 100)  </p>
+<p>输出<br>-—<br>一个整数代表答案。如果凑不出的数目有无限多个，输出INF。</p>
+<p>例如，<br>输入：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt; 2  </span><br><span class="line">&gt; 4  </span><br><span class="line">&gt; 5   </span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+<p>程序应该输出：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; 6  </span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+<p>再例如，<br>输入：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt; 2  </span><br><span class="line">&gt; 4  </span><br><span class="line">&gt; 6    </span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+<p>程序应该输出：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; INF</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+<p>样例解释：<br>对于样例1，凑不出的数目包括：1, 2, 3, 6, 7, 11。<br>对于样例2，所有奇数都凑不出来，所以有无限多个。  </p>
+<p>资源约定：<br>峰值内存消耗（含虚拟机） &lt; 256M<br>CPU消耗  &lt; 1000ms</p>
+</blockquote>
+<h2 id="I题：分巧克力"><a href="#I题：分巧克力" class="headerlink" title="I题：分巧克力"></a>I题：分巧克力</h2><blockquote>
+<p>本题总分：23分</p>
+<p>  儿童节那天有K位小朋友到小明家做客。小明拿出了珍藏的巧克力招待小朋友们。<br>  小明一共有N块巧克力，其中第i块是Hi x Wi的方格组成的长方形。</p>
+<p>  为了公平起见，小明需要从这 N 块巧克力中切出K块巧克力分给小朋友们。切出的巧克力需要满足：</p>
+<p>  \1. 形状是正方形，边长是整数<br>  \2. 大小相同  </p>
+<p>例如一块6x5的巧克力可以切出6块2x2的巧克力或者2块3x3的巧克力。</p>
+<p>当然小朋友们都希望得到的巧克力尽可能大，你能帮小Hi计算出最大的边长是多少么？</p>
+<p>输入<br>第一行包含两个整数N和K。(1 &lt;= N, K &lt;= 100000)<br>以下N行每行包含两个整数Hi和Wi。(1 &lt;= Hi, Wi &lt;= 100000)<br>输入保证每位小朋友至少能获得一块1x1的巧克力。  </p>
+<p>输出<br>输出切出的正方形巧克力最大可能的边长。</p>
+<p>样例输入：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt; 2 10  </span><br><span class="line">&gt; 6 5  </span><br><span class="line">&gt; 5 6 </span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+<p> 样例输出：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; 2</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+<p>资源约定：<br>峰值内存消耗（含虚拟机） &lt; 256M<br>CPU消耗  &lt; 1000ms</p>
+</blockquote>
+<h2 id="J题：k倍区间"><a href="#J题：k倍区间" class="headerlink" title="J题：k倍区间"></a>J题：k倍区间</h2><blockquote>
+<p>给定一个长度为N的数列，A1, A2, … AN，如果其中一段连续的子序列Ai, Ai+1, … Aj(i &lt;= j)之和是K的倍数，我们就称这个区间[i, j]是K倍区间。  </p>
+<p>你能求出数列中总共有多少个K倍区间吗？  </p>
+<p>输入<br>-—-<br>第一行包含两个整数N和K。(1 &lt;= N, K &lt;= 100000)<br>以下N行每行包含一个整数Ai。(1 &lt;= Ai &lt;= 100000)  </p>
+<p>输出<br>-—-<br>输出一个整数，代表K倍区间的数目。  </p>
+<p>例如，<br>输入：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&gt; 5 2</span><br><span class="line">&gt; 1  </span><br><span class="line">&gt; 2  </span><br><span class="line">&gt; 3  </span><br><span class="line">&gt; 4  </span><br><span class="line">&gt; 5  </span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+<p>程序应该输出：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; 6</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+<p>资源约定：<br>峰值内存消耗（含虚拟机） &lt; 256M<br>CPU消耗  &lt; 2000ms</p>
+</blockquote>
+<h2 id="部分题目答案及题解"><a href="#部分题目答案及题解" class="headerlink" title="部分题目答案及题解"></a>部分题目答案及题解</h2><ul>
+<li>A题：<em>5200</em></li>
+<li>B题：<em>210</em></li>
+<li>C题：<em>72665192664</em></li>
+<li>D题：</li>
+<li>E题：<em>f(x / 10, k);</em></li>
+<li>F题：<em>a[i][j] = a[i - 1][j - 1] + 1;</em></li>
+</ul>
+<p>大部分来源于<a href="https://blog.csdn.net/qq_18841761/article/details/107822618" target="_blank" rel="noopener">2017 【第八届蓝桥杯省赛】 C/C++ B组</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    <div>
+      
+        
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script type="text/javascript" src="http://jslibs.wuxubj.cn/sweetalert_mini/jquery-1.7.1.min.js"></script>
+  <script src="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.mini.css">
+  <p><span>本文标题:</span><a href="/2020/10/15/2017lanqiao-BGroup-CC-TopicSummary/">2017年蓝桥杯C/C++ B组省赛题目汇总及部分题解</a></p>
+  <p><span>文章作者:</span><a href="/" title="访问 陈洋 的个人博客">陈洋</a></p>
+  <p><span>发布时间:</span>2020年10月15日 - 20:10</p>
+  <p><span>最后更新:</span>2020年10月16日 - 18:10</p>
+  <p><span>原始链接:</span><a href="/2020/10/15/2017lanqiao-BGroup-CC-TopicSummary/" title="2017年蓝桥杯C/C++ B组省赛题目汇总及部分题解">https://codeblog-cy.top/2020/10/15/2017lanqiao-BGroup-CC-TopicSummary/</a>
+    <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://codeblog-cy.top/2020/10/15/2017lanqiao-BGroup-CC-TopicSummary/" aria-label="复制成功！"></i></span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+    clipboard.on('success', $(function(){
+      $(".fa-clipboard").click(function(){
+        swal({   
+          title: "",   
+          text: '复制成功',   
+          html: false,
+          timer: 500,   
+          showConfirmButton: false
+        });
+      });
+    }));  
+</script>
+
+      
+    </div>
+    
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/蓝桥杯/" rel="tag"># 蓝桥杯</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/10/15/2017lanqiao-c-PressureCalculation/" rel="next" title="2017lanqiao-c-PressureCalculation">
+                <i class="fa fa-chevron-left"></i> 2017lanqiao-c-PressureCalculation
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/10/15/2018lanqiao-BGroup-CC-TopicSummary/" rel="prev" title="2018年蓝桥杯C/C++ B组省赛题目汇总及部分题解">
+                2018年蓝桥杯C/C++ B组省赛题目汇总及部分题解 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/me.jpg" alt="陈洋">
+            
+              <p class="site-author-name" itemprop="name">陈洋</p>
+              <p class="site-description motion-element" itemprop="description">18级软工学生</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">85</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">71</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/Kuluuu" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:1140377596@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#A题：购物单"><span class="nav-number">1.</span> <span class="nav-text">A题：购物单</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#B题：等差素数列"><span class="nav-number">2.</span> <span class="nav-text">B题：等差素数列</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#C题：承压计算"><span class="nav-number">3.</span> <span class="nav-text">C题：承压计算</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#D题：方格分割"><span class="nav-number">4.</span> <span class="nav-text">D题：方格分割</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#E题：取数位"><span class="nav-number">5.</span> <span class="nav-text">E题：取数位</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#F题：最大公共子串"><span class="nav-number">6.</span> <span class="nav-text">F题：最大公共子串</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#G题：日期问题"><span class="nav-number">7.</span> <span class="nav-text">G题：日期问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#H题：包子凑数"><span class="nav-number">8.</span> <span class="nav-text">H题：包子凑数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#I题：分巧克力"><span class="nav-number">9.</span> <span class="nav-text">I题：分巧克力</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#J题：k倍区间"><span class="nav-number">10.</span> <span class="nav-text">J题：k倍区间</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#部分题目答案及题解"><span class="nav-number">11.</span> <span class="nav-text">部分题目答案及题解</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">陈洋</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+<!-- 新增访客统计代码 -->
+
+<div class="busuanzi-count">
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+        <!-- 不蒜子统计 -->
+        <span id="busuanzi_container_site_pv">
+                本站总访问量<span id="busuanzi_value_site_pv"></span>次
+        </span>
+        <span class="post-meta-divider">|</span>
+        <span id="busuanzi_container_site_uv" style="display:none">
+                本站访客数<span id="busuanzi_value_site_uv"></span>人
+        </span>
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <!-- 博客字数统计 -->
+    <span class="site-pv">
+      <i class="fa fa-pencil"></i>
+      博客全站共： <span class="post-count">94.8k</span> 字
+    </span>
+</div>
+<!-- 新增访客统计代码 END-->
+
+<!-- 在网页底部添加网站运行时间 -->
+<span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+<script>
+    var now = new Date();
+    function createtime() {
+        var grt= new Date("07/21/2019 00:00:00");//此处修改你的建站时间或者网站上线时间
+        now.setTime(now.getTime()+250);
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;}
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;}
+        document.getElementById("timeDate").innerHTML = "Run for "+dnum+" Days ";
+        document.getElementById("times").innerHTML = hnum + " Hours " + mnum + " m " + snum + " s";
+    }
+setInterval("createtime()",250);
+</script>
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共94.8k字</span>
+</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  <script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+  
+  
+
+  
+
+  
+
+  
+
+<!-- 代码块复制功能 -->
+<script type="text/javascript" src="/js/src/clipboard.min.js"></script>  
+<script type="text/javascript" src="/js/src/clipboard-use.js"></script>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"live2d-widget-model-wanko"},"display":{"position":"left","width":75,"height":100},"mobile":{"show":true},"log":false});</script></body>
+</html>
